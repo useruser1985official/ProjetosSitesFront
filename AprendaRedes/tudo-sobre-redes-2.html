@@ -97,15 +97,15 @@
 
 <h3>Introdução ao HTTP</h3>
 
-<p>HTTP é a sigla de HyperText Transfer Protocol que em português significa "Protocolo de Transferência de Hipertexto". É um protocolo de comunicação entre sistemas de informação que permite a transferência de dados entre redes de computadores, principalmente na World Wide Web (Internet). Tim Berners-Lee foi o criador do protocolo HTTP, da linguagem HTML e da World Wide Web.</p>
+<p>HTTP é a sigla de HyperText Transfer Protocol, que em português significa "Protocolo de Transferência de Hipertexto". É um protocolo de comunicação entre sistemas de informação que permite a transferência de dados entre redes de computadores, principalmente na World Wide Web (Internet). Tim Berners-Lee foi o criador do protocolo HTTP, da linguagem HTML e da World Wide Web.</p>
 
-<p>O HTTP é o protocolo utilizado para transferência de páginas HTML do computador para a Internet. Por isso, os endereços dos websites (URL) utilizam no início a expressão "http://", definindo o protocolo usado. Esta informação é necessária para estabelecer a comunicação entre a URL e o servidor Web que armazena os dados, enviando então a página HTML solicitada pelo usuário.</p>
+<p>O HTTP é o protocolo utilizado para transferência de páginas HTML do computador para a internet. Por isso, os endereços dos websites (URL) utilizam no início a expressão "http://", definindo o protocolo usado. Esta informação é necessária para estabelecer a comunicação entre a URL e o servidor web que armazena os dados, enviando então a página HTML solicitada pelo usuário.</p>
 
-<p>Para que a transferência de dados na Internet seja realizada, o protocolo HTTP necessita estar agregado a outros dois protocolos de rede: TCP (Transmission Control Protocol) e IP (Internet Protocol). Esses dois últimos protocolos formam o modelo TCP/IP, necessário para a conexão entre computadores clientes-servidores.</p>
+<p>Para que a transferência de dados na internet seja realizada, o protocolo HTTP necessita estar agregado a outros dois protocolos de rede: TCP (Transmission Control Protocol) e IP (Internet Protocol). Esses dois últimos protocolos formam o modelo TCP/IP, necessário para a conexão entre computadores clientes-servidores.</p>
 
 <p>Temos também o HTTPS, que é a versão criptografada do HTTP, mas também funcionando de forma parecida.</p>
 
-<p>No inspencionar elemento, em Network, podemos olhar as opções de rede do protocolo HTTP, vemos os arquivos carregados e os códigos das páginas (como 200, que é de sem erros, 304, que é de arquivo no cache do navegador ou 404, que é não encontrado). Basicamente é isso:</p>
+<p>No navegador, em Inspecionar Elemento, em Network, podemos olhar as opções de rede do protocolo HTTP, vemos os arquivos carregados e os códigos das páginas (como 200 que é de sem erros, 304 que é de arquivo no cache do navegador ou 404 que é não encontrado). Basicamente é isso:</p>
 
 <table>
     <tr>
@@ -249,13 +249,13 @@
 
 <h3>Protocolo Spanning Tree - Parte 1</h3>
 
-<p>O protocolo Spannin Tree Protocol (STP) é um protocolo baseado em um algoritmo que garante que não ocorrerá loop em uma rede local. Geralmente são usados em redes de grande porte.</p>
+<p>O protocolo Spanning Tree Protocol (STP) é um protocolo baseado em um algoritmo que garante que não ocorrerá loop em uma rede local. Geralmente são usados em redes de grande porte.</p>
 
 <p>Em redes maiores é necessário estabelecer redundância para evitar que a rede continue funcionando mesmo quando um switch apresentar problema.</p>
 
 <p>A forma que o protocolo Spanning Tree trabalha para que isso não ocorra, utiliza quadros especiais chamados BPDU - Bridge Protocol Data Unit.</p>
 
-<p>BPDUs são trocados regularmente, normalmente a cada dois segundos e permitem que os witches fiquem sabendo de alterações na rede bem como para ou iniciar encaminhamento nas portas conforme necessário.</p>
+<p>BPDUs são trocados regularmente, normalmente a cada dois segundos e permitem que os switches fiquem sabendo de alterações na rede bem como para ou iniciar encaminhamento nas portas conforme necessário.</p>
 
 <p>BPDUs além de descobrirem portas que podem causar loops também ajudam a definir qual será o switch principal (core) da rede e qual a melhor forma de chegar bloqueando linhas redundantes.</p>
 
@@ -269,7 +269,7 @@
 
 <p>O root bridge é escolhido através do seu Bridge ID, número formado por um valor chamado "Bridge Priority" + o MAC Address.</p>
 
-<p>O primeiro número é 32768 por padrão, mas pode ser alterado desde que seja um múltiplo de 4096. Por exemplo <code>32768.0200.0000.1111</code>.</p>
+<p>O primeiro número é 32768 por padrão, mas pode ser alterado desde que seja um múltiplo de 4096 (como 16384 ou 65536). Por exemplo <code>32768.0200.0000.1111</code>.</p>
 
 <p>Vamos supor que numa rede, tenhamos três switches, com esses números:</p>
 
@@ -390,7 +390,7 @@
     <li><b>Backup Port: </b>Uma porta no qual o switch não descartou as informações e pode ser rapidamente usada quando uma outra porta falhar.</li>
 </ul>
 
-<h3>Protocolo Ethenet</h3>
+<h3>Protocolo Ethernet</h3>
 
 <p>Ethernet é um conjunto de tecnologias para Local Area Networks (LANs).</p>
 

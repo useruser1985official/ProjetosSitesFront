@@ -165,7 +165,7 @@ ssh-keygen -t rsa
 </code>
 </pre>
 
-<p>Ele gerará a chave rsa e criará o arquivo id_rsa (que pode ser alterado o nome, para não alterar é só dar enter sem escrever nada), digite uma passphrase (frase-chave) e dê enter. Ele gerará uma "imagem" aleatória para isso.</p>
+<p>Ele gerará a chave RSA e criará o arquivo id_rsa (que pode ser alterado o nome, para não alterar é só dar enter sem escrever nada), digite uma passphrase (frase-chave) e dê enter. Ele gerará uma "imagem" aleatória para isso.</p>
 
 <p>PS: Prefira RSA ao invés de DSA, já que esta última não está mais sendo aceita.</p>
 
@@ -191,17 +191,17 @@ cat ~/.ssh/authorized_keys
 
 <p>O primeiro comando escrito acima pega o conteúdo do id_rsa e escreve no arquivo de chaves autorizadas para conexão.</p>
 
-<p>Pra finalizar, digite <code>logout</code> pra voltar à máquina cliente. E agora tente logar no servidor novamente com <code>ssh -l nomedoservidor 192.168.1.129</code>. Ele não pedirá mais a senha do outro computador, pedirá a passphrase, que é a chave pública que foi criada e adicionada ao servidor.</p>
+<p>Pra finalizar, digite <code>logout</code> pra voltar à máquina cliente. E agora tente logar no servidor novamente com <code>ssh -l nomedoservidor 192.168.1.129</code>. Ele não pedirá mais a senha do outro computador, pedirá a passphrase, que é da chave pública que foi criada e adicionada ao servidor.</p>
 
-<p>A autenticação de chave pública é mais segura que a autenticação por senha porque são necessários dois componentes secretos (o arquivo de chave no disco e a passphrase), nem a passphrase e nem a chave privada são enviadas ao host remoto, apenas o autenticador gerado com elas, e chaves criptográficas geradores por computador são muito mais difícies de adivinhar do que chaves criadas por pessoas.</p>
+<p>A autenticação de chave pública é mais segura que a autenticação por senha porque são necessários dois componentes secretos (o arquivo de chave no disco e a passphrase), nem a passphrase e nem a chave privada são enviadas ao host remoto, apenas o autenticador gerado com elas, e chaves criptográficas geradas por computador são muito mais difícies de adivinhar do que chaves criadas por pessoas.</p>
 
-<p>O OpenSSH inclui um programa chamado ssh-copy-id que instala uma chave pública automaticamente em um servidor remoto com um comando, escrevendo no ~/.ssh/autorize_keys ssh-copy-id -i arquivo_chave usuario@servidor, por exemplo, digitamos no cliente <code>ssh-copy-id -i id_rsa.pub nomedoservidor@192.168.1.129</code>.</p>
+<p>O OpenSSH inclui um programa chamado ssh-copy-id que instala uma chave pública automaticamente em um servidor remoto com um comando, escrevendo no ~/.ssh/authorized_keys ssh-copy-id -i arquivo_chave usuario@servidor, por exemplo, digitamos no cliente (fora do SSH) <code>ssh-copy-id -i id_rsa.pub nomedoservidor@192.168.1.129</code>.</p>
 
-<p>Cada vez que nos conectamos ao servidor SSH precisamos redigitar a passphrase. Porém, se usarmos um agente SSH poderemos nos identificar apenas uma vez, e o ssh (e o scp) podem se "lembrar" de nossa identidade até efetuarmos logout do cliente, por exemplo.</p>
+<p>Cada vez que nos conectamos ao servidor SSH precisamos redigitar a passphrase. Porém, se usarmos um agente SSH poderemos nos identificar apenas uma vez, e o SSH (e o scp) podem se "lembrar" de nossa identidade até efetuarmos logout do cliente, por exemplo.</p>
 
-<p>Um agente é um programa que mantém chaves privadas na memória e fornecem serviçoes de autenticação a clientes SSH. O agente usado pelo OpenSSH é o ssh-agent.</p>
+<p>Um agente é um programa que mantém chaves privadas na memória e fornecem serviços de autenticação a clientes SSH. O agente usado pelo OpenSSH é o ssh-agent.</p>
 
-<p>Voltando ao cliente, digite isso (fora do SSH), para iniciar o ssh-agente no shell que estamos usando:</p>
+<p>Voltando ao cliente, digite isso (fora do SSH), para iniciar o ssh-agent no shell que estamos usando:</p>
 
 <pre>
 <code>
@@ -213,9 +213,9 @@ ssh-add
 
 <p>Ele vai pedir o passphrase, digita ela e aí ele não a pedirá mais até fazermos logout no cliente. Para ver se a chave foi carregada, digite <code>ssh-add -l</code> (fora do SSH, no cliente).</p>
 
-<p>Conecta novamente ao servidor, ele não pedirá mais a senha enquanto estivermos nessa sessão.</p>
+<p>Conecte novamente ao servidor, ele não pedirá mais a senha enquanto estivermos nessa sessão.</p>
 
-<p>PS: Não use isso quanto tiver fora do acesso da máquina cliente, por questões de segurança.</p>
+<p>PS: Não use isso quando tiver fora do acesso da máquina cliente, por questões de segurança.</p>
 
 <p>Pra apagar uma chave da memória, digite fora do SSH, no cliente, <code>ssh-add -d id_rsa</code> (ou o nome dela, caso seja outro), pra apagar todas, digite <code>ssh-add -D</code>.</p>
 

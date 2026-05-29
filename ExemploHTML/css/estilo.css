@@ -16,3 +16,13 @@ main {
     font-family: Arial, sans-serif;
     border-radius: 25px;
 }
+
+a {
+    color: cyan;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightcyan;
+    text-decoration: underline;
+}

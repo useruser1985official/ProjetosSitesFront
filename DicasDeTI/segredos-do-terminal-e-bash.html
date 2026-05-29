@@ -108,7 +108,7 @@ cp -r diretorio /home/administrador/
 
 <p>Tanto o mv quanto o cp podem ser usados com o parâmetro <code>-f</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>-i</code> perguntar se desejamos substituir ele.</p>
 
-<p>PS: A barra tem que ser a <code>/</code>, senão não vai funcionar. O <code>*</code> pode ser usado como coringa para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
+<p>PS: A barra tem que ser a <code>/</code>, senão não vai funcionar. O <code>*</code> pode ser usado como curinga para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
 
 <p>Para ver os diretórios dentro das pastas, use o comando <code>ls</code> (com o parâmetro <code>-l</code> podemos ver as permissões, que podem ser alteradas pelo comando <code>chmod</code>).</p>
 
@@ -267,7 +267,7 @@ sudo ip link set up eth0
 </code>
 </pre>
 
-<p>Use o <code>sudo /etc/init.d/nscd restart</code> para modificar e liberar o cachê DNS (pode ser necessário instalar o nscd com apt-get).</p>
+<p>Use o <code>sudo /etc/init.d/nscd restart</code> para modificar e liberar o cache DNS (pode ser necessário instalar o nscd com apt-get).</p>
 
 <p>Para exibir informações sobre o IP e o endereço MAC, além das interfaces, digite <code>ip addr show</code>.</p>
 
@@ -293,7 +293,7 @@ ifconfig -a # Mostra informações detalhadas sobre todas as interfaces
 
 <p>Podemos também usar parâmetros no traceroute, como para aumentar a quantidade máxima de saltos com o -m, por exemplo <code>traceroute -m 60 www.google.com.br</code>.</p>
 
-<p>PS: Tanto no ping quanto no traceroute, pode ser necessário colocar <code>-4</code> para forçar IPv4 ou <code>-6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos, e mostrar só asteriscos, mas que não significam problema exatamente.</p>
+<p>PS: Tanto no ping quanto no traceroute, pode ser necessário colocar <code>-4</code> para forçar IPv4 ou <code>-6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
 
 <!--
 
@@ -301,9 +301,9 @@ ifconfig -a # Mostra informações detalhadas sobre todas as interfaces
 
 -->
 
-<p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat -a -n -e</code> para verificar todas as portas abertas e os IP's aos quais elas estão conectadas. Ele foi substituído por <code>ss -all</code>.</p>
+<p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat -a -n -e</code> para verificar todas as portas abertas e os IPs aos quais elas estão conectadas. Ele foi substituído por <code>ss -all</code>.</p>
 
-<p>Para vermos o cachê ARP, usamos <code>arp -a</code> (mas foi substituído por <code>ip neigh show</code>). Para remover um IP dele, usamos <code>ip neigh del 1.1.1.1 dev enp2s0</code> (substituir o 1.1.1.1 pelo IP desejado).</p>
+<p>Para vermos o cache ARP, usamos <code>arp -a</code> (mas foi substituído por <code>ip neigh show</code>). Para remover um IP dele, usamos <code>ip neigh del 1.1.1.1 dev enp2s0</code> (substituir o 1.1.1.1 pelo IP desejado).</p>
 
 <!--
     
@@ -477,7 +477,7 @@ net localgroup administradores
 
 <p>Para interromper algum comando sendo executado, dê um Ctrl C. Para ajuda a um comando, digite ele seguido de <code>--help</code>, como por exemplo <code>ls --help</code>.</p>
 
-<p>Como coringa, usamos o *, podendo inclusive usar nas extensões, como *.*. E comandos do terminal são case-sensitive.</p>
+<p>Como curinga, usamos o *, podendo inclusive usar nas extensões, como *.*. E comandos do terminal são case-sensitive.</p>
 
 <p>A variável <code>$?</code> guarda o status do último comando executado. Se o mesmo foi executado corretamente, ele retornará <q>0</q>, se o comando der erro ele retornará outro número diferente de zero (por exemplo, comando não encontrado retorna <q>127</q>). Podemos visualizar o conteúdo dessa variável digitando no terminal <code>echo $?</code>. Esse código também pode ser usado em Shell Script também, como em condicionais e laços de repetição.</p>
 
@@ -565,7 +565,7 @@ read -p "Digite sua idade: " idade
 </code>
 </pre>
 
-<p>PS: Você pode usar <code>$USER</code> como um coringa que mostrará o nome do usuário logado no momento.</p>
+<p>PS: Você pode usar <code>$USER</code> como um curinga que mostrará o nome do usuário logado no momento.</p>
 
 <p>Essas são as variáveis do sistema (usadas também com $):</p>
 

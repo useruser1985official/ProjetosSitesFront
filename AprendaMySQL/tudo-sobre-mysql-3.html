@@ -47,7 +47,7 @@ where nome like 'P%';
 
 <p>PS: Por significar "parecido", o operador like não diferencia maiúsculas e minúsculas (alguns bancos com o PostgreSQL diferencia, e para não diferenciar ele utiliza <code>ilike</code>). E sim, ele é um operador, assim como o between e o in, no SQL tem operadores com nomes literais.</p>
 
-<p>O % é como um coringa, que pode significar de zero a infinitos caracteres. No código acima apareceria cursos com apenas o nome "P", se existisse. Mas se o % tiver depois da letra, ele só valerá como curinga após a letra, para ser usado para anteriores, ele deverá vir antes (e no meio, a letra deverá ter antes e depois). Por exemplo:</p>
+<p>O % é como um curinga, que pode significar de zero a infinitos caracteres. No código acima apareceria cursos com apenas o nome "P", se existisse. Mas se o % tiver depois da letra, ele só valerá como curinga após a letra, para ser usado para anteriores, ele deverá vir antes (e no meio, a letra deverá ter antes e depois). Por exemplo:</p>
 
 <pre>
 <code>
@@ -74,7 +74,7 @@ where nome not like '%a%';
 </code>
 </pre>
 
-<p>PS: As letras acentuadas são consideradas, desde que o banco tenha sido configurado corretamente em UTF8. No exemplo tivemos apenas uma letra, mas vale pra qualquer palavra ou fragmento. O not pode ser usado em outros casos, como os operadores and e or.</p>
+<p>PS: As letras acentuadas são consideradas, desde que o banco tenha sido configurado corretamente em UTF-8. No exemplo tivemos apenas uma letra, mas vale pra qualquer palavra ou fragmento. O not pode ser usado em outros casos, como os operadores and e or.</p>
 
 <p>Vamos fazer um teste errado em POO para testar:</p>
 
@@ -202,7 +202,7 @@ select nome, min(totaulas) from cursos;
 </code>
 </pre>
 
-<p>Mas tem um detalhe, ele só escolherá o primeiro, caso tenham o mesmo valor.</p>
+<p>Mas tem um detalhe sobre o max e o min, eles só escolherão o primeiro, caso tenham o mesmo valor.</p>
 
 <p>Temos também o <code>sum</code>, que soma o total de todos os valores, por exemplo:</p>
 
@@ -304,7 +304,7 @@ order by count(*) desc;
 </code>
 </pre>
 
-<p>Também podemos colocar select dentro dos parêntese em alguns casos.</p>
+<p>Também podemos colocar select dentro dos parênteses em alguns casos.</p>
 
 <p>Um exemplo para mostrar apenas os cursos acima da média de aulas dos cursos:</p>
 

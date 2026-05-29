@@ -162,7 +162,7 @@
 
 <p>Vamos configurar a hora e data do switch e colocar senha para proteger o modo privilegiado.</p>
 
-<p>Num novo projeto, coloque um switch do tipo 2960, clique nele e vá em CLI, dê enter e coloque os comandos <code>enable</code> para entrar no modo privilegiado, e para ver o relógio digite <code>show clock</code>, e para editar coloque <code>clock ?</code> e ele nos guiará, coloque esses comandos assim, a medida que for sugerido:</p>
+<p>Num novo projeto, coloque um switch do tipo 2960, clique nele e vá em CLI, dê enter e coloque os comandos <code>enable</code> para entrar no modo privilegiado, e para ver o relógio digite <code>show clock</code>, e para editar coloque <code>clock ?</code> e ele nos guiará, coloque esses comandos assim, à medida que for sugerido:</p>
 
 <pre>
 <code>
@@ -178,9 +178,9 @@ clock set 22:30:05 2 FEB 2014
 </code>
 </pre>
 
-<p>Faça isso até alterar a data toda, que aparecerá <code>&lt;cr&gt;</code> ao terminar. Para ver se alterou mesmo, digite <code>show clock</code> novamente.</p>
+<p>Faça isso até alterar a data toda, que aparecerá <code>&lt;cr&gt;</code> ao terminar. Para ver se alterou mesmo, digite <code>show clock</code> novamente. Lembrando que os meses devem ser apenas as três primeiras letras do nome do mês em inglês (JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC).</p>
 
-<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> e clique enter sem digitar nada. Ele salvará com o nome startup-config</p>
+<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> e clique enter sem digitar nada. Ele salvará com o nome startup-config.</p>
 
 <p>Para configurar a senha, digite isso:</p>
 
@@ -188,7 +188,7 @@ clock set 22:30:05 2 FEB 2014
 <code>
 configure terminal
 
-enable password 123
+enable password 123 # Senha do modo privilegiado
 
 exit
 
@@ -202,7 +202,7 @@ show running-config
 <code>
 configure terminal
 
-enable secret senha # A senha pode ser qualquer uma
+enable secret senha # A senha pode ser qualquer uma, substitui o 123 acima
 
 exit
 
@@ -210,7 +210,7 @@ show running-config
 </code>
 </pre>
 
-<p>Nesse caso ele só usara a senha secreta, descartando a primeira.</p>
+<p>Nesse caso ele só usará a senha secreta, descartando a primeira.</p>
 
 <h3>Colocando Senha na Porta de Console do Switch</h3>
 
@@ -234,7 +234,9 @@ login
 
 <pre>
 <code>
-password 123
+password 123 # Senha do console do switch, não do modo privilegiado
+
+exit
 
 exit
 
@@ -242,9 +244,9 @@ exit
 </code>
 </pre>
 
-<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> e clique enter sem digitar nada. Dê <code>exit</code> e saia de tudo.</p>
+<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> e clique enter sem digitar nada. Dê <code>exit</code> e saia de tudo (dando quantos <q>exit</q> precisar).</p>
 
-<p>Abra o Laptop em Desktop e o terminal normalmente, ele pedirá a senha agora.</p>
+<p>Abra o Laptop em Desktop e o terminal novamente, ele pedirá a senha agora.</p>
 
 <h3>Configurando a Interface VLAN</h3>
 
@@ -364,7 +366,7 @@ exit
 
 <p>Ligue com um cabo Through os computadores ao switch (os dois primeiros nas portas 1 e 2 e os outros dois nas portas 11 e 12). Coloque o painel de simulação e mande uma mensagem do PC 1 ao Laptop 1.</p>
 
-<p>Para criar a VLAN (configuração que não tem nos computadores, geralmente). Isso a gente configura no switch.</p>
+<p>Para criar a VLAN (cuja configuração não tem nos computadores, geralmente), a gente configura no switch.</p>
 
 <p>Entre no switch e em CLI, digite esses comandos:</p>
 

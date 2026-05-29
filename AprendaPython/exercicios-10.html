@@ -174,7 +174,6 @@ if __name__ == "__main__":
 <code>
 from abc import ABC, abstractmethod
 from rich import print, inspect
-from rich.table import Table
 
 class Transporte(ABC):
     def __init__(self, distancia):
@@ -243,6 +242,8 @@ class Drone(Transporte):
 
 <pre>
 <code>
+from rich.table import Table
+
 def main():
     dist = 80
 
@@ -343,7 +344,57 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from abc import ABC, abstractmethod
+import random
+from rich import print, inspect
 
+class Personagem(ABC):
+    def __init__(self, nome, vida):
+        self.nome = nome
+        self.vida = vida
+        self.golpes = tuple()
+
+    def atacar(self, alvo, forca = 100):
+        if self.vida > 0 and alvo.vida > 0:
+            golp = self.golpes[random.randrange(0, len(self.golpes))]
+
+            print(f"[green]{self.nome}[/]({self.vida}) atacou [red]{alvo.nome}[/]({alvo.vida}) com um [blue]{golp}[/] de força {forca}.")
+            alvo.receberDano(forca)
+        else:
+            print(f"O ataque [green]{self.nome}[/] -> [red]{alvo.nome}[/] não pode acontecer!")
+
+    def receberDano(self, dano):
+        fator = random.randint(0, dano)
+        self.vida -= fator
+
+        if self.vida < 0:
+            self.vida = 0
+
+        print(f"[blue]{self.nome}[/] recebeu [red]dano de {fator}[/].")
+
+    @abstractmethod
+    def curar(self):
+        pass
+
+class Guerreiro(Personagem):
+    def __init__(self, nome, vida):
+        super().__init__(nome, vida)
+        self.golpes = ("Soco", "Golpe de Machado", "Pulo Giratório")
+
+    def curar(self):
+        fator = random.randint(0, 100)
+        self.vida += fator
+        print(f"[blue]{self.nome}[/] enrolou uma atadura nos ferimentos e [green]recuperou {fator} pontos[/] de vida.")
+
+class Mago(Personagem):
+    def __init__(self, nome, vida):
+        super().__init__(nome, vida)
+        self.golpes = ("Bola de Fogo", "Raio de Luz", "Magia Estática")
+
+    def curar(self):
+        fator = random.randint(0, 100)
+        self.vida += fator
+        print(f"[blue]{self.nome}[/] fez uma magia de cura e [green]recuperou {fator} pontos[/] de vida.")
 </code>
 </pre>
 
@@ -351,7 +402,18 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    p1 = Guerreiro("Kratos", 1000)
+    p2 = Mago("Gandalf", 2000)
 
+    p1.atacar(p2, 200)
+    p2.atacar(p1, 200)
+
+    p1.curar()
+    p2.curar()
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 

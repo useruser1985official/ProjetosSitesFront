@@ -120,7 +120,7 @@ copy picture.jpg C:\Users\Public\Documents\foto.jpg
 
 <p>Tanto o move quandt o copy podem ser usados com o parâmetro <code>/y</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>/-y</code> perguntar se desejamos substituir ele.</p>
 
-<p>PS: A barra tem que ser a <code>\</code>, senão não vai funcionar. Para copiar arquivos ocultos e pastas, use o <code>xcopy</code>. O <code>*</code> pode ser usado como coringa para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
+<p>PS: A barra tem que ser a <code>\</code>, senão não vai funcionar. Para copiar arquivos ocultos e pastas, use o <code>xcopy</code>. O <code>*</code> pode ser usado como curinga para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
 
 <p>Para ver os diretórios dentro das pastas, use o comando <code>dir</code>.</p>
 
@@ -315,7 +315,7 @@ ipconfig /renew
 
 <p>Lembrando que isso afeta todas as conexões. Para afetar somente uma conexão específica, use o nome específico dela, como por exemplo <code>ipconfig /release "Conexão Local"</code>.</p>
 
-<p>Use o <code>ipconfig /flushdns</code> para  liberar o cachê DNS. E depois digite <code>ipconfig /registerdns</code> para registrar e atualizar o DNS. Podemos também verificar o conteúdo do cache DNS digitando <code>ipconfig /displaydns</code>. Podemos inclusive parar e reiniciar os serviços DNS e DHCP com o comando net (os nomes são dnscache e dhcp), e depois reiniciar os mesmos.</p>
+<p>Use o <code>ipconfig /flushdns</code> para  liberar o cache DNS. E depois digite <code>ipconfig /registerdns</code> para registrar e atualizar o DNS. Podemos também verificar o conteúdo do cache DNS digitando <code>ipconfig /displaydns</code>. Podemos inclusive parar e reiniciar os serviços DNS e DHCP com o comando net (os nomes são dnscache e dhcp), e depois reiniciar os mesmos.</p>
 
 <p>Para exibir informações sobre o IP e o endereço MAC, digite <code>ipconfig /all</code>.</p>
 
@@ -325,19 +325,19 @@ ipconfig /renew
 
 <p>Para descobrir o MTU da interface, digitamos <code>netsh interface ipv4 show subinterfaces</code> (pode ser <code>ipv6</code> também).</p>
 
-<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>/l</code> seguido do número (por exemplo, <code>ping /l 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro /n seguido do número, por exemplo <code>/n 6</code>. Para desativar a fragmentação de pacotes, usamos o <code>/f</code> junto, por exemplo, <code>ping /l 1500 /f www.google.com.br</code>. O parâmetro <code>/t</code> envia requisições infinitas (Use Ctrl Break para uma interrupção temporária e mostrar os pacotes enviados e recebidos, para interromper totalmente use Ctrl C).</p>
+<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>/l</code> seguido do número (por exemplo, <code>ping /l 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro /n seguido do número, por exemplo <code>/n 6</code>. Para desativar a fragmentação de pacotes, usamos o <code>/f</code> junto, por exemplo, <code>ping /l 1500 /f www.google.com.br</code>. O parâmetro <code>/t</code> envia requisições infinitas (use Ctrl Break para uma interrupção temporária e mostrar os pacotes enviados e recebidos, para interromper totalmente use Ctrl C).</p>
 
 <p>Podemos também usar parâmetros no tracert, como para aumentar a quantidade máxima de saltos com o /h, por exemplo <code>tracert /h 60 www.google.com.br</code>.</p>
 
-<p>PS: Tanto no ping quanto no tracert, pode ser necessário colocar <code>/4</code> para forçar IPv4 ou <code>/6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos, e mostrar só asteriscos, mas que não significam problema exatamente.</p>
+<p>PS: Tanto no ping quanto no tracert, pode ser necessário colocar <code>/4</code> para forçar IPv4 ou <code>/6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
 
 <p>Para liberar o cache ARP, basta usar <code>netsh interface ip delete arpcache</code>, para excluir o cache de destino use <code>netsh interface ip delete destinationcache</code>, para resetar o TCP/IP usamos <code>netsh int ip reset all</code>.</p>
 
-<p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat /a /n /b</code> para verificar todas as portas abertas, os IP's e os processos aos quais elas estão conectados.</p>
+<p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat /a /n /b</code> para verificar todas as portas abertas, os IPs e os processos aos quais elas estão conectados.</p>
 
 <p>Para descobrir o endereço MAC, basta simplesmente usar <code>getmac</code> no prompt. De forma mais detalhada, usamos <code>getmac /v /fo list</code>.</p>
 
-<p>Para vermos o cachê ARP, usamos <code>arp /a</code>. Para excluir ele usamos <code>arp /a /d</code> (ou um IP específico usando <code>arp /d 1.1.1.1</code>, substituir o 1.1.1.1 pelo IP desejado).</p>
+<p>Para vermos o cache ARP, usamos <code>arp /a</code>. Para excluir ele usamos <code>arp /a /d</code> (ou um IP específico usando <code>arp /d 1.1.1.1</code>, substituir o 1.1.1.1 pelo IP desejado).</p>
 
 <p>Para resetar o catálogo do provedor winsock ao estado inicial, digite <code>nbtstat /R</code>, <code>nbtstat /RR</code> e <code>netsh winsock reset catalog</code>.</p>
 
@@ -680,7 +680,7 @@ net localgroup administradores
 
 <p>Para interromper algum comando sendo executado, dê um Ctrl C. Para ajuda a um comando, digite ele seguido de <code>/?</code>, como por exemplo <code>dir /?</code>.</p>
 
-<p>Como coringa, usamos o *, podendo inclusive usar nas extensões, como *.*. E comandos do CMD não são case-sensitive.</p>
+<p>Como curinga, usamos o *, podendo inclusive usar nas extensões, como *.*. E comandos do CMD não são case-sensitive.</p>
 
 <p>A variável <code>%errorlevel%</code> guarda o status do último comando executado. Se o mesmo foi executado corretamente, ele retornará <q>0</q>, se o comando der erro ele retornará outro número diferente de zero (por exemplo, comando não encontrado retorna <q>9009</q>). Podemos visualizar o conteúdo dessa variável digitando no prompt <code>echo %errorlevel%</code>. Esse código também pode ser usado em BAT Script também, como em condicionais e laços de repetição.</p>
 
@@ -785,7 +785,7 @@ exit
 </code>
 </pre>
 
-<p>PS: Você pode usar <code>%username%</code> como um coringa que mostrará o nome do usuário logado no momento. O parâmetro <code>/i</code>, é usado para não diferenciar maiúsculas de minúsculas. </p>
+<p>PS: Você pode usar <code>%username%</code> como um curinga que mostrará o nome do usuário logado no momento. O parâmetro <code>/i</code>, é usado para não diferenciar maiúsculas de minúsculas. </p>
 
 <p>Essas são as variáveis do sistema (usadas também entre dois %):</p>
 
