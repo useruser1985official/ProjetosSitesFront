@@ -1,8 +1,20 @@
 @charset "UTF-8"; /* Coloque apenas em arquivos CSS separados, para compatibilidade de acentuação. */
 @import "folha.css";
 
+/* O root é pra declarar variáveis em CSS, estas são declaradas com dois -- na frente: */
+
+:root {
+    --cor0: gray;
+    --cor1: #83e1ad;
+    --fonte-padrao: Arial, sans-serif;
+}
+
+* {
+    font-family: var(--fonte-padrao);
+}
+
 body {
-    background-color: gray;
+    background-color: var(--cor0);
     background-image: url("../imagens/fundo.png") !important;
     background-size: cover;
     background-repeat: no-repeat;
@@ -26,4 +38,20 @@ a {
 a:hover {
     color: lightcyan;
     text-decoration: underline;
+}
+
+ul li {
+    font-family: Arial;
+    font-size: 13pt;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+p span {
+    text-decoration: blink;
+}
+
+h2 {
+    text-shadow: 1px -1px black, -1px 1px black, 1px 1px black, -1px -1px black;
 }

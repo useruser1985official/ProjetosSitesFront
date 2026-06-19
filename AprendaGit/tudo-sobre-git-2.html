@@ -79,7 +79,45 @@ git credential-cache exit
 
 <h3>Iniciando com GitHub - Parte 2</h3>
 
-<p>De uma outra forma, criaremos um segundo repositório remoto no GitHub, da mesma forma do primeiro. Nesse caso criaremos o .gitignore e o README (que é usado como uma documentação do projeto).</p>
+<p>De uma outra forma, criaremos um segundo repositório remoto no GitHub, da mesma forma do primeiro. Nesse caso criaremos o .gitignore e o README (que é usado como uma documentação do projeto). Para escrever o README e também outras coisas dentro do GitHub, podemos usar a sintaxe do Markdown, como exemplificado abaixo:</p>
+
+<pre>
+<code>
+# Título 1
+## Título 2, vai até 6
+
+**Negrito**
+_Itálico_
+&gt; Citação
+`Código`
+[Link](https://nomedosite.com.br/)
+![TextoAlternativo](https://linkdaimagem.com/imagem.png)
+@CitarUser
+
+Tabela:
+
+Nome | Idade
+---|---
+Fulano | 25
+Beltrano | 40
+Sicrano | 30
+
+Código de mais de uma linha:
+
+```
+nome = str(input("Digite seu nome: "))
+
+print(f"Olá, {nome}! Tudo bem com você?")
+```
+
+Lista:
+
+* Item 1
+* Item 2
+    * SubItem 1
+* Item 3
+</code>
+</pre>
 
 <p>Vamos clonar esse repositório para a nossa máquina com <code>git clone https://github.com/nomedousuario/Projeto-1.git</code>. Caso queira outro nome na pasta clonada, podemos colocar <code>git clone https://github.com/nomedousuario/Projeto-1.git NovoNomeDoProjeto</code>.</p>
 
@@ -227,7 +265,7 @@ git show c67f99d
 
 <p>Podemos colocar os binários que usam esses mesmos códigos-fontes (como executáveis pra Windows, Linux e Mac, ou programas em Java), para que outras pessoas possam também baixar os mesmos.</p>
 
-<p>Para fazer isso, vá em Releases, ao lado do repositório, e colocaremos uma tag, o target, o título e a descrição em Release Notes, aí colocamos os executáveis e escolhemos o label None ou Pre-Release, e clicamos em Publish Release. Aí os executáveis estarão disponíveis para qualquer um baixar.</p>
+<p>Para fazer isso, vá em Releases, ao lado do repositório, e colocaremos uma tag (onde colocaremos o número ou nome da versão, como v1.0), o target (de qual branch ele pertence, geralmente a master mesmo), o título, e a descrição (aceitando Markdown) em Release Notes, aí colocamos os executáveis e escolhemos o label None ou Pre-Release, e clicamos em Publish Release. Aí os executáveis estarão disponíveis para qualquer um baixar.</p>
 
 <ul>
     <li><a href="tudo-sobre-git-1.html">Parte Anterior da Matéria!</a></li>

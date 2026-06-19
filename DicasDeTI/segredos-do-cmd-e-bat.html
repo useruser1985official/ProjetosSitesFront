@@ -440,9 +440,9 @@ reg add HKLM\Software\NomeDaChave /v NomeDoValor /t REG_SZ /d "Dados do Valor" /
 
 <p>O <code>/d</code> são os valores a serem atribuídos ao nome do valor do registro adicionado.</p>
 
-<p>O <code>/f</code> força a inserção da chave sem perguntar se ela já existe e a substituí.</p>
+<p>O <code>/f</code> força a inserção da chave sem perguntar se ela já existe e a substitui.</p>
 
-<p>Caso seja pra adicionar um valor à uma chave já existente, use o mesmo método, usando o mesmo caminho da chave, com o novo nome do valor e os dados do novo valor.</p>
+<p>Caso seja pra adicionar um valor a uma chave já existente, use o mesmo método, usando o mesmo caminho da chave, com o novo nome do valor e os dados do novo valor.</p>
 
 <pre>
 <code>
@@ -466,7 +466,7 @@ reg add HKLM\Software\NomeDaChave /v NomeDoValor /t REG_SZ /d "Outros Dados" /f
 </code>
 </pre>
 
-<p>PS: Os dados inseridos podem ser por exemplo, um comando para o CMD ou execução de algum programa EXE ou BAT (sem o start, apenas o caminho do mesmo), pode não funcionar pra alguns tipos de aplicações como Java. Nesse caso o tipo é o REG_SZ. E as chaves são como as pastinhas do registro, os valores são como as variáveis.</p>
+<p>PS: Os dados inseridos podem ser, por exemplo, um comando para o CMD ou execução de algum programa EXE ou BAT (sem o start, apenas o caminho do mesmo), pode não funcionar pra alguns tipos de aplicações como Java. Nesse caso, o tipo é o REG_SZ. E as chaves são como as pastinhas do registro, os valores são como as variáveis.</p>
 
 <p>Também podemos copiar as chaves e seus valores da mesma forma, usando o copy, assim:</p>
 
@@ -486,7 +486,7 @@ reg delete HKLM\Software\NomeDaChave /v NomeDoValor /f
 </code>
 </pre>
 
-<p>Para apagar uma chave já existente, use apenas o reg delete e o /f no final para forçar a exclusão.</p>
+<p>Para apagar uma chave já existente, use apenas o reg delete e o /f no final para forçar a exclusão:</p>
 
 <pre>
 <code>
@@ -504,11 +504,11 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v Inicializando /t R
 </code>
 </pre>
 
-<p>Lembrando de HKCU é do usuário atual e HKLM é do sistema todo.</p>
+<p>Lembrando que HKCU é do usuário atual e HKLM é do sistema todo.</p>
 
 <p>PS: Nesse caso, só utilizamos sequências de escape nas aspas, se elas existirem, as barras não utilizam, e podemos usar variáveis do sistema.</p>
 
-<p>Da mesma forma, podemos utilizar esse método pra deletar o valor (inclusive podemos utilizar para excluir da inicialização programas teimosos e malwares):</p>
+<p>Da mesma forma, podemos utilizar esse método pra deletar o valor (inclusive, podemos utilizar para excluir da inicialização programas teimosos e malwares):</p>
 
 <pre>
 <code>
