@@ -188,7 +188,7 @@ git log
 
 <p>Agora vamos voltar pro segundo commit, pegar o código dele também e digitar assim: <code>git revert c67f99d</code>. Ele vai adicionar um comentário nos arquivos de configuração, daí pra confirmar digite <code>:q</code>.</p>
 
-<p>Para resetar tudo e que nada fique no histórico, podemos pegar um código do commit e digitar assim: <code>git reset e0323fe</code>. Mas no entanto, caso tenhamos alterado o arquivo nos editores, devemos fazer um novo add e um novo commit para essas alterações. Para resetar totalmente, inclusive commits posteriores, digitamos <code>git reset 0551f68 --hard</code> (esse comando deve ser usado com cautela).</p>
+<p>Para resetar tudo e que nada fique no histórico, podemos pegar um código do commit e digitar assim: <code>git reset e0323fe</code>. No entanto, caso tenhamos alterado o arquivo nos editores, devemos fazer um novo add e um novo commit para essas alterações. Para resetar totalmente, inclusive commits posteriores, digitamos <code>git reset 0551f68 --hard</code> (esse comando deve ser usado com cautela).</p>
 
 <h3>Ignorando Arquivos</h3>
 
@@ -205,7 +205,7 @@ dist
 </code>
 </pre>
 
-<p>No caso, o primeiro é um arquivo robots.txt, o segundo pra todos os arquivos GIF no diretório, e o dist no caso seria outro diretório dentro do repositório. Os arquivos e pastas descritos nele também não irão pra repositórios remotos.</p>
+<p>No caso, o primeiro é um arquivo de configuração do Docker, o segundo é um arquivo robots.txt, o terceiro pra todos os arquivos GIF no diretório, e o dist no caso seria outro diretório dentro do repositório. Os arquivos e pastas descritos nele também não irão pra repositórios remotos.</p>
 
 <h3>Criando Branches</h3>
 

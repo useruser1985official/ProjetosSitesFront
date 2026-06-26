@@ -39,22 +39,22 @@ engine = innodb
 
 <p>No caso, o <code>Inno DB</code> é uma máquina de criação de tabelas, ou seja, um engine (mecanismo). A principal característica do Inno DB é suportar chaves estrangeiras.</p>
 
-<p>Outras engines são o <code>MylSAM</code> e o <code>XtraDB</code>. A MylSAM é a mais antiga, mas ela não dá suporte à algumas transações, no caso, as que são ACID, cujo significado são esses:</p>
+<p>Outras engines são o <code>MylSAM</code> e o <code>XtraDB</code>. A MylSAM é a mais antiga, mas ela não dá suporte a algumas transações, no caso, as que são ACID, cujo significado são esses:</p>
 
 <ul>
     <li>Atomicidade: Ou faz tudo, ou nada é considerado, não faz nada incompleto.</li>
-    <li>Consistência: Um banco continuará estável tanto na hora quando após a transação, ou volta pro estado anterior.</li>
+    <li>Consistência: Um banco continuará estável tanto na hora quanto após a transação, ou volta pro estado anterior.</li>
     <li>Isolamento: Quando duas ou mais transações acontecem ao mesmo tempo, elas são executadas de forma separada, sem conflito entre si.</li>
-    <li>Durabilidade: Uma transação tem que durar o tempo necessário até alterarmos dele.</li>
+    <li>Durabilidade: Uma transação tem que durar o tempo necessário até alterarmos ele.</li>
 </ul>
 
-<p>No exemplo, temos dois bancos de dados distintos, que tem relacionamento entre si, no primeiro, dados de usuários no banco "gafanhotos", e no outro banco temos cursos. Mas no caso especificado, um usuário do banco gafanhotos poderá escolher um curso do banco cursos.</p>
+<p>No exemplo, temos dois bancos de dados distintos, que têm relacionamento entre si, no primeiro, dados de usuários no banco "gafanhotos", e no outro banco temos "cursos". Mas no caso especificado, um usuário do banco gafanhotos poderá escolher um curso do banco cursos.</p>
 
 <img src="imagens/gafanhotos.jpg" alt="Gafanhotos"/>
 
 <p>No exemplo da imagem, Gafanhotos prefere Cursos, o Gafanhotos é o lado 1, se invertesse, como Cursos é preferido por gafanhotos, Cursos seria o lado um (quem exporta é o lado 1, quem importa é o lado "N").</p>
 
-<p>O que a gente tem que fazer a chave (como a primária) do lado um (do qual ela vem) e levar para o lado "N", adicionando-a no outro lado, ela não precisa ter o mesmo nome da chave primária de onde ela veio, mas tem que ter o mesmo tipo e mesmo tamanho.</p>
+<p>O que a gente tem que fazer é pegar a chave (como a primária) do lado um (do qual ela vem) e levar para o lado "N", adicionando-a no outro lado, ela não precisa ter o mesmo nome da chave primária de onde ela veio, mas tem que ter o mesmo tipo e mesmo tamanho.</p>
 
 <p>No exemplo, a chave idcurso do Cursos terá o nome de curso preferido na chave estrangeira Gafanhotos:</p>
 
@@ -124,7 +124,7 @@ drop index cursopreferido;
 
 <p>PS: O método acima também serve para excluir outros tipos de índices, como primary_key, unique, etc.</p>
 
-<p>Para aparecer um outro dado da tabela (que não seja a chave primária, mas outro dado referente à ela), usaremos o <code>join</code>.
+<p>Para aparecer um outro dado da tabela (que não seja a chave primária, mas outro dado referente a ela), usaremos o <code>join</code>.
 
 <p>No banco cadastro, digite isso:</p>
 
@@ -135,7 +135,7 @@ from gafanhotos join cursos;
 </code>
 </pre>
 
-<p>PS: O que tiver com ponto, o do lado esquerdo é o nome da tabela e do direito, nome da coluna.</p>
+<p>PS: O que tiver com ponto, o do lado esquerdo é o nome da tabela, e do direito, nome da coluna.</p>
 
 <p>No comando acima, dará um erro, pois ele juntará todos os cursos, mas para corrigí-lo, usaremos um filtro no join, colocando logo após tudo, a ligação com <code>on</code> as duas tabelas e bancos respectivos, assim:</p>
 
@@ -147,7 +147,7 @@ on cursos.idcurso = gafanhotos.cursopreferido;
 </code>
 </pre>
 
-<p>PS: Isso daí só mostrará os que tem dados referentes nas chaves estrangeiras. Também podemos usar <code>inner join</code> nesse caso.</p>
+<p>PS: Isso daí só mostrará os cadastros que tem dados referentes nas chaves estrangeiras. Também podemos usar <code>inner join</code> nesse caso.</p>
 
 <p>Para ordenar, basta apenas isso:</p>
 
@@ -181,65 +181,7 @@ on c.idcurso = g.cursopreferido;
 </code>
 </pre>
 
-<p>No caso acima, o left join escolhe a tabela preferencial, que no caso seria a esquerda (esquerda quem exporta, direita quem importa), não considerar nenhum é o inner. Na verdade, existem várias formas de trabalhar com o join.</p>
-
-<p>O inner join retorna os registros que são comuns às duas tabelas. É o método mais conhecido:</p>
-
-<pre>
-<code>
-select * from gafanhotos inner join cursos on gafanhotos.cursopreferido = cursos.idcurso;
-</code>
-</pre>
-
-<p>O left join retorna todos os registros que estão na primeira tabela (a), além dos que são comuns com a segunda tabela (b):</p>
-
-<pre>
-<code>
-select * from gafanhotos left join cursos on gafanhotos.cursopreferido = cursos.idcurso;
-</code>
-</pre>
-
-<p>O right join retorna todos os registros que esão na segunda tabela (b), além dos que são comuns com a primeira tabela (a):</p>
-
-<pre>
-<code>
-select * from gafanhotos right join cursos on gafanhotos.cursopreferido = cursos.idcurso;
-</code>
-</pre>
-
-<p>O left excluding join retorna todos os registros da primeira tabela (a), desde que não sejam em comum com a segunda tabela (b):</p>
-
-<pre>
-<code>
-select * from gafanhotos left join cursos on gafanhotos.cursopreferido = cursos.idcurso where cursos.idcurso is null;
-</code>
-</pre>
-
-<p>O right excluding join retorna todos os registros da segunda tabela (b), desde que não sejam em comum com a primeira tabela (a):</p>
-
-<pre>
-<code>
-select * from gafanhotos right join cursos on gafanhotos.cursopreferido = cursos.idcurso where gafanhotos.cursopreferido is null;
-</code>
-</pre>
-
-<p>Veja abaixo um exemplo gráfico das SQL Joins:</p>
-
-<img src="imagens/sql-joins.jpg" alt="SQL Joins"/>
-
-<p>PS: Não é possível usar <code>full join</code> ou <code>full outer join</code> em MySQL, mas ele existe em outros bancos baseados em SQL.</p>
-
-<p>Podemos puxar os dados do banco sem usar join, mas ele é menos usado. Veja um exemplo assim:</p>
-
-<pre>
-<code>
-select gafanhotos.nome, gafanhotos.profissao, cursos.nome
-from gafanhotos, cursos
-where gafanhotos.cursopreferido = cursos.idcurso;
-</code>
-</pre>
-
-<p>No caso acima, o <q>join</q> foi substituído pela vírgula.</p>
+<p>No caso acima, o left join escolhe a tabela preferencial, que no caso seria a esquerda (esquerda quem exporta, direita quem importa), e não considerar nenhum é o inner. Na verdade, existem várias formas de trabalhar com o join.</p>
 
 <h3>Inner Join com Várias Tabelas</h3>
 
@@ -327,6 +269,66 @@ order by g.nome;
 https://www.youtube.com/playlist?list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8g1r
 -->
 
+<h3>Tipos de Joins em SQL</h3>
+
+<p>O inner join retorna os registros que são comuns às duas tabelas. É o método mais conhecido:</p>
+
+<pre>
+<code>
+select * from gafanhotos inner join cursos on gafanhotos.cursopreferido = cursos.idcurso;
+</code>
+</pre>
+
+<p>O left join retorna todos os registros que estão na primeira tabela (a), além dos que são comuns com a segunda tabela (b):</p>
+
+<pre>
+<code>
+select * from gafanhotos left join cursos on gafanhotos.cursopreferido = cursos.idcurso;
+</code>
+</pre>
+
+<p>O right join retorna todos os registros que esão na segunda tabela (b), além dos que são comuns com a primeira tabela (a):</p>
+
+<pre>
+<code>
+select * from gafanhotos right join cursos on gafanhotos.cursopreferido = cursos.idcurso;
+</code>
+</pre>
+
+<p>O left excluding join retorna todos os registros da primeira tabela (a), desde que não sejam em comum com a segunda tabela (b):</p>
+
+<pre>
+<code>
+select * from gafanhotos left join cursos on gafanhotos.cursopreferido = cursos.idcurso where cursos.idcurso is null;
+</code>
+</pre>
+
+<p>O right excluding join retorna todos os registros da segunda tabela (b), desde que não sejam em comum com a primeira tabela (a):</p>
+
+<pre>
+<code>
+select * from gafanhotos right join cursos on gafanhotos.cursopreferido = cursos.idcurso where gafanhotos.cursopreferido is null;
+</code>
+</pre>
+
+<p>Veja abaixo um exemplo gráfico das SQL Joins:</p>
+
+<img src="imagens/sql-joins.jpg" alt="SQL Joins"/>
+
+<p>PS: Não é possível usar <code>full join</code> ou <code>full outer join</code> em MySQL, mas ele existe em outros bancos baseados em SQL.</p>
+
+<p>Podemos puxar os dados do banco sem usar join, mas ele é menos usado. Veja um exemplo assim:</p>
+
+<pre>
+<code>
+select gafanhotos.nome, gafanhotos.profissao, cursos.nome
+from gafanhotos, cursos
+where gafanhotos.cursopreferido = cursos.idcurso;
+</code>
+</pre>
+
+<p>No caso acima, o <q>join</q> foi substituído pela vírgula.</p>
+
 <h3>Criando Tabelas Virtuais (Views)</h3>
 
 <p>Uma exibição/visão (view) é uma tabela virtual baseada no conjunto de resultados de uma consulta SQL.</p>
@@ -343,7 +345,7 @@ create view curso_2018 as select nome, descricao, totaulas from cursos where ano
 </code>
 </pre>
 
-<p>PS: Podemos usar várias combinações, baseadas no select que você deseja consultas, da forma que achar necessário.</p>
+<p>PS: Podemos usar várias combinações, baseadas no select que você deseja consultar, da forma que achar necessário.</p>
 
 <p>E para visualizar a view, fazemos assim:</p>
 

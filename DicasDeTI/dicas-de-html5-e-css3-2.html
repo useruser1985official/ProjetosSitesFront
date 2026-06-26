@@ -97,10 +97,15 @@ img.pequena {
     display: block;
     margin: auto;
 }
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
 </code>
 </pre>
 
-<p>PS: O ideal é usar a tag picture para carregar fotos menores. E basicamente usamos o max e o min no width ou no height para tornar ele adaptável aos dispositivos. Alguns elementos se adaptam automaticamente ao colocar o width como 100%.</p> 
+<p>PS: O ideal é usar a tag picture para carregar fotos menores. E basicamente usamos o max e o min no width ou no height para tornar o layout do site adaptável aos dispositivos. Alguns elementos se adaptam automaticamente ao colocar o width como 100%. O CSS da tag pre faz com que palavras longas quebrem a linha em telas menores, sem <q>vazar</q> o layout.</p> 
 
 <p>Podemos usar o figure e o figcaption para colocar legendas em fotos, assim:</p>
 
@@ -137,10 +142,12 @@ figure.foto-leg {
     max-width: 400px; /* Esse define o tamanho da borda. */
     max-height: 250px; /* Esse define o tamanho da borda. */
 }
+
 figure.foto-leg img {
     width: 100%; /* Esse define o tamanho da imagem. */
     height: 100%; /* Esse define o tamanho da imagem. */
 }
+
 figure.foto-leg figcaption {
     opacity: 0;
     position: absolute;
@@ -153,6 +160,7 @@ figure.foto-leg figcaption {
     box-sizing: border-box;
     transition: opacity 1s;
 }
+
 figure.foto-leg:hover figcaption {
     opacity: 1;
 }

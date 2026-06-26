@@ -17,7 +17,7 @@
 
 <h3>Distros Baseadas em Red Hat</h3>
 
-<p>As dicas dessa página foram em sua maioria, usadas em distros baseadas em Debian (como Ubuntu, Mint, Kali, Parrot), mas a maioria consegue também ser aplicada em distros baseadas em Red Hat (como Fedora, CentOS, OpenSUSE, Oracle Linux), no entanto, essas últimas não utilizam o apt-get e nem o dpkg, e sim o yum e o rpm.</p>
+<p>As dicas daqui foram em sua maioria, usadas em distros baseadas em Debian (como Ubuntu, Mint, Kali, Parrot), mas a maioria consegue também ser aplicada em distros baseadas em Red Hat (como Fedora, CentOS, OpenSUSE, Oracle Linux), no entanto, essas últimas não utilizam o apt-get e nem o dpkg, e sim o yum e o rpm.</p>
 
 <p>Para atualizar distros baseadas em Red Hat, digite esses comandos:</p>
 
@@ -32,13 +32,13 @@ yum autoremove # Remove pacotes não usados
 </code>
 </pre>
 
-<p>Para instalar um pacote específico digite <code>yum install nomedopacote</code>, para remover digite <code>yum remove nomedopacote</code>, e para procurar um pacote, <code>yum search nomedopacote</code>. Para listar os pacotes, digite <code>yum list</code> e se for listar um determinado pacote, use o comando <code>yum list nomedopacote</code>. Para listar pacotes a atualizar use <code>yum list --updates</code> e para listar os pacotes já instalados, digite <code>yum list --installed</code>.</p>
+<p>Para instalar um pacote específico digite <code>yum install nomedopacote</code>, para remover digite <code>yum remove nomedopacote</code>, e para procurar um pacote, <code>yum search nomedopacote</code>. Para listar os pacotes, digite <code>yum list</code> e se for listar um determinado pacote, use o comando <code>yum list nomedopacote</code>, e pra mais informações do mesmo, use <code>yum info nomedopacote</code>. Para listar pacotes a atualizar use <code>yum list --updates</code> e para listar os pacotes já instalados, digite <code>yum list --installed</code>.</p>
 
-<p>Para instalar um pacote rpm baixado, use o comando <code>rpm -i nomedopacote.rpm</code> (pode ser necessário instalar dependências antes), para atualizar um pacote use o comando <code>rpm -U nomedopacote.rpm</code> e para remover um pacote digite <code>rpm -e nomedopacote</code> (sem a extensão mesmo).</p>
+<p>Para instalar um pacote RPM baixado, use o comando <code>rpm -i nomedopacote.rpm</code> (pode ser necessário instalar dependências antes), para atualizar um pacote use o comando <code>rpm -U nomedopacote.rpm</code> e para remover um pacote digite <code>rpm -e nomedopacote</code> (sem a extensão mesmo).</p>
 
 <p>Para listar os pacotes já instalados, use o comando <code>rpm -qa</code>.</p>
 
-<p>Em distros baseadas em Red Hat, também podemos usar o programa Alien para converter deb para rpm, digitando o comando <code>alien --to-rpm nomedopacote.deb</code> como root, e depois pra instalar use normalmente <code>rpm -i nomedopacote.rpm</code>.</p>
+<p>Em distros baseadas em Red Hat, também podemos usar o programa Alien para converter DEB para RPM, digitando o comando <code>alien --to-rpm nomedopacote.deb</code> como root, e depois pra instalar use normalmente <code>rpm -i nomedopacote.rpm</code>.</p>
 
 <p>Hoje temos como opção também o gerenciador de pacotes dnf, cujos comandos básicos são esses:</p>
 
@@ -54,7 +54,7 @@ dnf autoremove # Remove pacotes não usados
 dnf install nomedopacote # Instala um pacote
 dnf remove nomedopacote # Remove um pacote
 dnf search nomedopacote # Procura um pacote
-dnf list # Lista os pacotes disponíveis
+dnf list # Lista os pacotes disponíveis, pode passar um pacote específico também.
 dnf info nomedopacote # Mostra informações sobre um pacote
 dnf check-update # Também lista os pacotes a atualizar
 dnf list installed # Lista os pacotes instalados

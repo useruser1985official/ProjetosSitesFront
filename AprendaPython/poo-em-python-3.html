@@ -111,8 +111,8 @@ class Avaliacao:
     def getNota(self): # Método público getter, pega a nota
         return self._nota
     
-    def setNota(self, nota): # Método público setter, muda a nota
-        self._nota = nota
+    def setNota(self, valor): # Método público setter, muda a nota
+        self._nota = valor
 </code>
 </pre>
 
@@ -134,9 +134,9 @@ inspect(av1, private = True)
 
 <pre>
 <code>
-def setNota(self, nota): # Método público setter, muda a nota
-    if nota >= 0 and nota <= 10:
-        self._nota = nota
+def setNota(self, valor): # Método público setter, muda a nota
+    if valor >= 0 and valor <= 10:
+        self._nota = valor
     else:
         print("Nota Inválida!")
 </code>
@@ -185,9 +185,9 @@ class Avaliacao:
         return self._nota
 
     @nota.setter # Nome do property, mesmo nome do atributo sem underline
-    def nota(self, no): # Esse método funcionará como um atributo que muda o valor
-        if no >= 0 and no <= 10:
-            self._nota = no
+    def nota(self, valor): # Esse método funcionará como um atributo que muda o valor
+        if valor >= 0 and valor <= 10:
+            self._nota = valor
         else:
             print("Nota Inválida!")
 </code>

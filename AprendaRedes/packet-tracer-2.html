@@ -220,7 +220,7 @@ copy running-config startup-config
 </code>
 </pre>
 
-<p>Dessa forma ele ligará as duas redes distintas. Para isso ele terá dois ou mais IPs diferentes em classes diferentes.</p>
+<p>Dessa forma ele ligará as duas redes distintas. Para isso ele terá dois ou mais IPs diferentes, e no caso, em classes diferentes.</p>
 
 <p>Abra o console do PC 0 e tente pingar o PC 2 da rede 10. Ele não responderá.</p>
 
@@ -409,7 +409,7 @@ show ip route
 
 <p>Da mesma forma, podemos ir ao prompt do segundo PC e pingar a porta da rede 1 do roteador e do primeiro PC (<code>192.168.1.1</code> e <code>192.168.1.10</code>).</p>
 
-<p>Agora todo mundo tá vendo todo mundo. Volte ao prompt do primeiro PC e use o comando <code>tracert 192.168.3.10</code> para vermos a rota dele. Faça o mesmo no segundo PC com <code>tracert 192.168.1.10</code>. Dessa forma entendemos como funciona o traceroute, onde cada IP é um roteador onde passa para chegar ao endereço final.</p>
+<p>Agora todo mundo tá vendo todo mundo. Volte ao prompt do primeiro PC e use o comando <code>tracert 192.168.3.10</code> para vermos a rota dele. Faça o mesmo no segundo PC com <code>tracert 192.168.1.10</code>. Dessa forma entendemos como funciona o traceroute, onde cada IP é um roteador onde o datagrama passa para chegar ao endereço final.</p>
 
 <p>PS: Caso precise excluir uma rota estática num roteador, digite algo como <code>no ip route 192.168.3.0 255.255.255.0 192.168.2.2</code>.</p>
 
@@ -417,7 +417,7 @@ show ip route
 
 <p>Coloque um PC com o IP <code>192.168.1.2</code> com o gateway <code>192.168.1.1</code>, e um roteador 2621XM ligado a ele com o IP <code>192.168.1.1</code> e máscara padrão C, mas do outro lado do roteador terá o IP <code>192.168.2.1</code> e a máscara <code>255.255.255.252</code> (outra rede). Coloque ao lado um firewall 5506 e no final, um servidor. No firewall, que será configurado por último, a porta ligada ao roteador terá a mesma máscara e o IP <code>192.168.2.2</code>. Do outro lado, será outra rede, com o IP do firewall sendo <code>192.168.3.1</code> e o servidor com o IP <code>192.168.3.2</code> com o gateway <code>192.168.3.1</code>, ambos com a máscara <code>255.255.255.252</code>.</p>
 
-<p>PS: Lembre-se que computadores e roteadores devem ser ligados com o cabo Cross.</p>
+<p>PS: Lembre-se que computadores e roteadores devem ser ligados com o cabo Cross. Roteador é como se fosse um computador também.</p>
 
 <p>No roteador, vamos em CLI, digite <q>n</q> na configuração do dialog e depois digite esses comandos para o configurar:</p>
 
