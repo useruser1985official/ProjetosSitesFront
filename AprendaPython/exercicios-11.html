@@ -88,7 +88,38 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from rich import print, inspect
 
+class Diario:
+    def __init__(self, senhaMestra = "CeV!@"):
+        self.__segredos = list()
+        self.__senha = senhaMestra.strip()
+
+    def escrever(self, msg):
+        if isinstance(msg, str) and len(msg) > 0:
+            self.__segredos.append(msg.strip())
+
+    def ler(self, senha = None):
+        if senha != self.__senha:
+            raise PermissionError(f"Senha inválida! Você não pode ler o diário!")
+        else:
+            print(f"[green]Diário Liberado![/]")
+
+            for s in self.__segredos:
+                print(f"- [blue]{s}[/]")
+
+    @property
+    def senha(self):
+        raise PermissionError(f"Ninguém tem permissão de ver a senha!")
+    
+    @senha.setter
+    def senha(self, novaSenha):
+        if novaSenha.strip() != self.__senha and novaSenha.strip() != "":
+            self.__senha = novaSenha.strip()
+            
+            print("[green]Senha alterada com sucesso![/]")
+        else:
+            print("[yellow]AVISO: Senha não alterada![/]")
 </code>
 </pre>
 
@@ -96,7 +127,23 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    meuDiario = Diario()
 
+    meuDiario.escrever("Essa é a primeira mensagem!")
+    meuDiario.escrever("Estou aprendendo Python!")
+    
+    meuDiario.senha = "123"
+
+    try:
+        meuDiario.ler("123")
+    except Exception as ex:
+        print(f"[red]ERRO: {ex}[/]")
+
+    # inspect(meuDiario, private = True)
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 

@@ -223,7 +223,7 @@ System.out.println("Velocidade atual: " + cr3.getVelocidade());
 
 <p>PS: Isso acima é basicamente para o C++. Linguagens como PHP e Python têm métodos especiais para usarmos como destrutores (no caso, <code>__destruct()</code> e <code>__del__()</code>, respectivamente).</p>
 
-<p>Em linguagens como o Java, não existe destrutor porque essa linguagem usa um coletor de lixo (garbage collector), que faz a limpeza da memória automaticamente. Linguagens como PHP e Python até possuem destrutores, mas também fazem coleta automática, como a maioria das linguagens modernas. O destrutor é mais necessário em linguagens como C++, onde o programador precisa liberar recursos manualmente.</p>
+<p>Em linguagens como o Java, não temos destrutores, já que essa linguagem usa um coletor de lixo (garbage collector), que faz a limpeza da memória automaticamente ao final da execução. Linguagens como PHP e Python até possuem destrutores, mas também fazem coleta automática, como a maioria das linguagens modernas. O destrutor é mais necessário em linguagens como C++, onde o programador precisa liberar recursos manualmente.</p>
 
 <p>Veja um exemplo de destrutor em C++, numa classe baseada no mesmo Carro acima:</p>
 
@@ -420,7 +420,7 @@ p3.recarregar();
 
 <p>Ao usar uma interface, só poderemos usar os métodos descritos nela, mesmo se a classe implementadora tiver outros métodos, eles não estarão acessíveis por não estarem na interface, o que garante também o encapsulamento.</p>
 
-<p>PS: Uma classe pode implementar mais de uma interface, nesse caso, separe elas por vírgulas, com algo como <code>public class NomeClasse implements NomeInterface1, NomeInterface2</code>, mas nesse caso deveremos iniciar o objeto com o nome da classe implementadora ao invés de uma das interfaces.</p>
+<p>PS: Uma classe pode implementar mais de uma interface, nesse caso, separe elas por vírgulas, com algo como <code>public class NomeClasse implements NomeInterface1, NomeInterface2</code>, mas nesse caso deveremos iniciar o objeto com o nome da classe implementadora ao invés de uma das interfaces, pelo motivo citado acima.</p>
 
 <ul>
     <li><a href="poo-algoritmos-1.html">Parte Anterior da Matéria!</a></li>

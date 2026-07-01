@@ -74,7 +74,7 @@ programa {
 <code>
 programa {
     funcao inicio() {
-        saudacao("Fulano") // Mostra Bom dia pra Fulano
+        saudacao("Fulano") // Mostra bom dia pra Fulano
         saudacao("Beltrano") // Faz o mesmo com Beltrano
         saudacao("Sicrano") // E com Sicrano
     }
@@ -86,9 +86,35 @@ programa {
 </code>
 </pre>
 
-<p>PS: Algumas linguagens orientadas a objetos, como o C++, C# e Java, permitem termos duas ou mais funções ou procedimentos com mesmo nome, mas com tipos de parâmetros diferentes, por exemplo, no código acima, poderia ter uma função saudacao sem parâmetros também, se fosse numa dessas linguagens. Linguagens estruturadas como no C e o próprio Portugol não permitem isso, e nem linguagens de tipagem dinâmica como Python, PHP e Javascript.</p>
+<p>PS: Algumas linguagens orientadas a objetos, como o C++, C# e Java, permitem termos duas ou mais funções ou procedimentos com mesmo nome, mas com tipos de parâmetros diferentes, por exemplo, no código acima, poderia ter uma função saudacao sem parâmetros também, se fosse numa dessas linguagens, isso se chama sobrecarga de métodos. Linguagens estruturadas como no C e o próprio Portugol não permitem isso, e nem linguagens de tipagem dinâmica como Python, PHP e Javascript. Veja um exemplo de sobrecarga em C++:</p>
 
-<p>Exemplo com números:</p>
+<pre>
+<code>
+// Chamada dos métodos:
+void saudacao(string nome);
+void saudacao();
+
+int main() {
+    saudacao("Fulano"); // Mostra bom dia pra Fulano
+    saudacao(); // Mostra bom dia padrão
+
+    return 0;
+}
+
+// São métodos diferentes:
+void saudacao(string nome) {
+    cout << "Bom dia, " << nome << "!" << endl;
+}
+
+void saudacao() {
+    // Chamando o outro método de mesmo nome,
+    // um método não precisa obrigatoriamente chamar outro:
+    saudacao("visitante");
+}
+</code>
+</pre>
+
+<p>Exemplo de uso de procedimentos em Portugol com números:</p>
 
 <pre>
 <code>
@@ -149,7 +175,7 @@ programa {
 </code>
 </pre>
 
-<p>Como visto acima, a função só termina (e devolve um valor) quando encontra o comando <code>retorne</code>. O valor retornado deve ser do mesmo tipo declarado na função. Veja um exemplo com cadeia:</p>
+<p>Como visto acima, a função só termina (e devolve um valor) quando encontra o comando <code>retorne</code>. O valor retornado deve ser do mesmo tipo declarado na função. Veja um exemplo com <code>cadeia</code>:</p>
 
 <pre>
 <code>
@@ -273,6 +299,8 @@ programa {
 </code>
 </pre>
 
+<p>PS: Funções com retorno podem também ter sobrecarga, nas linguagens que suportam isso, como o Java, C++ e C#.</p>
+
 <h3>Escopo de Variáveis em Funções e Procedimentos</h3>
 
 <p>O escopo de uma variável determina onde ela pode ser usada dentro do programa. Existem dois tipos principais: Variáveis globais e variáveis locais.</p>
@@ -289,7 +317,7 @@ programa {
     funcao inicio() {
         contGlobal += 1 // Variável global sendo incrementada
         
-        escreva("Contador no inicio: ", contGlobal, "\n") // Mostra 1
+        escreva("Contador no inicio: ", contGlobal, ".\n") // Mostra 1
         
         mostrarContador() // Ao ser invocada, incrementa a variável global e mostra 2
     }
@@ -297,7 +325,7 @@ programa {
     funcao mostrarContador() {
         contGlobal += 1 // Variável global sendo incrementada
         
-        escreva("Contador no procedimento: ", contGlobal, "\n")
+        escreva("Contador no procedimento: ", contGlobal, ".\n")
     }
 }
 </code>
@@ -315,7 +343,7 @@ programa {
     funcao inicio() {
         inteiro numero = 10   // Variável local de inicio
         
-        escreva("Número dentro do inicio: ", numero, "\n") // Exibe a variável local com 10
+        escreva("Número dentro do inicio: ", numero, ".\n") // Exibe a variável local com 10
         
         mostrarNumero() // Invocando a função exemplo, que tem outra variável de mesmo nome e mostra o 50 que está nela
     }
@@ -323,13 +351,13 @@ programa {
     funcao mostrarNumero() {
         inteiro numero = 50   // Variável local de mostrarNumero, não é a mesma de inicio
         
-        escreva("Número dentro de mostrarNumero: ", numero, "\n")
+        escreva("Número dentro de mostrarNumero: ", numero, ".\n")
     }
 }
 </code>
 </pre>
 
-<p>A variável <code>numero</code> criada dentro de <code>inicio</code> só existe ali. O <code>numero</code> dentro de <code>exemplo</code> é uma variável diferente, mesmo tendo o mesmo nome. Uma rotina não consegue acessar a variável local da outra.</p>
+<p>A variável <code>numero</code> criada dentro de <code>inicio</code> só existe ali. O <code>numero</code> dentro de <code>mostrarNumero</code> é uma variável diferente, mesmo tendo o mesmo nome. Uma rotina não consegue acessar a variável local da outra.</p>
 
 <h3>Funções Recursivas</h3>
 
@@ -353,28 +381,26 @@ programa {
         escreva("Digite um número maior que 1 para ver seu fatorial: ")
         leia(num)
         
-        fat = fatorial(num) // Invocando a função
+        fat = fatorial(num) // Invocando a função pela primeira vez
         
         escreva("Fatorial de ", num, " é: ", fat, ".\n")
     }
     
     funcao inteiro fatorial(inteiro n) {
-        se(n <= 1) { // Quando n for 1 ou menor, ele apenas retorna 1 e para de executar o código
+        se(n <= 1) { // Quando n for 1 ou menor, ele apenas retorna 1 e para de executar a função
             retorne 1
         }
         
-        // Chamado recursivo: A função chama ela mesma
+        // Chamado recursivo: A função chama ela mesma:
         retorne n * fatorial(n - 1)
     }
 }
 </code>
 </pre>
 
-<p>PS: O fatorial de um número é o resultado da multiplicação dele pelos números menores que ele, descendo até o 1, (como <q>5 &times; 4 &times; 3 &times; 2 &times; 1 = 120</q>).</p>
+<p>PS: O fatorial de um número é o resultado da multiplicação dele pelos números menores que ele, descendo até o 1 (como <q>5 &times; 4 &times; 3 &times; 2 &times; 1 = 120</q>).</p>
 
 <p>No caso acima, ao invés de usarmos laços de repetição, usamos a função recursiva para calcular o fatorial. No entanto, isso não significa que um substitui o outro.</p>
-
-
 
 <ul>
     <li><a href="tudo-sobre-algoritmos-4.html">Parte Anterior da Matéria!</a></li>
