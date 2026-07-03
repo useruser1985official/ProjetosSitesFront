@@ -180,7 +180,7 @@ clock set 22:30:05 2 FEB 2014
 
 <p>Faça isso até alterar a data toda, que aparecerá <code>&lt;cr&gt;</code> ao terminar. Para ver se alterou mesmo, digite <code>show clock</code> novamente. Lembrando que os meses devem ser apenas as três primeiras letras do nome do mês em inglês (JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC).</p>
 
-<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> e clique enter sem digitar nada. Ele salvará com o nome startup-config.</p>
+<p>Para salvar a configuração, digite <code>copy running-config startup-config</code> (pode ser <code>copy run start</code> também) e clique enter sem digitar nada. Ele salvará com o nome startup-config.</p>
 
 <p>Para configurar a senha, digite isso:</p>
 
@@ -195,6 +195,8 @@ exit
 show running-config
 </code>
 </pre>
+
+<p>PS: O configure terminal pode ser abreviado para <code>conf t</code>.</p>
 
 <p>O problema é que o running-config mostra a senha literal, para criptografar a senha, faça assim:</p>
 

@@ -344,6 +344,8 @@
 
 <p>Cada salto é um roteador (que pode não responder e aparecer tempo esgotado por estar com o firewall ou ICMP bloqueado, e aparecer apenas asteriscos, mas isso não indica problemas, geralmente).</p>
 
+<p>Um roteador possui várias interfaces (e múltiplos IPs), mas no traceroute ele quase sempre responde com o IP da interface de saída ou da interface mais próxima do seu equipamento, devido a regras de encaminhamento e roteamento reverso (ou seja, mostra só um IP de cada roteador).</p>
+
 <p>No Linux, o comando equivalente se chama <code>traceroute</code> e tem outros parâmetros. Para escolher a quantidade de máxima de saltos (como 15) use <code>-m 15</code>, pra forçar IPV4 use <code>-4</code> e IPV6 <code>-6</code>. Para ajuda use <code>--help</code>.</p>
 
 <h3>Como Funciona o Utilitário Ping</h3>
