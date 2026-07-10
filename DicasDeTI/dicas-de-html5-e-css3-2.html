@@ -139,8 +139,8 @@ figure.foto-leg {
     position: relative;
     border: 8px solid white;
     box-shadow: 1px 1px 4px black;
-    max-width: 400px; /* Esse define o tamanho da borda. */
-    max-height: 250px; /* Esse define o tamanho da borda. */
+    max-width: 400px; /* Esse define o tamanho da borda, ajuste se necessário. */
+    max-height: 250px; /* Esse define o tamanho da borda, ajuste se necessário. */
 }
 
 figure.foto-leg img {
@@ -169,31 +169,23 @@ figure.foto-leg:hover figcaption {
 
 <p>O parâmetro <code>relative</code> é importante pra definir o espaço que a legenda ficará (pois ele ficará dentro de um container), senão caso você use <code>absolute</code> no figcaption, ele pode sair do espaço pré-definido (absolute deixa ele livre pelo site). Isso vale para tudo, num site em HTML5.</p>
 
-<p>PS: Podemos usar outras bordas além do solid, como por exemplo:</p>
-
-<form id="selBorda" oninput="mudaBorda()">
-    Selecione a borda:
-    <select id="borda">
-        <option selected>solid</option>
-        <option>dotted</option>
-        <option>dashed</option>
-        <option>double</option>
-        <option>groove</option>
-        <option>ridge</option>
-        <option>inset</option>
-        <option>outset</option>
-    </select>
-</form>
-
-<br/>
-
-<div id="margem">
-    
-</div>
-
-<p>As formatações com o figcaption é pra formatar a legenda da foto e a transição da mesma.</p>
+<p>As formatações com o figcaption são pra formatar a legenda da foto e a transição da mesma.</p>
 
 <p>Veja a diferença entre position relative e absolute com esse exemplo:</p>
+
+<pre>
+<code>
+&lt;section id="container"&gt;
+
+&lt;/section&gt;
+
+&lt;article id="conteudo"&gt;
+ 
+&lt;/article&gt;
+</code>
+</pre>
+
+<p>CSS do HTML acima:</p>
 
 <pre>
 <code>
@@ -216,19 +208,53 @@ article#conteudo {
 </code>
 </pre>
 
+<p>Podemos usar outras bordas além do solid, como por exemplo:</p>
+
+<form id="selBorda" oninput="mudaBorda()">
+    <p>
+        Selecione a borda:
+        <select id="borda">
+            <option selected>solid</option>
+            <option>dotted</option>
+            <option>dashed</option>
+            <option>double</option>
+            <option>groove</option>
+            <option>ridge</option>
+            <option>inset</option>
+            <option>outset</option>
+        </select>
+    </p>
+</form>
+
+<br/>
+
+<div id="margem">
+    
+</div>
+
 <p>As listas ordenadas podem ser definidas por tipos de ordenação, com parâmetro <code>type</code>, 1 para números, a para letras minúsculas, A para letras maiúsculas e I para números romanos. O parâmetro <code>start</code> é para definir o início do primeiro item e se define por números (independente do tipo, se for letra ou número romano também se define com 1, 2, 3, etc.), veja um exemplo:</p>
 
 <pre>
 <code>
 &lt;ol type="I" start="10"&gt;
-    &lt;li&gt;Item 10.&lt;/li&gt;
-    &lt;li&gt;Item 11.&lt;/li&gt;
-    &lt;li&gt;Item 12.&lt;/li&gt;
+    &lt;li&gt;Item.&lt;/li&gt;
+    &lt;li&gt;Item.&lt;/li&gt;
+    &lt;li&gt;Item.&lt;/li&gt;
 &lt;/ol&gt;
 </code>
 </pre>
 
-<p>O parâmetro <code>type</code> pode ser usado nas listas não-ordenadas, mas para definir se do lado terá bolinhas, quadrados, nada, etc. (com os parâmetros <code>disc</code>, <code>circle</code>, <code>square</code> e <code>none</code>).</p>
+<p>O parâmetro <code>type</code> pode ser usado nas listas não-ordenadas, mas para definir se do lado terá bolinhas, quadrados, nada, etc. (com os parâmetros <code>disc</code>, <code>circle</code>, <code>square</code> e <code>none</code>). Veja um exemplo com listas não ordenadas:</p>
+
+<pre>
+<code>
+&lt;ul type="square"&gt;
+    &lt;li&gt;Item 1.&lt;/li&gt;
+    &lt;li&gt;Item 2.&lt;/li&gt;
+    &lt;li&gt;Item 3.&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
     
 <p>Em ambos os casos, o type pode ser definido em CSS também, com o parâmetro <code>list-style-type</code>.</p>
 
@@ -239,9 +265,9 @@ article#conteudo {
 &lt;ul&gt;
     &lt;li&gt;Lista de Items:&lt;/li&gt;
     &lt;ol&gt;
-        &lt;li&gt;Item 1&lt;/li&gt;
-        &lt;li&gt;Item 2&lt;/li&gt;
-        &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;li&gt;Item.&lt;/li&gt;
+        &lt;li&gt;Item.&lt;/li&gt;
+        &lt;li&gt;Item.&lt;/li&gt;
     &lt;/ol&gt;
 &lt;/ul&gt;
 </code>
@@ -276,6 +302,7 @@ nav#menu ul {
     top: -20px;
     left: 300px;
 }
+
 nav#menu li {
     display: inline-block;
     background-color: #dddddd;
@@ -283,16 +310,20 @@ nav#menu li {
     margin: 2px;
     transition: background-color 1s;
 }
+
 nav#menu li:hover {
     background-color: #606060;
 }
+
 nav#menu h1 {
     display: none;
 }
+
 nav#menu a {
     color: black;
     text-decoration: none;
 }
+
 nav#menu a:hover {
     color: white;
     text-decoration: underline;
@@ -530,11 +561,13 @@ section#conteudo {
     width: 1000px;
     margin: auto;
 }
+
 iframe#frame-spec {
     width: 430px;
     height: 280px;
     border: none;
 }
+
 iframe#frame-spec::-webkit-scrollbar {
     display: none;
 }

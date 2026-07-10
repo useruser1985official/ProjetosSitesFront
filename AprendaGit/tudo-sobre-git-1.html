@@ -219,7 +219,7 @@ dist
 
 <p>Ao digitar <code>git checkout master</code> pra voltar pra branch principal, veremos que nada foi alterado (no caso, não terá arquivos Javascript). Ao dar <code>git log --oneline</code> de novo ele não terá o commit do Javascript.</p>
 
-<p>Para deletar uma branch, digite <code>git branch -d teste</code>, mas caso ela não seja fundida à branch master, ele não deixará excluir. Para forçar exclusão coloque o <q>D</q> maiúsculo, como <code>git branch -D teste</code>. Para recuperar uma branch excluída, use o comando <code>git reflog</code>.</p>
+<p>Para deletar uma branch, digite <code>git branch -d teste</code>, mas caso ela não seja fundida à branch master, ele não deixará excluir. Para forçar exclusão coloque o <q>D</q> maiúsculo, como <code>git branch -D teste</code>. Para recuperar uma branch excluída, use o comando <code>git reflog</code> e depois <code>git reset hard HEAD@{1}</code> (onde 1 é o número da branch ou commit).</p>
 
 <p>Crie uma nova branch, por exemplo, <code>git branch mercado-pago</code>, e mais uma com <code>git branch whatsapp</code>, simulando dois funcionários trabalhando em diferentes coisas no mesmo programa. Para trabalharmos com a branch do Mercado Pago digitamos <code>git checkout mercado-pago</code>, e podemos, por exemplo, colocar um Javascript simulando o uso do mesmo, fazendo a adição e o commit. Mude para a branch do Whatsapp com <code>git checkout whatsapp</code> e veremos que nada colocado do Mercado Pago estará ali, crie também um Javascript, adicione e commite também. Volte depois pro Mercado Pago com <code>git checkout mercado-pago</code>, e pra master com <code>git checkout master</code>.</p>
 
@@ -247,7 +247,7 @@ dist
 
 <p>Vamos pra branch do Mercado Pago digitando <code>git checkout mercado-pago</code> e vamos editar o Javascript dele, adicione e commite ele, volte pro master com <code>git checkout master</code>, edite o mesmo Javascript do Mercado Pago, adicione e commite também. Vamos fundir novamente o branch do Mercado Pago com o master, digitando <code>git merge mercado-pago</code> e ele mostrará o conflito novamente. Resolva da mesma forma anterior.</p>
 
-<p>PS: Várias IDEs podem oferecer comparações sobre os conflitos dos códigos dos branches para serem corrigidos manualmente.</p>
+<p>PS: Várias IDEs podem oferecer comparações sobre os conflitos dos códigos das branches para serem corrigidos manualmente.</p>
 
 <ul>
     <li><a href="tudo-sobre-git-2.html">Continuação da Matéria!</a></li>

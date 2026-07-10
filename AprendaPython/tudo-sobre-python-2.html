@@ -197,7 +197,7 @@ from hashlib import md5, sha1, sha256
 
 texto = str(input("Insira o texto do qual deseja verificar o hash: "))
 
-cod = texto.encode("utf-8")
+cod = texto.encode("utf-8")  # Codificando caracteres em binário pra não dar erro com acentuações
 
 hashMD5 = md5(cod).hexdigest()
 hashSHA1 = sha1(cod).hexdigest()
@@ -208,6 +208,20 @@ print("")
 print("Hash MD5 de \"{}\": {}".format(texto, hashMD5))
 print("Hash SHA1 de \"{}\": {}".format(texto, hashSHA1))
 print("Hash SHA256 de \"{}\": {}".format(texto, hashSHA256))
+</code>
+</pre>
+
+<p>Outro exemplo simples:</p>
+
+<pre>
+<code>
+from hashlib import sha256
+
+texto = "Gafanhoto"
+cod = texto.encode("utf-8")
+hash = sha256(cod).hexdigest()
+
+print(hash)
 </code>
 </pre>
 

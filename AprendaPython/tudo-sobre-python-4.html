@@ -167,6 +167,21 @@ print(f"O {nome} tem {idade} anos e ganha R$ {salario:.2f}.")
 
 <p>As formatações também funcionam normalmente, como visto acima.</p>
 
+<p>Podemos ver também as b strings, que mostram o conteúdo binário das mesmas, codificando caracteres acentuados, por exemplo:</p>
+
+<pre>
+<code>
+texto = "Curso em Vídeo"
+cod = texto.encode("utf-8") # Decodificando em binário
+
+print(cod)
+
+decod = cod.decode("utf-8")
+
+print(decod)
+</code>
+</pre>
+
 <h3>Tuplas</h3>
 
 <p>Em Python, assim como em qualquer linguagem, a variável é um espaço na memória, por exemplo:</p>

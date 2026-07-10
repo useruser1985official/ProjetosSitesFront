@@ -84,6 +84,8 @@
 
 <p>O MD5 tem 128 bits e 32 caracteres hexadecimais. O SHA-1 é bastante parecido, mas tem 160 bits e 40 caracteres, o que torna mais difícil a quebra. O hash SHA-256 tem 256 bits e 64 caracteres hexadecimais, e é mais difícil ainda a quebra.</p>
 
+<p>Como visto, o MD5 significa "Message Digest", já os algoritmos SHA-1 e SHA-256 significam "Segure Hash Algorithm".</p>
+
 <p>Veja os hashs da palavra "Teste" em cada um deles:</p>
 
 <table>
@@ -93,15 +95,15 @@
     </tr>
     <tr>
         <td>MD5</td>
-        <td>8e6f6f815b50f474cf0dc22d4f400725</td>
+        <td><code>8e6f6f815b50f474cf0dc22d4f400725</code></td>
     </tr>
     <tr>
         <td>SHA-1</td>
-        <td>6d7082969a0681db6fe658a26ff16198600f0923</td>
+        <td><code>6d7082969a0681db6fe658a26ff16198600f0923</code></td>
     </tr>
     <tr>
         <td>SHA-256</td>
-        <td>89f308210c7c7820bad0974f31e751bfa433d2066a93e808947c3188dedba6e3</td>
+        <td><code>89f308210c7c7820bad0974f31e751bfa433d2066a93e808947c3188dedba6e3</code></td>
     </tr>
 </table>
 
@@ -119,7 +121,7 @@
     <li>Verificação de Senhas.</li>
 </ul>
 
-<p>PS: MAC (Message Autenticator Code) é um tipo de código de autenticação de mensagem, geralmente adicionada ao final dela. O HMAC utiliza um hash para isso.</p>
+<p>PS: MAC (Message Authenticator Code) é um tipo de código de autenticação de mensagem, geralmente adicionada ao final dela. O HMAC utiliza um hash para isso.</p>
 
 <p>Há outros usos, fora da criptografia, como detecção de dados duplicados e verificação de corrupção de arquivos.</p>
 
@@ -141,17 +143,17 @@
 
 <p>O processo de autenticação fornece garantia sobre a identidade de um usuário, verificando se você é quem diz ser.</p>
 
-<p>Podemos chamar de Reclamante a pessoa (ou sistema) cuja identidade será verificada.</p>
+<p>Podemos chamar de reclamante a pessoa (ou sistema) cuja identidade será verificada.</p>
 
-<p>Credenciais são a evidência que um reclamante apresenta para estabelecer sua identidade.</p>
+<p>Credenciais são as evidências que um reclamante apresenta para estabelecer sua identidade.</p>
 
-<p>Assim o sistema de autenticação nos fornece proteção contra ataques como man-in-the-middle, mascaramento e spoofing, por exemplo.</p>
+<p>Assim, o sistema de autenticação nos fornece proteção contra ataques como man-in-the-middle, mascaramento e spoofing, por exemplo.</p>
 
 <p>Esses são alguns tipos de autenticação:</p>
 
 <ul>
     <li><b>Autenticação de Entidade: </b>Um usuário afirma ter uma identidade legítima em um sistema.</li>
-    <li><b>Autenticação de Origem de Dados: </b>Fornece evidência de que dados (como um mensagem de e-mail), foram originados de um usuário legítimo.</li>
+    <li><b>Autenticação de Origem de Dados: </b>Fornece evidência de que dados (como uma mensagem de e-mail) foram originados de um usuário legítimo.</li>
 </ul>
 
 <p>A autenticação de entidade pode ainda se subdividir em:</p>
@@ -164,9 +166,9 @@
 <p>Esses são alguns dos paradigmas de autenticação:</p>
 
 <ul>
-    <li><b>Algo que você sabe: </b>O reclamante possui uma informação, como uma senha ou um PIN.</li>
-    <li><b>Algo que você possui: </b>O reclamante demonstra a posse de algo, como uma chave física, um crachá, um cartão ou uma chave privada em um smart card.</li>
-    <li><b>Algo que você é: </b>Baseado em alguma característica imutável do reclamante, como impressão digital, voz, padrão de retina ou geometria das mãos.</li>
+    <li><b>Algo que Você Sabe: </b>O reclamante possui uma informação, como uma senha ou um PIN.</li>
+    <li><b>Algo que Você Possui: </b>O reclamante demonstra a posse de algo, como uma chave física, um crachá, um cartão ou uma chave privada em um smart card.</li>
+    <li><b>Algo que Você É: </b>Baseado em alguma característica imutável do reclamante, como impressão digital, voz, padrão de retina ou geometria das mãos.</li>
 </ul>
 
 <h4>Senhas</h4>
@@ -176,8 +178,6 @@
 <p>Muitas senhas são muito comuns, fáceis de serem quebradas por invasores, como podem ver nesse link: <a href="https://tecnoblog.net/noticias/2019/12/19/25-piores-senhas-2019-lista-inclui-123456-qwerty-password/" target="_blank">https://tecnoblog.net/noticias/2019/12/19/25-piores-senhas-2019-lista-inclui-123456-qwerty-password/</a></p>
 
 <p>Se quiser testar a força de uma senha, temos esse site pra isso: <a href="https://www.security.org/how-secure-is-my-password/" target="_blank">https://www.security.org/how-secure-is-my-password/</a></p>
-
-
 
 <p>Esses são alguns dos tipos de ataques a senhas:</p>
 
@@ -193,15 +193,15 @@
 
 <p>Um reclamante pode fornecer evidência de sua identidade ao demonstrar a posse de um token.</p>
 
-<p>Um token é um objeto físico, como uma chave, um documento de identidadem um dispositivo eletrônico ou um smart card, por exemplo.</p>
+<p>Um token é um objeto físico, como uma chave, um documento de identidade, um dispositivo eletrônico ou um smart card, por exemplo.</p>
 
 <p>Geralmente os tokens são usados em conjunto com uma senha para fornecer um grau mais elevado de certeza com relação à identidade de um reclamante.</p>
 
 <p>Geradores de números eletrônicos ou um cartão com chip são exemplos disso.</p>
 
-<p>Um smart card é um token do tamanho de um cartão de crédito que contém um microprocessador, memória para armazenar programas e dados, e contato elétricos usados como interface com um leitor de cartões, o qual também fornece energia elétrica ao  dispositivo.</p>
+<p>Um smart card é um token do tamanho de um cartão de crédito que contém um microprocessador, memória para armazenar programas e dados, e contatos elétricos usados como interface com um leitor de cartões, o qual também fornece energia elétrica ao  dispositivo.</p>
 
-<p>Geralmente o smart card possui um valor secreto armazenado, como uma chave privada de assinatura digital ou um número secreto, usado para realizar autenticação do portador do cartão.</p>
+<p>Geralmente, o smart card possui um valor secreto armazenado, como uma chave privada de assinatura digital ou um número secreto, usado para realizar autenticação do portador do cartão.</p>
 
 <p>Smart cards podem também ser os que se "encostam" num painel, como os cartões de ônibus, e qualquer um que tenha chip, inclusive os chips de celulares são um tipo de smart card.</p>
 
@@ -215,7 +215,7 @@
 
 <p>A biometria fornece garantia da identidade de um reclamante baseado em características humanas físicas, comportamentais e morfológicas mensuráveis.</p>
 
-<p>A biometria é usada geralmente em combinação de outros paradgmas de autenticação para obertmos um nível mais alto de segurança.</p>
+<p>A biometria é usada geralmente em combinação de outros paradigmas de autenticação para obtermos um nível mais alto de segurança.</p>
 
 <p>Esses são uns exemplos de biometria:</p>
 
@@ -240,11 +240,11 @@
     <li>Quem a usa não pode negar que assinou o documento.</li>
 </ul>
 
-<p>Usa-se então uma assinatura digital quando você envia uma mensagem a alguém e, embora possa não ser importante que a mensagem seja mantida em segredo, é muito importante que o destinatário da mensagem tenha certeza de que essa mensagem realmente partiu de você.</p>
+<p>Usa-se então, uma assinatura digital quando você envia uma mensagem a alguém e, embora possa não ser importante que a mensagem seja mantida em segredo, é muito importante que o destinatário da mensagem tenha certeza de que essa mensagem realmente partiu de você.</p>
 
-<p>Nesse caso, você pode criptografar a mensagem com sua chave privada, envá-la, e o destinatário só será capaz de decriptá-la com a sua chave pública (não a dele nem de mais ninguém), provando a autenticidade da mensagem. Sendo assim, uma assinatura digital utiliza alguma forma de criptografia assimétrica para operar.</p>
+<p>Nesse caso, você pode criptografar a mensagem com sua chave privada, enviá-la, e o destinatário só será capaz de decriptá-la com a sua chave pública (não a dele nem de mais ninguém), provando a autenticidade da mensagem. Sendo assim, uma assinatura digital utiliza alguma forma de criptografia assimétrica para operar.</p>
 
-<p>Porém, uma forma mais eficiente de obter esse mesmo resultado é criptografar um pequeno bloco de bits que seja uma função do documento, e não o documento inteiro. Este bloco é chamado de autenticador (autenticator) possui a propriedade de que é impossível alterar um bit que seja no documento sem desfigurar totalmente o autenticados. Criptografamos então o autenticador com a chave privada do remetente , e ele servirá para verificar a autenticidade do documento todo. Podemos usar um hash como o SHA-1 para essa função.</p>
+<p>Porém, uma forma mais eficiente de obter esse mesmo resultado é criptografar um pequeno bloco de bits que seja uma função do documento, e não o documento inteiro. Este bloco é chamado de autenticador (authenticator) e possui a propriedade de que é impossível alterar um bit que seja no documento sem desfigurar totalmente o autenticador. Criptografamos então o autenticador com a chave privada do remetente, e ele servirá para verificar a autenticidade do documento todo. Podemos usar um hash como o SHA-1 para essa função.</p>
 
 <p>Veja o esquema das assinaturas abaixo:</p>
 
@@ -252,7 +252,7 @@
 
 <p>Dessa forma, a assinatura digital é enviada anexada à própria mensagem e o conjunto é enviado ao destinatário. O destinatário então calcula o hash da mensagem, decripta a assinatura digital, e compara os dois valores, se forem idênticos, a mensagem é autêntica.</p>
 
-<p>Mas há um problema com esse esquema de assinatura digitais: Como podemos ter certeza de que um documento assinado foi realmente assinado pelo remetente correto? Em outras palavras, como podemos garantir que um intruso não consiga gerar e assinar um documento em nome de outra pessoa? Para resolver esse problema devemos utilizar um certificado digital, que pode ser usado para atestar e verificar a validade de uma assinatura digital.</p>
+<p>Mas há um problema com esse esquema de assinaturas digitais: Como podemos ter certeza de que um documento assinado foi realmente assinado pelo remetente correto? Em outras palavras, como podemos garantir que um intruso não consiga gerar e assinar um documento em nome de outra pessoa? Para resolver esse problema, devemos utilizar um certificado digital, que pode ser usado para atestar e verificar a validade de uma assinatura digital.</p>
 
 <p>Alguns dos algoritmos mais comuns usados para assinar digitalmente um documento são RSA, DSA, ElGamal e HMAC.</p>
 
@@ -267,7 +267,7 @@
     <li>Armazenar hashes de senhas ("one-way hash").</li>
 </ul>
 
-<p>PS: No mundo real as duas aplicações não são recomendadas com o MD5.</p>
+<p>PS: No mundo real as duas aplicações não são recomendadas com o MD5 e nem com o SHA-1.</p>
 
 <p>Uma minúscula mudança no texto original produz uma mudança brutal no resultado computado pelo hash, por exemplo:</p>
 
@@ -295,11 +295,11 @@
 <p>Existem algumas técnicas de ataques à hashes, sendo as mais comuns as seguintes:</p>
 
 <ul>
-    <li>Força Bruta</li>
-    <li>Dicionário</li>
-    <li>Colisão</li>
-    <li>Aniversário</li>
-    <li>Rainbow Tables</li>
+    <li>Força Bruta.</li>
+    <li>Dicionário.</li>
+    <li>Colisão.</li>
+    <li>Aniversário.</li>
+    <li>Rainbow Tables.</li>
 </ul>
 
 <p>Os dois primeiros métodos não são muito efetivos, devido à imensa quantidade de valores que precisam ser testados, principalmente com senhas longas.</p>
@@ -314,12 +314,7 @@
 
 <p>Uma forma comum de proteger o hash de nossas senhas contra ataques de rainbow tables é o uso de uma técnica conhecida como salt ("salgar a senha"). Um salt é uma informação aleatória adiciona à entrada da função de hash, tornando a saída da função única, e imune às rainbow tables. Seria algo tipo <code>FuncaoHash(TextoPlano + Salt)</code>. O "salt" pode ser o nome de usuário, um PIN, um valor aleatório, etc.</p>
 
-<p>Para vermos na prática um funcionamento de um Rainbow Table, podemos utilizar sites para isso:</p>
-
-<ul>
-    <li>Esse site encripta e tem vários hashs para consultar: <a href="http://hashtoolkit.com/generate-hash/" target="_blank">http://hashtoolkit.com/generate-hash/</a></li>
-    <li>Esse site desencripta vários algoritmos e outros recursos, como identificar o algoritmo de um hash: <a href="https://hashes.com/" target="_blank">https://hashes.com/</a></li>
-</ul>
+<p>Para vermos na prática um funcionamento de um Rainbow Table, podemos utilizar sites para isso, como esse site encripta e decripta vários algoritmos, além de outros recursos, como identificar o algoritmo de um hash: <a href="https://hashes.com/" target="_blank">https://hashes.com/</a></p>
 
 <p>No primeiro site, coloque uma senha simples como "laranja" (cujo hash é <code>cf75ceb29197f57b19dcb8b4757368e8</code>), e pegue o hash dela e jogue no segundo site, pra ver se ele encontra algo. Da mesma forma, teste senhas de todo tipo, das mais fáceis até as mais complexas.</p>
 

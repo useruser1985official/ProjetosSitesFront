@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="icon" href="imagens/favicon.ico"/>
+        <title>Tudo sobre Tecnologia da Informação</title>
+        <link rel="stylesheet" href="css/estilo.css"/>
+        <script></script>
+    </head>
+    <body>
+        <div id="interface">
+            <header>
+                <h1><a href="index.html">Tudo sobre Tecnologia da Informação</a></h1>
+            </header>
+
+<h2>Configurando DHCP no Ubuntu Server</h2>
+
+<p>A forma mais simples é usar o servidor DHCP do pacote ISC DHCP Server. Embora existam alternativas mais novas, ele continua sendo fácil de configurar e muito usado.</p>
+
+<p>Pra começar, instale o servidor DHCP, atualize os pacotes e instale o serviço:</p>
+
+<pre>
+<code>
+sudo apt update
+
+sudo apt install isc-dhcp-server -y
+</code>
+</pre>
+
+<p>Descubra o nome da interface de rede, listando as interfaces:</p>
+
+<pre>
+<code>
+ip a
+</code>
+</pre>
+
+<p>Você verá algo como:</p>
+
+<pre>
+<code>
+enp0s3
+ens33
+eth0
+</code>
+</pre>
+
+<p>Anote a interface conectada à rede onde o DHCP irá distribuir endereços.</p>
+
+<p>Defina a interface, pra isso edite o arquivo:</p>
+
+<pre>
+<code>
+sudo nano /etc/default/isc-dhcp-server
+</code>
+</pre>
+
+<p>Procure por:</p>
+
+<pre>
+<code>
+INTERFACESv4=""
+</code>
+</pre>
+
+<p>Altere para:</p>
+
+<pre>
+<code>
+INTERFACESv4="enp0s3"
+
+# Substitua enp0s3 pelo nome da sua interface.
+</code>
+</pre>
+
+<p>Configure a faixa de IPs, pra isso edite:</p>
+
+<pre>
+<code>
+sudo nano /etc/dhcp/dhcpd.conf
+</code>
+</pre>
+
+<p>No final do arquivo, adicione:</p>
+
+<pre>
+<code>
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+
+subnet 192.168.1.0 netmask 255.255.255.0 {
+    range 192.168.1.2 192.168.1.254;
+    option routers 192.168.1.1;
+    option subnet-mask 255.255.255.0;
+    option domain-name-servers 8.8.8.8, 1.1.1.1;
+}
+</code>
+</pre>
+
+<p>Nesse exemplo:</p>
+
+<ul>
+    <li><b>Rede:</b> 192.168.1.0/24</li>
+    <li><b>Gateway:</b> 192.168.1.1</li>
+    <li><b>Faixa entregue pelo DHCP:</b> 192.168.1.2 até 192.168.1.254</li>
+    <li><b>DNS:</b> Google e Cloudflare</li>
+</ul>
+
+<p>Configure um IP fixo no servidor, O servidor DHCP deve ter um endereço IP estático.</p>
+
+<p>No Ubuntu Server moderno, edite:</p>
+
+<pre>
+<code>
+sudo nano /etc/netplan/00-installer-config.yaml
+</code>
+</pre>
+
+<p>Exemplo:</p>
+
+<pre>
+<code>
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses:
+        - 192.168.1.10/24
+      routes:
+        - to: default
+          via: 192.168.1.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 1.1.1.1
+</code>
+</pre>
+
+<p>Aplique:</p>
+
+<pre>
+<code>
+sudo netplan apply
+</code>
+</pre>
+
+<p>Reinicie o serviço:</p>
+
+<pre>
+<code>
+sudo systemctl restart isc-dhcp-server
+</code>
+</pre>
+
+<p>Verifique se iniciou corretamente:</p>
+
+<pre>
+<code>
+sudo systemctl status isc-dhcp-server
+</code>
+</pre>
+
+<p>Verifique os logs, e se houver algum erro:</p>
+
+<pre>
+<code>
+sudo journalctl -u isc-dhcp-server
+
+# ou
+
+sudo tail -f /var/log/syslog
+</code>
+</pre>
+
+<p>Para teste, conecte um computador à mesma rede e configure-o para obter IP automaticamente. Em seguida, verifique se ele recebeu um endereço dentro da faixa 192.168.1.2 – 192.168.1.254.</p>
+
+<p>Exemplo completo:</p>
+
+<p>Servidor DHCP:</p>
+
+<ul>
+    <li><b>IP:</b> 192.168.1.10</li>
+    <li><b>Gateway:</b> 192.168.1.1</li>
+</ul>
+
+<p>Clientes receberão:</p>
+
+<ul>
+    <li><b>IP:</b> 192.168.1.2–254</li>
+    <li><b>Máscara:</b> 255.255.255.0</li>
+    <li><b>Gateway:</b> 192.168.1.1</li>
+    <li><b>DNS: </b>8.8.8.8 e 1.1.1.1</li>
+</ul>
+
+<p>Essa configuração é suficiente para a maioria dos laboratórios, máquinas virtuais e pequenas redes locais.</p>
+
+        <footer>
+            <p><a href="contato.html">Entre em Contato Conosco!</a></p>
+        </footer>
+        </div>
+    </body>
+</html>

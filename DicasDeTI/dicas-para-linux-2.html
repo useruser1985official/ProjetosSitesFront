@@ -65,17 +65,17 @@ dnf list installed # Lista os pacotes instalados
 
 <h3>Reparando Erros</h3>
 
-<p>Para entrar no "modo de segurança" linux, entre em opções avançadas e recovery mode, digite a senha de root e depois <code>startx</code> (para acessar essas opções no Ubuntu segure o shift na inicialização, vá em opções avançadas, recovery mode e escolha as opções da tela que abrirá, a dpkg é a usada para reparos).</p>
+<p>Para entrar no "modo de segurança" Linux, entre em opções avançadas e recovery mode, digite a senha de root e depois <code>startx</code> (para acessar essas opções no Ubuntu segure o shift na inicialização, vá em opções avançadas, recovery mode e escolha as opções da tela que abrirá, a dpkg é a usada para reparos).</p>
 
-<p>Para recuperar a inicialização, após esse comando, digite <code>apt-get install x-window-system</code>, <code>dpkg --configure -a</code> e <code>dpkg-reconfigure gdm3</code> (se necessário instale o gdm3, mas ao reconfigurar escolha a opção lightdm).</p>
+<p>Para recuperar a inicialização, após esse comando, digite <code>apt-get install x-window-system</code>, <code>dpkg --configure -a</code> e <code>dpkg-reconfigure gdm3</code> (se necessário instale o Gdm3, mas ao reconfigurar escolha a opção lightdm).</p>
 
 <p>Caso ambos deem erro, digite <code>sudo su -</code> e <code>mount -no remount,rw /</code>.</p>
 
-<p>Se o problema for na tela de login, entre em modo texto digitando Ctrl Alt F1 (se for no VirtualBox, apenas o Ctrl do lado direito com F1), e digite <code>rm ~/.Xauthority</code>, depois <code>sudo killall Xorg</code> e <code>sudo service lightdm restart</code>. Se desejar voltar pra ela clique Ctrl Alt F7 (ou o Ctrl direito com F7 no VirtualBox).</p>
+<p>Se o problema for na tela de login, entre em modo texto digitando Ctrl Alt F1 (se for no VirtualBox, apenas o Ctrl do lado direito com F1), e digite <code>rm ~/.Xauthority</code>, depois <code>sudo killall Xorg</code> e <code>sudo service lightdm restart</code>. Se desejar voltar pra ela, tecle Ctrl Alt F7 (ou o Ctrl direito com F7 no VirtualBox).</p>
 
 <p>Caso as barras de tarefas e menu sumam, digite na sequência <code>sudo gconftool --recursive-unset /apps/panel</code>, <code>sudo rm -rf ~/.gconf/apps/panel</code> e <code>pkill gnome-panel</code>.</p>
 
-<p>Caso o Linux trave na hora de reiniciar, pode ser problema na atualização do Kernel, então digite <code>sudo gedit /etc/default/grub</code> e edite essa linha pra que fique dessa forma:</p>
+<p>Caso o Linux trave na hora de reiniciar, pode ser problema na atualização do kernel, então digite <code>sudo gedit /etc/default/grub</code> e edite essa linha pra que fique dessa forma:</p>
 
 <pre>
 <code>
@@ -96,13 +96,13 @@ managed=true
 
 <p>Dê um Esc, :wq pra salvar, e no terminal digite <code>sudo service network-manager restart</code>.</p>
 
-<p>Caso precise atualizar a área de trabalho, digite Alt e F2, e na janela de comando digite "r" e dê enter.</p>
+<p>Caso precise atualizar a área de trabalho, digite Alt e F2, e na janela de comando, digite "r" e dê enter.</p>
 
 <p>Podemos também instalar o PSensor para monitorar o hardware do computador, simplesmente com <code>sudo apt install psensor</code>.</p>
 
 <h3>Mudar Tempo de Boot Automático do Grub</h3>
 
-<p>Para mudar o tempo padrão de boot automático do Grub, edite o arquivo /etc/default/grub como administrador (com o vim basta usar <code>sudo vim /etc/default/grub</code>), e procure essa linha:</p>
+<p>Para mudar o tempo padrão de boot automático do Grub, edite o arquivo /etc/default/grub como administrador (com o Vim basta usar <code>sudo vim /etc/default/grub</code>), e procure essa linha:</p>
 
 <pre>
 <code>
@@ -110,7 +110,7 @@ GRUB_TIMEOUT=10
 </code>
 </pre>
 
-<p>E coloque o tempo, em segundos, para modificar o tempo de boot (para um minuto, por exemplo, use <code>GRUB_TIMEOUT=60</code>). Caso não queira boot automatico do Grub, desative ele atribuindo -1 a variável, usando <code>GRUB_TIMEOUT=-1</code>.</p>
+<p>E coloque o tempo, em segundos, para modificar o tempo de boot (para um minuto, por exemplo, use <code>GRUB_TIMEOUT=60</code>). Caso não queira boot automatico do Grub, desative ele atribuindo -1 à variável, usando <code>GRUB_TIMEOUT=-1</code>.</p>
 
 <p>Para esconder o menu do Grub, em sistemas sem dual boot, procure essas linhas e as deixe dessa forma:</p>
 
@@ -127,7 +127,7 @@ GRUB_CMDLINE_LINUX=""
 </code>
 </pre>
 
-<p>Para mostrar o menu do Grub, apenas comente as duas linhas com "HIDDEN" com # em cada linha. Podemos também alterar dessa forma para exibir o menu:</p>
+<p>Para mostrar o menu do Grub, apenas comente as duas linhas com "HIDDEN" com # no início de cada linha. Podemos também alterar dessa forma para exibir o menu:</p>
 
 <pre>
 <code>
@@ -135,9 +135,9 @@ GRUB_TIMEOUT_STYLE=menu
 </code>
 </pre>
 
-<p>Depois de quaisquer alteração no arquivo de Grub, rode no terminal o comando <code>sudo update-grub</code> e reinicie. Se for distro baseada em Red Hat ou mesmo alguma que o update-grub não funcione, rode como root <code>grub-mkconfig -o /boot/grub/grub.cfg</code> (pode ser necessário substituir grub por grub2).</p>
+<p>Depois de quaisquer alterações no arquivo de Grub, rode no terminal o comando <code>sudo update-grub</code> e reinicie. Se for distro baseada em Red Hat ou mesmo alguma que o update-grub não funcione, rode como root <code>grub-mkconfig -o /boot/grub/grub.cfg</code> (pode ser necessário substituir grub por grub2).</p>
 
-<p>PS: Lembre-se de que o grub deve estar instalado, para instalar digite <code>sudo apt install grub</code> ou <code>sudo apt install grub-efi</code> para sistemas EFI.</p>
+<p>PS: Lembre-se de que o Grub deve estar instalado, para instalar digite <code>sudo apt install grub</code> ou <code>sudo apt install grub-efi</code> para sistemas EFI.</p>
 
 <p>Outra dica: Ao estar no Grub, podemos desligar o PC entrando na linha de comando teclando C, e depois digitando o comando <code>halt</code>. Segurar o botão de liga/desliga por alguns segundos também pode desligar (um toque breve não costuma desligar).</p>
 
@@ -149,7 +149,9 @@ GRUB_TIMEOUT_STYLE=menu
 
 <h3>Criação de Arquivos de Texto via Terminal</h3>
 
-<p>Para isso use o vi, digitando <code>vi arquivo.txt</code>, pressionamos i para passar ao modo de inserção, e depois pra sair do modo pressionamos ESC, e aí usamos :q pra sair, :w pra gravar, :q! pra sair sem gravar e :wq pra gravar e sair.</p>
+<p>Para isso use o Vi, digitando <code>vi arquivo.txt</code>, pressionamos i para passar ao modo de inserção, e depois pra sair do modo pressionamos ESC, e aí usamos :q pra sair, :w pra gravar, :q! pra sair sem gravar e :wq pra gravar e sair.</p>
+
+<p>PS: Podemos substituir <code>vi</code> por <code>vim</code>, que são editores que funcional de forma parecida. O Vim é uma versão aprimorada do Vi.</p>
 
 <h3>Instalando Driver de Vídeo no Linux</h3>
 

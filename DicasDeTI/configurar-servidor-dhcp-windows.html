@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="icon" href="imagens/favicon.ico"/>
+        <title>Tudo sobre Tecnologia da Informação</title>
+        <link rel="stylesheet" href="css/estilo.css"/>
+        <script></script>
+    </head>
+    <body>
+        <div id="interface">
+            <header>
+                <h1><a href="index.html">Tudo sobre Tecnologia da Informação</a></h1>
+            </header>
+
+<h2>Configurar Servidor DHCP no Windows Server</h2>
+
+<p>No Windows Server, a configuração do DHCP é  simples, principalmente se você usar o Gerenciador do Servidor.</p>
+
+<h3>Pela Interface Gráfica (Mais Fácil)</h3>
+
+<ol>
+    <li>Instale a função DHCP.</li>
+    <li>Abra o Gerenciador do Servidor (Server Manager).</li>
+    <li>Clique em Gerenciar e Adicionar Funções e Recursos.</li>
+    <li>Escolha Instalação Baseada em Função ou Recurso.</li>
+    <li>Selecione o servidor.</li>
+    <li>Marque Servidor DHCP (DHCP Server).</li>
+    <li>Clique em Avançar até instalar.</li>
+</ol>
+
+<p>Após a instalação, clique em Concluir Configuração DHCP (Complete DHCP Configuration) e siga o assistente.</p>
+
+<p>Depois, abra o console DHCP, e no Gerenciador do Servidor vá em Ferramentas e DHCP e crie um escopo. No console DHCP:</p>
+
+<ol>
+    <li>Expanda o nome do servidor.</li>
+    <li>Clique com o botão direito em IPv4.</li>
+    <li>Selecione Novo Escopo.</li>
+    <li>Configure o escopo.</li>
+</ol>
+
+<p>Exemplo:</p>
+
+<pre>
+<code>
+Nome do escopo
+
+Rede Local
+
+Faixa de IPs
+
+Início: 192.168.1.2
+Fim:    192.168.1.254
+
+Máscara
+
+255.255.255.0
+</code>
+</pre>
+
+<p>Ao configurar o tempo de concessão, o padrão de 8 dias costuma ser adequado.</p>
+
+<p>Configure as opções:</p>
+
+<pre>
+<code>
+Gateway (Router)
+
+192.168.1.1
+
+DNS
+
+8.8.8.8
+1.1.1.1
+</code>
+</pre>
+
+<p>Em um ambiente com Active Directory, normalmente o DNS informado é o próprio controlador de domínio.</p>
+
+<p>Ao final do assistente, escolha <q>Ativar este Escopo</q>.O DHCP começará a fornecer endereços imediatamente.</p>
+
+<h3>Usando PowerShell</h3>
+
+<p>Instale a função:</p>
+
+<pre>
+<code>
+Install-WindowsFeature DHCP -IncludeManagementTools
+</code>
+</pre>
+
+<p>Crie um escopo:</p>
+
+<pre>
+<code>
+Add-DhcpServerv4Scope `
+-Name "Rede Local" `
+-StartRange 192.168.1.2 `
+-EndRange 192.168.1.254 `
+-SubnetMask 255.255.255.0
+</code>
+</pre>
+
+<p>Configure o gateway:</p>
+
+<pre>
+<code>
+Set-DhcpServerv4OptionValue `
+-Router 192.168.1.1
+</code>
+</pre>
+
+<p>Configure o DNS:</p>
+
+<pre>
+<code>
+Set-DhcpServerv4OptionValue `
+-DnsServer 8.8.8.8,1.1.1.1
+</code>
+</pre>
+
+<p>Pra verificar se está funcionando, no console DHCP, você pode acompanhar:</p>
+
+<ul>
+    <li>Address Leases (Concessões de Endereço): Mostra quais clientes receberam IP.</li>
+    <li>Address Pool (Pool de Endereços): Exibe a faixa configurada.</li>
+    <li>Reservations (Reservas): Permite associar um IP fixo a um dispositivo pelo endereço MAC.</li>
+</ul>
+
+<p>Em um cliente Windows, execute:</p>
+
+<pre>
+<code>
+ipconfig /release
+ipconfig /renew
+ipconfig /all
+</code>
+</pre>
+
+<p>Se tudo estiver correto, o computador receberá um endereço dentro da faixa configurada (por exemplo, 192.168.1.2 a 192.168.1.254) e o comando <code>ipconfig /all</code> mostrará o servidor DHCP que concedeu o endereço.</p>
+
+<p>Importante: O servidor DHCP deve ter um IP estático e, em uma mesma rede (mesmo segmento), normalmente deve existir apenas um servidor DHCP ativo, para evitar conflitos na distribuição de endereços IP.</p>
+
+        <footer>
+            <p><a href="contato.html">Entre em Contato Conosco!</a></p>
+        </footer>
+        </div>
+    </body>
+</html>
