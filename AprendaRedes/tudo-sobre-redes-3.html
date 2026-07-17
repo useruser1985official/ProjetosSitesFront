@@ -181,7 +181,7 @@
 
 <h3>Servidor DNS - Instalação e Configurações Gerais de Rede no Linux</h3>
 
-<p>Primeiramente, configure a rede do servidor e digite o comando <code>sudo ifconfig</code>, daí veremos o IP obtido vi DHCP.</p>
+<p>Primeiramente, configure a rede do servidor e digite o comando <code>sudo ip addr show</code>, daí veremos o IP obtido vi DHCP.</p>
 
 <p>Como o DNS precisa ter um IP fixo, devemos editar o arquivo de configuração, digitando <code>sudo vim /etc/network/interfaces</code>, digite i para entrar no modo de inserção e escreva abaixo esse código:</p>
 
@@ -221,7 +221,7 @@ nameserver 8.8.8.8
 
 <p>PS: Esse é o servidor DNS do Google, existem vários que podemos usar. Tente dar um ping num site agora.</p>
 
-<p>Instale o programa Bind digitando <code>sudo apt-get install bind9</code>. Para ver se ele está rodando após instalar digite <code>sudo /etc/init.d/bind9 status</code>, depois vá na pasta /etc/bind e dê um ls nele.</p>
+<p>Instale o programa Bind digitando <code>sudo apt-get install bind9</code>. Para ver se ele está rodando após instalar, digite <code>sudo service bind9 status</code>, depois vá na pasta /etc/bind e dê um ls nele.</p>
 
 <h3>Servidor DNS - Criação das Zonas e Testes com Clientes no Linux</h3>
 
@@ -245,7 +245,7 @@ zone "1.168.192.in-addr.arpa" {
 </code>
 </pre>
 
-<p>Esses arquivos em file são arquivos novos que serão criados, cuidado com as chaves e os pontos e vírgula. O nome da zona é o endereço IP de rede ao contrário (não confundir com o IP da máquina).</p>
+<p>Esses arquivos em file são arquivos novos que serão criados, cuidado com as chaves e os ponto-e-vírgulas. O nome da zona é o endereço IP de rede ao contrário (não confundir com o IP da máquina).</p>
 
 <p>Edite o arquivo de opções digitando <code>sudo vim /etc/bind/named.conf.options</code>, e procure em forwarders, tire os comentários (as barras //) e deixe dessa forma:</p>
 
@@ -258,7 +258,7 @@ forwarders {
 </code>
 </pre>
 
-<p>PS: O IP ali é o IP do roteador e o DNS do provedor.</p>
+<p>PS: O IP ali é o IP do roteador (gateway padrão) e o DNS do provedor.</p>
 
 <p>Copie os arquivos digitando <code>cd /etc/bind</code>, <code>sudo cp db.local db.exemplodedominio.net</code> e <code>sudo cp db.127 db.192</code>.</p>
 
@@ -303,16 +303,19 @@ www         IN  CNAME   exemplodedominio.net.
 1   IN  PTR roteador.exemplodedominio.net.
 50  IN  PTR vendas.exemplodedominio.net.
 200 IN  PTR Ubuntu-32.exemplodedominio.net.
+
+; @     IN      NS      localhost.
+; 1.0.0 IN      PTR     localhost.
 </code>
 </pre>
 
-<p>Reinicie o Bind digitando <code>sudo /etc/init.d/bind9 restart</code>, e verificaremos os arquivos de zona digitando <code>named-checkzone exemplodedominio.net /etc/bind/db.exemplodedominio.net</code> e <code>named-checkzone exemplodedominio.net /etc/bind/db.192</code>. Reinicie a máquina.</p>
+<p>Reinicie o Bind digitando <code>sudo service bind9 restart</code>, e verificaremos os arquivos de zona digitando <code>named-checkzone exemplodedominio.net /etc/bind/db.exemplodedominio.net</code> e <code>named-checkzone exemplodedominio.net /etc/bind/db.192</code>. Reinicie a máquina.</p>
 
 <p>Após reiniciar, digite <code>cat /etc/resolv.conf</code> para ver este arquivo. Para testar digite <code>host -l exemplodedominio.net</code>. Digite <code>nslookup exemplodedominio.net</code> e <code>dig exemplodedominio.net</code>, faça o mesmo com o IP, digitando <code>host 192.168.1.50</code> e dê um ping digitando <code>ping vendas.exemplodedominio.net</code>.</p>
 
-<p>Para testar o encaminhador, digite primeiramente o ping num site qualquer da internete veja se ele responde.</p>
+<p>Para testar o encaminhador, digite primeiramente o ping num site qualquer da internet e veja se ele responde.</p>
 
-<p>Ná máquina cliente, edite o arquivo de configuração digitando <code>sudo vim /etc/resolv.conf</code> e deixe ele desse jeito:</p>
+<p>Na máquina cliente, edite o arquivo de configuração digitando <code>sudo vim /etc/resolv.conf</code> e deixe ele desse jeito:</p>
 
 <pre>
 <code>
@@ -324,7 +327,6 @@ search exemplodedominio.net
 <p>Dê um ping na máquina, digitando <code>ping Ubuntu-32</code>. Podemos também pingar o vendas, digitando <code>ping vendas</code> e ver isso também num site da internet.</p>
 
 <h3>TCPDump – Capturar e Analisar Tráfego de Rede no Linux</h3>
-
 
 <p>O TCPDump é uma excelente ferramenta para realizar captura e análise de pacotes de rede, recomendada para profissionais que precisem realizar monitoramento e manutenção em uma rede de computadores, além de estudantes que queiram entender a fundo o funcionamento da pilha de protocolos TCP/IP.</p>
 

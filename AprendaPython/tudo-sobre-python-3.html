@@ -334,6 +334,32 @@ print("Bom dia, {}.".format(nome))
 </code>
 </pre>
 
+<p>Podemos também verificar tipos de variáveis assim, com o método <code>isinstance</code>:</p>
+
+<pre>
+<code>
+valor = 15
+
+if isinstance(valor, int) or isinstance(valor, float):
+    print("O valor {} é um número.".format(valor))
+else:
+    print("O valor {} não é um número, é do tipo {}.".format(valor, type(valor).__name__))
+</code>
+</pre>
+
+<p>Ou assim, com o <code>type</code>:</p>
+
+<pre>
+<code>
+valor = 15
+
+if type(valor).__name__ == "int" or type(valor).__name__ == "float":
+    print("O valor {} é um número.".format(valor))
+else:
+    print("O valor {} não é um número, é do tipo {}.".format(valor, type(valor).__name__))
+</code>
+</pre>
+
 <h3>Estrutura de Repetição For</h3>
 
 <p>Vamos supor um personagem de videogame que precise passar por várias plataformas até pegar um objeto (uma maçã, por exemplo), enquanto ele não conseguir pegar a maçã, ele vai continuar andando, quando conseguir ele para. Mas e se forem muitos passos até chegar ao local, ficaria complicado postar várias vezes o mesmo comando, pra isso usamos os laços de repetição. Para isso, ele terá um delimitador para parar o laço num determinado ponto (que no caso, seria no momento que ele pegaria a maçã), que será a variável de controle. Na mesma situação, teríamos que pegar moedas em alguns trechos, no qual nós colocamos um condicional if dentro do laço.</p>

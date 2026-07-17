@@ -630,7 +630,6 @@ net localgroup administradores
     <li><code>color xx</code> - Muda a cor da tela, usando números para cores, o primeiro é o fundo do CMD e o segundo é a cor.</li>
     <li><code>date /t</code> - Mostra a data do sistema.</li>
     <li><code>dir</code> - Exibe a lista de arquivos (podendo receber como parâmetro <code>*.extensao</code>, para listar apenas um tipo de arquivo, ou mesmo mais de um).</li>
-    <li><code>diskcopy "origem" "destino"</code> - Copia o conteúdo de um disco para o outro.</li>
     <li><code>md "pasta"</code> (<code>mkdir</code>) - Cria uma pasta.</li>
     <li><code>time /t</code> - Mostra a hora do sistema.</li>
     <li><code>title "Nome"</code> - Define um nome pra janela.</li>
@@ -682,19 +681,19 @@ net localgroup administradores
 
 <p>Como curinga, usamos o *, podendo inclusive usar nas extensões, como *.*. E comandos do CMD não são case-sensitive.</p>
 
-<p>A variável <code>%errorlevel%</code> guarda o status do último comando executado. Se o mesmo foi executado corretamente, ele retornará <q>0</q>, se o comando der erro ele retornará outro número diferente de zero (por exemplo, comando não encontrado retorna <q>9009</q>). Podemos visualizar o conteúdo dessa variável digitando no prompt <code>echo %errorlevel%</code>. Esse código também pode ser usado em BAT Script também, como em condicionais e laços de repetição.</p>
+<p>A variável <code>%errorlevel%</code> guarda o status do último comando executado. Se o mesmo foi executado corretamente, ele retornará <q>0</q>, se o comando der erro ele retornará outro número diferente de zero (por exemplo, comando não encontrado retorna <q>9009</q>). Podemos visualizar o conteúdo dessa variável digitando no prompt <code>echo %errorlevel%</code>. Esse código também pode ser usado em BAT Script, como em condicionais e laços de repetição.</p>
 
 <p>Muitos desses comandos também podem ser usados no Executar, mas são melhores visualizados no CMD. No entanto, esses são mais específicos pro Executar (apesar de funcionarem no CMD também):</p>
 
 <ul>
-    <li><code>cleanmgr</code> - Abre a limpeza de disco.</li>
+    <li><code>cleanmgr</code> - Abre a Limpeza de Disco.</li>
     <li><code>msconfig</code> - Abre a janela de itens de inicialização do sistema.</li>
     <li><code>winver</code> - Mostra a versão do Windows.</li>
-    <li><code>regedit</code> - Abre o registro do Windows.</li>
-    <li><code>mrt</code> - Abre a ferramenta de Remoção de Software Mal-intencionado.</li>
+    <li><code>regedit</code> - Abre o Registro do Windows.</li>
+    <li><code>mrt</code> - Abre a Ferramenta de Remoção de Software Mal-intencionado.</li>
     <li><code>msinfo32</code> - Abre a janela de informações de hardware do sistema, onde exibe os componentes e até mesmo os conflitos.</li>
-    <li><code>control</code> - Abre a central de controle (podendo ser combinada para abrir determinados controles, como <code>control mouse</code> e <code>control fonts</code>).</li>
-    <li><code>cmd</code> - Abre o prompt de comando.</li>
+    <li><code>control</code> - Abre a Central de Controle (podendo ser combinada para abrir determinados controles, como <code>control mouse</code> e <code>control fonts</code>).</li>
+    <li><code>cmd</code> - Abre o Prompt de Comando.</li>
     <li><code>powershell</code> - Abre o Powershell.</li>
     <li><code>calc</code> - Abre a calculadora.</li>
     <li><code>notepad</code> - Abre o bloco de notas.</li>

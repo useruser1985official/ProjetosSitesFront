@@ -120,6 +120,62 @@ docker compose up -d
 </code>
 </pre>
 
+<h3>Login no Docker</h3>
+
+<p>Para logar no Docker via linha de comando, basta digitar no terminal como administrador docker login, esperar abrir o navegador e colocar seu login e senha, e confirmar o código exibido no terminal (algo como MZYP-XNQK).</p>
+
+<p>No Docker Desktop, basta abrir ele e ir em Sign In, ele abrirá o navegador para autenticar o usuário dentro do programa.</p>
+
+<p>No Windows basta somente isso, mas caso do Linux, para logar pelo Docker Desktop, devemos seguir os procedimentos logo abaixo.</p>
+
+<p>Primeiramente, vamos rodar esse comando:</p>
+
+<pre>
+<code>
+gpg --full-generate-key
+</code>
+</pre>
+
+<p>Escolha a opção 1 (RSA e RSA), chave de tamanho 3072 ou maior, pressione Enter para que ela não expire, e insira seu nome, e-mail e crie uma senha segura.</p>
+
+<p>Copie o ID da chave GPG gerada e execute no terminal:</p>
+
+<pre>
+<code>
+pass init 3FC60F1F741D41F77A16501722A936FAFD486E9A
+</code>
+</pre>
+
+<p>Depois digite isso:</p>
+
+<pre>
+<code>
+vim ~/.docker/config.json
+</code>
+</pre>
+
+<p>E coloque isso no arquivo acima, deixando ele exatamente assim:</p>
+
+<pre>
+<code>
+{
+  "auths": {},
+  "credsStore": "pass",
+  "currentContext": "desktop-linux"
+}
+</code>
+</pre>
+
+<p>Salve o arquivo e reinicie o Docker com esse comando:</p>
+
+<pre>
+<code>
+systemctl --user restart docker-desktop
+</code>
+</pre>
+
+<p>Depois tente logar novamente.</p>
+
 <h3>Trabalhando com Imagens no Docker Hub</h3>
 
 <p>Para enviar uma imagem para o Docker Hub, fazemos uma tag da imagem com o nome do seu repositório e depois faz push.</p>
