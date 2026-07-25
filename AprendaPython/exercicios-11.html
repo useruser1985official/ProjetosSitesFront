@@ -316,7 +316,86 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from rich import print
+from rich import inspect
+from hashlib import sha256
 
+class ContaBancaria:
+    """
+    Cria uma conta bancária e permite fazer saques e depósitos
+    """
+
+    # Construtor
+    def __init__(self, id:int, nome:str = None, saldo:float = 0.0, chave:str = None): # Apenas id não é opcional, os outros são obrigatórios
+        self._id = id # Protegido
+        self._titular = nome # Protegido
+        self.__saldo = saldo # Privado
+
+        if chave is None:
+            chave = self.pedeSenha()
+
+        self.__hash = sha256(chave.encode()).hexdigest() # Privado
+
+        print(f"Conta {self._id} criada com sucesso. Saldo atual de R${self.__saldo:.2f}.")
+
+    # Métodos de Instância:
+    def depositar(self, valor):
+        valor = abs(valor)
+        self.__saldo += valor
+        print(f"Depósito de R${valor:.2f} autorizado na conta {self._id}.")
+
+    def sacar(self, valor:float, chave:str = None):
+        valor = abs(valor)
+
+        if chave is None:
+            chave = self.pedeSenha()
+
+        if self.validarSenha(chave):
+            if valor > self.__saldo:
+                print(f"Saque de R${valor:.2f} negado na conta {self._id}. Saldo insuficiente.")
+            else:
+                self.__saldo -= valor
+                print(f"Saque de R${valor:.2f} autorizado na conta {self._id}.")
+        else:
+            print("Senha não confere! Saque não autorizado!")
+
+    def pedeSenha(self) -> str:
+        from pwinput import pwinput # Importação local
+
+        while True:
+            senha = str(pwinput("Senha: ")).strip() # Lê a senha e escreve só asteriscos
+
+            if len(senha) >= 6:
+                break
+
+        return senha
+
+    def validarSenha(self, chave:str) -> bool:
+        usuario = sha256(chave.encode()).hexdigest()
+
+        if usuario == self.__hash:
+            return True
+        else:
+            return False
+
+    # Métodos Sobrescritos:
+    def __str__(self):
+        return f"A conta {self._id} de {self._titular} tem R${self.__saldo:.2f} de saldo."
+        # return f"Estado atual da conta: {self.__dict__}"
+
+    @property
+    def nome(self):
+        return self._titular
+
+    @nome.setter
+    def nome(self, novoNome:str = None):
+        chave = self.pedeSenha()
+
+        if self.validarSenha(chave):
+            if len(novoNome) >= 5:
+                self._titular = novoNome
+        else:
+            print("Senha não confere! Não posso alterar o nome!")
 </code>
 </pre>
 
@@ -324,7 +403,19 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    cc = ContaBancaria(111, "Josenildo", 10000)
 
+    print("Vou tentar sacar...")
+    cc.sacar(500)
+
+    print("Tentando mudar o nome...")
+    cc.nome = "Maricota"
+
+    print(cc)
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 

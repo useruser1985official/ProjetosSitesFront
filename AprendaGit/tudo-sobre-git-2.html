@@ -37,9 +37,9 @@
 
 <p>Para fazer o upload do seu repositório local pro GitHub, entre na pasta desse repositório e veja com <code>git status</code> o atual estado do repositório. Para fazer o <q>push</q> (enviar pro GitHub), digite <code>git push https://github.com/nomedousuario/NomeDoProjeto.git master</code> (ou a branch que quer enviar). Só com isso, todos os nossos arquivos serão enviados pro repositório remoto, incluindo os commits e tudo mais o que fizemos localmente.</p>
 
-<p>Na primeira vez ele pode pedir login no GitHub, e no Windows ele abrirá o navegador padrão para você confirmar as credenciais do mesmo, no qual ele abrirá uma Janela e mostrará um código que deve ser colocado num link do Github em <code>https://github.com/login/device</code>. Estas podem ser removidas indo nas Credenciais do Windows, no Painel de Controle e Contas de Usuário.</p>
+<p>Na primeira vez ele pode pedir login no GitHub, e no Windows ele abrirá o navegador padrão para você confirmar as credenciais do mesmo, no qual ele abrirá uma janela e mostrará um código que deve ser colocado num link do Github em <code>https://github.com/login/device</code>. Estas podem ser removidas indo nas Credenciais do Windows, no Painel de Controle e Contas de Usuário.</p>
 
-<p>Já pra fazer login no Linux, ele pedirá o login e senha pelo terminal, aí você vai no seu perfil em Settings, Developer Settings, Personal Access Tokens, Tokens Classic e em Generate New Token Classic, coloque um título e marque as opções desejadas e clique me Generate Token. Ele deve gerar um token parecido com esse: <code>ghp&#95;6Athi0nocpil6tuk14XOsOQlXyPr2NPPzgmD</code>. Também é possível usar o Token no Windows e em outros sistemas.</p>
+<p>Já pra fazer login no Linux, ele pedirá o login e senha pelo terminal, aí você vai no seu perfil em Settings, Developer Settings, Personal Access Tokens, Tokens Classic e em Generate New Token Classic, coloque um título e marque as opções desejadas e clique em Generate Token. Ele deve gerar um token parecido com esse: <code>ghp&#95;6Athi0nocpil6tuk14XOsOQlXyPr2NPPzgmD</code>. Também é possível usar o Token no Windows e em outros sistemas.</p>
 
 <p>Para armazenar o token no seu sistema Linux, digite esses comandos:</p>
 
@@ -79,7 +79,7 @@ git credential-cache exit
 
 <h3>Iniciando com GitHub - Parte 2</h3>
 
-<p>De uma outra forma, criaremos um segundo repositório remoto no GitHub, da mesma forma do primeiro. Nesse caso criaremos o .gitignore e o README (que é usado como uma documentação do projeto). Para escrever o README e também outras coisas dentro do GitHub, podemos usar a sintaxe do Markdown, como exemplificado abaixo:</p>
+<p>De uma outra forma, criaremos um segundo repositório remoto no GitHub, da mesma forma do primeiro. Nesse caso criaremos o .gitignore e o README.md (que é usado como uma documentação do projeto). Para escrever o README e também outras coisas dentro do GitHub, podemos usar a sintaxe do Markdown, como exemplificado abaixo:</p>
 
 <pre>
 <code>
@@ -119,9 +119,9 @@ Lista:
 </code>
 </pre>
 
-<p>Vamos clonar esse repositório para a nossa máquina com <code>git clone https://github.com/nomedousuario/Projeto-1.git</code>. Caso queira outro nome na pasta clonada, podemos colocar <code>git clone https://github.com/nomedousuario/Projeto-1.git NovoNomeDoProjeto</code>.</p>
+<p>Vamos clonar esse repositório para a nossa máquina com <code>git clone https://github.com/nomedousuario/Projeto-2.git</code>. Caso queira outro nome na pasta clonada, podemos colocar <code>git clone https://github.com/nomedousuario/Projeto-2.git NovoNomeDoProjeto</code>.</p>
 
-<p>Podemos só buscar as informações sem alterar o repositório com <code>git fetch https://github.com/nomedousuario/Projeto-1.git master</code>, depois podemos dar um <code>git status</code> para ver se é necessário fazer o pull do repositório remoto (puxar). Para puxar as alterações do projeto para o nosso repositório local, digite <code>git pull https://github.com/nomedousuario/Projeto-1.git master</code>. É recomendado primeiro usar o fetch, depois o pull.</p>
+<p>Podemos só buscar as informações sem alterar o repositório com <code>git fetch https://github.com/nomedousuario/Projeto-2.git master</code>, depois podemos dar um <code>git status</code> para ver se é necessário fazer o pull do repositório remoto (puxar). Para puxar as alterações do projeto para o nosso repositório local, digite <code>git pull https://github.com/nomedousuario/Projeto-2.git master</code>. É recomendado primeiro usar o fetch, depois o pull.</p>
 
 <p>PS: Ao clonar um repositório, ele automaticamente colocará o repositório remoto clonado com o alias <q>origin</q>. Para ter certeza, digite novamente <code>git remote -v</code>. E os comandos push, fetch e pull podem ter a branch omitida, caso você queira fazer as tarefas na branch que você está atualmente, algo como <code>git push https://github.com/nomedousuario/NomeDoProjeto.git</code> ou <code>git push origin</code> (se você tiver na master ele fará o envio pra master, em uma branch criada ele enviará pra esta criada, etc.).</p>
 
@@ -150,7 +150,7 @@ git push origin master --force-with-lease
 </code>
 </pre>
 
-<p>PS: Pode dar conflitos caso o usuário seja diferente do que estão logados nas credenciais. No Windows, remova as credenciais indo em Painel de Controle, Contas de Usuário, Gerenciador de Credenciais e em Credenciais do Windows. No Linux basta usar o comando <code>git credential-cache exit</code>, ou remover os arquivos/diretórios ~/.git-credentials ou ~/.config/git/credentials.</p>
+<p>PS: Pode dar conflitos caso o usuário seja diferente do que está logado nas credenciais. No Windows, remova as credenciais indo em Painel de Controle, Contas de Usuário, Gerenciador de Credenciais e em Credenciais do Windows. No Linux basta usar o comando <code>git credential-cache exit</code>, ou remover os arquivos/diretórios ~/.git-credentials ou ~/.config/git/credentials.</p>
 
 <h3>Simulando Múltiplos Devs</h3>
 

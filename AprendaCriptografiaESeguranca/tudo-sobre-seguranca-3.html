@@ -86,7 +86,7 @@
 
 <p>Como visto, o MD5 significa "Message Digest", já os algoritmos SHA-1 e SHA-256 significam "Segure Hash Algorithm".</p>
 
-<p>Veja os hashs da palavra "Teste" em cada um deles:</p>
+<p>Veja os hashes da palavra "Teste" em cada um deles:</p>
 
 <table>
     <tr>
@@ -282,13 +282,13 @@
 
 <p>No Linux, o gerador de hash já existe (md5sum, sha1sum e sha256sum), já no Windows, precisaremos usar os programas do GPG4Win.</p>
 
-<p>Para gerar o hash de um arquivo qualquer, usamos o comando <code>md5sum NomedoArquivo.extensao</code>. Se quisermos gerar um arquivo com o hash MD5 dele, podemos usar <code>md5sum NomedoArquivo.extensao&gt;"NomedoArquivo.md5"</code>. No Linux, usamos a mesma lógica com hashs sha1 e sha256, mudando o comando para <code>sha1sum</code> e <code>sha256sum</code>, respectivamente.</p>
+<p>Para gerar o hash de um arquivo qualquer, usamos o comando <code>md5sum NomedoArquivo.extensao</code>. Se quisermos gerar um arquivo com o hash MD5 dele, podemos usar <code>md5sum NomedoArquivo.extensao&gt;"NomedoArquivo.md5"</code>. Usamos a mesma lógica com hashes SHA-1 e SHA-256, mudando o comando para <code>sha1sum</code> e <code>sha256sum</code>, respectivamente.</p>
 
-<p>O gerador de hashs do GPG4Win também tem opção para SHA-1 e SHA-256.</p>
+<p>O gerador de hashes do GPG4Win também tem opção para SHA-1 e SHA-256.</p>
 
-<p>PS: Independente do arquivo o hash sempre terá um tamanho pequeno.</p>
+<p>PS: Independente do tamanho do arquivo, o hash sempre terá um tamanho pequeno.</p>
 
-<p>Pra quem usa Windows, o 7-Zip, programa de compactação e descompactação, também oferece um utilitário para verificar hashs SHA-1 e SHA-256, basta clicar com o botão direito no arquivo e verificar.</p>
+<p>Pra quem usa Windows, o 7-Zip, programa de compactação e descompactação, também oferece um utilitário para verificar hashes MD5, SHA-1 e SHA-256, basta clicar com o botão direito no arquivo e verificar.</p>
 
 <h3>Hashes e Rainbow Tables - Descobrindo Senhas</h3>
 
@@ -304,13 +304,13 @@
 
 <p>Os dois primeiros métodos não são muito efetivos, devido à imensa quantidade de valores que precisam ser testados, principalmente com senhas longas.</p>
 
-<p>Os ataques de força bruta consistem no uso de um programa que tenta várias combinações aleatórias até achar a senha certa. O dicionário age de forma parecida, mas usando um dicionário de palavras num arquivo txt comum, que pode ser feito especialmente para um determinado usuário (um com palavras da Bíblia para obter senha de alguém religioso ou um com nomes de bebês para obter a senha de uma grávida, por exemplo).</p>
+<p>Os ataques de força bruta consistem no uso de um programa que tenta várias combinações aleatórias até achar a senha certa. O dicionário age de forma parecida, mas usando um dicionário de palavras num arquivo TXT comum, que pode ser feito especialmente para um determinado usuário (um com palavras da Bíblia para obter senha de alguém religioso ou um com nomes de bebês para obter a senha de uma grávida, por exemplo).</p>
 
-<p>O ataque de colisão é quando encontramos dois textos planos diferentes que tem o mesmo hash, inclusive já chega a comprometer os algoritmos MD5 e SHA-1. Já o ataque de aniversário baseia nas probabilidades matemáticas de encontrar determinada senha.</p>
+<p>O ataque de colisão é quando encontramos dois textos planos diferentes que tem o mesmo hash, inclusive já chega a comprometer os algoritmos MD5 e SHA-1. Já o ataque de aniversário se baseia nas probabilidades matemáticas de encontrar determinada senha.</p>
 
 <p>Uma Rainbow Table é uam espécie de table que contém milhões (ou bilhões) de hashes pré-calculados e as strings ("senhas") que os originaram. Uma rainbow table é otimizada para armazenar hashes e senhas, permitindo pesquisar entradas de forma muito veloz. São usadas basicamente para quebrar hashes de senhas.</p>
 
-<p>Uma função de hash mapeia textos planos (dados não criptografados) em hashes de forma que não podemos discernir qual texto plano originou qual hash. Para que seja possível descobrir o texto plano a partir de um hash, devemos aplicar a função de hash em cada texto plano possível até encontrarmos o hash idêntico ao procurado. Podemos também armazenar cada hash gerado em uma tabela, de modo que podemos consultá-la mais tarde semprecisarmos efetuar o cálculo de hash outra vez.</p>
+<p>Uma função de hash mapeia textos planos (dados não criptografados) em hashes de forma que não podemos discernir qual texto plano originou qual hash. Para que seja possível descobrir o texto plano a partir de um hash, devemos aplicar a função de hash em cada texto plano possível até encontrarmos o hash idêntico ao procurado. Podemos também armazenar cada hash gerado em uma tabela, de modo que podemos consultá-la mais tarde sem precisarmos efetuar o cálculo de hash outra vez.</p>
 
 <p>Uma forma comum de proteger o hash de nossas senhas contra ataques de rainbow tables é o uso de uma técnica conhecida como salt ("salgar a senha"). Um salt é uma informação aleatória adiciona à entrada da função de hash, tornando a saída da função única, e imune às rainbow tables. Seria algo tipo <code>FuncaoHash(TextoPlano + Salt)</code>. O "salt" pode ser o nome de usuário, um PIN, um valor aleatório, etc.</p>
 

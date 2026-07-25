@@ -26,7 +26,7 @@
         
 <h2>Tudo sobre Criptografia e Segurança Parte 8</h2>
 
-<h3>SQL Injection e Falhas XSS</h3>
+<h3>SQL Injection</h3>
 
 <p>A Injeção de SQL ocorre quando dados inseguros são enviados ao interpretador como parte de um comando ou consulta. Os dados alterados são enviados pelo invasor visando enganar o interpretador para que este execute os comandos maliciosos ou permita o acesso a dados não autorizados. Considerado um dos grandes desafios das aplicações web o SQL Injection tomou o posto principal em uma analise realizada pela OWASP, quando um ataque obtém sucesso o invasor poderá ter acesso ao banco de dados da aplicação.</p>
 
@@ -36,11 +36,17 @@
 
 <p>A prevenção do SQL Injection deve ocorrer buscando manter os dados inseguros separados das consultas e comandos, a forma preferida de prevenção é por meio de interfaces de programação de aplicativos (API) que buscam evitar totalmente o uso de interpretadores o seu uso deve ser cuidadosamente avaliado pois podem ocorrer injeções em segundo plano se utilizados incorretamente, caso não seja utilizado um API deve-se efetuar a filtragem dos caracteres especiais utilizados para tal finalidade maliciosa.</p>
 
-<p>Já as falhas de XSS residente ocorrem sempre que uma aplicação recebe dados não confiáveis e os envia ao navegador sem validação ou filtro adequados. Permite aos agentes de ameaça executarem scripts no navegador da vítima que podem obter sessões do usuário, desfigurar sites, ou redirecionar o usuário para sites maliciosos.</p>
+<h3>Exploração de Falhas XSS</h3>
+
+<p>As falhas de XSS residente ocorrem sempre que uma aplicação recebe dados não confiáveis e os envia ao navegador sem validação ou filtro adequados. Permite aos agentes de ameaça executarem scripts no navegador da vítima que podem obter sessões do usuário, desfigurar sites, ou redirecionar o usuário para sites maliciosos.</p>
 
 <p>Diferente da injeção de SQL que busca executar instruções SQL maliciosas em consultas no banco de dados ocorrendo fora da vista dos usuários, o XSS Residente busca executar marcações maliciosas ou códigos Javascript em valores que serão mostrados em uma página web. Este tipo de ataque busca enganar o usuário que tem confiança em um site levando-o a executar uma ação ou exibição de informações para um outro site não confiável.</p>
 
-<p>As vulnerabilidades relacionadas ao XSS Residente estão ligadas a não filtragem de todas as entradas enviadas pelos usuários bem como a não avaliação da segurança das informações na entrada antes que sejam incluídas na pagina de saída. Sem um filtro apropriado as entradas fornecidas serão consideradas conteúdos ativos no navegador, existem algumas ferramentas que podem localizar algumas falhas de XSS automaticamente, entretanto cada aplicação possui paginas de saída diferenciadas utilizando interpretadores diversos juntamente com o navegador como Javascript, Flash, Silverlight e ActiveX causando maior dificuldades para uma detecção automatizada assim necessitando de uma analise manual, bem como testes de invasão para analise das vulnerabilidades. Prevenir os ataques por XSS consistem na separação de dados inseguros do conteúdo ativo do navegador, assim deve-se efetuar uma filtragem total dos dados inseguros baseados no contexto HTML (corpo, atributo, Javascript, CSS ou URL).</p>
+<p>As vulnerabilidades relacionadas ao XSS Residente estão ligadas a não filtragem de todas as entradas enviadas pelos usuários bem como a não avaliação da segurança das informações na entrada antes que sejam incluídas na pagina de saída.</p>
+
+<p>Sem um filtro apropriado as entradas fornecidas serão consideradas conteúdos ativos no navegador, existem algumas ferramentas que podem localizar algumas falhas de XSS automaticamente, entretanto cada aplicação possui paginas de saída diferenciadas utilizando interpretadores diversos juntamente com o navegador como Javascript, Flash, Silverlight e ActiveX causando maior dificuldades para uma detecção automatizada assim necessitando de uma analise manual, bem como testes de invasão para analise das vulnerabilidades.</p>
+
+<p>Prevenir os ataques por XSS consistem na separação de dados inseguros do conteúdo ativo do navegador, assim deve-se efetuar uma filtragem total dos dados inseguros baseados no contexto HTML (corpo, atributo, Javascript, CSS ou URL).</p>
 
 <h3>Como o Spoofing Funciona?</h3>
 

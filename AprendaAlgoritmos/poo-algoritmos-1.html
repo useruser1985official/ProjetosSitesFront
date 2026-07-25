@@ -63,7 +63,7 @@
     <li>Javascript, apesar de considerada uma linguagem orientada a objetos, ela é baseada em protótipos, em versões mais antigas nem ao menos existiam classes.</li>
 </ul>
 
-<p>O Simula 67 é considerado a primeira linguagem a suportar orientação a objetos, com classes, objetos e herança, mas POO não era obrigatória, ainda era possível programar de forma procedural. Já o Smalltalk implementou a POO de forma pura, onde tudo é objeto e a comunicação ocorre apenas por mensagens, tornando o paradigma obrigatório.</p>
+<p>O Simula 67 é considerada a primeira linguagem a suportar orientação a objetos, com classes, objetos e herança, mas POO não era obrigatória, ainda era possível programar de forma procedural. Já o Smalltalk implementou a POO de forma pura, onde tudo é objeto e a comunicação ocorre apenas por mensagens, tornando o paradigma obrigatório.</p>
 
 <p>Para aprender a programação orientada a objetos, deve-se saber a programação básica (estruturada) primeiro, pois praticamente tudo delas podem ser usados em programas orientados a objetos (como estruturas condicionais e de repetição, além do conceito de variáveis e funções/procedimentos, que são equivalentes aos atributos e métodos em POO). O ideal é saber o básico de uma linguagem que suporte POO para estudar esse paradigma, como o Java ou o C#. A maioria dos exercícios aqui usaremos o Java como base, mas mostraremos códigos de outras linguagens também, e as lições aqui podem ser adaptadas para as principais linguagens orientadas a objetos.</p>
 
@@ -73,12 +73,12 @@
 
 <ul>
     <li>As classes e interfaces devem ser nomeadas usando PascalCase, ou seja, a primeira letra de cada palavra deve ser maiúscula, como em <code>Carro</code> ou <code>CarroEletrico</code>.</li>
-    <li>Objetos, atributos, métodos, rotinas e variáveis devem usar CamelCase, começando com letra minúscula e com as palavras seguintes iniciando com letra maiúscula, como por exemplo <code>car</code>, <code>modelo</code> ou <code>acenderFarol()</code>.</li>
+    <li>Objetos, atributos, métodos, rotinas e variáveis devem usar CamelCase, começando com letra minúscula e com as palavras seguintes iniciando com letra maiúscula, como por exemplo <code>cor</code>, <code>modelo</code> ou <code>acenderFarol()</code>.</li>
     <li>Os métodos devem ser sempre chamados com parênteses no final do nome, com ou sem parâmetros, como <code>exibirDados()</code>.</li>
     <li>Constantes devem ser escritas com todas as letras maiúsculas, utilizando underline (<q>_</q>) para separar palavras, como <code>CPF</code> ou <code>TAXA_JUROS</code>.</li>
     <li>Os identificadores podem conter apenas letras, números e underline (<q>_</q>), não podendo começar com número, devendo sempre iniciar com uma letra.</li>
-    <li>Não é permitido o uso de espaços em nomes de classes, métodos, atributos, métodos, variáveis e constantes.</li>
-    <li>Não devem ser utilizados acentos ou caracteres especiais, como <q>ç</q>, <q>@</q>, <q>#</q>, <q>!</q> etc.</li>
+    <li>Não é permitido o uso de espaços em nomes de classes, métodos, atributos, rotinas, variáveis e constantes.</li>
+    <li>Não devem ser utilizados acentos ou caracteres especiais, como <q>ç</q>, <q>@</q>, <q>#</q>, <q>!</q>, etc.</li>
     <li>Não é permitido utilizar palavras reservadas da linguagem (como no Java, palavras como <code>if</code>, <code>while</code>, <code>class</code>, entre outras). Nomes de classes padrões da linguagem (como no Java, <code>System</code>, <code>String</code> e <code>Exception</code>) também devem ser evitados.</li>
     <li>Os nomes devem ser claros e coerentes com sua finalidade, por exemplo, um atributo que armazena a idade numa classe Pessoa deve se chamar <code>idade</code>, e não <code>x</code>.</li>
 </ul>
@@ -148,7 +148,7 @@ public class Carro {
 
 <p>PS: O uso desse tipo de diagrama em POO, se chama UML.</p>
 
-<p>Código principal, onde criamos os objetos:</p>
+<p>Código principal, onde criamos os objetos (sempre chamado dentro da rotina main):</p>
 
 <pre>
 <code>
@@ -218,14 +218,18 @@ System.out.println("Velocidade atual: " + cr2.velocidade);
 </code>
 </pre>
 
-<p>Observe que, mesmo os dois objetos sendos oriundos da mesma classe, cada objeto tem suas características e comportamentos distintos, e funcionam isoladamente entre si.</p>
+<p>Observe que, mesmo os dois objetos sendo oriundos da mesma classe, cada objeto tem suas características e comportamentos distintos, e funcionam isoladamente entre si.</p>
+
+<p>Como visto, a orientação a objetos facilita o reuso de código, já que, uma vez pronta a classe (mesmo que tenhamos que escrever muito pra criar tudo que precisarmos), podemos utilizar ela pra criarmos quantos objetos precisarmos, e o programa principal fica mais simples, natural e muitas vezes menor. Cada objeto funciona isolado do outro, mas eles podem se comunicar, se preciso.</p>
+
+<h3>Objetos com Vetores e Listas</h3>
 
 <p>Utilizando a mesma classe, podemos fazer por exemplo assim no código principal, utilizando arrays:</p>
 
 <pre>
 <code>
 // Criando os objetos e colocando no array
-Carro[] carros = new Carro[3];
+Carro carros[] = new Carro[3];
 
 carros[0] = new Carro();
 
@@ -311,7 +315,7 @@ for(int i = 0; i &lt; listaCarros.size(); i++) {
 </code>
 </pre>
 
-<p>Como visto, a orientação a objetos facilita o reuso de código, já que, uma vez pronta a classe (mesmo que tenhamos que escrever muito pra criar tudo que precisarmos), podemos utilizar ela pra criarmos quantos objetos precisarmos, e o programa principal fica mais simples, natural e muitas vezes menor. Cada objeto funciona isolado do outro, mas eles podem se comunicar, se preciso.</p>
+<p>Outros tipos de estruturas de dados, como Pilhas e Filas podem ser usadas também, da mesma forma.</p>
 
 <h3>Encapsulamento</h3>
 
@@ -386,7 +390,7 @@ public class Carro {
 
 <p>No código acima, os atributos cor, modelo e velocidade só podem ser manipulados dentro da classe Carro, aí usaremos os métodos públicos da mesma para os manipular.</p>
 
-<p>O diagrama dessa classe fica assim, com o <q>+</q> representando o que é público e <q>-</q> representando o que é privado:</p>
+<p>O diagrama dessa classe fica assim, com o <q>+</q> representando o que é público, <q>-</q> representando o que é privado e <q>#</q> representando o que é protegido:</p>
 
 <img src="imagens/diagrama-carro-completo.png" alt="Diagrama Carro Completo"/>
 

@@ -51,7 +51,6 @@ class Aviao {
 
         // Métodos, construídos fora da classe:
         void ini(int tp);
-    private:
 };
 
 void Aviao::ini(int tp) { // Referência a classe e o nome do método.
@@ -72,6 +71,8 @@ void Aviao::ini(int tp) { // Referência a classe e o nome do método.
 </pre>
 
 <p>PS: Note que os métodos são criados fora da classe, no entanto, eles são indicados dentro dela, onde também são definidos a visibilidade os mesmos. As inicializações de atributos são as únicas coisas feitas dentro da classe, caso existam (e não sejam estáticos) E o this vai ser substituído pelo nome do objeto. Ele verifica um atributo dentro de um método da própria classe e será substituído pela classe chamadora. O this não é necessário ser usado no C++, mas é bom mantermos o hábito de usar ele.</p>
+
+<p>A visibilidade padrão em classes no C++ é <code>private</code> (acessível somente dentro da classe), por isso devemos colocar <code>public</code> para que os atributos e métodos sejam visíveis em todo o programa. Existe ainda o <code>protected</code>, que veremos mais pra frente.</p>
 
 <p>É permitido criar métodos dentro das classes, mas esse método não é muito usado em C++, nesse caso, ficaria assim:</p>
 
@@ -97,7 +98,6 @@ class Aviao {
                 this-&gt;tipo = "Planador";
             }
         }
-    private:
 };
 </code>
 </pre>
@@ -124,7 +124,7 @@ int main() {
 
 <p>Quando criamos uma classe, temos mais trabalho para fazê-la, mas depois que ela está pronta, podemos criar quantos objetos precisarmos vindos dessa mesma classe, e o programa principal fica mais simples, menor e mais natural. Os objetos criados dessa mesma classe são independentes entre si e o status de um não interfere no outro. Essa é uma das vantagens da orientação a objetos.</p>
 
-<p>Caso queira criar objetos em Array, pode fazer algo do tipo:</p>
+<p>Caso queira criar objetos em array, pode fazer algo do tipo:</p>
 
 <pre>
 <code>
@@ -152,7 +152,7 @@ int main() {
 </code>
 </pre>
 
-<p>No caso de listas, vector e outros contâiners, usamos o ponteiro com o nome da classe dentro das tags do mesmo, por exemplo:</p>
+<p>No caso de listas, vector e outros containers, usamos o ponteiro com o nome da classe dentro das tags do mesmo, por exemplo:</p>
 
 <pre>
 <code>
@@ -185,8 +185,6 @@ class Aviao {
 
         // Métodos, construídos fora da classe:
         void ini(int tp);
-
-    private:
 };
 
 void Aviao::ini(int tp) { // Referência a classe e o nome do método.
@@ -257,7 +255,7 @@ delete av2;
 
 <p>Caso queira retornar o nome da classe em C++, use o método <code>typeid(*this).name()</code> no objeto (não esqueça de incluir no cabeçalho <code>&lt;typeinfo&gt;</code>).</p>
 
-<h3>Agregação de Objetos</h3>
+<h3>Agregação e Composição de Objetos</h3>
 
 <p>Quando fizermos uma agregação entre diferentes objetos, como as passagens de parâmetros, atributos ou retornos com objetos e classes, também é necessário usar ponteiros nos objetos, tanto na implementação quanto na declaração, por exemplo:</p>
 
@@ -303,7 +301,42 @@ delete aero;
 </code>
 </pre>
 
-<p>PS: Quando a gente inicia um objeto criado dentro da classe, na verdade se chama composição. No caso acima, caso a classe Aeroporto fizesse a composição de Aviao, ela teria algo como <code>Aviao *av = new Aviao();</code> dentro da classe Aeroporto.</p>
+<p>PS: Quando a gente inicia um objeto criado dentro da classe, na verdade se chama composição. Veja como ficaria a mesma classe com composição:</p>
+
+<pre>
+<code>
+class Aeroporto {
+    public:
+        Aviao *avi = new Aviao(); // Não esqueça do ponteiro.
+
+        Aviao *getAvi(); // Aqui também tem ponteiro, não coloque const
+        void setAvi(Aviao *avi); // Não esqueça do ponteiro
+};
+
+Aviao *Aeroporto::getAvi() { // Não esqueça do ponteiro, sem const
+    return this-&gt;avi;
+}
+
+void Aeroporto::setAvi(Aviao *avi) { // Não esqueça do ponteiro
+    this-&gt;avi = avi;
+}
+</code>
+</pre>
+
+<p>E na criação do objeto:</p>
+
+<pre>
+<code>
+// Não precisa criar o objeto Aviao, ele já é criado dentro de Aeroporto:
+Aeroporto *aero = new Aeroporto();
+
+aero-&gt;getAvi()-&gt;ini(1);
+
+cout &lt;&lt; aero-&gt;getAvi()-&gt;tipo &lt;&lt; endl;
+
+delete aero;
+</code>
+</pre>
 
 <p>Também podemos fazer a composição assim:</p>
 
@@ -317,7 +350,7 @@ int main() {
 
     Aeroporto aero;
 
-    aero.setAvi(&av); // Não esqueça do &amp; comercial
+    aero.setAvi(&amp;av); // Não esqueça do &amp; comercial
     cout &lt;&lt; aero.getAvi()-&gt;tipo &lt;&lt; endl; // O tipo usa seta
 
     return 0;

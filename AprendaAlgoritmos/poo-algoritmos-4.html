@@ -24,6 +24,118 @@
 
 <h2>Orientação a Objetos - Parte 4</h2>
 
+<h3>Polimorfismo de Sobreposição e de Inclusão</h3>
+
+<p>Polimorfismo de sobreposição acontece quando uma classe filha substitui (redefine) um método que veio da classe mãe, mudando o comportamento dele. O nome do método é o mesmo, mas o comportamento é diferente dependendo do objeto.</p>
+
+<p>Exemplo de classe mãe:</p>
+
+<pre>
+<code>
+public class Alimento {
+    public void consumir() {
+        System.out.println("Consumindo alimento...");
+    }
+}
+</code>
+</pre>
+
+<p>PS: Em C# e C++ precisa colocar o método como virtual para ele poder ser sobreposto. Isso explicaremos logo abaixo o que é. No Java, PHP e outras linguagens não se coloca esse indicador.</p>
+
+<p>Classe filha 1:</p>
+
+<pre>
+<code>
+public class Fruta extends Alimento {
+    @Override
+    public void consumir() {
+        super.consumir(); // Chamando método da classe mãe.
+        System.out.println("Comendo uma fruta fresca.");
+    }
+}
+</code>
+</pre>
+
+<p>Classe filha 2:</p>
+
+<pre>
+<code>
+public class Verdura extends Alimento {
+    @Override
+    public void consumir() {
+        super.consumir(); // Chamando método da classe mãe.
+        System.out.println("Comendo uma verdura saudável.");
+    }
+}
+</code>
+</pre>
+
+<p>Para trabalhar com métodos de classes mães em heranças, temos métodos especiais para isso. Da mesma forma que usamos nos construtores, podemos usar o super como citado acima no Java (no caso ficou <code>super.consumir()</code>, no PHP ficaria algo como <code>parent::consumir()</code>, e no C# <code>base.consumir()</code>, C++ e outras linguagens chamam a classe mãe diretamente (como <code>Alimento::consumir()</code>). Não é obrigatório o uso deles, na maioria dos casos.</p>
+
+<p>Como acontecia com as interfaces em Java, devemos colocar a notação <code>@Override</code> em métodos sobrepostos de outras classes.</p>
+
+<p>No C# não colocávamos <code>override</code> nos métodos sobrescritos da interface, mas no caso de métodos virtuais ou abstratos de classes é necessário.</p>
+
+<p>Veja o diagrama das classes acima:</p>
+
+<img src="imagens/diagrama-sobreposicao.png" alt="Diagrama Sobreposição" style="max-width: 600px"/>
+
+<p>Código principal:</p>
+
+<pre>
+<code>
+Alimento a1 = new Fruta();
+Alimento a2 = new Verdura();
+
+a1.consumir();  // chama o método da classe Fruta.
+a2.consumir();  // chama o método da classe Verdura.
+</code>
+</pre>
+
+<p>PS: Lembrando que, assim como acontecia com as interfaces, poderemos usar apenas métodos definidos na classe mãe, no caso, a Alimento.</p>
+
+<p>O fato de usar uma classe base na <q>tipagem</q> e depois criar o objeto com uma classe que herda a mesma, como ocorrido com Alimento e suas classes descendentes, é o polimorfismo de inclusão. Esse tipo de polimorfismo também acontece quando fazemos o mesmo com interfaces.</p>
+
+<p>Por padrão, no Java, assim como no PHP, todo método pode ser sobreposto, no caso da classe acima, para bloquear a sobreposição de um método, devemos colocar o <code>final</code> no método, de forma semelhante com as constantes. Na classe Alimento ficaria assim:</p>
+
+<pre>
+<code>
+public class Alimento {
+    public final void consumir() {
+        System.out.println("Consumindo alimento...");
+    }
+}
+</code>
+</pre>
+
+<p>Aí deveremos só implementar assim:</p>
+
+<pre>
+<code>
+Alimento a1 = new Alimento();
+
+a1.consumir();
+</code>
+</pre>
+
+<p>Já no caso do C# e do C++, nenhum método pode ser sobreposto por padrão. Aí nesse caso deveremos colocar o <code>virtual</code> nos métodos que queremos sobrepôr, como nesse exemplo em C#:</p>
+
+<pre>
+<code>
+class Alimento {
+    public virtual void consumir() {
+        Console.WriteLine("Consumindo alimento...");
+    }
+}
+</code>
+</pre>
+
+<p>E no método que o sobrescrever na classe filha, colocamos <code>override</code> no C# e C++, assim como no Java, na sintaxe <code>public override void consumir()</code> (em C#) e o bloco de implementação do mesmo.</p>
+
+<p>No caso do C#, podemos fazer com que um atributo ou método não seja sobrescrito com o <code>sealed</code> também.</p>
+
+<p>No caso do polimorfismo de sobreposição, o método tem a mesma assinatura em classes diferentes.</p>
+
 <h3>Classes e Métodos Abstratos</h3>
 
 <p>Voltando ao Java, podemos, assim como podemos fazer no C#, PHP, Python e outras linguagens, que um método seja abstrato também, para que possa ser sobreposto por classes filhas.</p>

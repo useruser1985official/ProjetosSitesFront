@@ -330,13 +330,13 @@ search exemplodedominio.net
 
 <p>O TCPDump é uma excelente ferramenta para realizar captura e análise de pacotes de rede, recomendada para profissionais que precisem realizar monitoramento e manutenção em uma rede de computadores, além de estudantes que queiram entender a fundo o funcionamento da pilha de protocolos TCP/IP.</p>
 
-<p>O TCPDump, que é software livre, roda na linha de comandos, estando disponível em diversos sistemas operacionais, como Linux, BSD, OS X, AIX e outros. Ele faz uso da biblioteca libpcap para realizar a captura de pacotes, e existe uma versão da ferramenta para Windows, chamada de WinDump, que usa a biblioteca WinPcap. Neste artigo vamos nos focar no TCPDump em si, usando para isso um sistema Linux (Ubuntu; qualquer outro sistema Linux irá servir para testar os exemplos mostrados).</p>
+<p>O TCPDump, que é software livre, roda na linha de comandos, estando disponível em diversos sistemas operacionais, como Linux, BSD, OS X, AIX e outros. Ele faz uso da biblioteca libpcap para realizar a captura de pacotes, e existe uma versão da ferramenta para Windows, chamada de WinDump, que usa a biblioteca WinPcap. Neste artigo vamos nos focar no TCPDump em si, usando para isso um sistema Linux (Ubuntu, qualquer outro sistema Linux irá servir para testar os exemplos mostrados).</p>
 
 <p>Para instalar o TCPDump no Ubuntu Linux, ou em sistemas baseados em Debian, use o comando <code>sudo apt-get install tcpdump</code>. Para ver as opções dele digite o help dele.</p>
 
-<p>Podemos por exemplo, capturar somente o tráfego a partir da interface eth0 digitando <code>sudo tcpdump -i eth0</code>. Gravar os pacotes capturados em um arquivo de nome captura.pcap digitando <code>sudo tcpdump -w captura.pcap</code>. Ler os pacotes capturados a partir do arquivo captura.pcap digitando <code>sudo tcpdump -r captura.pcap</code>. Capturar somente o tráfego associado ao protocolo ICMP, na interface eth0 digitando <code>sudo tcpdump -i eth0 icmp</code>. Capturar somente o tráfego associado ao protocolo ARP, na interface eth0 digitando <code>sudo tcpdump -i eth0 arp</code>. Capturar somente 50 pacotes a partir da interface eth0 digitando <code>sudo tcpdump -c 50 -i eth0</code>. Podemos também mostrar os pacotes capturados tanto em ASCII quanto em HEX, incluindo cabeçalho Ethernet digitando <code>sudo tcpdump -XX -i eth0</code>. Capturar pacotes mostrando IPs em vez de nome digitando <code>sudo tcpdump -n -i eth0</code>. Capturar somente pacotes maiores que 100 bytes: digitando <code>sudo tcpdump -i eth0 greater 100</code>, neste exemplo, se emitirmos um comando ping a partir de outra janela de terminal, os pacotes não serão capturados, pois são menores que 100 bytes.</p>
+<p>Podemos por exemplo, capturar somente o tráfego a partir da interface eth0 digitando <code>sudo tcpdump -i eth0</code>. Gravar os pacotes capturados em um arquivo de nome captura.pcap digitando <code>sudo tcpdump -w captura.pcap</code>. Ler os pacotes capturados a partir do arquivo captura.pcap digitando <code>sudo tcpdump -r captura.pcap</code>. Capturar somente o tráfego associado ao protocolo ICMP na interface eth0 digitando <code>sudo tcpdump -i eth0 icmp</code>. Capturar somente o tráfego associado ao protocolo ARP na interface eth0 digitando <code>sudo tcpdump -i eth0 arp</code>. Capturar somente 50 pacotes a partir da interface eth0 digitando <code>sudo tcpdump -c 50 -i eth0</code>. Podemos também mostrar os pacotes capturados tanto em ASCII quanto em HEX, incluindo cabeçalho Ethernet, digitando <code>sudo tcpdump -XX -i eth0</code>. Capturar pacotes mostrando IPs em vez de nomes digitando <code>sudo tcpdump -n -i eth0</code>. Capturar somente pacotes maiores que 100 bytes digitando <code>sudo tcpdump -i eth0 greater 100</code>, neste exemplo, se emitirmos um comando ping a partir de outra janela de terminal, os pacotes não serão capturados, pois são menores que 100 bytes.</p>
 
-<p>Capturar somente pacotes destinados à porta 53 digitando <code>sudo tcpdump -i eth0 port 53</code>, para testar, abrimos um navegador e acessamos uma página qualquer da Web. Usando filtros de condições: Capturar pacotes que usam o protocolo e cujo endereço de destino seja 64.233.186.121 digitando <code>sudo tcpdump -i eth0 dst 64.233.186.121 and icmp</code>, para testar, abrimos outra janela de terminal e emitimos o comando ping para vários endereços; somente serão capturados pacotes ao ser usado o endereço discriminado no comando. Se abrirmos um navegador e tentarmos acessar esse mesmo endereço (ou o site, www.planetaunix.com.br), os pacotes não serão capturados, por conta do protocolo utilizado (HTTP em vez de ICMP), mostrando que ambas as condições (AND) precisam ser satisfeitas para que essa captura tenha efeito. Capturar somente os pacotes ICMP Echo Request enviados pelo programa ping da máquina local, cujo IP é 192.168.1.105, para um endereço remoto, como 8.8.8.8 digitando <code>sudo tcpdump -i eth0 icmp and src 192.168.1.105 and dst 8.8.8.8</code>.</p>
+<p>Capturar somente pacotes destinados à porta 53 digitando <code>sudo tcpdump -i eth0 port 53</code>, para testar, abrimos um navegador e acessamos uma página qualquer da web. Usando filtros de condições: Capturar pacotes que usam o protocolo e cujo endereço de destino seja 64.233.186.121 digitando <code>sudo tcpdump -i eth0 dst 64.233.186.121 and icmp</code>, para testar, abrimos outra janela de terminal e emitimos o comando ping para vários endereços, somente serão capturados pacotes ao ser usado o endereço discriminado no comando. Se abrirmos um navegador e tentarmos acessar esse mesmo endereço (ou o site, www.planetaunix.com.br), os pacotes não serão capturados, por conta do protocolo utilizado (HTTP em vez de ICMP), mostrando que ambas as condições (AND) precisam ser satisfeitas para que essa captura tenha efeito. Capturar somente os pacotes ICMP Echo Request enviados pelo programa ping da máquina local, cujo IP é 192.168.1.105, para um endereço remoto, como 8.8.8.8, digitando <code>sudo tcpdump -i eth0 icmp and src 192.168.1.105 and dst 8.8.8.8</code>.</p>
 
 <p>Existem diversas outras opções e funcionalidades disponíveis no utilitário, e recomendamos uma leitura minuciosa das páginas de manual do TCPDump para aprofundar seus conhecimentos a respeito.</p>
 
@@ -434,6 +434,75 @@ search exemplodedominio.net
     <td>768</td>
     </tr>
 </table>
+
+<h3>O que é o MTU</h3>
+
+<p>Existe um limite de tamanho de dados de uma rede que define a quantidade de bytes que pode ser transmitidos dentro de um quadro. Pro padrão Ethernet, o limite de unidade máxima de trasmissão é de 1500 bytes (existe em outros padrões também). É uma característica da camada de enlace conhecida como MTU.</p>
+
+<p>Quando um datagrama a ser enviado em uma rede for maior do que o MTU da camada de enlace, o protocolo IP realizará a fragmentação dos dados, quebrando o datagrama em pedaços menores, chamados de fragmentos, cada um com tamanho menor do que o MTU.</p>
+
+<p>Veja abaixo uns MTUs típicos:</p>
+
+<table>
+    <tr>
+    <th>Rede</th>
+    <th>MTU (em bytes)</th>
+    </tr>
+    <tr>
+    <td>Hyperchannel</td>
+    <td>65535</td>
+    </tr>
+    <tr>
+    <td>WLAN 802.11</td>
+        <td>7981</td>
+    </tr>
+    <tr>
+    <td>Quadros Jumbo Ethernet</td>
+    <td>1501 - 9198</td>
+    </tr>
+    <tr>
+    <td>Tonken Ring 802.5</td>
+    <td>4464</td>
+    </tr>
+    <tr>
+    <td>FDDI</td>
+    <td>4352</td>
+    </tr>
+    <tr>
+    <td>Ethernet</td>
+    <td>1500</td>
+    </tr>
+    <tr>
+    <td>IEEE 802.3/802.2</td>
+    <td>1492</td>
+    </tr>
+    <tr>
+    <td>PPPoE</td>
+    <td>1492</td>
+    </tr>
+    <tr>
+    <td>X.25</td>
+    <td>576</td>
+    </tr>
+</table>
+
+<p>Para descobrir o MTU da interface, abrimos o CMD do Windows e digitamos <code>netsh interface ipv4 show subinterfaces</code>.</p>
+
+<p>O Path MTU (MTU do Caminho) é sobre o maior valor de MTU que pode tragegar em uma rede sem que os pacotes sofram fragmentação (esse valor pode mudar).</p>
+
+<p>Para a máquina saber qual a MTU correta à ser utilizada, tem o Path MTU Discovery (Descoberta do MTU de Caminho), para determinar o caminho MTU ideal entre dois hosts IP para evitar a fragmentação dos datagramas IP. Uma das formas é ligar o bit DF (Don't Fragment) do cabeçalho IP dos datagramas transmitidos. Ou a mensagem ICMP (destino inalcançável, tamanho muito grande).</p>
+
+<p>Para testar o MTU, usamos o Ping (no CMD) com as opções <code>/l tamanho-pacote</code>, que permite ajustar o tamanho (payload) do pacote enviado pelo ping para o valor "tamanho-pacote". E o <code>/f</code>, que habilita o bit DF no pacote transmitido (impedindo a fragmentação do mesmo).</p>
+
+<p>Vamos exemplificar, executando no prompt o comando <code>netsh interface ipv4 show subinterfaces</code>. Se for o caso, coloque ipv6 no lugar.</p>
+
+<p>Agora dê um ping num site qualquer (por exemplo <code>ping bosontreinamentos.com.br</code>)</p>
+
+<p>Agora faça o mesmo, com a opção <code>/l 1500</code>, no caso, <code>ping /l 1500 bosontreinamentos.com.br</code> (ou outro número, esse número é a quantidade de bytes enviados, que pode ser até 65500, o padrão é 32). Se estiver em Linux, use o parâmetro <code>-s</code>.</p>
+
+<p>O MTU típico é de 1500, como já vimos, mas a transmissão pode ser feita com outro número maior, como 8500, nesse caso os pacotes serão fragmentados.</p>
+
+<p>Ao colocar o <code>/f</code>, antes do site, ele não fragmentará os pacotes, o que pode dar erro em tamanhos maiores. Como por exemplo, <code>ping /l 1500 /f bosontreinamentos.com.br</code></p>
 
 <ul>
     <li><a href="tudo-sobre-redes-2.html">Parte Anterior da Matéria!</a></li>

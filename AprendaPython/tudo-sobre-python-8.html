@@ -465,6 +465,26 @@ print(divisao(50, 0))
 
 <p>Dessa forma, ele exibirá o erro de uma forma mais bonita visualmente.</p>
 
+<p>Usando a configuração Emulate Terminal in Output Console, podemos também ocultar senhas com o <code>pwinput</code>, assim:</p>
+
+<pre>
+<code>
+from hashlib import sha256
+from pwinput import pwinput
+from rich import print
+
+login = str(input("Digite seu login: ")).strip()
+senha = str(pwinput("Digite sua senha: ")).strip() # O pwinput mascara a senha com asteriscos
+
+senha = sha256(senha.encode("utf-8")).hexdigest()
+
+print(f"[cyan]Login:[/] [green]{login}[/]")
+print(f"[cyan]Senha criptografada:[/] [green]{senha}[/]")
+</code>
+</pre>
+
+<p>PS: Ele não funciona sem a opção Emulate Terminal.</p>
+
 <ul>
     <li><a href="tudo-sobre-python-7.html">Parte Anterior da Matéria!</a></li>
     <!--<li><a href="tudo-sobre-python-9.html">Continuação da Matéria!</a></li>-->
