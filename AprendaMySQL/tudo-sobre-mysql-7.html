@@ -102,7 +102,7 @@ insert into tbl_vendas (preco_produto, qtd, desconto) values
 
 <p>PS: Uma coluna calculada não pode ter a restrição not null aplicada, e também não pode ter dados inseridos por uma declaração insert e nem modificados por um update. Também não pode ser utilizada com definições de restrição default e foreign key (chave estrangeira). Não é necessário especificar o tipo de dados do campo calculado ao criar a tabela. Colunas persistidas ocupam mais espaço em disco do que colunas calculadas virtuais (sem persisted).</p>
 
-<h3>Tipo de dados Enum no MySQL</h3>
+<h3>Tipo de Dados Enum no MySQL</h3>
 
 <p>O tipo de dados enum é um objeto string cujo valor é escolhido a partir de uma lista de valores permitidos, enumerados de forma explícita durante a especificação de uma coluna, quando uma tabela é criada.</p>
 
@@ -201,7 +201,7 @@ select * from camisas order by cast(tamanho as char);
 
 <p>PS: Não e recomendado usar valores numéricos em uma coluna do tipo enum, pois neste caso não haverá economia de espaço de armazenamento (em relação a valores SMALLINT e TINYINT), além do risco de haver confusão entre o valor armazenado e o número empregado para representá-lo internamente.</p>
 
-<h3>Indexar tabelas em MySQL</h3>
+<h3>Indexar Tabelas em MySQL</h3>
 
 <p>Os índices são empregados em consultas para ajudar a encontrar registros com um valor específicos em uma coluna de forma rápida, ou seja, aumentar o desempenho na execução de consultas. Com índices, o MySQL vai direto a uma linha em vez de buscar toda a tabela até encontrar os registros que importam.</p>
 

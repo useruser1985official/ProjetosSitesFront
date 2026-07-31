@@ -411,7 +411,7 @@ show ip route
 
 <p>Coloque um PC com o IP <code>192.168.1.2</code> com o gateway <code>192.168.1.1</code>, e um roteador 2621XM ligado a ele com o IP <code>192.168.1.1</code> e máscara padrão C, mas do outro lado do roteador terá o IP <code>192.168.2.1</code> e a máscara <code>255.255.255.252</code> (outra rede). Coloque ao lado um firewall 5506 e no final, um servidor. No firewall, que será configurado por último, a porta ligada ao roteador terá a mesma máscara e o IP <code>192.168.2.2</code>. Do outro lado, será outra rede, com o IP do firewall sendo <code>192.168.3.1</code> e o servidor com o IP <code>192.168.3.2</code> com o gateway <code>192.168.3.1</code>, ambos com a máscara <code>255.255.255.252</code>.</p>
 
-<p>PS: Lembre-se que computadores e roteadores devem ser ligados com o cabo Cross. Roteador é como se fosse um computador também.</p>
+<p>PS: Lembre-se que computadores e roteadores devem ser ligados com o cabo Cross. Roteador é como se fosse um computador também, e o firewall também age como um roteador acrescido de segurança.</p>
 
 <p>No roteador, vamos em CLI, digite <q>n</q> na configuração do dialog e depois digite esses comandos para o configurar:</p>
 
@@ -449,7 +449,7 @@ exit
 </code>
 </pre>
 
-<p>O RIP (Routing Information Protocol) é um protocolo usado por roteadores para trocar informações sobre caminhos na rede.</p>
+<p>O RIP (Routing Information Protocol) é um protocolo usado por roteadores para trocar informações sobre caminhos na rede. Ele atualiza as rotas dinamicamente ao conversar com outros roteadores, em contraste com as rotas estáticas. No caso, passamos as redes nas quais o roteador é conectado.</p>
 
 <p>No servidor, habilite o HTTP para um teste.</p>
 
@@ -503,7 +503,7 @@ exit
 </code>
 </pre>
 
-<p>No PC, podemos fazer o ping com o servidor digitando no prompt ping 192.168.3.2, podemos também abrir o site no navegador pelo mesmo IP.</p>
+<p>No PC, podemos fazer o ping com o servidor digitando no prompt <code>ping 192.168.3.2</code>, podemos também abrir o site no navegador pelo mesmo IP.</p>
 
 <p>Digite no PC:</p>
 

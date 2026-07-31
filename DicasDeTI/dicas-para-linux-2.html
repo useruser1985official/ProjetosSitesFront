@@ -205,53 +205,36 @@ deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 </code>
 </pre>
 
-<h3>Mudando o Tema do Linux</h3>
-
-<p>Para deixar o Linux visualmente mais parecido com o Windows, podemos baixar o tema do Windows pra ele, digitando esses comandos:</p>
-
-<pre>
-<code>
-sudo add-apt-repository ppa:noobslab/themes
-
-sudo apt-get update
-
-sudo apt-get install windos-10-themes
-</code>
-</pre>
-
-<p>Para instalar os ícones, baixe o arquivo deb, nesse link: <a href="https://userscloud.com/lplljh734q2q" target="_blank">https://userscloud.com/lplljh734q2q</a></p>
-
-<p>É só executar o arquivo que ele instala.</p>
-
 <h3>Conectando Wi-Fi via Terminal</h3>
 
-<p>Para conectar, digite assim (substituindo pela interface da placa de rede wi-fi):</p>
+<p>Para listar as redes, fazemos assim:</p>
 
 <pre>
 <code>
-iw eth0 essid &lt;NOME-DA-REDE&gt; mode managed
+nmcli dev wifi
 </code>
 </pre>
 
-<p>Depois vc pega o IP da rede:</p>
+<p>Para conectar, digite assim:</p>
 
 <pre>
 <code>
-dhclient eth0 
+nmcli dev wifi connect "Nome da Rede" password "Senha"
 </code>
 </pre>
 
-<h3>Formatar Pen-Drive pelo Terminal</h3>
+<h3>Formatar Pendrive pelo Terminal</h3>
 
-<p>Para formatar pen-drives, digite <code>sudo mount</code> e procure a partição referente ao pen-drive, geralmente a última em /dev/sdb1, onde fica o caminho do diretório da montagem dele em /media/user/.</p>
+<p>Para formatar pendrives, digite <code>sudo mount</code> e procure a partição referente ao pendrive, geralmente a última em /dev/sdb1, onde fica o caminho do diretório da montagem dele em /media/user/.</p>
 
 <p>Para ver os dados de todos os discos, digite <code>sudo fdisk -l</code>.</p>
 
-<p>Para formatar o pen-drive, digite isso:</p>
+<p>Para formatar o pendrive, digite isso:</p>
 
 <pre>
 <code>
 sudo umount /dev/sdb1
+
 sudo mkfs.fat /dev/sdb1 -n "Nome do Pendrive"
 </code>
 </pre>
@@ -261,7 +244,9 @@ sudo mkfs.fat /dev/sdb1 -n "Nome do Pendrive"
 <pre>
 <code>
 sudo umount /dev/sdb1
+
 sudo mkfs.ntfs -f /dev/sdb1
+
 sudo ntfslabel /dev/sdb1 "Nome do Pendrive"
 </code>
 </pre>
@@ -270,7 +255,7 @@ sudo ntfslabel /dev/sdb1 "Nome do Pendrive"
 
 <h3>Antivírus no Linux</h3>
 
-<p>O Linux, por ser menos vulnerável, não é necessário usar antivírus, no entanto, podemos instalar o Clamav para scanear pen-drives e partições.</p>
+<p>O Linux, por ser menos vulnerável, não é necessário usar antivírus, no entanto, podemos instalar o Clamav para scanear pendrives e partições.</p>
 
 <p>Para instalar, basta usar isso, em sistemas Debian e derivados:</p>
 
@@ -363,6 +348,53 @@ WEB_CMD=""
 </pre>
 
 <p>Já o ChkRootKit, instalamos com <code>sudo apt install chkrootkit</code>, e executando como administrador usando o comando <code>sudo chkrootkit</code>.</p>
+
+<h3>Usando o Editor Nano</h3>
+
+<p>Para usar o Nano, basta digitar <code>nano arquivo.txt</code>, se o arquivo não existir, ele será criado.</p>
+
+<p>Esses são os comandos básicos do Nano:</p>
+
+<table>
+    <tr>
+        <th>Comando</th>
+        <th>Ação</th>
+    </tr>
+    <tr>
+        <td>Ctrl O</td>
+        <td>Salvar</td>
+    </tr>
+    <tr>
+        <td>Ctrl W</td>
+        <td>Buscar Texto</td>
+    </tr>
+    <tr>
+        <td>Ctrl K</td>
+        <td>Recortar Linha</td>
+    </tr>
+    <tr>
+        <td>Ctrl U</td>
+        <td>Colar</td>
+    </tr>
+    <tr>
+        <td>Alt U</td>
+        <td>Desfazer</td>
+    </tr>
+    <tr>
+        <td>Alt E</td>
+        <td>Refazer</td>
+    </tr>
+    <tr>
+        <td>Ctrl O</td>
+        <td>Salvar</td>
+    </tr>
+    <tr>
+        <td>Ctrl X</td>
+        <td>Sair</td>
+    </tr>
+</table>
+
+<p>No Nano, o símbolo <q>^</q> significa Ctrl (tipo <q>^X</q>).</p>
 
 <h3>Compactando e Descompactando Arquivos</h3>
 
@@ -550,7 +582,7 @@ https://www.edivaldobrito.com.br/oracle-java-no-ubuntu-18-04-lts/
     <li><a href="https://www.diolinux.com.br/2014/09/baixar-programas-mais-rapido-ubuntu.html" target="_blank">Atualizar Repositório de Programa do Ubuntu</a></li>
     <li><a href="http://elias.praciano.com/2014/11/erro-ao-executar-o-apt-get-saiba-como-resolver/" target="_blank">Resolver Problemas com apt-get</a></li>
     <li><a href="https://www.vivaolinux.com.br/topico/Helps-e-dicas-para-usuarios-iniciantes/Erro-ao-dar-update-2" target="_blank">Corrigir Pacotes Quebrados do apt-get</a></li>
-    <li><a href="https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2011/12/como-formatar-um-pen-drive-no-terminal-do-linux.html" target="_blank">Formatar Pen-Drives no Linux</a></li>
+    <li><a href="https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2011/12/como-formatar-um-pendrive-no-terminal-do-linux.html" target="_blank">Formatar Pendrives no Linux</a></li>
     <li><a href="https://sempreupdate.com.br/comandos-ftp-linux-unix/" target="_blank">Comandos FTP para Linux</a></li>
     <li><a href="http://rberaldo.com.br/usando-o-ssh/" target="_blank">Usar Cliente SSH no Linux</a></li>
     <li><a href="https://www.vivaolinux.com.br/artigo/Configurando-proxy-no-shell" target="_blank">Configurando Proxy via Shell</a></li>

@@ -61,7 +61,7 @@ steghide embed -cf imagen.jpg -ef mensagem.txt
 </code>
 </pre>
 
-<p>Ele pedirá pra criar uma senha., e o arquivo é modificado, visualmente ela estará igual antes, mas terá a mensagem oculta. Para especificar um algoritmo de criptografia, use a opção -e seguida do algoritmo, por exemplo <code>-e rc2</code>.</p>
+<p>Ele pedirá pra criar uma senha, e o arquivo é modificado, visualmente ela estará igual antes, mas terá a mensagem oculta. Para especificar um algoritmo de criptografia, use a opção -e seguida do algoritmo, por exemplo <code>-e rc2</code>.</p>
 
 <p>Para mostrar informações do arquivo, fazemos assim:</p>
 
@@ -93,9 +93,9 @@ steghide encinfo
 
 <h3>Kali Linux – Coletando Informações com DMitry</h3>
 
-<p>O DMitry (Deepmagic Information Gathering Tool) é uma aplicação Open Source de linha de comandos que nos permite coletar diversos tipos de informações sobre um host em uma rede. A ferramenta, que é codificada em linguagem C, é capaz de coletar dados sobre subdomínios, endereços de e-mail, efetuar escaneamento de portas TCP (port scan), lookups whois e mais algumas funções.</p>
+<p>O DMitry (Deepmagic Information Gathering Tool) é uma aplicação Open Source de linha de comando que nos permite coletar diversos tipos de informações sobre um host em uma rede. A ferramenta, que é codificada em linguagem C, é capaz de coletar dados sobre subdomínios, endereços de e-mail, efetuar escaneamento de portas TCP (port scan), lookups whois e mais algumas funções.</p>
 
-<p>O site oficial do projeto é o <a href="http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/" target="_blank">http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/</a>, onde você pode baixar a versão mais recente do pacote. No kali Linux, a ferramenta está presente por padrão, não sendo necessário baixá-la e instalá-la. De acordo com o site do desenvolvedor, o DMitry pode ser executado em várias plataformas, incluindo FreBSD, Mac OS X, SuSE Linux e OpenBSD, entre outras. Ele lembra um pouco o Nmap, mas é um pouco mais simples.</p>
+<p>O site oficial do projeto é o <a href="http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/" target="_blank">http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/</a>, onde você pode baixar a versão mais recente do pacote. No Kali Linux, a ferramenta está presente por padrão, não sendo necessário baixá-la e instalá-la. De acordo com o site do desenvolvedor, o DMitry pode ser executado em várias plataformas, incluindo FreeBSD, Mac OS X, SuSE Linux e OpenBSD, entre outras. Ele lembra um pouco o Nmap, mas é um pouco mais simples.</p>
 
 <p>Vamos começar executando o software sem usar nenhuma opção. Para isso, execute o comando a seguir no terminal:</p>
 
@@ -143,7 +143,7 @@ dmitry -p -f 192.168.1.110 -o portas-escaneadas
 
 <h3>Kali Linux – Manipulando Endereços MAC com Macchanger</h3>
 
-<p>O utilitário de linha de comandos macchanger (GNU Mac Changer), escrito por Alvaro Lopez Ortega,  permite visualizar e manipular o endereço MAC (Media Access Control) das interfaces de rede do computador. Esse utilitário está presente nativamente no Kali Linux.</p>
+<p>O utilitário de linha de comandos MacChanger (GNU Mac Changer), escrito por Alvaro Lopez Ortega,  permite visualizar e manipular o endereço MAC (Media Access Control) das interfaces de rede do computador. Esse utilitário está presente nativamente no Kali Linux.</p>
 
 <p>Para instalá-lo no Debian GNU/Linux e derivados (como o Ubuntu Linux) use o comando a seguir:</p>
 
@@ -155,7 +155,7 @@ sudo apt-get install macchanger
 
 <p>A sintaxe básica dele é macchanger opções dispositivo.</p>
 
-<p>PS: Todos os comandos deverão ser utilizado como root, então dê <code>sudo su</code> caso não esteja no Kali. Pode ser necessário também dar um down na interface antes de fazer alterações nela.</p>
+<p>PS: Todos os comandos deverão ser utilizados como root, então dê <code>sudo su</code> caso não esteja no Kali. Pode ser necessário também dar um down na interface antes de fazer alterações nela.</p>
 
 <p>Vamos visualizar o endereço MAC (MAC Address) atual da interface eth0:</p>
 
@@ -300,13 +300,13 @@ macchanger -p eth0
 
 <p>Primeiramente, devemos usar uma conta do Windows com uma senha, então coloque uma senha ou crie uma conta administradora com senha e acesse por ela. O MobaSSH não permite acesso sem senha por segurança (mas é configurável).</p>
 
-<p>O mesmo arquivo, usado para baixar e instalar o MobaSSH, é usado para gerenciar, atualizar e desinstalar à ele mesmo.</p>
+<p>O mesmo arquivo, usado para baixar e instalar o MobaSSH, é usado para gerenciar, atualizar e desinstalar a ele mesmo.</p>
 
 <p>Devemos também adicionar uma regra no firewall do Windows, em regras de entrada clique com o botão direito, crie uma nova regra, e escolha a opção porta, regra TCP e porta 22, permitir a conexão e o escopo da regra, e dê um nome à ela.</p>
 
 <p>Abriremos o CMD e pegue o IP privado da máquina, e na outra máquina da sua rede, podemos usar um programa como o Bitvise SSH para acessar essa primeira máquina.</p>
 
-<p>Lembrando que mesmo sendo acesso à um Windows, ele exibirá da mesma estrutura como um Linux.</p>
+<p>Lembrando que mesmo sendo acesso a um Windows, ele exibirá da mesma estrutura como um Linux.</p>
 
 <p>PS: No Windows 10 podemos instalar o servidor SSH nativo do sistema, indo em Apps e Recurso e Recursos Opcionais.</p>
 

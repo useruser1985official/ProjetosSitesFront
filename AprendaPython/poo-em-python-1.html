@@ -66,6 +66,7 @@ print(aluno["nome"]) # Exibe José
 <pre>
 <code>
 class MinhaClasse:
+    pass
     # Atributos
 
     # Métodos
@@ -74,7 +75,7 @@ obj = MinhaClasse() # Criação do objeto (instância).
 </code>
 </pre>
 
-<p>PS: Não confunda a instânciação de uma classe com a invocação de uma função, apesar dela também usar parênteses. Ela é a instanciação sim de um método, que é o construtor.</p>
+<p>PS: Não confunda a instanciação de uma classe com a invocação de uma função, apesar dela também usar parênteses. Ela é a instanciação sim de um método, que é o construtor.</p>
 
 <p>Crie um arquivo Python e coloque esse código:</p>
 
@@ -113,6 +114,8 @@ print(g1.mensagem())
 </pre>
 
 <p>No caso acima, a variável <q>g1</q> é um objeto que foi instanciado da classe Gafanhoto (que chamará automaticamente o método <code>__init__</code>, que é o construtor).</p>
+
+<p>O método construtor é o método que automaticamente é executado ao criar um novo objeto. No caso do Python, ele recebe o nome <code>__init__</code>.</p>
 
 <p>Para chamar os atributos e métodos de um objeto, usamos o ponto, e os atributos não usam parênteses, apenas os métodos (sem o self, nesse caso).</p>
 
@@ -208,7 +211,7 @@ print(g2.mensagem())
 
 <p>Com isso, ele criará os objetos da mesma forma, mas com menos linhas e mais segurança.</p>
 
-<p>No caso acima, os parâmetros no construtor são obrigatório, mas eles podem ser opcionais também, pra isso, altere o construtor assim:</p>
+<p>No caso acima, os parâmetros no construtor são obrigatórios, mas eles podem ser opcionais também, pra isso, altere o construtor assim:</p>
 
 <pre>
 <code>
@@ -495,6 +498,32 @@ def sacar(self, valor):
 </pre>
 
 <p>PS: Podemos fazer outras melhorias, como colocar cores, por exemplo.</p>
+
+<p>Uma classe no Python pode ter um método destrutor também, definido como <code>__del__</code>, que na classe pode ser definido assim:</p>
+
+<pre>
+<code>
+def __del__(self):
+    print("Objeto Destruído com Sucesso!")
+</code>
+</pre>
+
+<p>E no final do código principal, depois de utilizar o objeto criado, basta fazer assim, com del:</p>
+
+<pre>
+<code>
+c1 = ContaBancaria(112, "Gustavo", 3000)
+
+c1.depositar(500)
+c1.sacar(2_000_000) # É o mesmo que 2000000
+
+print(c1)
+
+del c1
+</code>
+</pre>
+
+<p>Dentro do destrutor, costumamos excluir por exemplo, objetos agregados ou compostos, mas como na maioria das linguagens modernas, o Python faz a coleta de lixo automaticamente após o final da execução, por isso muitos programadores não definem destrutores em Python.</p>
 
 <h3>Rich no Python: Colocando a Biblioteca na Nossa Classe</h3>
 

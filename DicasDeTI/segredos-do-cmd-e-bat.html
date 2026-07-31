@@ -724,7 +724,7 @@ goto B
 
 <h3>Criação de Arquivos BAT</h3>
 
-<p>Para criar arquivos BAT, crie um arquivo de texto no Bloco de Notas e salve com a extensão .bat, no formato ANSI, (ou use o <code>copy con</code> do CMD, o <code>edit</code> do DOS ou <code>echo</code> com arquivo no CMD), para criar um arquivo de scripts novo, e coloque os comandos dessa forma:</p>
+<p>Para criar arquivos BAT, crie um arquivo de texto no Bloco de Notas e salve com a extensão .bat, no formato ANSI (ou use o <code>copy con</code> do CMD, o <code>edit</code> do DOS ou <code>echo</code> com arquivo no CMD), para criar um arquivo de scripts novo, e coloque os comandos dessa forma:</p>
 
 <pre>
 <code>
@@ -744,13 +744,13 @@ pause
 </code>
 </pre>
 
-<p>No código acima, o <code>@echo off</code> tira a exibição dos caminhos do programa, o arroba faz isso em todos os comandos que ele estiver do lado, no entando, usando o echo off dessa forma, ele automaticamente oculta a exibição de todos. O chcp 1252 é pra corrigir acentos (principalmente nos casos que escrevermos arquivos pelo CMD), e o echo com o ponto pula uma linha.</p>
+<p>No código acima, o <code>@echo off</code> tira a exibição dos caminhos do programa, o arroba faz isso em todos os comandos que ele estiver do lado, no entanto, usando o echo off dessa forma, ele automaticamente oculta a exibição de todos. O <code>chcp 1252</code> é pra corrigir acentos (principalmente nos casos que escrevemos arquivos pelo CMD), e o echo com o ponto pula uma linha.</p>
 
 <p>Dessa forma, podemos criar arquivos que executem várias funções de uma vez. Todos os comandos do CMD funcionam normalmente no BAT, mas alguns caracteres podem não funcionar. Podemos inclusive, usar variáveis e operadores condicionais e de repetição.</p>
 
 <h3>Variáveis no CMD</h3>
 
-<p>Para utilizar variáveis no CMD, usamos o comando <code>set nome=</code>, usada para declarar variáveis (tem que estar com o = tudo junto, tipo <code>set num=3</code>). As variáveis são usadas com a porcentagem entre eles (tipo <code>%num%</code>). Podemos também atribuir um caminho de pasta à elas, programas ou sites à elas. Veja um exemplo em BAT:</p>
+<p>Para utilizar variáveis no CMD, usamos o comando <code>set nome=</code>, usada para declarar variáveis (tem que estar com o = tudo junto, tipo <code>set num=3</code>). As variáveis são usadas entre dois símbolos de porcentagem (tipo <code>%num%</code>). Podemos também atribuir um caminho de pasta, programas ou sites a elas. Veja um exemplo em BAT:</p>
 
 <pre>
 <code>
@@ -778,13 +778,17 @@ set /p idade=Digite sua idade:
 
 set /a ano=2017 - idade
 
-echo Olá %nome%, você nasceu em %ano%.
+echo Olá, %nome%, você nasceu em %ano%.
 
-exit
+echo.
+
+pause
 </code>
 </pre>
 
-<p>PS: Você pode usar <code>%username%</code> como um curinga que mostrará o nome do usuário logado no momento. O parâmetro <code>/i</code>, é usado para não diferenciar maiúsculas de minúsculas. </p>
+<p>PS: Você pode usar <code>%username%</code> como um curinga que mostrará o nome do usuário logado no momento. O parâmetro <code>/i</code> é usado para não diferenciar maiúsculas de minúsculas.</p>
+
+<h3>Variáveis de Ambiente</h3>
 
 <p>Essas são as variáveis do sistema (usadas também entre dois %):</p>
 

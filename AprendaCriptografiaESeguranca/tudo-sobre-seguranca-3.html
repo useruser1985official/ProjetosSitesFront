@@ -308,49 +308,49 @@
 
 <p>O ataque de colisão é quando encontramos dois textos planos diferentes que tem o mesmo hash, inclusive já chega a comprometer os algoritmos MD5 e SHA-1. Já o ataque de aniversário se baseia nas probabilidades matemáticas de encontrar determinada senha.</p>
 
-<p>Uma Rainbow Table é uam espécie de table que contém milhões (ou bilhões) de hashes pré-calculados e as strings ("senhas") que os originaram. Uma rainbow table é otimizada para armazenar hashes e senhas, permitindo pesquisar entradas de forma muito veloz. São usadas basicamente para quebrar hashes de senhas.</p>
+<p>Uma rainbow table é uma espécie de tabela que contém milhões (ou bilhões) de hashes pré-calculados e as strings ("senhas") que os originaram. Uma rainbow table é otimizada para armazenar hashes e senhas, permitindo pesquisar entradas de forma muito veloz. São usadas basicamente para quebrar hashes de senhas.</p>
 
 <p>Uma função de hash mapeia textos planos (dados não criptografados) em hashes de forma que não podemos discernir qual texto plano originou qual hash. Para que seja possível descobrir o texto plano a partir de um hash, devemos aplicar a função de hash em cada texto plano possível até encontrarmos o hash idêntico ao procurado. Podemos também armazenar cada hash gerado em uma tabela, de modo que podemos consultá-la mais tarde sem precisarmos efetuar o cálculo de hash outra vez.</p>
 
-<p>Uma forma comum de proteger o hash de nossas senhas contra ataques de rainbow tables é o uso de uma técnica conhecida como salt ("salgar a senha"). Um salt é uma informação aleatória adiciona à entrada da função de hash, tornando a saída da função única, e imune às rainbow tables. Seria algo tipo <code>FuncaoHash(TextoPlano + Salt)</code>. O "salt" pode ser o nome de usuário, um PIN, um valor aleatório, etc.</p>
+<p>Uma forma comum de proteger o hash de nossas senhas contra ataques de rainbow tables é o uso de uma técnica conhecida como salt ("salgar a senha"). Um salt é uma informação aleatória adicionada à entrada da função de hash, tornando a saída da função única, e imune às rainbow tables. Seria algo tipo <code>FuncaoHash(TextoPlano + Salt)</code>. O "salt" pode ser o nome de usuário, um PIN, um valor aleatório, etc.</p>
 
-<p>Para vermos na prática um funcionamento de um Rainbow Table, podemos utilizar sites para isso, como esse site encripta e decripta vários algoritmos, além de outros recursos, como identificar o algoritmo de um hash: <a href="https://hashes.com/" target="_blank">https://hashes.com/</a></p>
+<p>Para vermos na prática o funcionamento de uma rainbow table, podemos utilizar sites para isso, como esse site que encripta e decripta vários algoritmos, além de outros recursos, como identificar o algoritmo de um hash: <a href="https://hashes.com/" target="_blank">https://hashes.com/</a></p>
 
-<p>No primeiro site, coloque uma senha simples como "laranja" (cujo hash é <code>cf75ceb29197f57b19dcb8b4757368e8</code>), e pegue o hash dela e jogue no segundo site, pra ver se ele encontra algo. Da mesma forma, teste senhas de todo tipo, das mais fáceis até as mais complexas.</p>
+<p>Nesse site, coloque uma senha simples como "laranja" (cujo hash MD5 é <code>cf75ceb29197f57b19dcb8b4757368e8</code>), e pegue o hash dela e jogue no mesmo site, pra ver se ele encontra algo. Da mesma forma, teste senhas de todo tipo, das mais fáceis até as mais complexas.</p>
 
 <p>Isso é útil para sabermos se uma senha é fraca ou mais forte.</p>
 
-<p>Além do MD5, o Rainbow Table também pode quebrar outros tipos de senhas, como SHA-1.</p>
+<p>Além do MD5, o rainbow table também pode quebrar outros tipos de hashes, como SHA-1.</p>
 
 <h3>O que são Cifras de Feistel?</h3>
 
-<p>A maioria dos algoritmos de criptografia simétrica de bloco possuem uma estrutura descrita por Horst Feistel, da IBM, m 1973. As entradas do algoritmo são blocos de texto plano de comprimento 2x bits e um chave K. O bloco de texto plano é dividido em duas metades, L<sub>0</sub> e R<sub>0</sub>. Essas duas metades passam por n rodades de processamento e então se combinam para produzir o bloco de texto cifrado.</p>
+<p>A maioria dos algoritmos de criptografia simétrica de bloco possuem uma estrutura descrita por Horst Feistel, da IBM, em 1973. As entradas do algoritmo são blocos de texto plano de comprimento 2x bits e uma chave K. O bloco de texto plano é dividido em duas metades, L<sub><small>0</small></sub> e R<sub><small>0</small></sub>. Essas duas metades passam por n rodadas de processamento e então se combinam para produzir o bloco de texto cifrado.</p>
 
-<p>Cada rodada r recebe como entrada L<sub>r-1</sub> e R<sub>r-1</sub>, derivadas da rodada anterior, assim como uma subchave K<sub>r</sub>, derivada da chave geral K. Essas subchaves são diferentes de K entre si pois são geradas a partir de K com um algoritmo de geração de chaves. As interações possuem todas a mesma estrutura. Uma substituição é realizada na metade esquerda dos dados, por meio da aplicação de uma função F na metade direita dos dados com a chave e então obtendo-se o XOR da saíde desta função e da metade esquerda dos dados.</p>
+<p>Cada rodada r recebe como entrada L<sub><small>r-1</small></sub> e R<sub><small>r-1</small></sub>, derivadas da rodada anterior, assim como uma subchave K<sub><small>r</small></sub>, derivada da chave geral K. Essas subchaves são diferentes de K entre si pois são geradas a partir de K com um algoritmo de geração de chaves. As interações possuem todas a mesma estrutura. Uma substituição é realizada na metade esquerda dos dados, por meio da aplicação de uma função f na metade direita dos dados com a chave e então obtendo-se o XOR da saída desta função e da metade esquerda dos dados.</p>
 
 <p>Veja abaixo a representação da permuta básica Feistel:</p>
 
 <img src="imagens/permuta-feistel.jpg" alt="Permuta Feistel"/>
 
-<p>Em outras palavras, o texto plano é dividido em dois, o que está no lado direito (o -1 é o bloco anterior de ambos) na função f que é aplicada a criptografia com uma chave, a saída recebe o que está do lado esquerdo e a saída vai pro lado direito, e o que estava no lado direito vai pro esquerdo. Isso é feito várias vezes, formando uma rede Feistel.</p>
+<p>Em outras palavras, o texto plano é dividido em dois, o que está no lado direito (o -1 é o bloco anterior de ambos) na função f que é aplicada à criptografia com uma chave, a saída recebe o que está do lado esquerdo e a saída vai pro lado direito, e o que estava no lado direito vai pro esquerdo. Isso é feito várias vezes, formando uma rede Feistel.</p>
 
 <p>Veja abaixo um exemplo de rede Feistel dessa forma:</p>
 
 <img src="imagens/rede-feistel.jpg" alt="Rede Feistel"/>
 
-<p>Muito algoritmos de criptografia utilizam uma ideia baseada em redes Feistel.</p>
+<p>Muitos algoritmos de criptografia utilizam uma ideia baseada em redes Feistel.</p>
 
 <p>Como a cifra de Feistel será aplicada depende da escolha de alguns parâmetros, como:</p>
 
 <ul>
-    <li><b>Tamanho do bloco:</b> Geralmente 64 bits.</li>
-    <li><b>Tamanho da chave:</b> Chaves maiores significam maior segurança, porém menor velocidade de execução do algoritmo.</li>
-    <li><b>Número de rodadas:</b> Tamanho típico 16.</li>
-    <li><b>Algoritmo de geração de subchaves:</b> Quanto mais complexo, melhor.</li>
-    <li><b>Função F (função principal do algoritmo):</b> Quanto mais complexa, melhor.</li>
+    <li><b>Tamanho do Bloco:</b> Geralmente 64 bits.</li>
+    <li><b>Tamanho da Chave:</b> Chaves maiores significam maior segurança, porém menor velocidade de execução do algoritmo.</li>
+    <li><b>Número de Rodadas:</b> Tamanho típico 16.</li>
+    <li><b>Algoritmo de Geração de Subchaves:</b> Quanto mais complexo, melhor.</li>
+    <li><b>Função f (Função Principal do Algoritmo):</b> Quanto mais complexa, melhor.</li>
 </ul>
 
-<p>O processo de descriptografia de uma cifra de Feistel é igual a criptografia. Usa-se, nesse caso, o texto cifrado como entrada do algoritmo, e as suchaves K<sub>n</sub> em ordem reversa.</p>
+<p>O processo de descriptografia de uma cifra de Feistel é igual à criptografia. Usa-se, nesse caso, o texto cifrado como entrada do algoritmo, e as subchaves K<sub><small>n</small></sub> em ordem reversa.</p>
 
 <p>As cifras de Feistel são usadas nos algoritmos de criptografia DES, Blowfish, RC5, Twofish, 3DES, entre outros.</p>
 

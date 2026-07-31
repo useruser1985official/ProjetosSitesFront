@@ -427,7 +427,65 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from abc import ABC
+from datetime import date
+from rich import print
 
+class Pessoa(ABC):
+    def __init__(self, nome:str, nasc:int):
+        self._nome = nome
+        self._nascimento = None
+        self.nascimento = nasc # Alterando no property
+
+    @property
+    def nascimento(self):
+        return self._nascimento
+
+    @nascimento.setter
+    def nascimento(self, ano):
+        if 1900 <= ano <= date.today().year:
+            self._nascimento = ano
+        else:
+            raise ValueError(f"Ano {ano} é inválido!")
+
+    @property
+    def idade(self):
+        return date.today().year - self._nascimento
+
+    @idade.setter
+    def idade(self, idade):
+        raise PermissionError("Você não pode alterar a idade. Mude o ano de nascimento.")
+
+class Aluno(Pessoa):
+    cursosOficiais = ["ADM", "ADS", "ENG", "CONT"]
+
+    def __init__(self, nome, nasc:int, curso:str):
+        super().__init__(nome, nasc)
+        self._curso = None
+        self.curso = curso # Alterando no property
+
+    @property
+    def curso(self):
+        return self._curso
+
+    @curso.setter
+    def curso(self, curso):
+        if curso in Aluno.cursosOficiais:
+            self._curso = curso
+        else:
+            self._curso = None
+            raise ValueError(f"O curso {curso} não está na lista de cursos oficiais.")
+
+    def addCurso(self, curso:str):
+        curso = curso.strip().upper()
+
+        if curso in Aluno.cursosOficiais:
+            raise ValueError(f"Nome {curso} já está na lista de cursos!")
+
+        if 3 <= len(curso) <= 5:
+            Aluno.cursosOficiais.append(curso)
+        else:
+            raise ValueError(f"Nome {curso} está fora do padrão para cursos!")
 </code>
 </pre>
 
@@ -435,7 +493,19 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    a = Aluno("Márcia", 2010, "ADM")
+    b = Aluno("Sérgio", 2015, "ENG")
 
+    a.addCurso("MODA")
+
+    print(a.cursosOficiais)
+    print(b.cursosOficiais)
+    
+    print(a.__dict__)
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 
