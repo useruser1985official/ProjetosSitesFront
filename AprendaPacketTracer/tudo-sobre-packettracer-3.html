@@ -45,15 +45,15 @@
 
 <p>Em caso de switches e dispositivos wireless (que apesar de um deles ser chamado de roteador, usam portas de switch) com PC, usamos o cabo Straight, pois ele é usado para ligar dispositivos diferentes.</p>
 
-<p>Como ligaremos dois PC, usaremos o cabo Cross-Over, que são usados para ligar dispositivos iguais.</p>
+<p>Como ligaremos dois PCs, usaremos o cabo Cross-Over, que são usados para ligar dispositivos iguais.</p>
 
-<p>A diferença de cabeamentos é diferente porque, apesar de ambos usarem cabos Ethernet, a ligação dos conectores é diferente, e inclusive isso faz diferença em provas e concursos. Se colocarmos o cabo errado, ele ficará com os conectores vermelhos.</p>
+<p>A diferença de cabeamentos é importante porque, apesar de ambos usarem cabos Ethernet, a ligação dos conectores é diferente, e inclusive isso faz diferença em provas e concursos. Se colocarmos o cabo errado, ele ficará com os conectores vermelhos.</p>
 
-<p>Ligue os dois PCs com o cabo Cross-Over no nas portas FastEthernet deles.</p>
+<p>Ligue os dois PCs com o cabo Cross-Over nas portas FastEthernet deles.</p>
 
 <p>A porta FastEthernet conecta até 100 Mbps, o Ethernet conecta até 10 Mbps e o GigaEthernet conecta até 1 Gbps.</p>
 
-<p>PS: Podemos mudar a placa de rede nos PCs desligando eles e trocando as placas, por exemplo a placa FastEthernet por uma Wireless, mas no caso aqui não usaremos isso.</p>
+<p>PS: Podemos mudar a placa de rede nos PCs desligando eles e trocando as placas, por exemplo, a placa FastEthernet por uma Wireless, mas no caso aqui não usaremos isso.</p>
 
 <p>No primeiro PC, vamos configurar o IP, como não temos servidor DHCP para configurar automaticamente os IPs, vamos colocar um IP estático (como <code>192.168.1.10</code> e sua máscara na classe C, sem gateway padrão e sem servidor DNS). Faremos o mesmo no segundo PC com o IP <code>192.168.1.11</code>.</p>
 
@@ -75,9 +75,9 @@
 
 <h3>Equipamentos de Rede Switch x Hub (Topologia Estrela)</h3>
 
-<p>Colqoue três PCs e um switch 2960 na simulação, e ligue os PCs ao switch com o cabo Straigth (usado para dispositivos diferentes).</p>
+<p>Coloque três PCs e um switch 2960 na simulação, e ligue os PCs ao switch com o cabo Straight (usado para dispositivos diferentes).</p>
 
-<p>No switch, este aparelho tem que analisar a portas as quais estão conectadas, os endereços MAC dos dispositivos, etc., por isso ele demora um pouco até finalizar a conexão. O motivo é que ele envia mensagens especificadas a apenas determinados dispositivos conectados a eles.</p>
+<p>No switch, este aparelho tem que analisar as portas nas quais estão conectadas, os endereços MAC dos dispositivos, etc., por isso ele demora um pouco até finalizar a conexão. O motivo é que ele envia mensagens especificadas a apenas determinados dispositivos conectados a eles.</p>
 
 <p>Faça o mesmo abaixo, em outra rede, mas com um hub no lugar do switch, veja que ele carrega mais rápido.</p>
 
@@ -85,15 +85,15 @@
 
 <p>Resumindo, o switch envia as mensagens somente aos destinatários especificados, que podem ser um ou vários. O hub, mesmo que a mensagem seja para apenas um destinatário, ele envia a todos os dispositivos na rede (inclusive ao mesmo que a enviou) que irão descartar as mensagens que não são pra eles.</p>
 
-<p>Na Topologia Estrela, o equipamento central é geralmente é um switch ou um hub, que se conecta aos computadores e outros dispositivos. É esta que estamos trabalhando em ambos.</p>
+<p>Na topologia estrela, o equipamento central é geralmente um switch ou um hub, que se conecta aos computadores e outros dispositivos. É esta que estamos trabalhando em ambos.</p>
 
-<p>Vamos colocar os IPs nos PCs das duas redes (<code>192.168.1.10</code>, <code>192.168.1.11</code> e <code>192.168.1.12</code> na rede do switch. E <code>192.168.2.10</code>, <code>192.168.2.11</code>, <code>192.168.2.12</code>).</p>
+<p>Vamos colocar os IPs nos PCs das duas redes (<code>192.168.1.10</code>, <code>192.168.1.11</code> e <code>192.168.1.12</code> na rede do switch, e na rede do hub coloque <code>192.168.2.10</code>, <code>192.168.2.11</code> e <code>192.168.2.12</code>, todos com máscara classe C).</p>
 
-<p>Vá em Simulation e vá clique na cartinha e envie a mensagem do PC 0 ao PC 2 ligados ao switch, e veja que só o PC 2 a recebe. Faça o mesmo na rede com o hub e veja que todos os PCs (inclusive o que enviou a mensagem) recebem a mensagem, que acaba sendo descartada pelos PCs que não são destinatários da mesma.</p>
+<p>Vá em Simulation, clique na cartinha e envie a mensagem do PC 0 ao PC 2 ligados ao switch, e veja que só o PC 2 a recebe. Faça o mesmo na rede com o hub e veja que todos os PCs (inclusive o que enviou a mensagem) recebem a mensagem, que acaba sendo descartada pelos PCs que não são destinatários da mesma.</p>
 
-<p>Isso mostra o motivo pelos quais os hubs caíram em desusos, pois com redes com muitos dispositivos eles dariam problemas com o envio das mensagens. O switch já envia para apenas os destinatários, mas ele também pode ser configurado.</p>
+<p>Isso mostra os motivos pelos quais os hubs caíram em desuso, pois em redes com muitos dispositivos eles dariam problemas com o envio das mensagens. O switch já envia para apenas os destinatários, mas ele também pode ser configurado.</p>
 
-<p>PS: Um computador em uma rede onde os pacotes são enviados a todos, como com o hub, pode ser configurado para "sniffar" uma rede e ler os dados que não são pra ele. Numa rede real podemos usar programas como o Wireshark e o TCPDump, mas no Packet Tracer também temos um sniffer.</p>
+<p>PS: Um computador em uma rede onde os pacotes são enviados a todos, como as conectadas por hubs, pode ser configurado um PC para "sniffar" uma rede e ler os dados que não são pra ele. Numa rede real podemos usar programas como o Wireshark e o TCPDump, mas no Packet Tracer também temos um sniffer.</p>
 
 <h3>Primeiras Configurações dos Roteadores</h3>
 
@@ -334,6 +334,8 @@
     <li><b>Máscara:</b> <code>255.255.255.192</code>.</li>
     <li><b>Próximo Salto:</b> <code>192.168.0.65</code> (porta do roteador conectado à rede que ele precisa chegar).</li>
 </ul>
+
+<p>PS: Além das rotas estáticas, um roteador pode utilizar rotas dinâmicas por meio do protocolo RIP. Basta configurar as redes conectadas às suas interfaces (no caso do Packet Tracer, vamos em Config e RIP e colocamos as redes conectadas ao roteador). Todos os roteadores devem estar com o RIP configurado para trocar informações de roteamento e encaminhar os pacotes até o destino.</p>
 
 <h3>O que é e Como Criar VLANs</h3>
 

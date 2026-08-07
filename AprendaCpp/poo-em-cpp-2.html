@@ -169,7 +169,6 @@ int main() {
 
     return 0;
 }
-
 </code>
 </pre>
 
@@ -236,12 +235,67 @@ void Aviao::imprimir() {
 
 <p>Caso seja necessário chamar um método de uma classe pai dentro de outro método em uma classe filha, chame usando uma sintaxe tipo <code>ClassePai::metodoDela()</code>.</p>
 
-<p>E também podemos fazer sobrecarga de mais de um construtor, colocando na mesma classe dois ou mais construtores, todos com o nome igual da classe e sem tipo, mas com parâmetros diferentes. Podemos também chamar um construtor dentro do outro, fazendo o encadeamento, com algo assim:</p>
+<p>E também podemos fazer sobrecarga de mais de um construtor, colocando na mesma classe dois ou mais construtores, todos com o nome igual da classe e sem tipo, mas com parâmetros diferentes (um pode até ser vazio). Podemos também chamar um construtor dentro do outro, fazendo o encadeamento (que não é obrigatório), com algo assim:</p>
+
+<p>Arquivo .h:</p>
+
 <pre>
 <code>
-NomeDaClasse::NomeDaClasse(int param1, int param2) : NomeDaClasse(param1) { // Indica a própria classe, somente aqui, não na declaração da classe.
-    // Aqui dentro pode ficar vazio
+class Aviao {
+    public:
+        int velocidade;
+        int velMax;
+        std::string tipo;
+
+        // Os dois Aviao são construtores:
+        Aviao(int tp);
+        Aviao();
+
+        void imprimir();
+};
+</code>
+</pre>
+
+<p>E no .cpp:</p>
+
+<pre>
+<code>
+Aviao::Aviao(int tp) {
+    if(tp == 1) {
+        this-&gt;velMax = 800;
+        this-&gt;tipo = "Jato";
+    }
+    else if(tp == 2) {
+        this-&gt;velMax = 350;
+        this-&gt;tipo = "Monomotor";
+    }
+    else if(tp == 3) {
+        this-&gt;velMax = 180;
+        this-&gt;tipo = "Planador";
+    }
+
+    this-&gt;velocidade = 0;
 }
+
+Aviao::Aviao() : Aviao(1) { // Construtor fazendo o encadeamento com o outro da mesma classe
+    // Aqui pode deixar vazio, nesse caso
+}
+</code>
+</pre>
+
+<p>E no main:</p>
+
+<pre>
+<code>
+Aviao *av[3];
+
+av[0] = new Aviao(); // Cria um Jato por padrão
+av[1] = new Aviao(2);
+av[2] = new Aviao(3);
+
+av[0]-&gt;imprimir();
+av[1]-&gt;imprimir();
+av[2]-&gt;imprimir();
 </code>
 </pre>
 
@@ -278,7 +332,7 @@ for(auto a: av) { // Nome do objeto no lugar do av, o a é o que será iterado.
 
 <p>Isso é usado para destruir um objeto no meio da execução do programa, pra não sobrecarregar a memória. Diferente de outras linguagens POO surgidas posteriormente, o C++ não faz a coleta de lixo, por isso é necessário usar o delete pra destruir objetos (objetos agregados em outros objetos são destruídos automaticamente, mas o principal não), na verdade, no C++ a POO é mais primitiva, por ter sido uma das primeiras linguagens a usar esse paradigma. Sempre mantenha o hábito de usar o delete em objetos em C++ por esse motivo.</p>
 
-<p>Lembrando que, caso tenha agregação de objetos, é recomendado usar o <code>delete this-&gt;nomeDoObjeto</code> desses objetos dentro do destrutor da classe, dessa forma:</p>
+<p>Lembrando que, caso tenha agregação ou composição de objetos, é recomendado usar o <code>delete this-&gt;nomeDoObjeto</code> desses objetos dentro do destrutor da classe, como dessa forma na classe Aeroporto (que agrega Aviao):</p>
 
 <pre>
 <code>
@@ -308,7 +362,7 @@ delete av;
 </code>
 </pre>
 
-<p>PS: Não é necessário criar o destrutor para usar o delete, porque ele já cria um por padrão, mas pode ser útil pra exibir mensagens, por exemplo. Os construtores também são criados automaticamente, quando não são especificados no código. Destrutores em C++ não podem ser sobrepostos.</p>
+<p>PS: Não é necessário criar o destrutor para usar o delete, porque ele já cria um por padrão, mas pode ser útil pra exibir mensagens, por exemplo. Os construtores também são criados automaticamente, quando não são especificados no código, só que ele não faz nada e ele é desconsiderado ao criar outros construtores. Destrutores em C++ não podem ser sobrepostos.</p>
 
 <h3>Métodos e Atributos Estáticos</h3>
 

@@ -1,5 +1,10 @@
 @charset "UTF-8"; /* Coloque apenas em arquivos CSS separados, para compatibilidade de acentuação. */
 @import "folha.css";
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+@font-face {
+    font-family: "FonteLogo";
+    src: url("../fontes/bubblegum-sans-regular.otf");
+}
 
 /* O root é pra declarar variáveis em CSS, estas são declaradas com dois -- na frente: */
 
@@ -28,7 +33,7 @@ main {
     padding: 20px;
     width: 85%;
     min-width: 240px;
-    max-width: 800px;
+    max-width: 1150px;
     margin: auto;
     font-family: Arial, sans-serif !important;
     border-radius: 25px;
@@ -73,6 +78,7 @@ h1 {
 }
 
 h2 {
+    font-family: "Titillium Web";
     text-shadow: 1px -1px black, -1px 1px black, 1px 1px black, -1px -1px black;
 }
 
@@ -116,7 +122,7 @@ nav#menu ul {
     text-transform: uppercase;
     position: absolute;
     top: 0px;
-    left: 200px;
+    left: 300px;
 }
 
 nav#menu li {
@@ -151,4 +157,54 @@ div.circulo {
     width: 40px;
     height: 40px;
     border-radius: 100%; /* Resultados com px, tipo 40px, geram resultados diferentes das porcentagens. */
+}
+
+header#cabecalho img#icone {
+    position: absolute;
+    left: 600px;
+    top: 20px;
+    max-width: 100px;
+}
+
+header#cabecalho {
+    border-bottom: 1px #aaaaff solid;
+    height: 300px;
+    background: url("../imagens/icon-pc.png") no-repeat 0px 100px;
+}
+
+header#cabecalho h1 {
+    font-family: "FonteLogo", sans-serif;
+    font-size: 30pt;
+    color: #aaaaff;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+section#corpo {
+    display: block;
+    width: 700px;
+    float: left;
+    border-right: 1px solid #aaaaff;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+aside#lateral {
+    display: block;
+    width: 350px;
+    float: right;
+}
+
+footer#rodape {
+    clear: both;
+    border-top: 1px solid #aaaaff;
+}
+
+article#noticias h2 {
+    font-size: 12pt;
+    color: #000088;
+    background-color: #aaaaff;
+    padding: 5px 0px 5px 10px;
+    margin: 10px 0px 10px 0px;
 }

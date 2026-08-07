@@ -555,9 +555,7 @@ class Lampada {
     private static $acesa = false;
 
     public static function custo() {
-        printf("A lâmpada custa R$ %.2f.&lt;br/&gt;", self::$preco);
-
-        // Note que não usamos this para exibir atributos estáticos e sim self.
+        printf("A lâmpada custa R$ %.2f.&lt;br/&gt;", self::$preco); // Note que não usamos this para exibir atributos estáticos e sim self.
     }
 
     public static function acender() {

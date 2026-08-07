@@ -51,7 +51,7 @@
     <li><b>Abstração: </b>É focar apenas no que é importante. Você cria modelos simplificados (classes) que representam algo do mundo real sem mostrar detalhes desnecessários.</li>    
     <li><b>Encapsulamento: </b>É proteger os dados. Atributos ficam privados e são acessados de forma controlada, geralmente por meio de getters e setters.</li>    
     <li><b>Herança: </b>É quando uma classe herda características de outra. Permite reaproveitar código, criando classes mais específicas a partir de uma classe mais geral.</li>    
-    <li><b>Polimorfismo: </b>É quando diferentes classes podem responder ao mesmo método de maneiras diferentes. Um mesmo nome de método gera comportamentos diferentes dependendo do objeto.</li>    
+    <li><b>Polimorfismo: </b>É quando diferentes classes podem responder ao mesmo método de maneiras diferentes. Um mesmo nome de método gera comportamentos diferentes dependendo do objeto. Alguns programadores consideram a abstração como um tipo de polimorfismo também.</li>    
 </ol>
 
 <p>Algumas das linguagens mais populares que são orientadas a objetos são o Java, PHP, C++, C#, Visual Basic, Python, Ruby, Objective-C, Swift, Javascript e Kotlin, no entanto, nem todas são compatíveis com todos os conceitos, por exemplo:</p>
@@ -315,7 +315,7 @@ for(int i = 0; i &lt; listaCarros.size(); i++) {
 </code>
 </pre>
 
-<p>Outros tipos de estruturas de dados, como Pilhas e Filas podem ser usadas também, da mesma forma.</p>
+<p>Outros tipos de estruturas de dados, como pilhas e filas, podem ser usadas também, da mesma forma.</p>
 
 <h3>Encapsulamento</h3>
 
@@ -388,7 +388,7 @@ public class Carro {
 
 <p>Lembrando, a variável com o <q>this</q> é o atributo da classe, a variável que está sem ele é o parâmetro do método.</p>
 
-<p>No código acima, os atributos cor, modelo e velocidade só podem ser manipulados dentro da classe Carro, aí usaremos os métodos públicos da mesma para os manipular.</p>
+<p>No código acima, os atributos cor, modelo e velocidade só podem ser manipulados dentro da classe Carro, aí usaremos os métodos públicos da mesma para os manipular (que são os métodos acelerar e frear, além dos getters e setters dos atributos privados).</p>
 
 <p>O diagrama dessa classe fica assim, com o <q>+</q> representando o que é público, <q>-</q> representando o que é privado e <q>#</q> representando o que é protegido:</p>
 

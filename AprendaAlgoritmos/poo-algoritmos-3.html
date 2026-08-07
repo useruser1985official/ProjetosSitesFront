@@ -85,6 +85,11 @@ public class Computador {
             System.out.println("Nenhum mouse conectado.");
         }
     }
+
+    // Getter com objeto agregado.
+    public Mouse getMs() {
+        return this.ms;
+    }
 }
 </code>
 </pre>
@@ -93,7 +98,7 @@ public class Computador {
 
 <img src="imagens/diagrama-agregacao.png" alt="Diagrama Agregação" style="max-width: 600px"/>
 
-<p>E no código principal:</p>
+<p>E no código principal, onde o Mouse e o Computador existem sozinhos e o Mouse é agregado:</p>
 
 <pre>
 <code>
@@ -107,8 +112,12 @@ Computador pc = new Computador("Dell", 1);
 pc.conectarMouse(mou);
 
 pc.exibirInfo();
+
+System.out.println(pc.getMs().getTipo()); // getMs do Computador retorna o objeto Mouse, do qual retornamos o método getTipo
 </code>
 </pre>
+
+<p>Como visto acima, o método <code>getMs()</code> retorna um objeto Mouse. Por isso, podemos chamar diretamente um método desse objeto, como em <code>pc.getMs().getTipo()</code>. Isso é o encadeamento de métodos, e também é possível fazer isso com atributos, mas em qualquer caso deve-se ficar atento à visibilidade dos mesmos.</p>
 
 <p>Um computador pode usar um mouse, mas o mouse existe sozinho e não depende do computador para existir. No entanto, podemos fazer com que ele receba um objeto agregado no construtor também (no caso, exigindo que o computador tenha o mouse), alterando a classe Computador assim:</p>
 
@@ -137,6 +146,11 @@ public class Computador {
             System.out.println("Nenhum mouse conectado.");
         }
     }
+
+    // Getter com objeto agregado.
+    public Mouse getMs() {
+        return this.ms;
+    }
 }
 </code>
 </pre>
@@ -152,12 +166,16 @@ Mouse mou = new Mouse("Óptico", false);
 Computador pc = new Computador("Dell", 1, mou);
 
 pc.exibirInfo();
+
+System.out.println(pc.getMs().getTipo()); // getMs do Computador retorna o objeto Mouse, do qual retornamos o método getTipo
 </code>
 </pre>
 
+<p>PS: No lugar da classe agregada (no caso, Mouse) também pode estar uma interface, usando a mesma lógica.</p>
+
 <h3>Mais sobre Agregação e Composição de Classes</h3>
 
-<p>No lugar da classe agregada (no caso, Mouse) também pode estar uma interface, usando a mesma lógica. Lembrando que, caso o Mouse fosse iniciado com new dentro da classe Computador, seria composição, e não agregação, por exemplo:</p>
+<p>Anteriormente, vimos como funciona a agregação de classes, mas caso o Mouse fosse iniciado com new dentro da classe Computador, seria composição, e não agregação, por exemplo:</p>
 
 <pre>
 <code>
@@ -165,7 +183,7 @@ public class Computador {
     private String marca;
     private int gb;
     private Mouse ms = new Mouse("Óptico", false); // Composição: Computador usa um mouse já criado internamente.
-    // A classe Mouse permanece inalterada. O new pode ser colocado no construtor também.
+    // A classe Mouse permanece inalterada. O new pode ser colocado no construtor também e é até recomendado.
 
     public Computador(String marca, int gb) {
         this.marca = marca;
@@ -184,6 +202,11 @@ public class Computador {
             System.out.println("Nenhum mouse conectado.");
         }
     }
+
+    // Getter com objeto agregado.
+    public Mouse getMs() {
+        return this.ms;
+    }
 }
 </code>
 </pre>
@@ -200,12 +223,14 @@ public class Computador {
 Computador pc = new Computador("Dell", 1);
 
 pc.exibirInfo();
+
+System.out.println(pc.getMs().getTipo()); // getMs do Computador retorna o objeto Mouse, do qual retornamos o método getTipo
 </code>
 </pre>
 
 <p>Resumindo: Objeto criado fora da classe é agregação, objeto criado dentro da classe é composição.</p>
 
-<p>PS: Em linguagens com destrutores, como o C++, deveremos destruir o objeto agregado ou composto dentro do destrutor, como por exemplo:</p>
+<p>Em linguagens com destrutores, como o C++, deveremos destruir o objeto agregado ou composto dentro do destrutor, como por exemplo:</p>
 
 <pre>
 <code>
@@ -216,6 +241,8 @@ Computador::~Computador() {
 }
 </code>
 </pre>
+
+<p>PS: A agregação e a composição não fazem parte de nenhum pilar da POO, pois são consideradas apenas associações entre classes.</p>
 
 <h3>Herança - Parte 1</h3>
 
@@ -243,7 +270,7 @@ public class Animal {
 </code>
 </pre>
 
-<p>PS: Note que usamos o atributo como <q>protegido</q> dessa vez, o que permite que ele só seja manipulado na própria classe e em suas descendentes. Se colocar como <q>privado</q> as classes filhas não poderão acessá-lo diretamente.</p>
+<p>PS: Note que usamos o atributo como <q>protegido</q> dessa vez, o que permite que ele só seja manipulado na própria classe e em suas descendentes. Se colocar como <q>privado</q>, as classes filhas não poderão acessá-lo diretamente.</p>
 
 <p>Para uma classe herdar características de outra, usamos no Java a palavra <code>extends</code>.</p>
 
@@ -293,7 +320,25 @@ gat.miar(); // Próprio de Gato.
 </code>
 </pre>
 
-<p>Lembrando do caso das interfaces, poderíamos até declarar os dois objetos acima como do tipo <q>Animal</q>, mas nesse caso só poderia ser usado os métodos descritos nesta classe (no caso, o <q>dormir</q>), já os métodos <q>latir</q> e <q>miar</q> não poderiam ser usados.</p>
+<p>Lembrando do caso das interfaces, poderíamos até declarar os dois objetos acima como do tipo <q>Animal</q>, mas nesse caso só poderia ser usado os métodos descritos nesta classe (no caso, o <q>dormir</q>), já os métodos <q>latir</q> e <q>miar</q> não poderiam ser usados. Dessa forma:</p>
+
+<pre>
+<code>
+Animal cao = new Cachorro();
+
+cao.setNome("Rex");
+cao.dormir(); // Herdado da classe Animal.
+// cao.latir(); // Próprio de Cachorro (não poderá ser acessado).
+
+Animal gat = new Gato();
+
+gat.setNome("Frajola");
+gat.dormir(); // Herdado.
+// gat.miar(); // Próprio de Gato (não poderá ser acessado).
+</code>
+</pre>
+
+<p>Isso daí seria o princípio do polimorfismo, que veremos logo mais.</p>
 
 <p>Veja o diagrama dessas classes:</p>
 
@@ -388,7 +433,7 @@ gat.miar(); // Próprio de Gato.
 
 <p>Podemos ter uma hierarquia de heranças, onde as classes mais altas na hierarquia são mais gerais, e as classes mais baixas são mais específicas. Por exemplo: a classe Animal pode ser herdada por Mamifero, que pode ser herdada por Felino, que por sua vez pode ser herdada por Gato.</p>
 
-<p>Algumas linguagens, como o C++, permitem herança múltipla, quando uma classe herda de mais de uma classe ao mesmo tempo (na sintaxe <code>class ClasseHerdeira : public ClasseMae1, ClasseMae2</code>), mas como isso é mais sujeito a erros de implementação, muitas linguagens, como o C#, PHP e Java, não permitem isso, tendo que herdar somente de uma classe por vez (o que pode ter é a hierarquia de classes, mas somente uma herança por vez, no entanto, estas linguagens permitem implementar várias interfaces, como por exemplo em Java, <code>public class ClasseHerdeira extends ClasseMae implements NomeInterface1, NomeInterface2</code>.</p>
+<p>Algumas linguagens, como o C++, permitem herança múltipla, quando uma classe herda de mais de uma classe ao mesmo tempo (na sintaxe <code>class ClasseHerdeira : public ClasseMae1, ClasseMae2</code>), mas como isso é mais sujeito a erros de implementação, muitas linguagens, como o C#, PHP e Java, não permitem isso, tendo que herdar somente de uma classe por vez (o que pode ter é a hierarquia de classes, mas somente uma herança por vez, no entanto, estas linguagens permitem implementar várias interfaces, como por exemplo em Java, <code>public class ClasseHerdeira extends ClasseMae implements NomeInterface1, NomeInterface2</code>).</p>
 
 <p>Interfaces também podem herdar características de outras interfaces, usando a mesma lógica, no Java seria algo como <code>public interface InterfaceHerdeira extends InterfaceMae</code>. Nesse caso podemos ter mais de uma herança numa mesma interface.</p>
 

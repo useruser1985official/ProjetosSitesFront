@@ -407,6 +407,54 @@ show ip route
 
 <p>PS: Caso precise excluir uma rota estática num roteador, digite algo como <code>no ip route 192.168.3.0 255.255.255.0 192.168.2.2</code>.</p>
 
+<h3>Rotas Dinâmicas</h3>
+
+<p>Também é possível usar rotas dinâmicas com o RIP. O RIP (Routing Information Protocol) é um protocolo usado por roteadores para trocar informações sobre caminhos na rede. Ele atualiza as rotas dinamicamente ao conversar com outros roteadores.</p>
+
+<p>Faremos uma configuração parecida com a da aula anterior pra colocar os IPs nos roteadores e PCs, mas não configuraremos nada com o ip route. Nesse caso, fazemos assim no primeiro roteador:</p>
+
+<pre>
+<code>
+conf t
+
+router rip
+
+network 192.168.1.0
+
+network 192.168.2.0
+
+exit
+
+exit
+
+copy running-config startup-config
+</code>
+</pre>
+
+<p>E no segundo é quase igual, só mudando as redes:</p>
+
+<pre>
+<code>
+conf t
+
+router rip
+
+network 192.168.2.0
+
+network 192.168.3.0
+
+exit
+
+exit
+
+copy running-config startup-config
+</code>
+</pre>
+
+<p>Daí, um PC pode se comunicar com o outro normalmente, podemos testar com o ping, o tracert e a cartinha.</p>
+
+<p>Numa rota dinâmica real, são vários roteadores interligados, de certa forma a própria internet funciona assim.</p>
+
 <h3>Firewall: Listas de Controle de Acesso (ACL)</h3>
 
 <p>Coloque um PC com o IP <code>192.168.1.2</code> com o gateway <code>192.168.1.1</code>, e um roteador 2621XM ligado a ele com o IP <code>192.168.1.1</code> e máscara padrão C, mas do outro lado do roteador terá o IP <code>192.168.2.1</code> e a máscara <code>255.255.255.252</code> (outra rede). Coloque ao lado um firewall 5506 e no final, um servidor. No firewall, que será configurado por último, a porta ligada ao roteador terá a mesma máscara e o IP <code>192.168.2.2</code>. Do outro lado, será outra rede, com o IP do firewall sendo <code>192.168.3.1</code> e o servidor com o IP <code>192.168.3.2</code> com o gateway <code>192.168.3.1</code>, ambos com a máscara <code>255.255.255.252</code>.</p>
@@ -448,8 +496,6 @@ exit
 exit
 </code>
 </pre>
-
-<p>O RIP (Routing Information Protocol) é um protocolo usado por roteadores para trocar informações sobre caminhos na rede. Ele atualiza as rotas dinamicamente ao conversar com outros roteadores, em contraste com as rotas estáticas. No caso, passamos as redes nas quais o roteador é conectado.</p>
 
 <p>No servidor, habilite o HTTP para um teste.</p>
 

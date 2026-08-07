@@ -234,9 +234,9 @@ drop procedure ver_carga;
 
 <h3>Blocos Begin End</h3>
 
-<p>Os blocos begin e end são contêineres usados para delimitar blocos de comandos a serem executados pela função ou store procedure. Cada declaração aninhada possuí um delimitador (;), Um bloco begin pode ser aninhado dentro de outros blocos.</p>
+<p>Os blocos <code>begin</code> e <code>end</code> são contêineres usados para delimitar blocos de comandos a serem executados pela função ou store procedure. Cada declaração aninhada possui um delimitador (;). Um bloco begin pode ser aninhado dentro de outros blocos.</p>
 
-<p>Porém, o delimitador de ponto e vírgula pode ser problemático pois, ao ser encontrado em um procedimento ou função, ela finaliza imediatamente. É uma espécie de alias para o comando go. Devemos então mudar esse "atalho" e, para isso, usamos o comando delimiter para criar rotinas com declarações compostas.</p>
+<p>Porém, o delimitador de ponto-e-vírgula pode ser problemático pois, ao ser encontrado em um procedimento ou função, ela finaliza imediatamente. É uma espécie de alias para o comando go. Devemos então mudar esse "atalho" e, para isso, usamos o comando <code>delimiter</code> para criar rotinas com declarações compostas.</p>
 
 <p>Veja um exemplo abaixo:</p>
 
@@ -316,14 +316,14 @@ create function aumenta_aulas(ident decimal(10, 2), porc decimal(10, 2))
 returns decimal(10, 2)
 begin
     declare total decimal(10, 2);
-    select totaulas from cursos where idcurso = ident into total;
+    select totaulas into total from cursos where idcurso = ident;
     return (total + total) * porc / 100;
 end//
 delimiter ;
 </code>
 </pre>
 
-<p>No caso acima, o into faz a atribuição a variável local.</p>
+<p>No caso acima, o into faz a atribuição à variável local.</p>
 
 <p>E para executar, normalmente:</p>
 
@@ -336,7 +336,7 @@ select aumenta_aulas(4, 10) as 'Aumento das Aulas';
 
 <p>Depois pode excluir essa função também.</p>
 
-<h3>Blocos Condicionais IF, THEN, ELSE E CASE.</h3>
+<h3>Blocos Condicionais If, Then, Else E Case</h3>
 
 <p>Há dois tipos básicos de blocos condicionais, com if, elseif, else e endif, e con case, when, then, else e end case.</p>
 
@@ -374,7 +374,7 @@ select calcula_aula(50) as 'Total de Aulas';
 </code>
 </pre>
 
-<p>Podemos fazer com case também, dessa forma:</p>
+<p>Podemos fazer com Case também, dessa forma:</p>
 
 <pre>
 <code>
@@ -413,7 +413,7 @@ delimiter ;
 
 <p>Um bloco iterativo é um bloco de código que é executado repetidamente por um comando especial até que uma condição de parada o interrompa. Um bloco iterativo pode ser aninhado com outros.</p>
 
-<p>O MySQL possui três tipos básicos de blocos iterativos, loop, repeat e while</p>
+<p>O MySQL possui três tipos básicos de blocos iterativos: Loop, repeat e while.</p>
 
 <p>Veja um exemplo básico de uso de loop:</p>
 
@@ -437,7 +437,7 @@ delimiter ;
 </code>
 </pre>
 
-<p>PS: O leave interrompe o laço, é como o break.</p>
+<p>PS: O <code>leave</code> interrompe o laço, é como o break.</p>
 
 <p>E para executar:</p>
 

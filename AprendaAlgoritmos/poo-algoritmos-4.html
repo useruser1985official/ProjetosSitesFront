@@ -26,6 +26,8 @@
 
 <h3>Polimorfismo de Sobreposição e de Inclusão</h3>
 
+<p>Polimorfismo é um princípio da POO que permite que um mesmo método se comporte de maneiras diferentes dependendo da classe ou do objeto que o está chamando. A palavra vem do grego e significa <q>muitas formas</q>. Basicamente existem quatro tipos de polimorfismo em POO: Sobreposição, inclusão, sobrecarga e paramétrico.</p>
+
 <p>Polimorfismo de sobreposição acontece quando uma classe filha substitui (redefine) um método que veio da classe mãe, mudando o comportamento dele. O nome do método é o mesmo, mas o comportamento é diferente dependendo do objeto.</p>
 
 <p>Exemplo de classe mãe:</p>
@@ -398,6 +400,22 @@ System.out.println(logico.abrir());
         <td><code>NomeDaInterface&lt;ClasseInvolucro&gt; objeto = new NomeDaClasse&lt;&gt;()</code></td>
     </tr>
 </table>
+
+<h3>Outros Tipos de Polimorfismo</h3>
+
+<p>Outro tipo de polimorfismo que existe é o de coerção.</p>
+
+<p>O polimorfismo de coerção é a conversão de um tipo de dado em outro, ocorrendo de forma implícita pelo compilador ou explícita pelo programador, permitindo que uma função ou operação aceite valores de tipos diferentes ao transformar o dado original para o formato esperado. Um exemplo seria isso em Javascript:</p>
+
+<pre>
+<code>
+console.log("22" - 2);
+</code>
+</pre>
+
+<p>No caso acima, mesmo o 22 estando como string, o JS converte para número e faz a subtração com 2, retornando 20.</p>
+
+<p>Alguns programadores também consideram a abstração como parte do polimorfismo (no caso, de inclusão).</p>
 
 <h3>Sugestão de Exercícios</h3>
 

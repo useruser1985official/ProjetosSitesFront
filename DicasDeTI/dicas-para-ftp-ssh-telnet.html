@@ -33,7 +33,7 @@ ftp nomeouipdoservidor.com
 
 <pre>
 <code>
-ls
+ls # Lista arquivos
 
 get arquivo.txt # Pegar arquivo do servidor
 
@@ -94,7 +94,7 @@ ssh -p 2222 usuario@servidor.com
 
 <h3>Telnet</h3>
 
-<p>Telnet é um protocolo pra acesso remoto sem criptografia (antigo/inseguro).</p>
+<p>Telnet é um protocolo pra acesso remoto sem criptografia (antigo/inseguro). Para acessar um servidor via Telnet fazemos assim:</p>
 
 <pre>
 <code>
@@ -112,13 +112,15 @@ telnet 192.168.0.10 23
 
 <p>Alguns dos servidores que podemos usar para testes são o <code>telehack.com</code> e o <code>towel.blinkenlights.nl</code> (no primeiro dá pra navegar por ele, o segundo mostra imagens ASCII do Star Wars). Para usar um deles basta digitar <code>telnet telehack.com</code>, ele não pede senha. Pra deslogar digite <code>logout</code> e pra sair do Telnet digite <code>quit</code>.</p>
 
-<p>Também é usado para testar portas:</p>
+<p>Ele também é usado para testar portas:</p>
 
 <pre>
 <code>
 telnet google.com 80
 </code>
 </pre>
+
+<p>Dê um enter depois de digitar o comando.</p>
 
         <footer>
             <p><a href="contato.html">Entre em Contato Conosco!</a></p>

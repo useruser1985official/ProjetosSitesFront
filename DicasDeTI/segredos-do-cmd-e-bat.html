@@ -897,17 +897,13 @@ pause
         <td>PROCESSOR_IDENTIFIER</td>
         <td>Retorna dados sobre o processador</td>
     </tr>
-    <tr>
-        <td>PROCESSOR_ARCHITECTURE</td>
-        <td>Retorna a arquitetura do processador</td>
-    </tr>
 </table>
 
-<p>PS: Em sistemas 64 bits, a variável <code>PROGRAMFILES</code> é referente a pasta de aplicações 64 bits, para acessar a pasta de aplicações 32 bits, use <code>PROGRAMFILES(x86)</code>. O mesmo vale para a <code>COMMONPROGRAMFILES</code>, que em aplicativos de 32 bits é <code>COMMONPROGRAMFILES(x86)</code>.</p>
+<p>PS: Em sistemas 64 bits, a variável <code>PROGRAMFILES</code> é referente à pasta de aplicações 64 bits, para acessar a pasta de aplicações 32 bits, use <code>PROGRAMFILES(x86)</code>. O mesmo vale para a <code>COMMONPROGRAMFILES</code>, que em aplicativos de 32 bits é <code>COMMONPROGRAMFILES(x86)</code>.</p>
 
 <h3>Operações Aritméticas</h3>
 
-<p>Como visto no exemplo anterior, é possível fazer operações aritméticas no BAT, normalmente com +, -, * e /, mas lembrando que o % não funciona como cálculo de módulo, devemos utilizar dois %% para isso. Ao fazer contas diretamente pelo CMD usamos apenas um %.</p>
+<p>Como visto anteriormente, é possível fazer operações aritméticas no BAT, normalmente com +, -, * e /, mas lembrando que o % não funciona como cálculo de módulo, devemos utilizar dois %% para isso. Ao fazer contas diretamente pelo CMD usamos apenas um %.</p>
 
 <p>Veja um exemplo de uso para operações aritméticas:</p>
 
@@ -929,13 +925,13 @@ set /a divi=num1 / num2
 
 set /a rest=num1 %% num2
 
-echo A soma entre %num1% e %num2% é igual à %soma%.
+echo A soma entre %num1% e %num2% é igual a %soma%.
 
-echo A subtração entre %num1% e %num2% é igual à %subs%.
+echo A subtração entre %num1% e %num2% é igual a %subs%.
 
-echo A multiplicação entre %num1% e %num2% é igual à %mult%.
+echo A multiplicação entre %num1% e %num2% é igual a %mult%.
 
-echo A divisão entre %num1% e %num2% é igual à %divi% com resto de %rest%.
+echo A divisão entre %num1% e %num2% é igual a %divi% com resto de %rest%.
 
 echo.
 

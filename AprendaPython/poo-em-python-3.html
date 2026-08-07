@@ -218,9 +218,299 @@ def nota(self):
 </code>
 </pre>
 
+<h3>Polimorfismo: Override, Overload e Duck Typing</h3>
+
+<p>Polimorfismo significa <q>muitas formas</q>, o polimorfismo é a propriedade ou estado daquilo que se apresenta e/ou se comporta de várias formas diferentes. É um único nome, mas com comportamentos diferentes.</p>
+
+<p>O polimorfismo é o mesmo nome para coisas diferentes, vamos pegar por exemplo o pato, que é uma ave que pode andar, nadar e voar, o objeto pato tem o método locomover, que será diferente dependendo de onde ele está (na terra anda, na água nada e no ar voa).</p>
+
+<p>Vamos supor por exemplo, a função <code>len</code> do Python, que mostra a quantidade de caracteres de uma string, mas se passarmos uma tupla ou lista com duas string, ele conta a quantidade de itens, por exemplo:</p>
+
+<pre>
+<code>
+len("Gustavo") # Retorna 7 (quantidade de caracteres)
+len(("Sandy", "Júnior")) # Retorna 2 (quantidade de itens)
+len({"a": "x", "b": "y"}) # Retorna 2 (quantidade de itens)
+</code>
+</pre>
+
+<p>No caso acima, o len teve comportamentos diferentes ao passar string, tupla e dicionário. É um exemplo de function overload (ou função de sobrecarga).</p>
+
+<p>No Python temos também o operador, onde o operador <q>+</q> tem comportamentos diferentes:</p>
+
+<pre>
+<code>
++5 # Mostra 5 positivo
+5 + 4 # O + Soma números
+"Poli" + "Morfo" # O + Concatena strings
+[3, 5] + [2, 4] # O + Concatena os números das listas, sem somar
+</code>
+</pre>
+
+<p>Veja um exemplo com o método len:</p>
+
+<pre>
+<code>
+print(len("Gustavo Guanabara")) # String
+print(len(("Curso", "Python"))) # Tupla
+print(len({"nome": "Maria", "idade": 22})) # Dicionário
+</code>
+</pre>
+
+<p>E com operadores:</p>
+
+<pre>
+<code>
+print(+12) # Mostra 12 positivo
+print(5 + 2) # Mostra a soma
+print("Poli" + "morfismo") # Concatena
+print([1, 3, 4] + [9, 7]) # Une as listas
+</code>
+</pre>
+
+<p>Para criarmos nossos próprios exemplos de polimorfismo em classes, vamos exemplificar com quatro animais: Pato, cachorro, gato e galinha. Todos eles terão o método <code>exibirSom()</code>, mas cada um emite o som de forma diferente Vamos supor essas classes, que todas elas herdam da classe abstrata Animal, com o método descrito abstrato:</p>
+
+<pre>
+<code>
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    def __init__(self, nome:str = ""):
+        self.nome = nome
+
+    def emitirSom(self):
+        print(f"{self.nome} é {self.__class__.__name__.lower()} e está emitindo um som.")
+
+class Pato(Animal):
+    pass
+
+class Cachorro(Animal):
+    pass
+
+class Gato(Animal):
+    pass
+
+class Galinha(Animal):
+    pass
+</code>
+</pre>
+
+<p>E o código principal:</p>
+
+<pre>
+<code>
+def main():
+    a = Cachorro("Bandit")
+
+    a.emitirSom()
+
+    b = Gato("Frajola")
+
+    b.emitirSom()
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Deixe as classes específicas assim:</p>
+
+<pre>
+<code>
+class Pato(Animal):
+    pass
+
+class Cachorro(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Au! Au! Au!\"")
+
+class Gato(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Miau! Miau!\"")
+
+class Galinha(Animal):
+    pass
+</code>
+</pre>
+
+<p>Com esses objetos:</p>
+
+<pre>
+<code>
+a = Cachorro("Bandit")
+b = Gato("Frajola")
+c = Pato("Donald")
+
+a.emitirSom()
+b.emitirSom()
+c.emitirSom()
+</code>
+</pre>
+
+<p>No caso acima, as classes Cachorro e Gato sobrescreveram (substituíram) o método da classe Animal, no entanto isso não acontece com o Pato, que mostra o método original de Animal. Isso e o polimorfismo de sobreposição ou de inclusão (quando usado com métodos e classes abstratos).</p>
+
+<p>Podemos inclusive deixar o método da classe Animal abstrato, assim:</p>
+
+<pre>
+<code>
+@abstractmethod
+def emitirSom(self):
+    pass
+</code>
+</pre>
+
+<p>Só que nesse caso, todas as classes que herdarem dessa classe abstrata, deverão implementar todos os métodos abstratos descritos. No caso fica assim:</p>
+
+<pre>
+<code>
+class Pato(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Quac! Quac! Quac!\"")
+
+class Cachorro(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Au! Au! Au!\"")
+
+class Gato(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Miau! Miau!\"")
+
+class Galinha(Animal):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Có! Có! Có!\"")
+</code>
+</pre>
+
+<p>Com esses objetos assim:</p>
+
+<pre>
+<code>
+a = Cachorro("Bandit")
+b = Gato("Frajola")
+c = Pato("Donald")
+d = Galinha("Clara")
+
+a.emitirSom()
+b.emitirSom()
+c.emitirSom()
+d.emitirSom()
+</code>
+</pre>
+
+<p>Como sabemos, podemos ter uma hierarquia de classes, e todas podem ter polimorfismo, vamos supor essas especializações de Cachorro:</p>
+
+<pre>
+<code>
+class Spitz(Cachorro):
+    pass
+
+class Pitbull(Cachorro):
+    pass
+</code>
+</pre>
+
+<p>Com esses objetos:</p>
+
+<pre>
+<code>
+a = Cachorro("Bandit")
+b = Gato("Frajola")
+c = Pato("Donald")
+d = Galinha("Clara")
+e = Spitz("Luluzinha")
+f = Pitbull("Guerreiro")
+
+a.emitirSom()
+b.emitirSom()
+c.emitirSom()
+d.emitirSom()
+e.emitirSom()
+f.emitirSom()
+</code>
+</pre>
+
+<p>No caso acima, Spitz e Pitbull, como também são cachorros, executam o mesmo método da classe mãe Cachorro. Mas também podemos especializar elas, assim:</p>
+
+<pre>
+<code>
+class Spitz(Cachorro):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Auauauauauauauau!\"")
+
+class Pitbull(Cachorro):
+    def emitirSom(self):
+        print(f"{self.nome} acabou de dizer: \"Ruf! Ruf! Ruf!\"")
+</code>
+</pre>
+
+<p>O código principal permanece o mesmo.</p>
+
+<p>Esse tipo de polimorfismo é o de inclusão, override ou sobreposição, e este exige herança. Outros tipos de polimorfismo são o de sobrecarga, coerção (que é a conversão automática de tipos de dados) e paramétrico (usando templates genéricos), só que os dois últimos não são suportados no Python, mas existem em outras linguagens.</p>
+
+<p>Veja outro exemplo:</p>
+
+<pre>
+<code>
+class Mae:
+    def __init__(self, nome:str = "Mamãe"):
+        self.nome = nome
+
+    def fazerPudim(self):
+        print(f"{self.nome} faz pudim com leite condensado e calda!")
+
+    def fritarCoxinha(self):
+        print(f"{self.nome} frita coxinha no óleo de soja!")
+
+class Filha(Mae):
+    pass
+
+class Filho(Mae):
+    pass
+</code>
+</pre>
+
+<p>Com esses objetos:</p>
+
+<pre>
+<code>
+def main():
+    p1 = Mae("Jaci")
+    p2 = Filho("Matt")
+    p3 = Filha("Mônica")
+    
+    p1.fazerPudim()
+    p1.fritarCoxinha()
+    
+    p2.fazerPudim()
+    p2.fritarCoxinha()
+    
+    p3.fazerPudim()
+    p3.fritarCoxinha()
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Mas isso acima não é polimorfismo, pois todos fazem pudim e fritam coxinha de maneiras iguais. Para fazer o polimorfismo, fazemos assim:</p>
+
+<pre>
+<code>
+class Filha(Mae):
+    def fazerPudim(self):
+        print(f"{self.nome} faz pudim com Leite Ninho com Nutella!")
+
+class Filho(Mae):
+    def fritarCoxinha(self):
+        print(f"{self.nome} frita coxinha na air fryer!")
+</code>
+</pre>
+
+<p>Os objetos no código principal não serão alterados, mas os métodos se comportarão de formas diferentes.</p>
+
 <ul>
     <li><a href="poo-em-python-2.html">Parte Anterior da Matéria!</a></li>
-    <!--<li><a href="poo-em-python-4.html">Continuação da Matéria!</a></li>-->
+    <li><a href="poo-em-python-4.html">Continuação da Matéria!</a></li>
 </ul>
 
         </div>

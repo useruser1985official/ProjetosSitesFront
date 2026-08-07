@@ -112,7 +112,11 @@ System.out.println("Velocidade atual: " + cr.getVelocidade());
 </code>
 </pre>
 
-<p>PS: Se uma classe não tiver um construtor definido, a linguagem cria automaticamente um construtor padrão, que é vazio e não faz nada. Quando criamos nosso próprio construtor, esse passa a ser o construtor usado ao criar objetos. Em linguagens como Java, C# e C++, é possível ter vários construtores na mesma classe, desde que eles tenham listas de parâmetros diferentes (conceito conhecido como polimorfismo de sobrecarga, que veremos mais pra frente). Um deles pode ser vazio se quisermos. Por exemplo:</p>
+<p>PS: Se uma classe não tiver um construtor definido, a linguagem cria automaticamente um construtor padrão, que é vazio e não faz nada. Quando criamos nosso próprio construtor, esse passa a ser o construtor usado ao criar objetos.</p>
+
+<h3>Sobrecarga de Construtores</h3>
+
+<p>Em linguagens como Java, C# e C++, é possível ter vários construtores na mesma classe, desde que eles tenham listas de parâmetros diferentes (conceito conhecido como polimorfismo de sobrecarga, que veremos melhor mais pra frente). Um deles pode ser vazio se quisermos. Por exemplo:</p>
 
 <pre>
 <code>
@@ -235,7 +239,19 @@ Carro::~Carro() {
 </code>
 </pre>
 
-<p>E aí para destruir o objeto, basta chamar no código principal <code>delete</code> seguido do nome dele, no caso, <code>delete carro;</code>. Faça isso no final do código principal.</p>
+<p>E aí para destruir o objeto, basta chamar no código principal <code>delete</code> seguido do nome dele</code>. Faça isso no final do código principal. Em C++ seria assim:</p>
+
+<pre>
+<code>
+Carro *cr = new Carro("Vermelho", "Uno", 0);
+
+cr-&gt;acelerar();
+cr-&gt;frear();
+cout &lt;&lt; "Velocidade atual: " &lt;&lt; cr->getVelocidade() &lt;&lt endl;
+
+delete cr; // Destruindo objeto cr
+</code>
+</pre>
 
 <h3>Atributos e Métodos Estáticos</h3>
 
@@ -391,7 +407,7 @@ public class BateriaLitio implements FonteEnergia {
 </code>
 </pre>
 
-<p>PS: Note que o Java adiciona a notação <code>@Override</code> em métodos sobreescritos. Isso também é visto com métodos abstratos de classes abstratas (virtuais puras) e virtuais, que veremos mais pra frente. As interfaces também são parte da abstração. No PHP a notação <q>override</q> não existe, já no C# e C++ eles são usados em métodos abstratos e virtuais, de forma ligeiramente diferente, C# não utiliza essa anotação em métodos implementados de interfaces.</p>
+<p>PS: Note que o Java adiciona a notação <code>@Override</code> em métodos sobreescritos. Isso também é visto com métodos abstratos de classes abstratas (virtuais puras) e virtuais que são sobrepostos, que veremos mais pra frente. As interfaces também são parte da abstração. No PHP a notação <q>override</q> não existe, já no C# e C++ eles são usados em métodos abstratos e virtuais, de forma ligeiramente diferente, C# não utiliza essa anotação em métodos implementados de interfaces.</p>
 
 <p>Veja o diagrama dessa interface e dessas classes:</p>
 
