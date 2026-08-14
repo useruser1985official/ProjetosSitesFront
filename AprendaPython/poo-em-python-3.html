@@ -218,6 +218,51 @@ def nota(self):
 </code>
 </pre>
 
+<h3>Atributos e Métodos Estáticos</h3>
+
+<p>Atributos e métodos estáticos não pertencem a um objeto, e sim à própria classe. Nós podemos chamar eles diretamente pelo nome da classe no programa principal.</p>
+
+<p>Veja um exemplo de classe somente com métodos e atributos estáticos:</p>
+
+<pre>
+<code>
+class Lampada:
+    __preco = 9.50 # Simulação de estático
+    __acesa = False
+    
+    @staticmethod
+    def custo(): # Método estático não tem self, atributos também não
+        print("A lâmpada custa R${:.2f}.".format(Lampada.__preco))
+    
+    @staticmethod
+    def acender():
+        print("A lâmpada está acesa!")
+        Lampada.__acesa = True
+    
+    @staticmethod
+    def apagar():
+        print("A lâmpada está apagada!")
+        Lampada.__acesa = False
+</code>
+</pre>
+
+<p>E o uso:</p>
+
+<pre>
+<code>
+from Lampada import Lampada
+
+Lampada.custo() # Método estático.
+
+Lampada.acender()
+Lampada.apagar()
+
+Lampada.__custo = 8.25 # Atributo estático, não poderia ser acessado por ser "privado"
+</code>
+</pre>
+
+<p>PS: Métodos estáticos só podem trabalhar outros métodos e atributos quando estes também forem estáticos, e não podem ser sobrepostos. E atributos estáticos é recomendável eles serem inicializados.</p>
+
 <h3>Polimorfismo: Override, Overload e Duck Typing</h3>
 
 <p>Polimorfismo significa <q>muitas formas</q>, o polimorfismo é a propriedade ou estado daquilo que se apresenta e/ou se comporta de várias formas diferentes. É um único nome, mas com comportamentos diferentes.</p>

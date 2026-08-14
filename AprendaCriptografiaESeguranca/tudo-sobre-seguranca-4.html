@@ -28,7 +28,7 @@
 
 <h3>Steghide - Esteganografia no Linux - Ocultando Mensagens em Imagens</h3>
 
-<p>A Esteganografia é a ocultação de arquivos (como uma mensagem) em outro arquivo, como uma imagem, vídeo ou áudio.</p>
+<p>A esteganografia é a ocultação de arquivos (como uma mensagem) em outro arquivo, como uma imagem, vídeo ou áudio.</p>
 
 <p>Para usarmos a esteganografia, primeiro crie um arquivo de texto com alguma mensagem qualquer.</p>
 
@@ -36,19 +36,19 @@
 
 <p>O Steghide suporta vários formatos de arquivos, como JPEG, BMP, WAV e AU. Para ver o manual dele, digite <code>man steghide</code>.</p>
 
-<p>Esses são os comando do Steghide:</p>
+<p>Esses são os comandos do Steghide:</p>
 
-<p>Para ocultar uma mensagem em um arquivo de imagem ou som, usamos o comando embed seguido dos argumentos apropriados. Os principais argumentos são os seguintes:</p>
+<p>Para ocultar uma mensagem em um arquivo de imagem ou som, usamos o comando <code>embed</code> seguido dos argumentos apropriados. Os principais argumentos são os seguintes:</p>
 
 <ul>
-    <li><code>-ef</code> - Especificar o arquivo que será incorporado ou seja, o arquivo que contém a mensagem secreta. Se este argumento for omitido ou o nome do arquivo for o caractere-, os dados secretos serão lidos diretamente da entrada padrão (teclado).</li>
-    <li><code>-cf</code> - Especificar o arquivo portador que será usado para incorporar os dados secretos. Esse arquivo deve estar em um dos formatos a seguir: AU, BMP, JPEG ou WAV. Se este argumento for omitido ou o nome do arquivo for o caractere -, o steghide lerá o arquivo portador a partir da entrada padrão.</li>
+    <li><code>-ef</code>: Especifica o arquivo que será incorporado, ou seja, o arquivo que contém a mensagem secreta. Se este argumento for omitido ou o nome do arquivo for o caractere <q>-</q>, os dados secretos serão lidos diretamente da entrada padrão (teclado).</li>
+    <li><code>-cf</code>: Especifica o arquivo portador que será usado para incorporar os dados secretos. Esse arquivo deve estar em um dos formatos a seguir: AU, BMP, JPEG ou WAV. Se este argumento for omitido ou o nome do arquivo for o caractere <q>-</q>, o Steghide lerá o arquivo portador a partir da entrada padrão.</li>
 </ul>
 
-<p>Para extrairmos uma mensagem oculta de um arquivo esteganografado usamos o comando extract, cujo argumento principal é esse:</p>
+<p>Para extrairmos uma mensagem oculta de um arquivo esteganografado usamos o comando <code>extract</code>, cujo argumento principal é esse:</p>
 
 <ul>
-    <li><code>-sf</code> - Especificar o arquivo esteganografado (que contém os dados secretos embutidos). Se este argumento for omitido ou o nome do arquivo for o caractere -, o steghide lerá o arquivo esteganografado a partir da entrada padrão.</li>
+    <li><code>-sf</code>: Especifica o arquivo esteganografado (que contém os dados secretos embutidos). Se este argumento for omitido ou o nome do arquivo for o caractere <q>-</q>, o Steghide lerá o arquivo esteganografado a partir da entrada padrão.</li>
 </ul>
 
 <p>Primeiramente, pegue uma imagem grande em JPEG, e crie um arquivo de texto com uma mensagem.</p>
@@ -57,7 +57,7 @@
 
 <pre>
 <code>
-steghide embed -cf imagen.jpg -ef mensagem.txt
+steghide embed -cf imagem.jpg -ef mensagem.txt
 </code>
 </pre>
 
@@ -77,7 +77,7 @@ steghide info imagem.jpg
 
 <pre>
 <code>
-steghide extract -sf imagens.jpg
+steghide extract -sf imagem.jpg
 </code>
 </pre>
 
@@ -91,11 +91,11 @@ steghide encinfo
 </code>
 </pre>
 
-<h3>Kali Linux – Coletando Informações com DMitry</h3>
+<h3>Kali Linux - Coletando Informações com Dmitry</h3>
 
-<p>O DMitry (Deepmagic Information Gathering Tool) é uma aplicação Open Source de linha de comando que nos permite coletar diversos tipos de informações sobre um host em uma rede. A ferramenta, que é codificada em linguagem C, é capaz de coletar dados sobre subdomínios, endereços de e-mail, efetuar escaneamento de portas TCP (port scan), lookups whois e mais algumas funções.</p>
+<p>O Dmitry (Deepmagic Information Gathering Tool) é uma aplicação open-source de linha de comando que nos permite coletar diversos tipos de informações sobre um host em uma rede. A ferramenta, que é codificada em linguagem C, é capaz de coletar dados sobre subdomínios, endereços de e-mail, efetuar escaneamento de portas TCP (port scan), lookups whois e mais algumas funções.</p>
 
-<p>O site oficial do projeto é o <a href="http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/" target="_blank">http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/</a>, onde você pode baixar a versão mais recente do pacote. No Kali Linux, a ferramenta está presente por padrão, não sendo necessário baixá-la e instalá-la. De acordo com o site do desenvolvedor, o DMitry pode ser executado em várias plataformas, incluindo FreeBSD, Mac OS X, SuSE Linux e OpenBSD, entre outras. Ele lembra um pouco o Nmap, mas é um pouco mais simples.</p>
+<p>O site oficial do projeto é o <a href="http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/" target="_blank">http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/</a>, onde você pode baixar a versão mais recente do pacote. No Kali Linux, a ferramenta está presente por padrão, não sendo necessário baixá-la e instalá-la. De acordo com o site do desenvolvedor, o Dmitry pode ser executado em várias plataformas, incluindo FreeBSD, Mac OS X, Suse Linux e OpenBSD, entre outras. Ele lembra um pouco o Nmap, mas é um pouco mais simples.</p>
 
 <p>Vamos começar executando o software sem usar nenhuma opção. Para isso, execute o comando a seguir no terminal:</p>
 
@@ -139,9 +139,9 @@ dmitry -p -f 192.168.1.110 -o portas-escaneadas
 </code>
 </pre>
 
-<p>O Kali Linux traz outras ferramentas para coleta de informações sobre hosts, muitas delas bem mais completas que o DMitry, que é uma ferramenta bem simples</p>
+<p>O Kali Linux traz outras ferramentas para coleta de informações sobre hosts, muitas delas bem mais completas que o Dmitry, que é uma ferramenta bem simples.</p>
 
-<h3>Kali Linux – Manipulando Endereços MAC com Macchanger</h3>
+<h3>Kali Linux - Manipulando Endereços MAC com Macchanger</h3>
 
 <p>O utilitário de linha de comandos MacChanger (GNU Mac Changer), escrito por Alvaro Lopez Ortega,  permite visualizar e manipular o endereço MAC (Media Access Control) das interfaces de rede do computador. Esse utilitário está presente nativamente no Kali Linux.</p>
 

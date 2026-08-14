@@ -34,7 +34,7 @@
 
 <p>No último ligue a porta do roteador wi-fi à impressora. Os laptops vão se conectar a conectar via wi-fi. O roteador wi-fi deverá ter a porta Internet ligada ao roteador da direita.</p>
 
-<p>No caso dos roteadores, eles serão interligados como um losango, para criar uma rota estática, mas teremos que desligar eles e adicionar mais uma porta em cada um deles. Coloque a placa HWIC-2T em cada uma delas. No caso ele criará portas seriais. E ligue essas portas com um cabo serial DTE. Após isso ligue todas as interfaces dos roteadores.</p>
+<p>No caso dos roteadores, eles serão interligados como um losango, para criar uma rota estática, mas teremos que desligar eles e adicionar mais uma porta em cada um deles. Coloque a placa WIC-2T em cada uma delas. No caso ele criará portas seriais. E ligue essas portas com um cabo serial DTE. Após isso ligue todas as interfaces dos roteadores.</p>
 
 <p>PS: O ideal é só ligar as portas do roteador que estão sendo usadas, por questão de segurança.</p>
 
@@ -338,7 +338,88 @@
 
 <p>PS: A configuração do DHCP não fornece o gateway padrão aos hosts. Para se comunicarem com a rede, teremos que configurar manualmente.</p>
 
-<h3>Quando Criar uma VLAN?</h3>
+<h3>Configurando Rotas Dinâmicas</h3>
+
+<p>Vamos criar uma rede com os seguintes itens:</p>
+
+<ul>
+    <li>Do lado esquerdo, um computador com o IP <code>192.168.1.2</code> e gateway padrão <code>192.168.1.1</code>, máscara classe C.</li>
+    <li>Quatro roteadores, um em cima, um embaixo, um do lado esquerdo e outro do lado direito (configuraremos eles depois).</li>
+    <li>Abaixo, um computador com o IP <code>192.168.2.2</code> e gateway padrão <code>192.168.2.2</code>, máscara classe C.</li>
+    <li>Do lado direito, um computador com o IP <code>192.168.3.2</code> e gateway padrão <code>192.168.3.1</code>, máscara Classe C.</li>
+</ul>
+
+<p>Coloque nos roteadores uma placa WIC-2T em cada e ligue eles com o cabo Serial DTE. Os PCs nós ligamos com o cabo Cross nos roteadores.</p>
+
+<p>No roteador da esquerda, coloque os seguintes IPs e máscaras:</p>
+
+<ul>
+    <li><b>Ligação Rede Esquerda:</b> <code>192.168.1.1</code> - <code>255.255.255.0</code></li>
+    <li><b>Ligação Roteador Cima:</b> <code>200.0.0.1</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Roteador Baixo:</b> <code>202.0.0.1</code> - <code>255.255.255.252</code></li>
+</ul>
+
+<p>No roteador de cima:</p>
+
+<ul>
+    <li><b>Ligação Roteador Esquerda:</b> <code>200.0.0.2</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Roteador Direita:</b> <code>201.0.0.1</code> - <code>255.255.255.252</code></li>
+</ul>
+
+<p>No roteador de baixo:</p>
+
+<ul>
+    <li><b>Ligação Roteador Esquerda:</b> <code>202.0.0.2</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Roteador Direita:</b> <code>203.0.0.1</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Rede Baixo:</b> <code>192.168.2.1</code> - <code>255.255.255.0</code></li>
+</ul>
+
+<p>No roteador da direita:</p>
+
+<ul>
+    <li><b>Ligação Roteador Cima:</b> <code>201.0.0.2</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Roteador Baixo:</b> <code>203.0.0.2</code> - <code>255.255.255.252</code></li>
+    <li><b>Ligação Rede Direita:</b> <code>192.168.3.1</code> - <code>255.255.255.0</code></li>
+</ul>
+
+<p>PS: Não esqueça de ligar as interfaces dos roteadores.</p>
+
+<p>Para traçar as rotas dinâmicas, vá nos roteadores e em Config e em RIP e adicione as redes conectadas a eles:</p>
+
+<p>Roteador da esquerda:</p>
+
+<ul>
+    <li><code>192.168.1.0</code></li>
+    <li><code>200.0.0.0</code></li>
+    <li><code>202.0.0.0</code></li>
+</ul>
+
+<p>Roteador de cima:</p>
+
+<ul>
+    <li><code>200.0.0.0</code></li>
+    <li><code>201.0.0.0</code></li>
+</ul>
+
+<p>Roteador de baixo:</p>
+
+<ul>
+    <li><code>202.0.0.0</code></li>
+    <li><code>203.0.0.0</code></li>
+    <li><code>192.168.2.0</code></li>
+</ul>
+
+<p>Roteador da direita:</p>
+
+<ul>
+    <li><code>201.0.0.0</code></li>
+    <li><code>203.0.0.0</code></li>
+    <li><code>192.168.3.0</code></li>
+</ul>
+
+<p>No PC da rede <code>192.168.1.0</code>, vá em Desktop e Prompt de Comando e tente <q>pingar</q> um PC da rede 2 e da rede 3, e veja que eles responderão. Podemos usar o tracert também pra mostrar a rota dinâmica, que os pacotes escolherão se é melhor passar por cima ou por baixo. Podemos também ir em Simulation e fazer o teste da cartinha.</p>
+
+<h3>Quando Criar uma VLAN</h3>
 
 <p>Como sabemos, as LANs são redes locais, vamos imaginar duas redes locais, cada rede local só podemos acessar ela dentro dessas mesmas redes especificadas.</p>
 

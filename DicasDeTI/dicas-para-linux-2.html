@@ -255,7 +255,7 @@ sudo ntfslabel /dev/sdb1 "Nome do Pendrive"
 
 <h3>Antivírus no Linux</h3>
 
-<p>O Linux, por ser menos vulnerável, não é necessário usar antivírus, no entanto, podemos instalar o Clamav para scanear pendrives e partições.</p>
+<p>O Linux, por ser menos vulnerável, não é necessário usar antivírus, no entanto, podemos instalar o Clamav para escanear pendrives e partições.</p>
 
 <p>Para instalar, basta usar isso, em sistemas Debian e derivados:</p>
 
@@ -303,9 +303,9 @@ sudo clamscan --infected --remove --recursive /home/eu/arquivo
 
 <pre>
 <code>
-/etc/init.d/clamav-daemon start
+sudo /etc/init.d/clamav-daemon start
 
-/etc/init.d/clamav-freshclam start
+sudo /etc/init.d/clamav-freshclam start
 </code>
 </pre>
 
@@ -331,7 +331,7 @@ sudo rkhunter --check
 </code>
 </pre>
 
-<p>Caso tenha problemas para atualizar e checkar, edite essas linhas no arquivo /etc/rkhunter.conf:</p>
+<p>Caso tenha problemas para atualizar e checar, edite essas linhas no arquivo <code>/etc/rkhunter.conf</code>:</p>
 
 <pre>
 <code>
@@ -347,7 +347,7 @@ WEB_CMD=""
 </code>
 </pre>
 
-<p>Já o ChkRootKit, instalamos com <code>sudo apt install chkrootkit</code>, e executando como administrador usando o comando <code>sudo chkrootkit</code>.</p>
+<p>Já o ChkRootkit, instalamos com <code>sudo apt install chkrootkit</code>, e executando como administrador usando o comando <code>sudo chkrootkit</code>.</p>
 
 <h3>Usando o Editor Nano</h3>
 
@@ -359,10 +359,6 @@ WEB_CMD=""
     <tr>
         <th>Comando</th>
         <th>Ação</th>
-    </tr>
-    <tr>
-        <td>Ctrl O</td>
-        <td>Salvar</td>
     </tr>
     <tr>
         <td>Ctrl W</td>

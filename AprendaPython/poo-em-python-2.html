@@ -107,7 +107,7 @@ class Funcionario(Pessoa):
 </code>
 </pre>
 
-<p>PS: Lembre-se que, ao herdar uma superclasse, caso necessário, deveremos fazer a sobreposição do construtor com o <code>super()</code>, no caso ali, é <code>super().__init__(nome, idade)</code>. O super pode ser usado com qualquer método de uma superclasse.</p>
+<p>PS: Lembre-se que, ao herdar uma superclasse, caso necessário, deveremos fazer a sobreposição do construtor com o <code>super()</code>, no caso ali, é <code>super().__init__(nome, idade)</code>. O super pode ser usado com qualquer método de uma superclasse, incluindo os que nós mesmos criarmos, com a mesma lógica, como <code>super().nossoMetodo()</code>.</p>
 
 <p>Vamos criar um objeto assim:</p>
 
@@ -306,6 +306,25 @@ p1.estudar()
 f1.estudar()
 </code>
 </pre>
+
+<p>PS: Podemos simular uma interface (que não existe em Python), com uma classe apenas com métodos abstratos, por exemplo:</p>
+
+<pre>
+<code>
+from abc import ABC, abstractmethod
+
+class ExemploInterface(ABC):   
+    @abstractmethod
+    def primeiroMetodo(self):
+        pass
+
+    @abstractmethod
+    def segundoMetodo(self):
+        pass
+</code>
+</pre>
+
+<p>Aí, basta as classes herdarem a <q>interface</q> acima e implementar todos os métodos abstratos dela, da mesma forma.</p>
 
 <h3>Encapsulamento: Público, Protegido e Privado</h3>
 

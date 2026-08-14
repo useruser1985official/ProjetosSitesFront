@@ -26,6 +26,686 @@
 
 <h2>Programção Orientada a Objetos em Python - Parte 4</h2>
 
+<h3>Operator Overloading: Personalizando Operadores na Prática</h3>
+
+<p>Como sabemos, os polimorfismos possíveis no Python são o de inclusão e o de sobrecarga, que se subdivide em dois: Sobrecarga de método e sobrecarga de operadores.</p>
+
+<p>A sobrecarga de métodos é quando temos dois métodos de mesmo nome (como <q>analisar</q>, por exemplo), que podem receber tipos de parâmetros diferentes, e o programa analisa qual método deve utilizar baseado nos parâmetros recebidos na invocação. Por padrão, ele existe em várias linguagens OO, como Java, C# e C++, mas no Python não existe por padrão por ser uma linguagem dinamicamente tipada.</p>
+
+<p>Vamos supor essa classe:</p>
+
+<pre>
+<code>
+class Analisador:
+    def analisar(self, valor:int):
+        print(f"{valor} é um valor inteiro!")
+
+    def analisar(self, valor:str):
+        print(f"{valor} é uma cadeia de caracteres!")
+
+</code>
+</pre>
+
+<p>Com esse código principal:</p>
+
+<pre>
+<code>
+def main():
+    x = Analisador()
+
+    x.analisar(3)
+    x.analisar("Testando")
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Isso acima, funcionaria direito em linguagens como Java ou C#, mas no Python dará erros de execução. Mesmo passando um inteiro, ele só rodará o último método, independente do valor a ser analisado. Podemos tentar passar lista, tupla e outros tipos de dados.</p>
+
+<p>Para burlar isso e permitir a sobrecarga de métodos, importaremos uma biblioteca e chamaremos apenas num método com o nome (analisar) e os outros serão substituídos por uma underline, assim:</p>
+
+<pre>
+<code>
+from functools import singledispatchmethod
+
+class Analisador:
+    @singledispatchmethod
+    def analisar(self, valor):
+        print(f"Não possível analisar o valor {valor}!")
+    
+    @analisar.register # O nome do método, que substituirá o underline
+    def _(self, valor:int):
+        print(f"{valor} é um valor inteiro!")
+
+    @analisar.register
+    def _(self, valor:str):
+        print(f"\"{valor}\" é uma cadeia de caracteres!")
+</code>
+</pre>
+
+<p>Aí não dará mais problemas no código principal:</p>
+
+<pre>
+<code>
+def main():
+    x = Analisador()
+
+    x.analisar(250)
+    x.analisar("Python")
+    x.analisar(8.5)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Dessa forma, podemos adicionar outros métodos na classe Analisador, assim:</p>
+
+<pre>
+<code>
+@analisar.register
+def _(self, valor:float):
+    print(f"{valor} é um número com ponto flutuante (real)!")
+
+@analisar.register
+def _(self, valor:tuple|list|dict):
+    print(f"{valor} é uma coleção de dados!")
+</code>"
+</pre>
+
+<p>E no código principal:</p>
+
+<pre>
+<code>
+def main():
+    x = Analisador()
+
+    x.analisar(8.5)
+    x.analisar([3, 5, 7])
+    x.analisar(len([6, 9.3, 2])) # len retorna inteiro, o número máximo
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Temos também a sobrecarga de operadores, que conseguirmos <q>substituir</q> a funcionalidade de um operador. Vamos supor essa classe:</p>
+
+<pre>
+<code>
+class Carteira:
+    def __init__(self, valor:int|float = 0):
+        self.__saldo = valor
+
+    @property
+    def saldo(self):
+        return self.__saldo
+
+    @saldo.setter
+    def saldo(self, valor):
+        raise PermissionError("Você não tem autorização para alterar o saldo desse jeito!")
+
+    def __str__(self):
+        return f"Você tem R${self.saldo:.2f} na carteira!"
+</code>
+</pre>
+
+<p>E esse código principal:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+
+    print(c1)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>No caso acima, ao fazer isso, ele dará erro por causa da configuração do setter:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+
+    c1.saldo = 200
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Dessa forma, queremos adicionar o valor diretamente com o <code>+=</code>, assim:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+
+    c1 += 200
+    
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Só que o código acima dará erro, pelo fato do <code>+=</code> apenas somar dados numéricos, e não o objeto Carteira que criamos. Podemos adaptar este e outros operadores (como <code>+</code>, <code>==</code>, <code>&lt;</code> e <code>&gt;</code>) com esse tipo de polimorfismo.</p>
+
+<p>Vamos testar se os dois objetos são iguais:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+    c2 = Carteira(200) # Tente mudar pra 100 igual o primeiro objeto
+
+    print(c1 == c2) # Retorna False em qualquer caso
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Mesmo se os dois objetos carteiras tivesse o mesmo valor, ele retornaria <q>False</q>, pois ele não compararia os valores dentro deles, e sim se são dois objetos diferentes (já que estão em espaços diferentes da memória). Para resolver isso, usaremos esses métodos mágicos:</p>
+
+<table>
+    <tr>
+        <th>Significado</th>
+        <th>Operador Padrão</th>
+        <th>Método Mágico</th>
+    </tr>
+    <tr>
+        <td>Igual a</td>
+        <td><code>obj1 == obj2</code></td>
+        <td><code>obj1.__eq__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Diferente</td>
+        <td><code>obj1 != obj2</code></td>
+        <td><code>obj1.__ne__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Menor que</td>
+        <td><code>obj1 &lt; obj2</code></td>
+        <td><code>obj1.__lt__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Menor ou Igual a</td>
+        <td><code>obj1 &lt;= obj2</code></td>
+        <td><code>obj1.__le__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Maior que</td>
+        <td><code>obj1 &gt; obj2</code></td>
+        <td><code>obj1.__ge__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Maior ou Igual a</td>
+        <td><code>obj1 &gt;= obj2</code></td>
+        <td><code>obj1.__ge__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Adição com Atribuição</td>
+        <td><code>obj1 += obj2</code></td>
+        <td><code>obj1.__iadd__(obj2)</code></td>
+    </tr>
+    <tr>
+        <td>Subtração com Atribuição</td>
+        <td><code>obj1 -= obj2</code></td>
+        <td><code>obj1.__isub__(obj2)</code></td>
+    </tr>
+</table>
+
+<p>PS: Existem outros métodos, mas esses são os principais.</p>
+
+<p>Adicione esses métodos na classe Carteira:</p>
+
+<pre>
+<code>
+def __eq__(self, outro):
+    if self.__saldo == outro.__saldo:
+        return True
+    else:
+        return False
+    
+def __iadd__(self, valor:int|float):
+    self.__saldo = self.__saldo + valor
+    
+    return self
+</code>
+</pre>
+
+<p>Agora, coloque isso no código principal e veja que ele compara os valores dentro da carteira, e não os objetos em si:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+    c2 = Carteira(100) # Tente mudar esse valor
+
+    print(c1 == c2) # Compara os valores dentro dos objetos, e não o objeto em si
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Como também podemos adicionar o valor usando a adição com atribuição diretamente nos objetos, e ele fará as operações com os valores dentro deles:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+    c2 = Carteira(100)
+
+    c1 += 50
+    
+    print(c1)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Só que nós não programamos a retirada (subtração com atribuição), portanto ao usar <code>c1 -= 10</code>, ele dará erro, mas podemos programar esse método na classe Carteira:</p>
+
+<pre>
+<code>
+def __isub__(self, valor:int|float):
+    self.__saldo = self.__saldo - valor
+    
+    return self
+</code>
+</pre>
+
+<p>E aí, no código principal:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+    c2 = Carteira(100)
+
+    c1 += 50
+    c1 -= 10
+
+    print(c1)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Deixe assim também:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(100)
+    c2 = Carteira(140)
+
+    c1 += 50
+    c1 -= 10
+
+    if c1 == c2:
+        print("Vocês têm o mesmo valor na carteira!")
+    else:
+        print("As carteiras têm valores diferentes!")
+
+    print(c1)
+    print(c2)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Na classe Carteira, podemos continuar criando outros métodos mágicos:</p>
+
+<pre>
+<code>
+def __le__(self, outro):
+    if self.__saldo <= outro.__saldo:
+        return True
+    else:
+        return False
+</code>
+</pre>
+
+<p>E no código principal:</p>
+
+<pre>
+<code>
+def main():
+    c1 = Carteira(1000)
+    c2 = Carteira(2000)
+
+    c1 += 50
+    c1 -= 10
+
+    if c1 == c2:
+        print("Vocês têm o mesmo valor na carteira!")
+    else:
+        print("As carteiras têm valores diferentes!")
+        
+    if c1 <= c2:
+        print("A segunda carteira tem mais dinheiro!")
+    else:
+        print("A primeira carteira tem mais dinheiro!")
+
+    print(c1)
+    print(c2)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Sobre o <q>duck typing</q>, cuja frase é: Se parece um pato, nada como um pato, voa como um pato e faz <q>quac</q>, então provavelmente é um pato. O polimorfismo do Python funciona de forma semelhante com um jeito <q>pythônico</q>, pois qualquer um dos tipos de polimorfismo suportados em Python devem funcionar, independente do tipo de objeto.</p>
+
+<p>Vamos supor um método chamado <q>abrir</q>, que é algo genérico, pois <q>abrir</q> pode ter como significado, por exemplo, abrir uma pota, uma lata de azeitona, uma conta bancária, um ovo, um pacote, revista, empresa ou mesmo a cabeça (literal ou filosoficamente). Podemos programar eles em Python, onde cada objeto será aberto de sua forma, por exemplo:</p>
+
+<pre>
+<code>
+class Porta:
+    def abrir(self):
+        print(f"Girar a maçaneta e empurrar!")
+
+class Empresa:
+    def abrir(self):
+        print(f"Vá ao portar do empreendedor com toda a documentação para abrir um CNPJ!")
+
+class Ovo:
+    def abrir(self):
+        print(f"Quebre a casca com um garfo e separe as partes sobre uma frigideira!")
+
+class Pedra:
+    pass
+
+</code>
+</pre>
+
+<p>Com esses objetos:</p>
+
+<pre>
+<code>
+def main():
+    a = Porta()
+    b = Empresa()
+    c = Ovo()
+    d = Pedra()
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Agora crie esse método, fora do main e fora de qualquer classe:</p>
+
+<pre>
+<code>
+# Método pythonico polimórfico duck typing:
+def tentarAbrir(objeto):
+    objeto.abrir()
+</code>
+</pre>
+
+<p>E no main:</p>
+
+<pre>
+<code>
+def main():
+    a = Porta()
+    b = Empresa()
+    c = Ovo()
+    d = Pedra()
+    
+    tentarAbrir(a)
+    tentarAbrir(b)
+    tentarAbrir(c)
+    tentarAbrir(d)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Como o objeto <q>d</q> é uma pedra, vai dar erro, pois ela não tem como <q>abrir</q>. Podemos circundar o abrir dentro do método assim:</p>
+
+<pre>
+<code>
+def tentarAbrir(objeto):
+    try:
+        objeto.abrir()
+    except:
+        print(f"Encontrei problemas ao tentar abrir um objeto do tipo {objeto.__class__.__name__}.")
+</code>
+</pre>
+
+<p>Se fôssemos tentar os métodos diretamente nos objetos, assim:</p>
+
+<p></p>
+
+<pre>
+<code>
+a.abrir()
+b.abrir()
+c.abrir()
+d.abrir() # Pedra não tem o método abrir
+</code>
+</pre>
+
+<p>Ele daria erro, pelo objeto Pedra não ter o método abrir, pois isso usamos um método para tratar os mesmos objetos.</p>
+
+<p>Vamos supor agora, com coisas que podemos dobrar:</p>
+
+<pre>
+<code>
+class Numero:
+    def __init__(self, valor:int|float = 0):
+        self.valor = valor
+
+    def dobrar(self):
+        self.valor = self.valor * 2
+
+    def __str__(self):
+        return f"Tenho o valor {self.valor} dentro do Numero."
+
+class Texto:
+    def __init__(self, txt:str = ""):
+        self.texto = txt
+
+    def dobrar(self):
+        self.texto = self.texto + " " + self.texto
+
+    def __str__(self):
+        return f"Tenho o texto \"{self.texto}\" dentro do Texto."
+
+class Lista:
+    def __init__(self, lst:list = []):
+        self.valores = lst
+
+    def dobrar(self):
+        self.valores = self.valores + self.valores
+
+    def __str__(self):
+        return f"Tenho os itens {self.valores} dentro da Lista."
+
+class Papel:
+    def __init__(self):
+        self.dobrado = False
+
+    def dobrar(self):
+        self.dobrado = True
+
+    def __str__(self):
+        return f"O papel está {'novo' if not self.dobrado else 'dobrado'}."
+
+class Casa:
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return f"Era uma casa muito engraçada."
+</code>
+</pre>
+
+<p>Com esse código:</p>
+
+<pre>
+<code>
+def main():
+    a = Numero(200)
+    b = Texto("Gafanhoto")
+    c = Lista([1, 2, 3])
+    d = Papel()
+    e = Casa()
+
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+    print(e)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>Fora das classes e do main, defina esse método:</p>
+
+<pre>
+<code>
+def tenteDobrar(objeto):
+    try:
+        objeto.dobrar()
+    except:
+        print(f"Tive dificuldades para dobrar {objeto.__class__.__name__}.")
+</code>
+</pre>
+
+<p>E tente <q>dobrar</q> os objetos:</p>
+
+<pre>
+<code>
+def main():
+    a = Numero(200)
+    b = Texto("Gafanhoto")
+    c = Lista([1, 2, 3])
+    d = Papel()
+    e = Casa()
+    
+    tenteDobrar(a)
+    tenteDobrar(b)
+    tenteDobrar(c)
+    tenteDobrar(d)
+    tenteDobrar(e)
+
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+    print(e)
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<h3>Associações entre Classes e Objetos</h3>
+
+<p>Podemos também ter associações entre objetos, como agregações e composições, onde um objeto recebe outro dentro dele.</p>
+
+<p>Vamos supor essa classe:</p>
+
+<pre>
+<code>
+class Pilha:
+    def __init__(self, marca):
+         self.__marca = marca
+         self.__carga = 100
+
+    def apresentacao(self):
+         print(f"A marca da pilha é {self.marca}.")
+         print(f"A carga da pilha é {self.carga}%.")
+
+    @property
+    def marca(self):
+        return self.__marca
+
+    @property
+    def carga(self):
+        return self.__carga
+
+    @marca.setter
+    def marca(self, marca):
+        self.__marca = marca
+
+    @carga.setter
+    def carga(self, valor):
+        self.__carga = valor
+</code>
+</pre>
+
+<p>Nós podemos fazer relacionamentos entre classes diferentes, veja por exemplo a classe abaixo, que tem um atributo do "tipo" da classe acima:</p>
+
+<pre>
+<code>
+class Aparelho:
+    def __init__(self, pl):
+        self.__pl = pl
+
+    def __del__(self): # Destrutor, necessário para destruir objeto associado
+        del self.__pl
+
+    def ligado(self):
+        if self.pl.carga > 0: # Getter do objeto Pilha
+            print(f"O aparelho está ligado e a carga da pilha é de {self.pl.carga}%!")
+        else:
+            print("A pilha do aparelho está sem carga!")
+
+    @property
+    def pl(self):
+        return self.__pl
+
+    @pl.setter
+    def pl(self, valor):
+        self.__pl = valor
+</code>
+</pre>
+
+<p>Aí podemos chamar os objetos assim:</p>
+
+<pre>
+<code>
+ray = Pilha("Rayovac")
+
+ray.apresentacao()
+
+controle = Aparelho(ray)
+
+controle.ligado()
+
+print(f"A carga da pilha é de {controle.pl.carga}%!")
+</code>
+</pre>
+
+<p>Quando um objeto é criado fora de uma classe e associado a ela por um método, é agregação. Caso o objeto seja inicializado dentro de outra classe, aí é composição. Poderíamos associar o objeto Pilha ao Aparelho assim, no construtor do Aparelho, exigindo que ele tenha a Pilha ao ser criado:</p>
+
+<pre>
+<code>
+class Aparelho:
+    def __init__(self):
+        self.__pl = Pilha("Rayovac")
+</code>
+</pre>
+
+<p>Aí o restante da classe Aparelho segue igual.</p>
+
 <ul>
     <li><a href="poo-em-python-3.html">Parte Anterior da Matéria!</a></li>
     <!--<li><a href="poo-em-python-5.html">Continuação da Matéria!</a></li>-->

@@ -174,7 +174,7 @@ print(g2.mensagem())
 
 <p>No caso acima, os atributos e métodos serão manipulados apenas nos objetos que os chamaram, onde um não interfere no outro. Por isso que na classe têm o <code>self</code>, que significa <q>si mesmo</q>, ou seja, o próprio objeto que o chama.</p>
 
-<p>PS: Podemos criar as classes em módulos separados também.</p>
+<p>PS: Podemos criar as classes em módulos separados também. E para pegar o nome da classe, use <code>self.__class__.__name__</code>.</p>
 
 <h3>Melhorando Classes e Criando uma Conta Bancária na Prática</h3>
 
@@ -508,7 +508,7 @@ def __del__(self):
 </code>
 </pre>
 
-<p>E no final do código principal, depois de utilizar o objeto criado, basta fazer assim, com del:</p>
+<p>E no final do código principal, depois de utilizar o objeto criado, basta fazer assim, com <code>del</code>:</p>
 
 <pre>
 <code>

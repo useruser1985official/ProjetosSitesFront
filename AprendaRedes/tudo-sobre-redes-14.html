@@ -188,7 +188,7 @@
 <ul>
     <li>Baixamos um arquivo .torrent ou um link magnet, que contém o info hash do arquivo.</li>
     <li>Esse arquivo contém metadados: Nome, tamanho, lista de arquivos, e endereços de trackers.</li>
-    <li>Um programa BitTorrent (como qBittorrent, UTorrent, etc.) usa essesdados para:</li>
+    <li>Um programa BitTorrent (como qBittorrent, UTorrent, etc.) usa esses dados para:</li>
     <ul>
         <li>Contatar um tracker ou a rede DHT para encotnrar outros usuários (peers), e se conectar a vários peers ao mesmo tempo.</li>
         <li>Baixar diferentes pedaços do arquivo desses peers.</li>
@@ -211,7 +211,7 @@
 
 <p>No geral, ele é usado sempre que há necessidade de compartilhar arquivos grandes com eficiência, especialmente quando se quer evitar sobrecarregar servidores centrais.</p>
 
-<p>Os arquivos .torrent são um tipo especial de arquivo usado por um protocolo de compartilhamento de arquivos chamado BitTorrent. Esse protocolo permite que pessoas compartilhem arquivos grandes de forma eficiente, descentralizada e distribuída, sem depender de um único servidor. O mimetipe deles é <code>application/x-bittorrent</code>.</p>
+<p>Os arquivos .torrent são um tipo especial de arquivo usado por um protocolo de compartilhamento de arquivos chamado BitTorrent. Esse protocolo permite que pessoas compartilhem arquivos grandes de forma eficiente, descentralizada e distribuída, sem depender de um único servidor. O mimetype deles é <code>application/x-bittorrent</code>.</p>
 
 <p>Já os links magnet são links de texto, geralmente começando com a string <code>magnet:?xt=urn:btih:</code>, seguido de uma sequência alfanumérica chamada hash (identificador único do conteúdo). Gerado a partir do conteúdo do arquivo a ser compartilhado. Usado para encontrar outras pessoas que tenham esse mesmo conteúdo. Um exemplo de link seria <code>magnet:?xt=urn:btih:c12fe1c3a1c383f94a286241ed380df1117ec8b8&dn=ubuntu-24.04-desktop-amd64.iso</code>.</p>
 
@@ -276,22 +276,10 @@
 <p>Siga essas boas práticas de segurança em torrent:</p>
 
 <ul>
-    <li>Use um cliente BitTorrent confiável.</li>
-    <ul>
-        <li>Programas como qBittorrent, Deluge ou Transmission são abertos e normalmente auditados.</li>
-    </ul>
-    <li>Baixe torrents apenas de fontes confiáveis.</li>
-    <ul>
-        <li>Sites com boa reputação têm seções de comentários e verificações de integridade. Desconfie de sites obscuros ou com excesso de pop-ups.</li>
-    </ul>
-    <li>Use antivírus e antimalware atualizados.</li>
-    <ul>
-        <li>Verifique todos os arquivos baixados antes de abrir, mesmo que pareçam legítimos.</li>        
-    </ul>
-    <li>Leia os comentários dos outros usuários.</li>
-    <ul>
-        <li>Muitas vezes, eles alertam sobre arquivos falsos, armadilhas ou malware embutido.</li>
-    </ul>
+    <li>Use um cliente BitTorrent confiável. Programas como qBittorrent, Deluge ou Transmission são abertos e normalmente auditados.</li>
+    <li>Baixe torrents apenas de fontes confiáveis. Sites com boa reputação têm seções de comentários e verificações de integridade. Desconfie de sites obscuros ou com excesso de pop-ups.</li>
+    <li>Use antivírus e antimalware atualizados. Verifique todos os arquivos baixados antes de abrir, mesmo que pareçam legítimos.</li>
+    <li>Leia os comentários dos outros usuários. Muitas vezes, eles alertam sobre arquivos falsos, armadilhas ou malware embutido.</li>
 </ul>
 
 <p>A seguir temos alguns exemplos de clientes para BitTorrent:</p>
@@ -314,6 +302,22 @@
     <li>Atenção deve ser prestada ao navegar por esses sites e baixar material via torrent, por questões de segurança.</li>
     <li>A tecnologia em si, é perfeitamente legal. O uso que damos a ela pode apresentar alguns problemas, porém.</li>
 </ul>
+
+<h3>O que é FTTH</h3>
+
+<p>O FTTH (Fiber to the Home) é uma tecnologia de internet em que a fibra óptica chega diretamente até a residência ou empresa do cliente. Isso permite altas velocidades, baixa latência e maior estabilidade na conexão.</p>
+
+<p>A principal diferença para outras tecnologias de fibra está em até onde a fibra chega:</p>
+
+<ul>
+    <li><b>FTTH:</b> Fibra chega até dentro da casa/empresa do cliente.</li>
+    <li><b>FTTB (Fiber to the Building):</b> Fibra chega até o prédio, a distribuição final pode usar cabo de rede ou outra tecnologia.</li>
+    <li><b>FTTC (Fiber to the Curb):</b> Fibra chega até próximo do imóvel, e o trecho final geralmente utiliza cobre.</li>
+    <li><b>FTTN (Fiber to the Node):</b> Fibra chega até um ponto de distribuição mais distante, deixando um trecho maior em cobre.</li>
+</ul>
+
+<p>Resumindo: Quanto mais próxima do usuário a fibra chega, maior tende a ser a qualidade e o potencial de velocidade. O FTTH é a solução mais completa, pois elimina praticamente todo o trecho de cobre entre a operadora e o cliente.</p>
+
 
 <ul>
     <li><a href="tudo-sobre-redes-13.html">Parte Anterior da Matéria!</a></li>

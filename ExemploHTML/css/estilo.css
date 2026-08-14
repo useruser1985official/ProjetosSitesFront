@@ -20,7 +20,7 @@
 
 body {
     background-color: var(--cor0);
-    background-image: url("../imagens/fundo.png") !important;
+    background-image: radial-gradient(circle, blue, green, red);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
@@ -207,4 +207,25 @@ article#noticias h2 {
     background-color: #aaaaff;
     padding: 5px 0px 5px 10px;
     margin: 10px 0px 10px 0px;
+}
+
+div.youtube {
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 50%;
+    position: relative;
+}
+
+div.youtube iframe {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border: none;
+}
+
+.borda {
+    border: 8px solid;
+    border-image: linear-gradient(135deg, red 0%, blue 90%) 1;
 }
