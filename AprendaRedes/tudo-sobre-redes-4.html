@@ -56,13 +56,13 @@
 
 <p>Alguns gateways podem operar no modo bridge (ponte). Nesse caso, ele só funciona como modem/ONT e converte o sinal, quem roteia é outro equipamento.</p>
 
-<p>O modo bridge faz o gateway da operadora virar basicamente uma ponte: Ele para de rotear, fazer NAT, DHCP e wi-fi, e passa a entregar o IP público diretamente para outro equipamento, normalmente um roteador próprio. Assim, o gateway deixa de atuar como roteador e apenas encaminha a conexão para que o outro equipamento gerencie a rede, agindo como um modem/ONT comum. Isso é útil pra evitar duplo NAT (técnica que converte IPs, no caso, IP público pra IP privado).</p>
+<p>O modo bridge faz o gateway da operadora virar basicamente uma ponte: Ele para de rotear, fazer NAT (técnica que converte IPs, no caso, IP público pra IP privado), DHCP e wi-fi, e passa a entregar o IP público diretamente para outro equipamento, normalmente um roteador próprio. Assim, o gateway deixa de atuar como roteador e apenas encaminha a conexão para que o outro equipamento gerencie a rede, agindo como um modem/ONT comum. Isso é útil pra evitar duplo NAT.</p>
 
 <h3>Introdução ao Roteamento de Redes</h3>
 
-<p>A internet é uma coleção de redes interconectadas, e os pontos de ligação são os roteadores. Estes, por sua vez, estão organizados de forma hierárquica, onde alguns roteadores são utilizados apenas para trocar dados entre grupos de redes controlados pela mesma autoridade administrativa, enquanto outros roteadores fazem também a comunicação entre as autoridades administrativas. A entidade que controla e administra um grupo de redes e roteadores chama se Sistema Autônomo [RFC 1930].</p>
+<p>A internet é uma coleção de redes interconectadas, e os pontos de ligação são os roteadores. Estes, por sua vez, estão organizados de forma hierárquica, onde alguns roteadores são utilizados apenas para trocar dados entre grupos de redes controlados pela mesma autoridade administrativa, enquanto outros roteadores fazem também a comunicação entre as autoridades administrativas. A entidade que controla e administra um grupo de redes e roteadores chama-se sistema autônomo (RFC 1930).</p>
 
-<p>O roteamento é a principal forma utilizada na Internet para a entrega de pacotes de dados entre hosts (equipamentos de rede de uma forma geral, incluindo computadores, roteadores, etc.). O modelo de roteamento utilizado é o do salto-por-salto (hop-by-hop), onde cada roteador que recebe um pacote de dados, abre-o, verifica o endereço de destino no cabeçalho IP, calcula o próximo salto que vai deixar o pacote um passo mais próximo de seu destino e entrega o pacote neste próximo salto. Este processo se repete e assim segue até a entrega do pacote ao seu destinatário. No entanto, para que este funcione, são necessários dois elementos: Tabelas de roteamento e protocolos de roteamento.</p>
+<p>O roteamento é a principal forma utilizada na internet para a entrega de pacotes de dados entre hosts (equipamentos de rede de uma forma geral, incluindo computadores, roteadores, etc.). O modelo de roteamento utilizado é o do salto-por-salto (hop-by-hop), onde cada roteador que recebe um pacote de dados, abre-o, verifica o endereço de destino no cabeçalho IP, calcula o próximo salto que vai deixar o pacote um passo mais próximo de seu destino e entrega o pacote neste próximo salto. Este processo se repete e assim segue até a entrega do pacote ao seu destinatário. No entanto, para que este funcione, são necessários dois elementos: Tabelas de roteamento e protocolos de roteamento.</p>
 
 <p>Tabelas de roteamento são registros de endereços de destino associados ao número de saltos até ele, podendo conter várias outras informações.</p>
 
@@ -71,8 +71,8 @@
 <p>Esses são os tipos de roteamento:</p>
 
 <ul>
-    <li><b>Roteamento Interno:</b> Os roteadores utilizados para trocar informações dentro de Sistemas Autônomos são chamados roteadores internos (interior routers) e podem utilizar uma variedade de protocolos de roteamento interno (Interior Gateway Protocols - IGPs). Dentre eles estão: RIP, IGRP, EIGRP, OSPF e Integrated IS-IS.</li>
-    <li><b>Roteamento Externo:</b> Roteadores que trocam dados entre Sistemas Autônomos são chamados de roteadores externos (exterior routers), e estes utilizam o Exterior Gateway Protocol (EGP) ou o BGP (Border Gateway Protocol). Para este tipo de roteamento são considerados basicamente coleções de prefixos CIDR (Classless Inter Domain Routing) identificados pelo número de um Sistema Autônomo.</li>
+    <li><b>Roteamento Interno:</b> Os roteadores utilizados para trocar informações dentro de sistemas autônomos são chamados roteadores internos (Interior Routers) e podem utilizar uma variedade de protocolos de roteamento interno (Interior Gateway Protocols - IGPs). Dentre eles estão: RIP, IGRP, EIGRP, OSPF e Integrated IS-IS.</li>
+    <li><b>Roteamento Externo:</b> Roteadores que trocam dados entre sistemas autônomos são chamados de roteadores externos (Exterior Routers), e estes utilizam o Exterior Gateway Protocol (EGP) ou o BGP (Border Gateway Protocol). Para este tipo de roteamento são considerados basicamente coleções de prefixos CIDR (Classless Inter Domain Routing) identificados pelo número de um sistema autônomo.</li>
 </ul>
 
 <p>O comando <code>traceroute</code> (ou <code>tracert</code> no Windows), permite identificar os IPs de cada um dos roteadores que o datagrama passa até o host de destino.</p>
@@ -118,7 +118,7 @@
 
 <h3>Tipos de Roteadores</h3>
 
-<p>Os roteadores podem ser equipamentos externos dedicados com um sistema operacional proprietário como é o caso dos roteadores CISCO por exemplo, ou podem ser serviços que são adicionados a um sistema operacional de rede servidor, tal como o Windows 2000. A diferença entre um e outro está na disponibilidade de recursos, nas situações em que podem ser usados e no custo.</p>
+<p>Os roteadores podem ser equipamentos externos dedicados com um sistema operacional proprietário como é o caso dos roteadores Cisco por exemplo, ou podem ser serviços que são adicionados a um sistema operacional de rede servidor, tal como o Windows 2000. A diferença entre um e outro está na disponibilidade de recursos, nas situações em que podem ser usados e no custo.</p>
 
 <p>Prefira sempre os roteadores externos, pois eles possuem melhor performance, um sistema operacional proprietário otimizado e uma série de recursos para configuração, monitoração e diagnóstico. O problema desses roteadores é seu custo elevado. Mas para redes pequenas em que custo é uma palavra chave, um servidor como o Windows 2000, fazendo o papel de roteador, apesar de não ter uma série de recursos disponíveis nos equipamentos de fabricantes, daria conta do recado perfeitamente.</p>
 

@@ -748,7 +748,7 @@ read
 
 <h3>Condicionais IF, ELSE e ELIF e CASE</h3>
 
-<p>Podemos também usar condicionais no shell, usando o <code>if</code>, o <code>else</code> e o <code>elif</code>. Dessa forma:</p>
+<p>Podemos também usar condicionais no shell, usando o <code>if</code>, o <code>else</code> e o <code>elif</code>, dessa forma:</p>
 
 <pre>
 <code>
@@ -759,7 +759,7 @@ if [ $num -lt 10 ]; then
 elif [ $num -gt 10 ]; then
     echo "É maior que 10."
 else
-    echo "É igual à 10."
+    echo "É igual a 10."
 fi
 </code>
 </pre>
@@ -799,7 +799,7 @@ fi
     </tr>
     <tr>
         <td>-le</td>
-        <td>Menor que ou igual</td>
+        <td>Menor ou igual que</td>
     </tr>
     <tr>
         <td>-gt</td>
@@ -807,7 +807,7 @@ fi
     </tr>
     <tr>
         <td>-ge</td>
-        <td>Maior que ou igual</td>
+        <td>Maior ou igual que</td>
     </tr>
 </table>
 
@@ -871,6 +871,18 @@ read
 </code>
 </pre>
 
+<p>Para fazer o incremento também aparecer no echo, usamos a variável de incremento, dessa forma:</p>
+
+<pre>
+<code>
+for r in $(seq 1 1 44); do
+    echo "$r - Volta o cão arrependido, com suas orelhas tão fartas, com seu osso roído, e com o rabo entre as patas..."
+done
+
+read
+</code>
+</pre>
+
 <p>O <code>in</code> passará os números de incremento, com eles entre o cifrão e os parênteses, representando na ordem, o início, incremento e fim do mesmo<!-- (no caso de usar decremento, apenas coloque o início menor que o fim, sem colocar sinal de - no incremento).--> O <code>do</code> especifica os comandos a serem executados. Para usar repetições com pastas e arquivos, use um if dentro dele, por exemplo:</p>
 
 <pre>
@@ -884,18 +896,6 @@ for i in *; do
         ls "$i"
     fi
 done
-</code>
-</pre>
-
-<p>Para fazer o incremento também aparecer no echo, usamos a variável de incremento, dessa forma:</p>
-
-<pre>
-<code>
-for r in $(seq 1 1 44); do
-    echo "$r - Volta o cão arrependido, com suas orelhas tão fartas, com seu osso roído, e com o rabo entre as patas..."
-done
-
-read
 </code>
 </pre>
 
@@ -1080,7 +1080,7 @@ echo "A soma é $res"
 </code>
 </pre>
 
-<p><a href="files/agenda-linux.txt" target="_blank">Clique Aqui e veja o código de um arquivo BASH no qual ele adicionará dados de agenda à um arquivo TXT.</a></p>
+<p><a href="files/agenda-linux.txt" target="_blank">Clique Aqui e veja o código de um arquivo BASH no qual ele adicionará dados de agenda a um arquivo TXT.</a></p>
 
 <p>Vários outros comandos úteis podem ser vistos aqui: <a href="https://www.devmedia.com.br/comandos-importantes-linux/23893" target="_blank">https://www.devmedia.com.br/comandos-importantes-linux/23893</a></p>
 

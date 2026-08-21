@@ -943,7 +943,7 @@ pause
 
 <h3>Condicionais IF, ELSE e ELSE IF</h3>
 
-<p>Podemos também usar condicionais no BAT, usando o <code>if</code>, o <code>else</code> e o <code>else if</code>. Dessa forma:</p>
+<p>Podemos também usar condicionais no BAT, usando o <code>if</code>, o <code>else</code> e o <code>else if</code>, dessa forma:</p>
 
 <pre>
 <code>
@@ -956,7 +956,7 @@ echo É menor que 10.
 ) else if %num% gtr 10 (
 echo É maior que 10.
 ) else (
-echo É igual à 10.
+echo É igual a 10.
 )
 
 pause
@@ -1002,7 +1002,7 @@ pause
     </tr>
     <tr>
         <td>leq</td>
-        <td>Menor que ou igual</td>
+        <td>Menor ou igual que</td>
     </tr>
     <tr>
         <td>gtr</td>
@@ -1010,7 +1010,7 @@ pause
     </tr>
     <tr>
         <td>geq</td>
-        <td>Maior que ou igual</td>
+        <td>Maior ou igual que</td>
     </tr>
 </table>
 
@@ -1057,20 +1057,6 @@ pause
 </code>
 </pre>
 
-<p>O <code>/l</code> fará as incrementações. A letra com dois % na frente (<code>%%r</code>)é um parâmetro que pode ser qualquer letra. O <code>in</code> passará os números de incremento, com eles entre parênteses, representando na ordem, o início, incremento e fim do mesmo (no caso de usar decremento, apenas coloque o início maior que o fim, e colocar sinal de - no decremento, como <code>(10 -1 0)</code>). O <code>do</code> especifica os comandos a serem executados. Para usar repetições com pastas no local onde o prompt está, use o parâmetro <code>/d</code> e com arquivos use <code>/f</code>, antes da variável, por exemplo:</p>
-
-<pre>
-<code>
-for /d %%i in (*.*) do (
-echo Listando os arquivos dos subdiretórios...
-
-echo.
-
-dir "%%i"
-)
-</code>
-</pre>
-
 <p>Para fazer o incremento também aparecer no echo, fazemos dessa forma:</p>
 
 <pre>
@@ -1084,6 +1070,20 @@ echo %%r - %cao%
 )
 
 pause
+</code>
+</pre>
+
+<p>O <code>/l</code> fará as incrementações. A letra com dois % na frente (<code>%%r</code>)é um parâmetro que pode ser qualquer letra. O <code>in</code> passará os números de incremento, com eles entre parênteses, representando na ordem, o início, incremento e fim do mesmo (no caso de usar decremento, apenas coloque o início maior que o fim, e colocar sinal de - no decremento, como <code>(10 -1 0)</code>). O <code>do</code> especifica os comandos a serem executados. Para usar repetições com pastas no local onde o prompt está, use o parâmetro <code>/d</code> e com arquivos use <code>/f</code>, antes da variável, por exemplo:</p>
+
+<pre>
+<code>
+for /d %%i in (*.*) do (
+echo Listando os arquivos dos subdiretórios...
+
+echo.
+
+dir "%%i"
+)
 </code>
 </pre>
 
@@ -1132,7 +1132,7 @@ exit
 </code>
 </pre>
 
-<p>O Delayed Expansion fazem as variáveis mudarem de nome para valores, então muitas vezes é necessário habilitar elas pra usar com contas.</p>
+<p>O Delayed Expansion faz as variáveis mudarem de nome para valores, então muitas vezes é necessário habilitar ele pra usar com contas.</p>
 
 <h3>Array</h3>
 
@@ -1213,7 +1213,7 @@ echo %res%
 </code>
 </pre>
 
-<p><a href="files/agenda.txt" target="_blank">Clique Aqui e veja o código de um arquivo BAT no qual ele adicionará dados de agenda à um arquivo TXT.</a></p>
+<p><a href="files/agenda.txt" target="_blank">Clique Aqui e veja o código de um arquivo BAT no qual ele adicionará dados de agenda a um arquivo TXT.</a></p>
 
 <p>Veja algumas dessas dicas:</p>
 

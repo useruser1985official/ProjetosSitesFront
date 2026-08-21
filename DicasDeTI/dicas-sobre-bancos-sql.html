@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="icon" href="imagens/favicon.ico"/>
+        <title>Tudo sobre Tecnologia da Informação</title>
+        <link rel="stylesheet" href="css/estilo.css"/>
+        <script></script>
+    </head>
+    <body>
+        <div id="interface">
+            <header>
+                <h1><a href="index.html">Tudo sobre Tecnologia da Informação</a></h1>
+            </header>
+
+<h2>Dicas sobre Bancos de Dados SQL</h2>
+
+<p>Pensando em SQL e transações, dá para resumir as transações assim:</p>
+
+<table>
+    <tr>
+        <th>Tipo</th>
+        <th>Significa</th>
+        <th>Para que Serve</th>
+        <th>Exemplos</th>
+    </tr>
+    <tr>
+        <td>DDL</td>
+        <td>Data Definition Language</td>
+        <td>Cria/altera a estrutura do banco</td>
+        <td><code>create</code>, <code>alter</code>, <code>drop</code></td>
+    </tr>
+    <tr>
+        <td>DML</td>
+        <td>Data Manipulation Language</td>
+        <td>Manipula os dados</td>
+        <td><code>insert</code>, <code>update</code>, <code>delete</code></td>
+    </tr>
+    <tr>
+        <td>DQL</td>
+        <td>Data Query Language</td>
+        <td>Consulta os dados</td>
+        <td><code>select</code></td>
+    </tr>
+    <tr>
+        <td>DCL</td>
+        <td>Data Control Language</td>
+        <td>Controla permissões e acessos</td>
+        <td><code>grant</code>, <code>revoke</code></td>
+    </tr>
+    <tr>
+        <td>DTL</td>
+        <td>Data Transaction Language</td>
+        <td>Controla transações</td>
+        <td><code>commit</code>, <code>rollback</code>, <code>savepoint</code></td>
+    </tr>
+</table>
+
+<p>Jeito fácil de lembrar:</p>
+
+<ul>
+    <li>DDL &rarr; Estrutura &rarr; "Criar a tabela".</li>
+    <li>DML &rarr; Dados &rarr; "Inserir/alterar/excluir registros".</li>
+    <li>DQL &rarr; Consultar &rarr; "Buscar informações".</li>
+    <li>DCL &rarr; Controle &rarr; "Quem pode fazer o quê".</li>
+    <li>DTL &rarr; Transação &rarr; "Confirmar ou desfazer operações".</li>
+</ul>
+
+<p>PS: A classificação pode variar um pouco entre materiais/bancos, por exemplo, alguns tratam select como parte da DML em vez de separar DQL.</p>
+
+<p>A sigla <q>DICA</q> são as propriedades de uma transação no banco de dados:</p>
+
+<ul>
+    <li><b>D (Durabilidade):</b> Depois do commit, os dados ficam salvos, mesmo se houver uma falha.</li>
+    <li><b>I (Isolamento):</b> Uma transação não interfere indevidamente em outra.</li>
+    <li><b>C (Consistência):</b> A transação mantém o banco em um estado válido.</li>
+    <li><b>A (Atomicidade):</b> Ou tudo acontece, ou nada acontece.</li>
+</ul>
+
+<p>Resumindo: <q>DICA</q> garante que uma transação seja segura, correta e confiável.</p>
+
+        <footer>
+            <p><a href="contato.html">Entre em Contato Conosco!</a></p>
+        </footer>
+        </div>
+    </body>
+</html>

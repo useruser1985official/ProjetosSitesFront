@@ -141,7 +141,7 @@ dmitry -p -f 192.168.1.110 -o portas-escaneadas
 
 <p>O Kali Linux traz outras ferramentas para coleta de informações sobre hosts, muitas delas bem mais completas que o Dmitry, que é uma ferramenta bem simples.</p>
 
-<h3>Kali Linux - Manipulando Endereços MAC com Macchanger</h3>
+<h3>Kali Linux - Manipulando Endereços MAC com MacChanger</h3>
 
 <p>O utilitário de linha de comandos MacChanger (GNU Mac Changer), escrito por Alvaro Lopez Ortega,  permite visualizar e manipular o endereço MAC (Media Access Control) das interfaces de rede do computador. Esse utilitário está presente nativamente no Kali Linux.</p>
 
@@ -165,7 +165,7 @@ macchanger -s eth0
 </code>
 </pre>
 
-<p>Vamos alterar o endereço MAC da interface eth0 sem no entanto alterar os bytes do fabricante, criando um endereço aleatório:</p>
+<p>Vamos alterar o endereço MAC da interface eth0 sem, no entanto, alterar os bytes do fabricante, criando um endereço aleatório:</p>
 
 <pre>
 <code>
@@ -197,6 +197,8 @@ macchanger -p eth0
 </code>
 </pre>
 
+<!--
+
 <h3>Acessando um Servidor Linux via SSH com Android</h3>
 
 <p>Primeiro, veja se o openssh-server está instalado no Linux, e se o serviço está ativo (dando o comando <code>sudo service ssh start</code>), e no Android, vá na Play Store e baixe o VX ConnectBot nele.</p>
@@ -209,15 +211,17 @@ macchanger -p eth0
 
 <p>Podemos também acessar um servidor Windows, nesse caso configuramos o Moba SSH como servidor.</p>
 
+-->
+
 <h3>Acessando um Desktop Linux via VNC com Android</h3>
 
-<p>Primeiro loge dentro do Linux e baixe o servidor VNC digitando <code>sudo apt-get install x11vnc</code>, e depois inicie o serviço digitando <code>x11vnc --forever</code> (deixe o terminal aberto, não execute como root).</p>
+<p>Primeiro logue dentro do Linux e baixe o servidor VNC digitando <code>sudo apt-get install x11vnc</code>, e depois inicie o serviço digitando <code>x11vnc --forever</code> (deixe o terminal aberto, não execute como root).</p>
 
-<p>PS: Caso ele termine a aplicação abruptamente, vá no arquivo em /etc/gdm3/custom.conf (pode ser lightdm também) e tira a hashtag de comentário da linha <code># WaylandEnable=false</code>. Reinicie e tente novamente.</p>
+<p>PS: Caso ele termine a aplicação abruptamente, vá no arquivo em /etc/gdm3/custom.conf (pode ser lightdm também) e tire a hashtag de comentário da linha <code># WaylandEnable=false</code>. Reinicie e tente novamente.</p>
 
 <p>No Android, vá na Play Store e baixe o aplicativo VNC Viewer, que tornará nosso Android um cliente VNC.</p>
 
-<p>Dentro do APP Android, colocamos em Adress o IP privado do servidor seguido da porta, e o nome de usuário dele em Name, ele mostrará a conexão sem criptografia (que não pede a senha). Dentro do Android mostrará inclusive a interface gráfica do Linux acessado.</p>
+<p>Dentro do APP Android, colocamos em Address o IP privado do servidor seguido da porta, e o nome de usuário dele em Name, ele mostrará a conexão sem criptografia (que não pede a senha). Dentro do Android mostrará inclusive a interface gráfica do Linux acessado.</p>
 
 <p>Podemos também acessar um Windows pelo Android, nesse caso instalamos no Windows o Real VNC e usamos ele como servidor no PC, o restante permanece da mesma forma.</p>
 
@@ -226,7 +230,7 @@ macchanger -p eth0
     <li>Aqui podemos instalar um cliente para acessar outro dispositivo via VNC: <a href="https://www.realvnc.com/pt/connect/download/viewer/" target="_blank">https://www.realvnc.com/pt/connect/download/viewer/</a></li>
 </ul>
 
-<p>PS: Pode ser necessário ter que liberar a porta do VNC (especificada no terminal) no Firewall do Linux.</p>
+<p>PS: Pode ser necessário ter que liberar a porta do VNC (especificada no terminal, geralmente a 5900) no firewall do Linux.</p>
 
 <h3>Esteganografia - Ocultando Mensagens em Arquivos no Windows</h3>
 
@@ -290,6 +294,8 @@ macchanger -p eth0
 
 <p>O Kleopatra também fornece um autenticador de chaves, basta colocar o arquivo e a chave dele na mesma pasta e clicar diretamente na chave, que abrirá o Kleopatra e verificará a autencidade do arquivo (podendo também pesquisar a chave dele num servidor, importar e certificar a mesma). Podemos também assinar arquivos com nossa chave privada, indo em sign/encrypt files. Também é possível usar a maioria dos comandos do GPG do Linux pelo CMD do Windows.</p>
 
+<!--
+
 <h3>MobaSSH - Servidor SSH para Windows</h3>
 
 <p>O MobaSSH é um servidor SSH que roda no Windows, com ele podemos executar comandos e transferir arquivos de uma máquina remota Windows a partir de outra máquina de qualquer sistema operacional, usando uma conexão criptografada com o protocolo SSH.</p>
@@ -309,6 +315,8 @@ macchanger -p eth0
 <p>Lembrando que mesmo sendo acesso a um Windows, ele exibirá da mesma estrutura como um Linux.</p>
 
 <p>PS: No Windows 10 podemos instalar o servidor SSH nativo do sistema, indo em Apps e Recurso e Recursos Opcionais.</p>
+
+-->
 
 <h3>Introdução ao Registro do Windows</h3>
 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="icon" href="imagens/favicon.ico"/>
+        <title>Tudo sobre Tecnologia da Informação</title>
+        <link rel="stylesheet" href="css/estilo.css"/>
+        <script></script>
+    </head>
+    <body>
+        <div id="interface">
+            <header>
+                <h1><a href="index.html">Tudo sobre Tecnologia da Informação</a></h1>
+            </header>
+            
+<h2>Uso de XML e JSON</h2>
+
+<h3>XML</h3>
+
+<p>XML é uma linguagem para organizar e transportar dados usando tags. Ele é parecido com o HTML, mas este é basicamente para estruturar uma página para ser apresentada e tem tags específicas. O XML estrutura dados para serem armazenados ou trocados, e podemos criar nossas próprias tags.</p>
+
+<p>As tags são demarcadores que, em sua maioria, têm abertura e fechamento (abertura com <code>&lt;tag&gt;</code> e fechamento com <code>&lt;/tag&gt;</code>) e o conteúdo fica entre as duas (incluindo outras tags).</p>
+
+<p>Exemplo:</p>
+
+<pre>
+<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--
+* Isso é um comentário em XML, semelhante ao de HTML
+* A tag acima define a versão e a codificação do documento.
+--&gt;
+&lt;pessoa&gt;
+    &lt;nome&gt;João&lt;/nome&gt;
+    &lt;idade&gt;25&lt;/idade&gt;
+    &lt;cidade&gt;São Paulo&lt;/cidade&gt;
+    &lt;casado status="false"/&gt; &lt!-- Tag "vazia" sem fechamento, com barra no final --&gt;
+&lt;/pessoa&gt;
+</code>
+</pre>
+
+<p>A tag <q>pessoa</q> é o elemento, e as tags <q>nome</q>, <q>idade</q>, <q>cidade</q> e <q>casado</q> são os dados dentro dele. As tags indicam o que cada informação significa.</p>
+
+<p>PS: Como visto acima, podemos também ter tags sem fechamento (no caso acima, a <q>casado</q>), nesse caso colocamos uma barra no final dela obrigatoriamente (diferente do HTML que é opcional).</p>
+
+<p>Em resumo: XML estrutura dados de forma hierárquica e legível tanto por humanos quanto por sistemas.</p>
+
+<p>XML é usado principalmente para armazenar, organizar e trocar dados entre sistemas. Por exemplo:</p>
+
+<ul>
+    <li>Comunicação entre sistemas (APIs e integrações).</li>
+    <li>Arquivos de configuração de programas.</li>
+    <li>Documentos estruturados.</li>
+    <li>Troca de informações entre empresas e sistemas diferentes.</li>
+    <li>Feeds e arquivos, como RSS e alguns formatos de documentos.</li>
+</ul>
+
+<p>Imagine um XML representando um pedido de uma loja:</p>
+
+<pre>
+<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;pedido id="12345"&gt;
+    &lt;cliente&gt;
+        &lt;nome&gt;João Silva&lt;/nome&gt;
+        &lt;email&gt;joao@email.com&lt;/email&gt;
+        &lt;endereco&gt;
+            &lt;rua&gt;Rua das Flores&lt;/rua&gt;
+            &lt;numero&gt;100&lt;/numero&gt;
+            &lt;cidade&gt;São Paulo&lt;/cidade&gt;
+            &lt;estado&gt;SP&lt;/estado&gt;
+            &lt;cep&gt;01000-000&lt;/cep&gt;
+        &lt;/endereco&gt;
+    &lt;/cliente&gt;
+    &lt;produtos&gt;
+        &lt;produto codigo="A001"&gt;
+            &lt;nome&gt;Notebook&lt;/nome&gt;
+            &lt;quantidade&gt;1&lt;/quantidade&gt;
+            &lt;preco&gt;3500.00&lt;/preco&gt;
+        &lt;/produto&gt;
+        &lt;produto codigo="B002"&gt;
+            &lt;nome&gt;Mouse&lt;/nome&gt;
+            &lt;quantidade&gt;2&lt;/quantidade&gt;
+            &lt;preco&gt;100.00&lt;/preco&gt;
+        &lt;/produto&gt;
+    &lt;/produtos&gt;
+    &lt;pagamento&gt;
+        &lt;metodo&gt;Cartão de crédito&lt;/metodo&gt;
+        &lt;parcelas&gt;10&lt;/parcelas&gt;
+    &lt;/pagamento&gt;
+    &lt;total&gt;3700.00&lt;/total&gt;
+    &lt;entrega fazer="true"/&gt;
+&lt;/pedido&gt;
+</code>
+</pre>
+
+<p>Hoje, JSON é mais comum em APIs web, mas XML ainda é muito usado em sistemas corporativos, financeiros e governamentais.</p>
+
+<h3>JSON</h3>
+
+<p>JSON é um formato para organizar e trocar dados, parecido com XML, mas geralmente mais simples e compacto. Por exemplo:</p>
+
+<pre>
+<code>
+{
+    "nome": "João",
+    "idade": 25,
+    "cidade": "São Paulo",
+    "casado": false
+}
+</code>
+</pre>
+
+<p>No caso, <q>nome</q>, <q>idade</q>, <q>cidade</q> e <q>casado</q> são as chaves, e <q>João</q>, <q>25</q>, <q>São Paulo</q> e <q>false</q> são os valores. O símbolo de chaves (<q>{}</q>) é o conjunto de dados (objeto), e os colchetes (<q>[]</q>) é a lista de valores. Valores numéricos e lógicos (como <code>25</code> e <code>false</code>) se colocam sem aspas, apenas strings ficam entre aspas.</p>
+
+<p>Em resumo: JSON organiza informações em chave &rarr; valor e é muito usado em APIs e aplicações web.</p>
+
+<p>JSON nasceu inspirado na sintaxe de objetos do Javascript, mas hoje é usado praticamente por qualquer linguagem para trocar dados entre sistemas.</p>
+
+<p>O mesmo pedido ficaria assim em JSON:</p>
+
+<pre>
+<code>
+{
+    "pedido": {
+        "id": 12345,
+        "cliente": {
+            "nome": "João Silva",
+            "email": "joao@email.com",
+            "endereco": {
+                "rua": "Rua das Flores",
+                "numero": 100,
+                "cidade": "São Paulo",
+                "estado": "SP",
+                "cep": "01000-000"
+            }
+        },
+        "produtos": [
+            {
+                "codigo": "A001",
+                "nome": "Notebook",
+                "quantidade": 1,
+                "preco": 3500.00
+            },
+            {
+                "codigo": "B002",
+                "nome": "Mouse",
+                "quantidade": 2,
+                "preco": 100.00
+            }
+        ],
+        "pagamento": {
+            "metodo": "Cartão de crédito",
+            "parcelas": 10
+        },
+        "total": 3700.00,
+        "entrega": true
+    }
+}
+</code>
+</pre>
+
+<p>PS: Podemos ler JSON nesse site aqui: <a href="https://jsonviewer.stack.hu/" target="_blank">https://jsonviewer.stack.hu/</a></p>
+
+        <footer>
+            <p><a href="contato.html">Entre em Contato Conosco!</a></p>
+        </footer>
+        </div>
+    </body>
+</html>

@@ -97,7 +97,7 @@
 
 <h3>Primeiras Configurações dos Roteadores</h3>
 
-<p>Coloque um PC e um Laptop ligados a um Switch 2690 e ligue este a um roteador 1941 nas portas Gigabit.</p>
+<p>Coloque um PC e um laptop ligados a um switch 2960 e ligue este a um roteador 1941 nas portas Gigabit.</p>
 
 <p>PS: Nos números da placa, como 0/1, o primeiro número representa se a placa é soldada ou não (quando é soldada ele tem 0). Já o segundo número é a porta dessa mesma placa. Para ver eles, passe o mouse em cima das setinhas/bolinhas dos cabos.</p>
 
@@ -121,13 +121,13 @@
 
 <p>Na primeira rede, colocamos os IPs <code>192.168.1.11</code> e <code>192.168.1.12</code> nos computadores. No segundo poderíamos até colocar os mesmos IPs por serem LANs diferentes, mas vamos colocar <code>192.168.2.11</code> e <code>192.168.2.12</code>.</p>
 
-<p>Vá no primeiro PC no e abra o prompt, e tente pingar o segundo PC no prompt digitando <code>ping 192.168.1.12</code> e ele responderá. Podemos fazer o mesmo com a cartinha com o ICMP. Tente fazer isso com dois PCs de redes diferentes e veremos que eles não se comunicarão.</p>
+<p>Vá no primeiro PC e abra o prompt, e tente pingar o segundo PC no prompt digitando <code>ping 192.168.1.12</code> e ele responderá. Podemos fazer o mesmo com a cartinha com o ICMP. Tente fazer isso com dois PCs de redes diferentes e veremos que eles não se comunicarão.</p>
 
 <p>Para isso, usaremos um roteador para ligarmos as redes diferentes. Lembrando que o switch interliga computadores na mesma rede e o roteador interliga redes lógicas diferentes. Se colocarmos um terceiro switch ligando os outros dois switches, ele não funcionará. Apenas um roteador resolverá isso.</p>
 
-<p>PS: Lembre-se das redes locais como um DDD de telefones, onde o DDD 11 seria como uma rede, e o 21 como outra rede.</p>
+<p>PS: Lembre-se das redes locais como um DDD de telefone, onde o DDD 11 seria como uma rede, e o 21 como outra rede.</p>
 
-<p>Um terceiro switch ligando os outros dois switches só funcionaria se eles fosse todos na mesma rede, para disponibilizar mais portas, no caso todos teria que estar na rede <code>192.168.1.*</code>, ou seja, seria tudo uma rede só. Podemos usar uma ponte no lugar nesse terceiro switch, já que este tem menos portas e é mais barato.</p>
+<p>Um terceiro switch ligando os outros dois switches só funcionaria se eles fossem todos na mesma rede, para disponibilizar mais portas, no caso todos teriam que estar na rede <code>192.168.1.0</code>, ou seja, seria tudo uma rede só. Podemos usar uma ponte no lugar desse terceiro switch, já que este tem menos portas e é mais barato.</p>
 
 <p>PS: Podemos colocar uma nota nos equipamentos e cabos na rede, indo no <q>papelzinho</q> pra isso.</p>
 
@@ -137,9 +137,9 @@
 
 <p>Como sabemos, por segurança, o roteador vem com as portas desabilitadas, então vamos nas portas onde ligamos os cabos e ligamos elas, indo em Config e em cada placa habilitando o <q>On</q>.</p>
 
-<p>Só que ainda temos que configurar aos computadores da rede um gateway padrão. Quando os computadores estão na mesma rede se comunicando um com o outro, ele não precisa de um gateway, mas quando computadores de redes lógicas diferentes, ele precisará de um gateway configurado (é como se o computador não soubesse como chegar na outra rede e ele perguntará a alguém que sabe, que no caso é o gateway).</p>
+<p>Só que ainda temos que configurar aos computadores da rede um gateway padrão. Quando os computadores estão na mesma rede se comunicando um com o outro, ele não precisa de um gateway, mas quando são computadores de redes lógicas diferentes, ele precisará de um gateway configurado (é como se o computador não soubesse como chegar na outra rede e ele perguntará a alguém que sabe, que no caso é o gateway).</p>
 
-<p>Além disso, precisaremos configurar um IP nas placas do roteador. Ele é como uma máquina na rede que conecta redes diferentes (um gateway além do roteador pode inclusive outro computador).</p>
+<p>Além disso, precisaremos configurar um IP nas placas do roteador. Ele é como uma máquina na rede que conecta redes diferentes (um gateway além do roteador, pode ser inclusive outro computador).</p>
 
 <p>O roteador <q>quebra</q> a rede, e ele só fala com redes diferentes, ele não fala com uma só rede. Então em um lado (ou uma porta) será uma rede e no outro lado (porta) será outra rede.</p>
 
@@ -147,7 +147,7 @@
 
 <p>O IP pode ser qualquer um entre 1 e 254, mas geralmente são usados o primeiro e o último (o 0 é a identificação da rede e o 255 é o broadcast, por isso não podem ser usados).</p>
 
-<p>Se comunicarmos os dois PC de uma das redes com a cartinha, a mensagem não passará pelo roteador pelo fato de estar na mesma rede, então ela só passará pelo switch.</p>
+<p>Se comunicarmos os dois PCs de uma das redes com a cartinha, a mensagem não passará pelo roteador pelo fato de estarem na mesma rede, então ela só passará pelo switch.</p>
 
 <p>Ao comunicar um computador de uma rede com o outro, ele não conseguirá pelo fato do gateway padrão não ter sido configurado. Então vá em cada computador e defina as portas do roteador como gateway dos computadores das respectivas redes (<code>192.168.1.1</code> e <code>192.168.2.1</code>). Numa rede local quem faz a comunicação é o switch, mas em redes diferentes interligadas, quem faz a comunicação é o gateway padrão, no caso, o roteador.</p>
 
