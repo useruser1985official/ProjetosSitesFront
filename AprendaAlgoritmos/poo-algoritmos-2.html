@@ -259,7 +259,7 @@ delete cr; // Destruindo objeto cr
 
 <ul>
     <li>Um atributo estático é compartilhado por todos os objetos da classe.</li>
-    <li>Um método estático pode ser chamado sem criar um objeto, usando o nome da classe.</li>
+    <li>Um atributo ou método estático pode ser chamado sem criar um objeto, usando o nome da classe.</li>
 </ul>
 
 <p>Eles são usados quando algo deve ser comum a todos os objetos ou quando não faz sentido depender de uma instância para funcionar.</p>
@@ -308,9 +308,9 @@ System.out.println("Valor de PI: " + UtilMath.PI);
     <li>Constantes estáticas (<code>static final</code>) são valores que não mudam e pertencem à classe. Algumas linguagens usam no lugar coisas como <code>const</code>. Um atributo pode ter só <code>static</code> e nesse caso ele pode ser alterado, mas continua estático (ou seja, pertencendo à classe).</li>
     <li>Cálculos matemáticos são um ótimo exemplo de uso de métodos estáticos, porque não dependem de atributos de um objeto.</li>
     <li>Um atributo ou método estático pode ser privado ou protegido, seguindo as mesmas regras descritas anteriormente, inclusive também podem ter getters e setters, também estáticos.</li>
-    <li>Um método estático <ins>NUNCA</ins> usa o <q>this</q>, pois estes pertencem à classe e o this só se usa em objetos. Normalmente para acessar atributos e métodos estáticos dentro da classe usamos o nome da mesma diretamente (exceto o PHP que usa <code>self</code>).</li>
+    <li>Um atributo ou método estático <ins>NUNCA</ins> usam o <q>this</q>, pois estes pertencem à classe e o this só se usa em objetos. Normalmente para acessar atributos e métodos estáticos dentro da classe usamos o nome dos mesmos diretamente (exceto o PHP que usa <code>self</code>).</li>
     <li>Classes somente com métodos estáticos não usam construtores nem destrutores.</li>
-    <li>Um método estático não pode acessar atributos e métodos não estáticos, a menos que você crie um objeto primeiro, porque métodos estáticos pertencem à classe, e métodos não estáticos pertencem ao objeto.</li>
+    <li>Um método estático não pode acessar atributos e métodos não estáticos, a menos que você crie um objeto primeiro, porque atributos e métodos estáticos pertencem à classe, e atributos e métodos não estáticos pertencem ao objeto.</li>
 </ul>
 
 <h3>Relacionamentos UML</h3>

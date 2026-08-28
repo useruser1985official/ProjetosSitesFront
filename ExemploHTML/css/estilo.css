@@ -33,7 +33,7 @@ main {
     padding: 20px;
     width: 85%;
     min-width: 240px;
-    max-width: 1150px;
+    max-width: 1250px;
     margin: auto;
     font-family: Arial, sans-serif !important;
     border-radius: 25px;
@@ -183,17 +183,22 @@ header#cabecalho h1 {
 
 section#corpo {
     display: block;
-    width: 700px;
+    width: 650px;
     float: left;
     border-right: 1px solid #aaaaff;
     padding-right: 15px;
     padding-bottom: 15px;
 }
 
+section#corpo-full {
+    display: block;
+}
+
 aside#lateral {
     display: block;
-    width: 350px;
+    width: 400px;
     float: right;
+    padding-right: 25px;
 }
 
 footer#rodape {
@@ -228,4 +233,19 @@ div.youtube iframe {
 .borda {
     border: 8px solid;
     border-image: linear-gradient(135deg, red 0%, blue 90%) 1;
+}
+
+img.piramide {
+    width: auto;
+}
+
+iframe#mapa {
+    width: 425px;
+    height: 275px;
+    border: none;
+    padding-top: 10px;
+}
+
+iframe#mapa::-webkit-scrollbar {
+    display: none;
 }

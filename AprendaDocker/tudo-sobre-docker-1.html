@@ -36,7 +36,7 @@
 
 <p>Para usar o Docker no Windows, siga as instruções para instalar o Linux no WSL do Windows e a imagem do Ubuntu nele: <a href="https://learn.microsoft.com/pt-br/windows/wsl/install" target="_blank">https://learn.microsoft.com/pt-br/windows/wsl/install</a></p>
 
-<p>No Windows, também é necessário ativar a Plataformas de Máquina Virtual e do Hipervisor do Windows nos Recursos do Windows.</p>
+<p>No Windows, também é necessário ativar a Plataforma de Máquina Virtual e do Hipervisor do Windows nos Recursos do Windows.</p>
 
 <p>No caso do Linux, o Docker roda nativamente. Para isso, digite esses comandos na sequência:</p>
 
@@ -52,7 +52,7 @@ sudo usermod -aG docker $USER
 
 <p>Depois, baixe e instale o Docker Desktop aqui: <a href="https://docs.docker.com/desktop/" target="_blank">https://docs.docker.com/desktop/</a></p>
 
-<p>Na linha de comando, digite <code>docker --version</code> pra se tudo está instalado corretamente, visualizando a versão do mesmo.</p> 
+<p>Na linha de comando, digite <code>docker --version</code> pra ver se tudo está instalado corretamente, visualizando a versão do mesmo.</p> 
 
 <p>Ao abrir o Docker Desktop no Windows, vá em Settings, Resources e WSL Integration e marque as opções Enable Integration with my Default WSL Distro e Ubuntu. Caso o WSL não inicialize, rode como administrador no CMD esses comandos:</p>
 
@@ -64,7 +64,7 @@ dism /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all
 </code>
 </pre>
 
-<p>Abra o Docker Desktop e digite na linha de comando o comando <code>docker run hello-world</code>, ele não vai encontrar o container no computador e vai baixar o container com a imagem indicada (Hello World), que poderá ser visualizado pelo Docker Desktop. O comando run cria um novo container a partir de uma imagem. Caso rode o mesmo comando pela segunda vez, ele já vai identificar a imagem já encontrada, e criará um segundo container com a mesma imagem.</p>
+<p>Abra o Docker Desktop e digite na linha de comando o comando <code>docker run hello-world</code>, ele não vai encontrar a imagem no computador e vai baixar a imagem indicada (Hello World), que poderá ser visualizado pelo Docker Desktop. O comando run cria um novo container a partir de uma imagem. Caso rode o mesmo comando pela segunda vez, ele já vai identificar a imagem já encontrada, e criará um segundo container com a mesma imagem.</p>
 
 <p>PS: Caso precise atualizar o WSL, digite no prompt de comando do Windows o comando <code>wsl --update</code> como administrador, lembrando que esse comando não atualiza a distro Linux em si.</p>
 

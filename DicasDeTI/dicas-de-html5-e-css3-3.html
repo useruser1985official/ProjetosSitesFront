@@ -39,6 +39,8 @@
 
 <p>Para definir as coordenadas da imagem desejada, você pode usar um editor de imagens qualquer e abrir a imagem, e pegar as coordenadas desejadas para isso.</p>
 
+<p>PS: Certifique-se que a imagem já esteja no tamanho certo pros mapas. A imagem não deve ser redimensionada via CSS, por padrão deverá estar com o width e height como <q>auto</q>. Redimensione com o próprio editor antes de definir as coordenadas dos mapas.</p>
+
 <p>Essas são as ordens das coordenadas, e seus respectivos nomes nos parâmetros:</p>
 
 <p>Ordem das coordenadas em retângulos/quadrados (<code>rect</code>):</p>
@@ -50,8 +52,8 @@
 
 <p>Ordem das coordenadas em circunferências (<code>circle</code>):</p>
 <ul>
-    <li>Centro da cincunferência.</li>
-    <li>Raio da cincunferência.</li>
+    <li>Centro da circunferência.</li>
+    <li>Raio da circunferência.</li>
 </ul>
 
 <p>Ordem das coordenadas em polígonos livres, como um losango ou trapézio (<code>poly</code>):</p>
@@ -60,8 +62,10 @@
     <li>Superior esquerdo.</li>
     <li>Superior direito.</li>
     <li>Inferior direito.</li>
-    <li>Inferior esquerda.</li>
+    <li>Inferior esquerdo.</li>
 </ul>
+
+<p>PS: Isso pode ser usado também pra polígonos com outras quantidades de lado, como por exemplo, triângulos.</p>
 
 <p>Você pode inserir imagens sem precisar da tag img, usando CSS, para gerar efeitos especiais, como nesse exemplo, que criamos uma lista com fotos onde elas são ampliadas ao passar o mouse:</p>
 

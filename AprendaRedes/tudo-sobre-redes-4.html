@@ -101,7 +101,7 @@
 
 <img src="imagens/rotas.jpg" alt="Rotas"/>
 
-<p>Observe que saindo de PC1 até chegar a PC4, existem 2 caminhos ou 2 rotas. Quando o pacote chega a R1 com destino a R4, ele tanto pode ser encaminhado por R2 ou R3. Qual rota R1 irá escolher para encaminhar o pacote? O roteador toma essa decisão baseado em certos parâmetros, que constam em sua tabela de roteamento.</p>
+<p>Observe que saindo de PC1 até chegar a PC4, existem 2 caminhos ou 2 rotas. Quando o pacote chega a R1 com destino a R4, ele tanto pode ser encaminhado por R2 ou R3. Qual rota R1 irá escolher para encaminhar o pacote? O roteador toma essa decisão baseado em certos parâmetros, que constam em sua tabela de roteamento:</p>
 
 <ul>
     <li>Métrica (Número de saltos até a rede destino).</li>
@@ -118,9 +118,9 @@
 
 <h3>Tipos de Roteadores</h3>
 
-<p>Os roteadores podem ser equipamentos externos dedicados com um sistema operacional proprietário como é o caso dos roteadores Cisco por exemplo, ou podem ser serviços que são adicionados a um sistema operacional de rede servidor, tal como o Windows 2000. A diferença entre um e outro está na disponibilidade de recursos, nas situações em que podem ser usados e no custo.</p>
+<p>Os roteadores podem ser equipamentos externos dedicados com um sistema operacional proprietário como é o caso dos roteadores Cisco, por exemplo, ou podem ser serviços que são adicionados a um sistema operacional de rede servidor, tal como o Windows 2000. A diferença entre um e outro está na disponibilidade de recursos, nas situações em que podem ser usados e no custo.</p>
 
-<p>Prefira sempre os roteadores externos, pois eles possuem melhor performance, um sistema operacional proprietário otimizado e uma série de recursos para configuração, monitoração e diagnóstico. O problema desses roteadores é seu custo elevado. Mas para redes pequenas em que custo é uma palavra chave, um servidor como o Windows 2000, fazendo o papel de roteador, apesar de não ter uma série de recursos disponíveis nos equipamentos de fabricantes, daria conta do recado perfeitamente.</p>
+<p>Prefira sempre os roteadores externos, pois eles possuem melhor performance, um sistema operacional proprietário otimizado e uma série de recursos para configuração, monitoramento e diagnóstico. O problema desses roteadores é seu custo elevado. Mas para redes pequenas em que custo é uma palavra-chave, um servidor como o Windows 2000, fazendo o papel de roteador, apesar de não ter uma série de recursos disponíveis nos equipamentos de fabricantes, daria conta do recado perfeitamente.</p>
 
 <p>Veja a imagem de um roteador:</p>
 
@@ -130,12 +130,12 @@
 
 <h3>Protocolo ARP</h3>
 
-<p>O protocolo ARP fornece resolução dinâmica de endereços, que é um mapeamento entre as duas formas de endereçamento distintas: endereços IP, e qualquer outro tipo de endereço usado na camada de enlace. No caso dos quadros Ethernet, a camada de enlace usa o MAC Address (Media Access Control), endereço físico da interface. Permite obter o MAC Addres de uma interface a partir do seu Endereço IP.</p>
+<p>O protocolo ARP fornece resolução dinâmica de endereços, que é um mapeamento entre as duas formas de endereçamento distintas: Endereços IP, e qualquer outro tipo de endereço usado na camada de enlace. No caso dos quadros Ethernet, a camada de enlace usa o MAC Address (Media Access Control), endereço físico da interface. Permite obter o MAC Address de uma interface a partir do seu Endereço IP.</p>
 
 <p>Esses são os tipos de mensagens ARP:</p>
 
 <ul>
-    <li><b>ARP Request (Requisião ARP): </b>Mensagem enviada requisitando a resolução de um endereço IP em endereço físico.</li>
+    <li><b>ARP Request (Requisição ARP): </b>Mensagem enviada requisitando a resolução de um endereço IP em endereço físico.</li>
     <li><b>ARP Reply (Resposta ARP): </b>Mensagem de resposta ao ARP Request, contendo o endereço físico resolvido.</li>
 </ul>
 
@@ -150,14 +150,14 @@
     <li><b>SHA (Sender Address Hardware): </b>Endereço MAC do transmissor. Quando se trata de um pacote ARP Request, contém o endereço físico do remetente. Já em uma mensagem ARP Reply, contém o endereço físico procurado (resolvido).</li>
     <li><b>SPA (Sender Protocol Address): </b>Endereço da camada de internet do remetente (IP).</li>
     <li><b>THA (Target Hardware Address): </b>Endereço físico do destinatário pretendido. Esse campo é ignorado em um pacote ARP Request (por razões óbvias), e em um pacote ARP Reply contém o endereço físico do host que originou a requisição ARP.</li>
-    <li><b>TPA (Target Protocol Addres): </b>Endereço da camada de internet (IP) do destinatário pretendido.</li>
+    <li><b>TPA (Target Protocol Address): </b>Endereço da camada de internet (IP) do destinatário pretendido.</li>
 </ul>
 
 <p>O cachê ARP mantém os mapeamentos de endereços mais recentes de IPs para endereços MAC na memória do host, possuindo um tempo de expiração para dada entrada no cache de alguns minutos a partir do momento em que a entrada foi adicionada. Podemos examinar o cache ARP usando o  comando <code>arp /a</code>.</p>
 
 <p>Para limpar o cache ARP, basta usar <code>netsh interface ip delete arpcache</code> ou <code>arp /a /d</code> (ou um IP específico usando <code>arp /d 0.0.0.0</code>). Depois podemos usar <code>netsh interface ip delete destinationcache</code> para excluir o cache de destino.</p>
 
-<p>A captura de pacotes ARP trocados entre dos hosts, é realizada por meio do comando ping, usando o software analisador de pacotes Wireshark.</p>
+<p>A captura de pacotes ARP trocados entre dois hosts, é realizada por meio do comando ping, usando o software analisador de pacotes Wireshark.</p>
 
 <p>O ARP Probe são pacotes especiais ARP Request transmitidos em broadcast com o campo SPA (IP do remetente) contendo o valor 0.0.0.0. Utilizado por um host que solicitou um endereço IPv4 de um servidor DHCP, ou após a configuração manual de IP no host, para verificar se o IP atribuído já está em uso na rede.</p>
 
@@ -167,7 +167,7 @@
 
 <h3>Protocol ICMP</h3>
 
-<p>O protocolo ICMP é o protocolo de mensagens da internet, que comunica mensagens de erro, diagnóstico e outras condições que requeiram atenção em uma rede. O protocolo IP, que fornece o mecanismo para entrea de datagramas entre dispositivos, carece dessa funcionalidade, e por isso o ICMP foi criado.</p>
+<p>O protocolo ICMP é o protocolo de mensagens da internet, que comunica mensagens de erro, diagnóstico e outras condições que requeiram atenção em uma rede. O protocolo IP, que fornece o mecanismo para entrega de datagramas entre dispositivos, carece dessa funcionalidade, e por isso o ICMP foi criado.</p>
 
 <p>As mensagems ICMP são transmitidas em datagramas IP. Ela contém os campos tipo, código, checksum e conteúdo.</p>
 
@@ -259,7 +259,7 @@
 <p>Para entendermos o funcionamento do Traceroute, precisamos saber que:</p>
 
 <ul>
-    <li>O Traceroute envia um datagrama com um TTL igual à do host de destino.</li>
+    <li>O Traceroute envia um datagrama com um TTL igual ao do host de destino.</li>
     <li>Ao chegar ao primeiro roteador no caminho, o TTL é decrementado, ficando com o valor zero, o datagrama é descartado e a mensagem "Tempo Excedido" é enviada de volta à origem.</li>
     <li>Dessa forma, o primeiro roteador no caminho é identificado. Então o Traceroute envia um novo datagrama, desta vez com o TTL igual à 2, que decerementa o TTL para 1, e então será descartado no segundo roteador, e assim descobrimos o endereço IP deste roteador também.</li>
     <li>Esse processo continua até que um datagrama chegue ao host de destino.</li>
@@ -320,7 +320,7 @@
 
 <img src="imagens/encapsulamento.jpg" alt="Encapsulamento"/>
 
-<p>Pode ver que o segmento TCP é composto por um cabeçalho TCP (geralmente com 20 bytes, mas pode ter mais), e a área de dados TCP, que é as informações transmitidas (que podem ou não estar vazia). Tudo isso é um segmento TCP, encapsulado num datagrama IP, que também tem seu cabeçalho, da mesma forma.</p>
+<p>Pode ver que o segmento TCP é composto por um cabeçalho TCP (geralmente com 20 bytes, mas pode ter mais), e a área de dados TCP, que é as informações transmitidas (que pode ou não estar vazia). Tudo isso é um segmento TCP, encapsulado num datagrama IP, que também tem seu cabeçalho, da mesma forma.</p>
 
 <p>Veja abaixo a foto da estrutura do cabeçalho TCP:</p>
 
@@ -346,7 +346,7 @@
 <p>Em resumo:</p>
 
 <ul>
-    <li>O protocolo TCP fornece um serviço orientado à conexão, confável, na camada de transporte da pilha TCP/IP.</li>
+    <li>O protocolo TCP fornece um serviço orientado à conexão, confiável, na camada de transporte da pilha TCP/IP.</li>
     <li>Os dados são empacotados em unidades denominadas segmentos.</li>
     <li>As mensagens enviadas recebem uma confirmação de recebimento, além de serem reordenadas no host de destino, que também verifica a ocorrência de erros de transmissão.</li>
     <li>Caso haja algum erro, os dados são retransmitidos e, caso hajam segmentos duplicados, são descartados.</li>

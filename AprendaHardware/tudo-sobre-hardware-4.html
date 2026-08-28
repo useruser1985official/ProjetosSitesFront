@@ -206,13 +206,13 @@
 
 <p>Ele pedirá o local onde o Windows será instalado, no caso, escolheremos o nosso SSD para isso.</p>
 
-<p>No caso, nosso SSD será particionado em duas partes iguais, para separar os arquivos de trabalho das de diversão.</p>
+<p>No caso, nosso HD será particionado em duas partes iguais, para separar os arquivos de trabalho dos de diversão.</p>
 
 <p>PS: O Windows, ao identificar outro Windows instalado na máquina, ele fará o backup de tudo automaticamente.</p>
 
 <p>Instale o Windows no SSD e aguarde alguns minutos até terminar a instalação. Ele fará a atualização e reiniciará automaticamente.</p>
 
-<p>Após a instalação, escolha a região (país) como Brasil, o teclado como Português ABNT-2, conecte à rede, se quiser baixar atualizações (pode ser configurada posteriormente), crie o nome do administrador, a senha e uma dica pra mesma. Não torne a Cortana a assistente pessoal (é tipo um "keylogger" da própria Microsoft), desative todas as opções nas configurações de privacidade (pois essas enviam dados pra Microsoft). Após a instalação ele iniciará automaticamente. Após isso podemos remover o pendrive.</p>
+<p>Após a instalação, escolha a região (país) como Brasil, o teclado como Português ABNT-2, conecte à rede, se quiser podemos baixar atualizações (que pode ser configurada posteriormente), crie o nome do administrador, a senha e uma dica pra mesma. Não torne a Cortana a assistente pessoal (é tipo um "keylogger" da própria Microsoft), desative todas as opções nas configurações de privacidade (pois essas enviam dados pra Microsoft). Após a instalação ele iniciará automaticamente. Após isso podemos remover o pendrive.</p>
 
 <p>PS: O Windows 10 pode exigir login na conta Microsoft para associar ela ao usuário do sistema. Caso não queira fazer isso, desative a internet até que a instalação seja concluída, que nesse caso ele criará a conta local no sistema. Podemos marcar a opção "Eu não tenho internet" também, para evitar o login na conta de e-mail.</p>
 
@@ -220,7 +220,7 @@
 
 <p>No caso, tudo que instalarmos no Windows irá pro SSD e os arquivos pro HD (este terá que ser formatado em NTFS).</p>
 
-<p>Para particionar o disco, clique com o botão direito na unidade onde está o Windows instalado, e reduza o volume para cerca de metade dele, e aparecerá uma metade da cor preta com o nome "não alocado" (onde está vazio, e será instalado nosso Linux). Clique com o botão direito na unidade de arquivos com partições não formatadas (com o nome RAW), e podemos formatar as partições que estão, clicando com o botão direito na unidade, e escolha a opção NTFS, podemos escolher a letra que identifica a unidade também.</p>
+<p>Para particionar o disco, clique com o botão direito na unidade onde está o Windows instalado, e reduza o volume para cerca de metade dele, e aparecerá uma metade da cor preta com o nome "não alocado" (onde está vazio, e será instalado nosso Linux). Clique com o botão direito na unidade de arquivos com partições não formatadas (com o nome RAW), e podemos formatar as partições que estão vazias, clicando com o botão direito na unidade, e escolha a opção NTFS, podemos escolher a letra que identifica a unidade também.</p>
 
 <h3>Preparando o Linux</h3>
 
@@ -238,7 +238,7 @@
 
 <p>Entre no Windows, vá no Painel de Controle, vá em Hardware e em Opções de Energia, em Configurações do Sistema e em Configurações de Energia Adicionais, e vamos desabilitar a "ligar inicialização rápida" e desabilitar a opção "hibernar". Pode ser necessário também rodar o comando <code>powercfg.exe /hibernate off</code> no CMD, como administrador.</p>
 
-<p>Vamos abrir o Gerenciamento de Disco, e veja na formatação de disco, o disco 0 (no caso o HD) e veja as partições dele, e diminua o volume da unidade onde o Windows está instalado, para criar um espaço vazio (cerca de metade), na qual será criada a partição do Linux.</p>
+<p>Vamos abrir o Gerenciamento de Disco, e veja na formatação de disco, o disco 0 (no caso o SSD) e veja as partições dele, e diminua o volume da unidade onde o Windows está instalado, para criar um espaço vazio (cerca de metade), na qual será criada a partição do Linux.</p>
 
 <p>Agora pegaremos o pendrive preparado pro Linux, plugaremos ele no computador e reiniciará, entre na BIOS (pode ser usando F1 ou F2, ao iniciar, dependendo do fabricante da placa-mãe), e coloque o pendrive como o primeiro na prioridade de boot, e continue o boot.</p>
 
@@ -283,7 +283,7 @@ bootrec /rebuildbcd
 
 <p>PS: No setup da máquina, vá em advanced e habilite o uso de máquinas virtuais, que é a virtualização de máquinas, já que o Android Studio usa muito ele.</p>
 
-<p>Teste todas as IDEs com alguns programas simples. Como exemplo usamos um programa que some dois números pra cada uma das linguagens. Veja um exemplo em Portugol para rodar no Portugol Studio:</p>
+<p>Teste todas as IDEs com alguns programas simples. Como exemplo usamos um programa que soma dois números em cada uma das linguagens. Veja um exemplo em Portugol para rodar no Portugol Studio:</p>
 
 <pre>
 <code>
