@@ -68,7 +68,6 @@ class Designer(Funcionario):
     def calcularBonus(self):
         return self.salario * 0.08
 
-
 class Gerente(Funcionario):
     def calcularBonus(self):
         return self.salario * 0.15
@@ -102,7 +101,58 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from abc import ABC, abstractmethod
+from rich import print, inspect
 
+class Arquivo(ABC):
+    def __init__(self, nome:str, ext:str, tam:int = 0):
+        self.nome = nome
+        self._extensao = None
+        self.tamanho = tam
+        self.extensao = ext
+
+    @abstractmethod
+    def abrir(self):
+        pass
+
+    @property
+    def extensao(self):
+        return self._extensao
+
+    @extensao.setter
+    def extensao(self, ext:str):
+        formatos = ("pdf", "doc", "docx", "psd")
+        ext = ext.lower().strip()
+
+        if ext in formatos:
+            self._extensao = ext
+        else:
+            raise AttributeError("O arquivo está em um formato não-suportado!")
+
+    @property
+    def nomeCompleto(self):
+        return f"\"{self.nome}.{self.extensao}\" ({self.tamanho / 1_048_576:.2f} MB)"
+
+class PDF(Arquivo):
+    def __init__(self, nome:str, tam:int):
+        super().__init__(nome, "pdf", tam)
+
+    def abrir(self):
+        print(f"Abrindo o arquivo {self.nomeCompleto} no Adobe Reader!")
+
+class DOC(Arquivo):
+    def __init__(self, nome:str, tam:int):
+        super().__init__(nome, "docx", tam)
+
+    def abrir(self):
+        print(f"Abrindo o arquivo {self.nomeCompleto} no Microsoft Word!")
+
+class PSD(Arquivo):
+    def __init__(self, nome:str, tam:int = 0):
+        super().__init__(nome, "psd", tam)
+
+    def abrir(self):
+        print(f"Abrindo o arquivo {self.nomeCompleto} no Photoshop Studio!")
 </code>
 </pre>
 
@@ -110,7 +160,20 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def abrirArquivo(arquivo):
+    arquivo.abrir()
 
+def main():
+    a1 = DOC("Teste", 1_200_000)
+    a2 = PDF("Contrato", 850_000)
+    a3 = PSD("Imagem",500_000_000)
+
+    abrirArquivo(a1)
+    abrirArquivo(a2)
+    abrirArquivo(a3)
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 

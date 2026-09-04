@@ -152,6 +152,91 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 <p>Outra coisa: Use o Apache Tomcat na versão 8 ou 9 caso use JSF com os pacotes javax, pois a partir da versão 10 eles foram substituídos por jakarta.</p>
 
+<p>Para instalar o Java no Linux, baixe o tar.gz do link da Oracle, e digite esses comandos para prosseguir:</p>
+
+<pre>
+<code>
+#!/bin/bash
+
+# Caso não seja baseado em Debian, altere essas linhas:
+
+sudo apt update
+
+sudo apt remove --purge *openjdk* -y # Caso precise remover o OpenJDK instalado por padrão
+
+sudo apt install -y libc6-x32 libc6-i386 -y
+
+tar -zxvf jdk-17.0.20_linux-x64_bin.tar.gz 
+
+mv jdk-17.0.20/ oracle-java-17
+
+sudo mv oracle-java-17 /opt
+
+sudo update-alternatives --install /usr/bin/java java /opt/oracle-java-17/bin/java 3000
+
+sudo update-alternatives --install /usr/bin/javac javac /opt/oracle-java-17/bin/javac 3000
+
+sudo update-alternatives --install /usr/bin/jar jar /opt/oracle-java-17/bin/jar 3000
+
+sudo update-alternatives --config java
+
+sudo update-alternatives --config javac
+
+sudo update-alternatives --config jar
+
+sudo nano /usr/share/applications/oracle-java-17.desktop
+</code>
+</pre>
+
+<p>No arquivo criado pelo Nano, coloque isso:</p>
+
+<pre>
+<code>
+[Desktop Entry]
+Name=Oracle Java Development Kit 17
+Comment=Executar arquivo JAR usando Oracle Java 17
+Exec=/opt/oracle-java-17/bin/java -jar %f
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/java.svg
+MimeType=application/java-archive;
+NoDisplay=true
+</code>
+</pre>
+
+<p>Salve uma imagem SVG, PNG ou ICO do Java com esses comandos:</p>
+
+<pre>
+<code>
+mkdir -p /usr/share/icons
+
+# Salve o ícone do Java na pasta acima e coloque em Icon no Desktop
+</code>
+</pre>
+
+<p>E depois rode esses comandos pra finalizar:</p>
+
+<pre>
+<code>
+sudo chmod +x /usr/share/applications/oracle-java-17.desktop
+
+sudo update-desktop-database /usr/share/applications
+</code>
+</pre>
+
+<p>Com isso, o Java aparecerá nas opções para executar aplicativos Jar por padrão.</p>
+
+<p>Para colocar o JAVA_HOME no path do Linux, edite o arquivo de bash digitando <code>sudo nano /etc/bash.bashrc</code> e coloque isso no final dele:</p>
+
+<pre>
+<code>
+JAVA_HOME=/opt/oracle-java-17/bin/java
+JAVAFX=/opt/javafx/lib
+</code>
+</pre>
+
+<p>No Windows também precisaremos configurar o JAVA_HOME, colocando nas Variáveis do Sistema, em Variáveis de Ambiente, esta variável com o caminho (como <code>C:\Program Files\Java\jdk-17</code>). Fazemos o Mesmo com o JAVAFX (como <code>C:\javafx\lib</code>).</p>
+
 <h3>C#/Visual Basic</h3>
 
 <p>Essa linguagem praticamente só precisa do Visual Studio Community corretamente configurado. Para programar para Windows Mobile, precisa baixar a SDK do Windows 10 Mobile. Para programas em C# com banco de dados, precisa baixar o SQL Servers Express.</p>
@@ -185,7 +270,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     -->
 </ul>
 
-<p>PS: Ao baixar o Mingw, escolha a opção x86_64-posix-seh, e ao instalar o Mingw, selecione mingw32-base e o mingw320-gcc-g++, depois vá em Installation e Apply Changes. No caso do Linux, pode ser necessário adicionar o PPA usando <code>sudo add-apt-repository ppa:damien-moore/codeblocks-stable</code> e depois dando um update. No caso do QT, em Linux é necessário instalar pelo terminal os pacotes necessários, usando o comando <code>sudo apt install build-essential libgl1-mesa-dev</code>.</p>
+<p>PS: Ao baixar o Mingw, escolha a opção x86_64-posix-seh, e ao instalar o Mingw, selecione mingw32-base e o mingw320-gcc-g++, depois vá em Installation e Apply Changes. No caso do Linux podemos só rodar o comando <code>sudo apt install codeblocks</code>. No caso do QT, em Linux é necessário instalar pelo terminal os pacotes necessários, usando o comando <code>sudo apt install build-essential libgl1-mesa-dev</code>.</p>
 
 <h3>Perl</h3>
 

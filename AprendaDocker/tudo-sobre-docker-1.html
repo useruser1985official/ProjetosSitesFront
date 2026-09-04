@@ -76,11 +76,11 @@ dism /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all
 
 <p>PS: Não confunda, o run no comando docker é pra obter imagens e criar containers, não exatamente rodar a imagem.</p>
 
-<p>Lembrando que, caso você tente deletar uma imagem que esteja sendo utilizada por algum container, ele dará erro e não deixará excluir a imagem. Para isso devemos primeiramente excluir todas os containers que utilizam essa imagem primeiro.</p>
+<p>Lembrando que, caso você tente deletar uma imagem que esteja sendo utilizada por algum container, ele dará erro e não deixará excluir a imagem. Para isso devemos primeiramente excluir todos os containers que utilizam essa imagem primeiro.</p>
 
 <p>Vamos baixar a imagem do Ubuntu e criar um container digitando <code>docker run ubuntu</code>, ele fará o mesmo processo anterior, mas não executará igual ao hello-world. Ele baixará uma versão simplificada do Ubuntu.</p>
 
-<p>Para usar o Docker no modo interativo, podemos digitar o comando <code>docker run -it ubuntu bash</code>, ele rodará o terminal (Bash) do Ubuntu baixado. Nesse caso, a imagem do Ubuntu estará sendo executada, e deveremos usar o comandos do Linux, e não do Windows, no caso. Ele criará um novo container com a mesma imagem também.</p>
+<p>Para usar o Docker no modo interativo, podemos digitar o comando <code>docker run -it ubuntu bash</code>, ele rodará o terminal (Bash) do Ubuntu baixado. Nesse caso, a imagem do Ubuntu estará sendo executada, e deveremos usar os comandos do Linux, e não do Windows, no caso. Ele criará um novo container com a mesma imagem também.</p>
 
 <p>PS: Quando um container está sendo executado, ele ficará com a bolinha verde e com o símbolo de stop no Docker Desktop.</p>
 

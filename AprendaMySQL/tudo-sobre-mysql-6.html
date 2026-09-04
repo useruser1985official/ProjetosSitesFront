@@ -27,7 +27,7 @@
 
 <h3>Estruturas de Repetição - While</h3>
 
-<p>O comando while primeiro faz a condição de teste e depois executa os comandos que estiver dentro dele, caso a condição retorne verdadeiro, senão ele não executa nada.</p>
+<p>O comando while primeiro faz a condição de teste e depois executa os comandos que estiverem dentro dele, caso a condição retorne verdadeiro, senão ele não executa nada.</p>
 
 <p>Para criar um procedimento com laço while, fazemos assim:</p>
 
@@ -107,9 +107,11 @@ main: begin
         set contador = contador + 1;
         if mod(contador, 2) then
             iterate meulaco;
-        end if;
-        select concat(contador, ' é par!') as 'Valor';
+        end if;  
     end while;
+    if mod(limite, 2) = 0 then
+        select concat(contador, ' é par!') as 'Valor';
+    end if;
 end//
 delimiter ;
 </code>

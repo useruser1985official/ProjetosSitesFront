@@ -155,7 +155,7 @@
 
 <h3>Criando Servidor Web e DNS</h3>
 
-<p>Coloque um PC, um servidor e um switch 2960. Note que o servidor tem uma placa FastEthernet (100 Mbps), e como ele vai ser acessada por todos os dispositivos na rede (diferente de um computador que fala sozinho e a FastEthernet basta), então trocaremos a placa por uma GigaEthernet. Para isso vá em Physical, desligue o servidor, troque a placa por uma CGE e ligue ele de novo.</p>
+<p>Coloque um PC, um servidor e um switch 2960. Note que o servidor tem uma placa FastEthernet (100 Mbps), e como ele vai ser acessado por todos os dispositivos na rede (diferente de um computador que fala sozinho e a FastEthernet basta), então trocaremos a placa por uma GigaEthernet. Para isso vá em Physical, desligue o servidor, troque a placa por uma CGE e ligue ele de novo.</p>
 
 <p>Conecte o servidor em uma porta Gigabit do switch, e ligue o PC numa porta comum do switch.</p>
 
@@ -181,11 +181,11 @@
 
 <p>O protocolo DHCP distribui, além de IPs, distribui configurações de máscara, DNS, gateway e todas as informações necessárias pros dispositivos poderem acessar a rede e/ou a internet. O servidor DHCP faz a configuração dos hosts conectados à rede.</p>
 
-<p>Em casa, nós já temos o DHCP habilitado no nosso roteador ou no modem da operadores, pois ao conectar dispositivos na nossa rede local, ele já recebe um IP e todas as outras configurações necessárias.</p>
+<p>Em casa, nós já temos o DHCP habilitado no nosso roteador ou no gateway da operadora, pois ao conectar dispositivos na nossa rede local, ele já recebe um IP e todas as outras configurações necessárias.</p>
 
 <p>Coloque uns quatro computadores e um servidor ligados por um switch 2960.</p>
 
-<p>PS: Lembre-se que quando um computador não acha um servidor DHCP ele recebe um IP de configuração APIPA, que começa com <code>169.254</code>, e não conseguirá ter acesso à rede.</p>
+<p>PS: Lembre-se que, quando um computador não acha um servidor DHCP, ele recebe um IP de configuração APIPA, que começa com <code>169.254</code>, e não conseguirá ter acesso à rede.</p>
 
 <p>Coloque no servidor um IP estático (como <code>192.168.0.1</code>). Vamos em Services e em DHCP, habilite ele e coloque o nome servidordhcp, e o mesmo IP como gateway padrão e servidor DNS, configure o primeiro IP a partir de <code>192.168.0.2</code> (porque o 1 é o do servidor), e que o número máximo de usuários de 253.</p>
 
@@ -248,7 +248,7 @@
 
 <p>Coloque também o nome da rede, a banda de rádio deixe em auto, e o canal de comunicação (no caso temos 11, mas aqui no Brasil tem 13, mas geralmente o melhor é usar o 1, 6 ou 11), deixe conectada a opção SSID (que mostrará ou não a wi-fi para as pessoas, caso ela não seja mostrada teremos que configurar manualmente no dispositivo, mas isso pode ser burlado por um hacker).</p>
 
-<p>Agora, em Security, colocamos a opção WPA2 Personal, que é a mais segura. A A Personal é usada em casas e locais pequenos, já a Enterprise é usada em grandes redes, como aqueles que tem um Servidor Radius, que autentica os dispositivos na rede sem fio. Deixe a criptografia AES que é a melhor e coloque a senha. Depois salve tudo.</p>
+<p>Agora, em Security, colocamos a opção WPA2 Personal, que é a mais segura. A Personal é usada em casas e locais pequenos, já a Enterprise é usada em grandes redes, como aqueles que tem um Servidor Radius, que autentica os dispositivos na rede sem fio. Deixe a criptografia AES que é a melhor e coloque a senha. Depois salve tudo.</p>
 
 <p>No caso, nós temos como bloquear um dispositivo no wi-fi pelo endereço MAC, pois os roteadores mais modernos tem o filtro de MAC. No nosso roteador a opção está em Wireless, em MAC Filter. Por padrão ele está desabilitado, mas podemos ativar e escolher entre duas opções: Probir (prevent) determinados dispositivos, colocando os endereços MAC que deverão ser bloqueados, e permitir determinados dispositivos, colocando os endereços que serão autorizados a acessar.</p>
 

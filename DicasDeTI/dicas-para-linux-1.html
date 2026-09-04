@@ -278,47 +278,17 @@ flatpak run nomedoaplicativo
 
 <h4>Adicionando PPA</h4>
 
-<p>Para adicionar um repositório PPA, podemos fazer algo assim (esse exemplo é pro Java):</p>
+<p>Para adicionar um repositório PPA, podemos fazer algo assim (esse exemplo é pro Git):</p>
 
 <pre>
 <code>
-sudo add-apt-repository ppa:linuxuprising/java
+sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install oracle-java14-installer
+sudo apt-get install git
 </code>
 </pre>
 
-<p>Para remover é só digitar <code>sudo add-apt-repository http://ppa.launchpad.net/linuxuprising/java/ubuntu --remove</code>.</p>
-
-<p>Para corrigir erros no download do Java, primeiramente pegue o link do download certo e seu checksum no site da Oracle: <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">https://www.oracle.com/java/technologies/javase-downloads.html</a></p>
-
-<p>Tente instalar o Java pelo repositório normalmente, depois edite o arquivo localizado em <code>/var/lib/dpkg/info/</code> com o nome <code>oracle-java14-installer.postinst</code> (ou versão equivalente) como root, e altere essa linha para o checksum da versão especificada do Java:</p>
-
-<pre>
-<code>
-SHA256SUM_TGZ="927cfcfff502c5e73db33bb6fee7f29f62bd0e831233fd78cd58a5b998bc73be"
-</code>
-</pre>
-
-<p>E no mesmo arquivo, altere a versão e a versão menor aqui:</p>
-
-<pre>
-<code>
-JAVA_VERSION=14.0.1
-JAVA_VERSION_2nd_PART=
-JAVA_VERSION_MINOR=7
-</code>
-</pre>
-
-<p>E corrija o restante do link aqui (no caso, o hash do link):</p>
-
-<pre>
-<code>
-PARTNER_URL="http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}+${JAVA_VERSION_MINOR}/664493ef4a6946b186ff29eb326336a2/$FILENAME"
-</code>
-</pre>
-
-<p>Caso não consiga atualizar por esse método, copie o conteúdo do pacote tar.gz na pasta <code>java-14-oracle</code> ou equivalente em <code>/usr/lib/jvm</code>. Ou jogue o tar.gz na pasta <code>/var/cache/oracle-jdk14-installer-local</code> ou equivalente.</p>
+<p>Para remover é só digitar <code>sudo add-apt-repository ppa:git-core/ppa --remove</code>.</p>
 
 <h4>Baixando um deb pelo Terminal</h4>
 

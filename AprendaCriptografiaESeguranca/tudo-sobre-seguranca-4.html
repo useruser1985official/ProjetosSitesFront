@@ -253,11 +253,11 @@ macchanger -p eth0
 
 <p>Baixe o OpenPuff, ele não precisa de instalação, basta apenas descompactar e usar. <a href="http://embeddedsw.net/zip/OpenPuff_release.zip" target="_blank">Clique aqui para baixar</a>.</p>
 
-<p>Abra a pasta e execute o aplicativo dentro dela. Ele demora um pouco enquanto, veja que ele tem várias opções como, além da esteganografia, tem marca d'água (pra proteger os direitos autorais de imagens e arquivos).</p>
+<p>Abra a pasta e execute o aplicativo dentro dela. Ele demora um pouco, veja que ele tem várias opções como, além da esteganografia, tem marca d'água (pra proteger os direitos autorais de imagens e arquivos).</p>
 
 <p>Clique no botão "Hide" e ele abrirá a tela para isso. Na tela que abrir, vá na parte 1 e insira até três senhas diferentes nos campos, a primeira é requerida, para criptografar, as outras são recomendadas, mas opcionais, a segunda é pro gerador de números aleatórios e a terceira é o embaralhamento da mesma.</p>
 
-<p>Coloque num txt uma mensagem qualquer e selecione uma imagem (para query).</p>
+<p>Coloque num txt uma mensagem qualquer e selecione uma imagem (para carrier).</p>
 
 <p>Na parte dois, clique em "Browse" e selecione o txt da mensagem (que será o arquivo a ser escondido).</p>
 
@@ -265,9 +265,9 @@ macchanger -p eth0
 
 <p>Na parte quatro é opcional, é mais pra escolher a qualidade do arquivo ou dos algoritmos utilizados, etc.</p>
 
-<p>Depois é só salvar o novo arquivo clicando em "Hide Data". Veja que aparentemente, nada da imagem parece alterada.</p>
+<p>Depois é só salvar o novo arquivo clicando em "Hide Data". Veja que, aparentemente, nada da imagem parece alterada.</p>
 
-<p>Para descobrir a mensagem, pegue o arquivo esteganografado e faça o mesmo procedimento no OpenPuff, escolhendo a opção "Unhide". carrega ela em ADD Carries e em Unhide. A mensagem oculta será salva como um novo arquivo.</p>
+<p>Para descobrir a mensagem, pegue o arquivo esteganografado e faça o mesmo procedimento no OpenPuff, escolhendo a opção "Unhide", carregue ela em ADD Carries e em Unhide. A mensagem oculta será salva como um novo arquivo.</p>
 
 <p>Dependendo do tamanho do arquivo a ser escondido, a imagem poderá ter tamanhos diferenciados, se uma imagem tiver tamanho muito grande, é provável que tenha alguma coisa escondida, principalmente malwares.</p>
 
@@ -277,7 +277,7 @@ macchanger -p eth0
 
 <p>PS: Pode ser que a versão do GnuPG que vem com o GPG4Win esteja desatualizada, nesse caso atualize baixando daqui: <a href="https://gnupg.org/ftp/gcrypt/binary/" target="_blank">https://gnupg.org/ftp/gcrypt/binary/</a></p>
 
-<p>Abra o Kleopatra, clique em file e em new certificate, as escolha de formato será aberto, as opções são OpenPGP (que é um padrão aberto e são criadas localmente, sem uma autoridade de certificação, podendo ser certificadas pelos amigos e conhecidos), e a X.509 (que precisará verifiar a chave com uma autoridade de certificação, que terá um custo). No caso, criaremos OpenPGP.</p>
+<p>Abra o Kleopatra, clique em file e em new certificate, a escolha de formato será aberto, as opções são OpenPGP (que é um padrão aberto e são criadas localmente, sem uma autoridade de certificação, podendo ser certificadas pelos amigos e conhecidos), e a X.509 (que precisará verificar a chave com uma autoridade de certificação, que terá um custo). No caso, criaremos OpenPGP.</p>
 
 <p>Ao abrir o Kleopatra e escolher OpenPGP, coloque o nome, e-mail e comentário para o qual será enviado.</p>
 
@@ -285,9 +285,9 @@ macchanger -p eth0
 
 <p>No próximo, ele mostrará os dados, e depois pedirá para você inserir uma senha para descriptografar posteriormente.</p>
 
-<p>Ele criará a chave, exibirá o fingerprint, terá as opções de fazer um back-up dela também.</p>
+<p>Ele criará a chave, exibirá o fingerprint, terá as opções de fazer um backup dela também.</p>
 
-<p>Na chave pronta, clique com o botão direito para ver as opções deles para alteração e criação de certificados. Temos opções para exportar as chaves públicas e privadas, gerar certificados de revogação, etc.</p>
+<p>Na chave pronta, clique com o botão direito para ver as opções deles para alteração e criação de certificados. Temos opções para exportar as chaves públicas e privadas (no menu Arquivo), gerar certificados de revogação, etc.</p>
 
 <p>Para encriptar um arquivo com essa chave, basta ir em file, sign/encrypt files, adicionar o arquivo, escolher a chave criada, e confirmar, será gerado um arquivo criptografado. Também podemos encriptar um arquivo com uma senha.</p>
 
