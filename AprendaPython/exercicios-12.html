@@ -185,7 +185,64 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from abc import ABC, abstractmethod
+import locale
 
+class Pagamento(ABC):
+    def __init__(self):
+        self._valor = None
+
+    @property
+    def valor(self):
+        return self._valor
+
+    @valor.setter
+    def valor(self, valor:float):
+        if valor > 0:
+            self._valor = valor
+        else:
+            raise ValueError("O pagamento só pode ser efetuado para valores positivos.")
+
+    @property
+    def fValor(self):
+        # return f"R${self._valor:.2f}"
+        locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
+
+        return locale.currency(self._valor, grouping = True)
+
+    @abstractmethod
+    def pagar(self, valor:float):
+        pass
+
+class Boleto(Pagamento):
+    def pagar(self, valor:float):
+        try:
+            self.valor = valor
+
+            return f"Pagamento CONFIRMADO de {self.fValor} via Boleto!"
+        except Exception as e:
+            return f"Falha no pagamento de {self.fValor} via Boleto!"
+
+class Pix(Pagamento):
+    def pagar(self, valor:float):
+        try:
+            self.valor = valor
+
+            return f"Pagamento CONFIRMADO de {self.fValor} via Pix!"
+        except Exception as e:
+            return f"Falha no pagamento de {self.fValor} via Pix!"
+
+class CartaoCredito(Pagamento):
+    def pagar(self, valor:float):
+        try:
+            self.valor = valor
+
+            return f"Pagamento CONFIRMADO de {self.fValor} via Cartão de Crédito!"
+        except Exception as e:
+            return f"Falha no pagamento de {self.fValor} via Cartão de Crédito!"
+
+def finalizarCompra(tipoPag:Pagamento, valor:float):
+    print(tipoPag.pagar(valor))
 </code>
 </pre>
 
@@ -193,7 +250,12 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    finalizarCompra(Pix(), 1500)
+    finalizarCompra(CartaoCredito(), 9540.84)
 
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 
