@@ -136,7 +136,7 @@ drop procedure if exists pares;
 
 <h3>Triggers - Definição, Sintaxe e Criação</h3>
 
-<p>Os triggers (significando gatilho) é um objeto SQL associado a uma tabela, é uma espécie de procedimento invocado quando um comando DML é executado (ou seja, comandos insert, update e delete).</p>
+<p>Os triggers (significando gatilho) são um objeto SQL associado a uma tabela, é uma espécie de procedimento invocado quando um comando DML é executado (ou seja, comandos insert, update e delete).</p>
 
 <p>Esses são alguns usos do trigger:</p>
 
@@ -174,9 +174,11 @@ for each row
 </code>
 </pre>
 
-<p>Na hora que inserirmos um cadastro na table produto, o trigger vai disparar automaticamente, vai fazer o cálculo e inserir na coluna especificada da tabela.</p>
+<p>Na hora que inserirmos um cadastro na tabela produto, o trigger vai disparar automaticamente, vai fazer o cálculo e inserir na coluna especificada da tabela.</p>
 
-<p>PS: em outros bancos de dados isso pode não funcionar, no entanto podemos fazer o mesmo trigger dessa forma em outros bancos:</p>
+<p>O new no comando trigger, significa que é para registros que ainda não foram, mas serão inseridos no banco de dados. Em casos como o delete, não é necessário usar o new.</p>
+
+<p>PS: Em outros bancos de dados isso pode não funcionar, no entanto, podemos fazer o mesmo trigger dessa forma em outros bancos:</p>
 
 <pre>
 <code>
@@ -202,8 +204,6 @@ insert into produto (item, preco_normal) values ('Monitor', 350.00);
 select * from produto;
 </code>
 </pre>
-
-<p>PS: o new no comando trigger, significa que é para registros que ainda não foram, mas serão inseridos no banco de dados. Em casos como o delete, não é necessário usar o new.</p>
 
 <p>Para excluir um trigger, faça assim:</p>
 

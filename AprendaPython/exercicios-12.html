@@ -166,7 +166,7 @@ def abrirArquivo(arquivo):
 def main():
     a1 = DOC("Teste", 1_200_000)
     a2 = PDF("Contrato", 850_000)
-    a3 = PSD("Imagem",500_000_000)
+    a3 = PSD("Imagem", 500_000_000)
 
     abrirArquivo(a1)
     abrirArquivo(a2)
@@ -267,7 +267,34 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+from rich import print
+from rich.panel import Panel
 
+class Mensagem:
+    def __init__(self, msg:str = "", tipo:str = "info", icone:str = ":information:"):
+        self._mensagem = msg
+        self._tipo = tipo
+        self._icone = icone
+
+    def mostrar(self):
+        msg = Panel(self._mensagem, title = f"{self._icone} {self._tipo.upper()} {self._icone}", style = "#ffffff on #0000ff", width = 50)
+        print(msg)
+
+class Alerta(Mensagem):
+    def __init__(self, msg:str = ""):
+        super().__init__(msg, "alerta", ":warning:")
+
+    def mostrar(self):
+        msg = Panel(self._mensagem, title = f"{self._icone} {self._tipo.upper()} {self._icone}", style = "#000000 on #fffc1b", width = 50)
+        print(msg)
+
+class Erro(Mensagem):
+    def __init__(self, msg:str = ""):
+        super().__init__(msg, "erro", ":prohibited:")
+
+    def mostrar(self):
+        msg = Panel(self._mensagem, title = f"{self._icone} {self._tipo.upper()} {self._icone}", style = "#ffffff on #880000", width = 50)
+        print(msg)
 </code>
 </pre>
 
@@ -275,7 +302,13 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    Mensagem("Dados Enviados com Sucesso!").mostrar()
+    Alerta("Preencha Todos os Campos!").mostrar()
+    Erro("Deu Ruim...").mostrar()
 
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 

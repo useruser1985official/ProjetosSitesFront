@@ -130,7 +130,7 @@
 
 <h3>Protocolo ARP</h3>
 
-<p>O protocolo ARP fornece resolução dinâmica de endereços, que é um mapeamento entre as duas formas de endereçamento distintas: Endereços IP, e qualquer outro tipo de endereço usado na camada de enlace. No caso dos quadros Ethernet, a camada de enlace usa o MAC Address (Media Access Control), endereço físico da interface. Permite obter o MAC Address de uma interface a partir do seu Endereço IP.</p>
+<p>O protocolo ARP fornece resolução dinâmica de endereços, que é um mapeamento entre as duas formas de endereçamento distintas: Endereços IP, e qualquer outro tipo de endereço usado na camada de enlace. No caso dos quadros Ethernet, a camada de enlace usa o MAC Address (Media Access Control), endereço físico da interface. Permite obter o MAC Address de uma interface a partir do seu endereço IP.</p>
 
 <p>Esses são os tipos de mensagens ARP:</p>
 
@@ -139,13 +139,13 @@
     <li><b>ARP Reply (Resposta ARP): </b>Mensagem de resposta ao ARP Request, contendo o endereço físico resolvido.</li>
 </ul>
 
-<p>Esse são os formados do pacote ARP:</p>
+<p>Esses são os formatos do pacote ARP:</p>
 
 <ul>
-    <li><b>HTYPE (Hardware Type): </b>Especifica o tipo de protoco da rede, como Ehternet, cujo valor é 1.</li>
+    <li><b>HTYPE (Hardware Type): </b>Especifica o tipo de protocolo da rede, como Ethernet, cujo valor é 1.</li>
     <li><b>PTYPE (Protocol Type): </b>Especifica o protocolo da camada de internet para o qual a requisição do ARP é direcionada. O valor para o protocolo IPv4 é 0x0800.</li>
     <li><b>HLEN (Hardware Length): </b>Tamanho do endereço de hardware, em grupos de oito bits (octetos). Um MAC Address Ethernet tem o tamanho de 6.</li>
-    <li><b>PLEN (Protocol Length): </b>Tamanho, em octetos, do endereço específicado no campo PTYOE. Para o protocolo IPv4, o tamanho é 4.</li>
+    <li><b>PLEN (Protocol Length): </b>Tamanho, em octetos, do endereço especificado no campo PTYPE. Para o protocolo IPv4, o tamanho é 4.</li>
     <li><b>OPER (Operation): </b>Tipo de operação que o transmissor está realizando, sendo o valor 1 para ARP Request, e 2 para ARP Reply.</li>
     <li><b>SHA (Sender Address Hardware): </b>Endereço MAC do transmissor. Quando se trata de um pacote ARP Request, contém o endereço físico do remetente. Já em uma mensagem ARP Reply, contém o endereço físico procurado (resolvido).</li>
     <li><b>SPA (Sender Protocol Address): </b>Endereço da camada de internet do remetente (IP).</li>
@@ -153,7 +153,7 @@
     <li><b>TPA (Target Protocol Address): </b>Endereço da camada de internet (IP) do destinatário pretendido.</li>
 </ul>
 
-<p>O cachê ARP mantém os mapeamentos de endereços mais recentes de IPs para endereços MAC na memória do host, possuindo um tempo de expiração para dada entrada no cache de alguns minutos a partir do momento em que a entrada foi adicionada. Podemos examinar o cache ARP usando o  comando <code>arp /a</code>.</p>
+<p>O cache ARP mantém os mapeamentos de endereços mais recentes de IPs para endereços MAC na memória do host, possuindo um tempo de expiração para cada entrada no cache de alguns minutos a partir do momento em que a entrada foi adicionada. Podemos examinar o cache ARP usando o  comando <code>arp /a</code>.</p>
 
 <p>Para limpar o cache ARP, basta usar <code>netsh interface ip delete arpcache</code> ou <code>arp /a /d</code> (ou um IP específico usando <code>arp /d 0.0.0.0</code>). Depois podemos usar <code>netsh interface ip delete destinationcache</code> para excluir o cache de destino.</p>
 
@@ -165,11 +165,11 @@
 
 <p>Para retornar o catálogo do provedor winsock (o socket que faz o computador interagir com a rede) ao estado inicial, digite na ordem, <code>nbtstat /R</code>, <code>nbtstat /RR</code> e depois <code>netsh winsock reset catalog</code>.</p>
 
-<h3>Protocol ICMP</h3>
+<h3>Protocolo ICMP</h3>
 
 <p>O protocolo ICMP é o protocolo de mensagens da internet, que comunica mensagens de erro, diagnóstico e outras condições que requeiram atenção em uma rede. O protocolo IP, que fornece o mecanismo para entrega de datagramas entre dispositivos, carece dessa funcionalidade, e por isso o ICMP foi criado.</p>
 
-<p>As mensagems ICMP são transmitidas em datagramas IP. Ela contém os campos tipo, código, checksum e conteúdo.</p>
+<p>As mensagens ICMP são transmitidas em datagramas IP. Ela contém os campos tipo, código, checksum e conteúdo.</p>
 
 <p>As mensagens ICMP podem ser divididas em duas grandes classes:</p>
 
@@ -181,13 +181,13 @@
 <p>Essas são as regras específicas para mensagens, as mensagens ICMP não são geradas:</p>
 
 <ul>
-    <li>Como resposta à outra mensagem de erro. Isso evita o surgimento de loops infinitos de mensagens de erro. Porém, mensagens de erro podem ser geradas em resposta à mensagens de informação.</li>
-    <li>Resposta à datagramas de Broadcast ou Multicast.</li>
-    <li>Resposta à datagramas cujo endereço IP de origem não seja um endereço Unicast.</li>
-    <li>Em resposta à fragmentos de datagramas IP, exceto o primeiro, os demais fragmentos de um datagrama não geram mensagens de erro.</li>
+    <li>Como resposta a outra mensagem de erro. Isso evita o surgimento de loops infinitos de mensagens de erro. Porém, mensagens de erro podem ser geradas em resposta a mensagens de informação.</li>
+    <li>Resposta a datagramas de Broadcast ou Multicast.</li>
+    <li>Resposta a datagramas cujo endereço IP de origem não seja um endereço Unicast.</li>
+    <li>Em resposta a fragmentos de datagramas IP, exceto o primeiro, os demais fragmentos de um datagrama não geram mensagens de erro.</li>
 </ul>
 
-<p>Alguns tipo de códigos e mensagens:</p>
+<p>Alguns tipos de códigos e mensagens:</p>
 
 <table>
     <tr>
@@ -224,7 +224,7 @@
     <tr>
         <td>4</td>
         <td>0</td>
-        <td>Sourche Quench - Controle de Fluxo Elementar</td>
+        <td>Source Quench - Controle de Fluxo Elementar</td>
     </tr>
     <tr>
         <td>8</td>
@@ -238,11 +238,11 @@
     </tr>
     <tr>
         <td>0</td>
-        <td>TTL Igual à 0 Durante o Trânsito</td>
+        <td>TTL Igual a 0 Durante o Trânsito</td>
     </tr>
     <tr>
         <td>1</td>
-        <td>TTL Igual à 0 Durante Reconstrução dos Fragmentos</td>
+        <td>TTL Igual a 0 Durante Reconstrução dos Fragmentos</td>
     </tr>
 </table>
 
@@ -254,7 +254,7 @@
 
 <p>O Traceroute é uma ferramenta de diagnóstico que permite ver a rota que datagramas IP seguem quando são enviados de um host ao outro. Faz uso do protocolo ICMP e do campo TTL no cabeçalho IP do datagrama.</p>
 
-<p>O propósito do TTL é evitar que datagramas entrem em um loop de roteamento, quando um datagrama chega à um roteador, seu TTL é decrementado (-1) antes de ser encaminhado. Quando um roteador recebe um datagrama cujo TTL é igual à 0, ele o descarta e envia de volta ao host que o originou uma mensagem ICMP do tipo Tempo Excedido. Essa mensagem contém o endereço IP do roteador como endereço de origem.</p>
+<p>O propósito do TTL é evitar que datagramas entrem em um loop de roteamento, quando um datagrama chega à um roteador, seu TTL é decrementado (-1) antes de ser encaminhado. Quando um roteador recebe um datagrama cujo TTL é igual a 0, ele o descarta e envia de volta ao host que o originou uma mensagem ICMP do tipo Tempo Excedido. Essa mensagem contém o endereço IP do roteador como endereço de origem.</p>
 
 <p>Para entendermos o funcionamento do Traceroute, precisamos saber que:</p>
 
@@ -263,7 +263,7 @@
     <li>Ao chegar ao primeiro roteador no caminho, o TTL é decrementado, ficando com o valor zero, o datagrama é descartado e a mensagem "Tempo Excedido" é enviada de volta à origem.</li>
     <li>Dessa forma, o primeiro roteador no caminho é identificado. Então o Traceroute envia um novo datagrama, desta vez com o TTL igual à 2, que decerementa o TTL para 1, e então será descartado no segundo roteador, e assim descobrimos o endereço IP deste roteador também.</li>
     <li>Esse processo continua até que um datagrama chegue ao host de destino.</li>
-    <li>Ao chegar no host de destino, será gerado um erro ICMP do tipo "Porta Inalcançável", e então, o Traceroute differencia o recebimento de mensagens "Tempo Excedido" da mensagem "Porta Inalcançável" para quando parar.</li>
+    <li>Ao chegar no host de destino, será gerado um erro ICMP do tipo "Porta Inalcançável", e então, o Traceroute diferencia o recebimento de mensagens "Tempo Excedido" da mensagem "Porta Inalcançável" para quando parar.</li>
     <li>Já no Windows, são enviados datagramas ICMP do tipo Echo Request (o famoso Ping), e quando o dispositivo de origem recebe uma resposta Echo Reply, ele sabe que o pacote chegou ao seu destino.</li>
 </ul>
 
@@ -281,7 +281,7 @@
 
 <h3>Como Funciona o Utilitário Ping</h3>
 
-<p>O programa Ping é um utilitário que permite testar a conectividade entre dois hosts em uma rede. Ele funciona enviando uma mensagem ICMP do tipo Echo Request à um host, e espera o recebimento de uma mensagem ICMP do tipo Echo Reply em retorno (resumindo, ele envia uma mensagem que retornará num espaço de tempo).</p>
+<p>O programa Ping é um utilitário que permite testar a conectividade entre dois hosts em uma rede. Ele funciona enviando uma mensagem ICMP do tipo Echo Request a um host, e espera o recebimento de uma mensagem ICMP do tipo Echo Reply em retorno (resumindo, ele envia uma mensagem que retornará num espaço de tempo).</p>
 
 <p>No geral, se não conseguirmos "pingar" um host, significa que não há conectivadade entre as máquinas envolvidas no processo. É um dos primeiros passos que tomamos para determinar qual o problema que afeta uma rede onde um ou mais hosts não conseguem se comunicar entre si, ou com a rede externa.</p>
 
@@ -303,14 +303,14 @@
 
 <h3>Protocolo TCP - Campos do Cabeçalho</h3>
 
-<p>O protocolo TCP (Trasmission Control Protocol) é um protocolo da camada de transporte, que realiza um serviço de entrega de pacotes confiáveis, orientado à conexão.</p>
+<p>O protocolo TCP (Transmission Control Protocol) é um protocolo da camada de transporte, que realiza um serviço de entrega de pacotes confiáveis, orientado à conexão.</p>
 
 <p>As principais funções realizadas pelo TCP são:</p>
 
 <ul>
     <li>Estabelecer, manter e terminar conexões.</li>
     <li>Fornecer confiabilidade.</li>
-    <li>Fornecer controlo de fluxo.</li>
+    <li>Fornecer controle de fluxo.</li>
     <li>Multiplexação.</li>
     <li>Endereçamento de aplicações.</li>
     <li>Controle de congestionamento.</li>
