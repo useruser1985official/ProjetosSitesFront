@@ -242,17 +242,17 @@
 
 <p>Agora pegaremos o pendrive preparado pro Linux, plugaremos ele no computador e reiniciará, entre na BIOS (pode ser usando F1 ou F2, ao iniciar, dependendo do fabricante da placa-mãe), e coloque o pendrive como o primeiro na prioridade de boot, e continue o boot.</p>
 
-<p>Ele abrirá o menu do Multiboot e escolha a opção Linux Distributions, e escolha o sistema a ser instalado (o nosso Linux, no caso o Ubuntu).</p>
+<p>Ele abrirá o menu do Multiboot, escolha a opção Linux Distributions, e escolha o sistema a ser instalado (o nosso Linux, no caso, o Ubuntu).</p>
 
 <p>Ele carregará o sistema e aparecerá a tela de instalação (escolha a opção Safe Graphics), escolha o idioma Português do Brasil, e escolha o Instalar o Ubuntu. Marque a opção instalar softwares de terceiros (wi-fi, Flash, MP3), não é necessário baixar atualizações no momento, podemos baixá-las posteriormente.</p>
 
 <p>Ele já detectará que o nosso computador tem o Windows instalado e deverá aparecer marcado, essa opção instalará na partição vazia criada anteriormente. Se tiver um entendimento melhor de particionamento, podemos escolher a Opção Avançada. Depois clique em Instalar Agora.</p>
 
-<p>PS: Caso a instalação do Linux não identifique o Windows, no tipo de instalação, escolha opção avançada e instale na partição não-alocada, escolha usar sistema de arquivos ext4, marque formatar e coloque o ponto de montagem como <code>/</code>.</p>
+<p>PS: Caso a instalação do Linux não identifique o Windows, no tipo de instalação, escolha Opção Avançada e instale na partição não-alocada, escolha usar sistema de arquivos ext4, marque formatar e coloque o ponto de montagem como <code>/</code>.</p>
 
-<p>Ele pedirá para escolher o fuso horário, e depois o tipo do teclado (no caso, Português do Brasil), se quiser, tem um espaço para testar o que for digitado. Coloque o nome do Usuário, o nome do computador e sua senha. Não é necessário marcar a opção Criptografar Minha Pasta Pessoal. Depois disso ele começará a instalação.</p>
+<p>Ele pedirá para escolher o fuso horário, e depois o tipo do teclado (no caso, Português do Brasil), se quiser, tem um espaço para testar o que for digitado. Coloque o nome do usuário, o nome do computador e sua senha. Não é necessário marcar a opção Criptografar Minha Pasta Pessoal. Depois disso ele começará a instalação.</p>
 
-<p>Depois da instalação, reinicie e retire o pendrive, ele aparecerá a tela GNU GRUB do Ubuntu com as opções de boot, inclusive a do Windows instalado anteriormente. Faça o boot pelo Ubuntu, digite a senha e entre no sistema.</p>
+<p>Depois da instalação, reinicie e retire o pendrive, aparecerá a tela GNU GRUB do Ubuntu com as opções de boot, inclusive a do Windows instalado anteriormente. Faça o boot pelo Ubuntu, digite a senha e entre no sistema.</p>
 
 <p>PS: Para não haver conflitos no relógio do Windows e do Linux, adicione essa entrada no registro:</p>
 
@@ -264,7 +264,7 @@ reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsU
 
 <p>Lembrando que se for Windows 32 bits o tipo é <code>REG_DWORD</code>, e 64 bits é <code>REG_QWORD</code>.</p>
 
-<p>O Linux tem opções de personalização, podemos baixar uma outra interface gráfica e algumas versões tem loja de aplicativos. Muitos programas tem suas versões Linux, inclusive a maioria das IDEs que instalaremos, alguns programas tem versões equivalentes (como o Libreoffice que é uma alternativa ao Office).</p>
+<p>O Linux tem opções de personalização, podemos baixar uma outra interface gráfica e algumas versões têm loja de aplicativos. Muitos programas têm suas versões Linux, inclusive a maioria das IDEs que instalaremos, alguns programas têm versões equivalentes (como o Libreoffice que é uma alternativa ao Office).</p>
 
 <p>PS: Caso tenha necessidade de remover o dual-boot do Linux, você pode remover ele sem afetar o Windows, nesse caso você deverá entrar no Windows e excluir as partições referentes ao Linux e estender o espaço não alocado novamente pra partição do Windows. Após isso você deve usar um disco de reparação do sistema Windows, escolha o idioma Português do Brasil, vá em Reparar o Computador, nas Opções de Recuperação de Sistema, escolha a partição com o Windows, e nas opções, vá em Prompt de Comando e digite o comando <code>bootrec /fixmbr</code> e dê enter, e reinicie. Caso não dê certo, volte nas opções e vá em Correção de Inicialização, clique nela e após a conclusão, reinicie. Se não conseguir, tente esses comandos na ordem:</p>
 

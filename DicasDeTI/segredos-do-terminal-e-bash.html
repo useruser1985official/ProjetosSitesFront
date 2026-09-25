@@ -45,9 +45,9 @@ cd bin
 </code>
 </pre>
 
-<p>No Linux, alguns comandos necessitam do uso de administrador, por isso, dependendo da distro (como o Ubuntu), você acessa ele digitando <code>sudo su</code> e colocando a senha, ou podemos usar o sudo apenas num comando específico que o exija (tipo <code>sudo nautilus fotos.jpg</code>). O Debian faz isso usando apenas o <code>su</code>, pois ele não usa sudo em nada. Quando o terminal está em root, ele está com um <code>#</code>, enquanto no modo usuário está com um <code>$</code>.</p>
+<p>No Linux, alguns comandos necessitam do uso de administrador (root), por isso, dependendo da distro (como o Ubuntu), você acessa ele digitando <code>sudo su</code> e colocando a senha, ou podemos usar o sudo apenas num comando específico que o exija (tipo <code>sudo nautilus fotos.jpg</code>). O Debian faz isso usando apenas o <code>su</code>, pois ele não usa sudo em nada. Quando o terminal está em root, ele está com um <code>#</code>, enquanto no modo usuário está com um <code>$</code>.</p>
 
-<p>E também podemos iniciar programas escrevendo o nome dele diretamente (pode ser necessário incluir um ./ antes, tudo junto, sem espaços, para arquivos executáveis, ou o caminho dos mesmos, como por exemplo <code>./script.sh</code>, exceto quando estão no PATH), inclusive usando com um parâmetro de inicialização, indiciando o que o programa abrirá, por exemplo:</p>
+<p>E também podemos iniciar programas escrevendo o nome dele diretamente (pode ser necessário incluir um ./ antes, tudo junto, sem espaços, para arquivos executáveis, ou o caminho dos mesmos, como por exemplo <code>./script.sh</code>, exceto quando estão no PATH), inclusive usando com um parâmetro de inicialização, indicando o que o programa abrirá, por exemplo:</p>
 
 <pre>
 <code>
@@ -55,6 +55,8 @@ firefox uol.com.br
 gedit /home/administrador/Documentos/Contatos.txt
 </code>
 </pre>
+
+<h3>Manipulando Arquivos</h3>
 
 <p>Se quiser renomear um arquivo, use o comando <code>mv</code> seguido pelo nome antigo e o nome que o substituirá, dessa forma:</p>
 
@@ -72,7 +74,7 @@ rm "Fotos do dia.jpg"
 </code>
 </pre>
 
-<p>Para fazer o mesmo com pastas, usamos <code>rm</code> com o parâmetro <code>-r</code>, ou o <code>-rf</code> que força a exclusão sem perguntar, pra diretórios vazios usamos <code>-d</code> veja um exemplo:</p>
+<p>Para fazer o mesmo com pastas, usamos <code>rm</code> com o parâmetro <code>-r</code>, ou o <code>-rf</code> que força a exclusão sem perguntar, pra diretórios vazios usamos <code>-d</code>, veja um exemplo:</p>
 
 <pre>
 <code>
@@ -106,9 +108,11 @@ cp -r diretorio /home/administrador/
 </code>
 </pre>
 
-<p>Tanto o mv quanto o cp podem ser usados com o parâmetro <code>-f</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>-i</code> perguntar se desejamos substituir ele.</p>
+<p>Tanto o mv quanto o cp podem ser usados com o parâmetro <code>-f</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>-i</code> pergunta se desejamos substituir ele.</p>
 
 <p>PS: A barra tem que ser a <code>/</code>, senão não vai funcionar. O <code>*</code> pode ser usado como curinga para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
+
+<h3>Verificando Conteúdo das Pastas</h3>
 
 <p>Para ver os diretórios dentro das pastas, use o comando <code>ls</code> (com o parâmetro <code>-l</code> podemos ver as permissões, que podem ser alteradas pelo comando <code>chmod</code>).</p>
 

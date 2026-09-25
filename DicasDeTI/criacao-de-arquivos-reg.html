@@ -15,7 +15,9 @@
             
 <h2>Criação de Arquivos REG</h2>
 
-<p>O registro é um banco de dados hierárquico no Windows que armazena informações importantes sobre hardware do sistema, programas instalados e configurações, alé de perfis de cada uma das contas de usuário no computador.</p>
+<h3>Introdução</h3>
+
+<p>O registro é um banco de dados hierárquico no Windows que armazena informações importantes sobre hardware do sistema, programas instalados e configurações, além de perfis de cada uma das contas de usuário no computador.</p>
 
 <p>Os dados do registro são armazenados em chaves (compartimentos, como se fossem "pastinhas"), e dentro deles tem subchaves, que funcionam da mesma forma. As configurações que aparecem do lado direito são chamados de valores. Os valores sempre possuem um nome, o tipo de dados e o conteúdo dos dados (como se fossem variáveis). Tudo isso são parâmetros que ficam armazenados dentro das chaves, e os valores são itens de configurações.</p>
             
@@ -52,8 +54,6 @@ Windows Registry Editor Version 5.00
 "NovoValor"="Novos Dados"
 </code>
 </pre>
-
-
 
 <p>Para excluir um valor de uma chave, atribua o valor à ela com um <code>-</code> assim:
 
@@ -135,6 +135,8 @@ Windows Registry Editor Version 5.00
 
 <p>PS: Lembrando que é necessário colocar "Windows Registry Editor Version 5.00" para o arquivo reg funcionar. No lugar dele pode ser usado "REGEDIT4", mas pode não funcionar no Windows 8, 8.1 e 10.</p>
 
+<h3>Tipos de Dados e Chaves Raiz</h3>
+
 <p>Esses são os tipos de dados mais comuns em entradas de registro, que são utilizados para configurar os valores que guardamos dentro das chaves:</p>
 
 <table>
@@ -191,6 +193,8 @@ Windows Registry Editor Version 5.00
 <p>A chave <code>HKEY_USERS</code> contém dados de todos os perfis de usuários no sistema, incluindo HKEY_CURRENT_USER e o perfil de usuário padrão. No geral, usamos a chave HKCU para configuração do usuário atual. Abreviada normalmente como HKU.</p>
 
 <p>A chave <code>HKEY_CURRENT_CONFIG</code> armezena todos os dados sobre a configuração atual de hadware da máquina. É um link para HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Hardware Profiles\Current. Não é muito utilizada no geral. Abreviada normalmente como HKCC.</p>
+
+<h3>O que Dá pra Fazer no Registro</h3>
 
 <p>Uma coisa que podemos fazer, por exemplo, é criar uma entrada de registro onde um comando, BAT ou programa é executado ao inicializar (não funciona com aplicações Java), para isso, procure a chave RUN em HKCU ou HKLM (essa última é para todos os usuários), localizadas em <code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code> e <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code>. Veja um exemplo prático disso:</p>
 

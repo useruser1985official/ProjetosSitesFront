@@ -26,7 +26,7 @@
 
 <h3>Agregação de Objetos</h3>
 
-<p>Agregação é um tipo de relacionamento entre classes onde um objeto é formado por outros objetos, mas esses objetos podem existir separadamente.Ou seja: A classe <q>dona</q> usa outros objetos, mas não é dona deles.</p>
+<p>Agregação é um tipo de relacionamento entre classes onde um objeto é formado por outros objetos, mas esses objetos podem existir separadamente. Ou seja: A classe <q>dona</q> usa outros objetos, mas não é dona deles.</p>
 
 <p>PS: Não confunda agregação com herança, são conceitos diferentes.</p>
 
@@ -106,9 +106,9 @@ public class Computador {
 Mouse mou = new Mouse("Óptico", false);
 
 // O computador também existe sozinho.
-Computador pc = new Computador("Dell", 1);
+Computador pc = new Computador("Dell", 1024);
 
-// O computador apenas usa (agrega) o mouse
+// O computador apenas usa (agrega) o mouse.
 pc.conectarMouse(mou);
 
 pc.exibirInfo();
@@ -128,7 +128,7 @@ public class Computador {
     private int gb;
     private Mouse ms; // Agregação: Computador usa um mouse externo, o "tipo" é o objeto Mouse.
 
-    public Computador(String marca, int gb, Mouse ms) { // Aí elimina o método conectaMouse.
+    public Computador(String marca, int gb, Mouse ms) { // Aí elimina o método conectarMouse.
         this.marca = marca;
         this.gb = gb;
         this.ms = ms;
@@ -163,7 +163,7 @@ public class Computador {
 Mouse mou = new Mouse("Óptico", false);
 
 // O computador depende do mouse, nesse caso.
-Computador pc = new Computador("Dell", 1, mou);
+Computador pc = new Computador("Dell", 1024, mou);
 
 pc.exibirInfo();
 
@@ -185,7 +185,7 @@ public class Computador {
     private Mouse ms = new Mouse("Óptico", false); // Composição: Computador usa um mouse já criado internamente.
     // A classe Mouse permanece inalterada. O new pode ser colocado no construtor também e é até recomendado.
 
-    public Computador(String marca, int gb) {
+    public Computador(String marca, int gb) { // Não passa o mouse.
         this.marca = marca;
         this.gb = gb;
     }
@@ -203,7 +203,7 @@ public class Computador {
         }
     }
 
-    // Getter com objeto agregado.
+    // Getter com objeto composto.
     public Mouse getMs() {
         return this.ms;
     }
@@ -220,7 +220,7 @@ public class Computador {
 <pre>
 <code>
 // O computador já é criado com o mouse, nesse caso.
-Computador pc = new Computador("Dell", 1);
+Computador pc = new Computador("Dell", 1024);
 
 pc.exibirInfo();
 

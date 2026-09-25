@@ -43,7 +43,7 @@ cd Public
 
 <p>PS: O start pode ser usado com processos, nesse caso não precisa estar no caminho pré-definido, e também, além de arquivos, também abre pastas.</p>
 
-<p>O start também pode ser usado com um parâmetro de inicialização, indiciando o que o programa abrirá, por exemplo:</p>
+<p>O start também pode ser usado com um parâmetro de inicialização, indicando o que o programa abrirá, por exemplo:</p>
 
 <pre>
 <code>
@@ -51,6 +51,8 @@ start firefox.exe uol.com.br
 start notepad.exe C:\Users\%username%\Documents\Notas\Contatos.txt
 </code>
 </pre>
+
+<h3>Manipulando Arquivos</h3>
 
 <p>Se quiser renomear um arquivo, use o comando <code>ren</code> ou <code>rename</code> seguido pelo nome antigo e o nome que o substituirá, dessa forma:</p>
 
@@ -118,9 +120,11 @@ copy picture.jpg C:\Users\Public\Documents\foto.jpg
 </code>
 </pre>
 
-<p>Tanto o move quandt o copy podem ser usados com o parâmetro <code>/y</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>/-y</code> perguntar se desejamos substituir ele.</p>
+<p>Tanto o move quandt o copy podem ser usados com o parâmetro <code>/y</code> que suprime o pedido de substituição, caso exista um arquivo de mesmo nome, e da mesma forma o <code>/-y</code> pergunta se desejamos substituir ele.</p>
 
 <p>PS: A barra tem que ser a <code>\</code>, senão não vai funcionar. Para copiar arquivos ocultos e pastas, use o <code>xcopy</code>. O <code>*</code> pode ser usado como curinga para vários arquivos em todos os casos (por exemplo, <code>*.txt</code> afetaria todos os arquivos de texto).</p>
+
+<h3>Verificando Conteúdo das Pastas</h3>
 
 <p>Para ver os diretórios dentro das pastas, use o comando <code>dir</code>.</p>
 
