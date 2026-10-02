@@ -301,7 +301,7 @@ show grants for usuario@localhost;
 </code>
 </pre>
 
-<p>Ali vemos dados como o hash da senha, o privilégio (definido como usage) e os locais onde ele tem esse privilégios (sempre é o nome banco de dados seguido do nome da tabela, tipo banco.tabela, quando é total, é mostrado *.*).</p>
+<p>Ali vemos dados como o hash da senha, o privilégio (definido como usage) e os locais onde ele tem esses privilégios (sempre é o nome do banco de dados seguido do nome da tabela, tipo <code>banco.tabela</code>, quando é total, é mostrado <code>*.*</code>).</p>
 
 <p>Esses são os privilégios mais comuns em MySQL:</p>
 
@@ -352,7 +352,7 @@ show grants for usuario@localhost;
         <td>Excluir uma tabela ou um banco de dados</td>
     </tr>
     <tr>
-        <td>CREATE VIEWS</td>
+        <td>CREATE VIEW</td>
         <td>Criar exibições</td>
     </tr>
     <tr>
@@ -373,7 +373,7 @@ show grants for usuario@localhost;
     </tr>
 </table>
 
-<p>Privilégios Administrativos:</p>
+<p>Privilégios administrativos:</p>
 
 <table>
     <tr>
@@ -385,7 +385,7 @@ show grants for usuario@localhost;
         <td>Criar contas de usuários</td>
     </tr>
     <tr>
-        <td>SHOW DATABASES</td>
+        <td>SHOW DATABASE</td>
         <td>Ver os nomes dos bancos de dados no servidor</td>
     </tr>
     <tr>
@@ -415,7 +415,7 @@ show grants for usuario@localhost;
     </tr>
     <tr>
         <td>USAGE</td>
-        <td>Não altera privilégios; usado para tarefas administrativas na conta do usuário.</td>
+        <td>Não altera privilégios, usado para tarefas administrativas na conta do usuário.</td>
     </tr>
 </table>
 
@@ -424,13 +424,13 @@ show grants for usuario@localhost;
 <p>No MySQL os privilégios são atribuídos em quatro níveis diferentes:</p>
 
 <ul>
-    <li><b>Global</b> - O usuário tem acesso a todas as tabelas de todos os bancos de dados.</li>
-    <li><b>Database</b> - Esse privilégio dá ao usuário acesso a todas as tabelas de um banco de dados específico.</li>
-    <li><b>Table</b> - O usuário tem acesso a todas as colunas de uma tabela específica em um banco de dados.</li>
-    <li><b>Column</b> - O usuário possui acesso apenas a colunas especificadas em uma determinada tabela.</li>
+    <li><b>Global:</b> O usuário tem acesso a todas as tabelas de todos os bancos de dados.</li>
+    <li><b>Database:</b> Esse privilégio dá ao usuário acesso a todas as tabelas de um banco de dados específico.</li>
+    <li><b>Table:</b> O usuário tem acesso a todas as colunas de uma tabela específica em um banco de dados.</li>
+    <li><b>Column:</b> O usuário possui acesso apenas a colunas especificadas em uma determinada tabela.</li>
 </ul>
 
-<p>O MySQL utiliza tabelas especiais denominada grant tables para armazenar informações sobre os privilégios dos usuários, em um banco de dados interno de nome mysql. A tabela a seguir detalha essas tabelas de privilégios:</p>
+<p>O MySQL utiliza tabelas especiais denominadas GRANT TABLES para armazenar informações sobre os privilégios dos usuários, em um banco de dados interno de nome <code>mysql</code>. A tabela a seguir detalha essas tabelas de privilégios:</p>
 
 <table>
     <tr>
@@ -439,7 +439,7 @@ show grants for usuario@localhost;
     </tr>
     <tr>
         <td>user</td>
-        <td>Armazena nomes e senhas de todos os usuários do servidor. Também armazena os privilégios globais que são aplicados a todos os bancos de dados do servidor.</td>
+        <td>Armazena nomes e senhas de todos os usuários do servidor. Também armazena os privilégios globais que são aplicados a todos os bancos de dados do servidor</td>
     </tr>
     <tr>
         <td>db</td>
@@ -455,7 +455,7 @@ show grants for usuario@localhost;
     </tr>
     <tr>
         <td>procs_priv</td>
-        <td>Armazena privilégios de acesso a funções e stored procedures (procedimentos armazenados).</td>
+        <td>Armazena privilégios de acesso a funções e stored procedures (procedimentos armazenados)</td>
     </tr>
 </table>
 

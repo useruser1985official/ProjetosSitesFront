@@ -45,7 +45,7 @@
     <li>Alguns modelos também conseguem processar dados do nivel 3 (camada de rede) ou superiores, incorporando assim algumas funcionalidades de roteamento.</li>
     <li>Um switch que pode operar em mais de uma camada é chamado de Switch Multilayer.</li>
     <li>Gerenciam o fluxo de dados na rede transmitindo uma mensagem recebida apenas para os dispositivos para os quais a mensagem foi enviada.</li>
-    <li>O segmento de rede formado pelos dispositivos conectados à um switch é considerado um domínio de broadcast.</li>
+    <li>O segmento de rede formado pelos dispositivos conectados a um switch é considerado um domínio de broadcast.</li>
     <li>Cada porta do switch é um domínio de colisão separado.</li>
     <li>Há até mesmo switches de camada 4 e camada 7 disponíveis no mercado.</li>
 </ul>
@@ -60,18 +60,18 @@
 
 <p>O switch é um equipamento concentrador, que encaminha os pacotes para o dispositivo ou grupo de dispositivos de destino, em vez de simplesmente encaminhar os pacotes para todos os nós da rede, como ocorria com os hubs. Aprende os endereços físicos dos nós e os associa às suas portas para uso posterior. Encaminha os quadros para seus destinos usando técnicas como Store and Forward, Cut-through, Fragment Free e Adaptive Switching.</p>
 
-<p>O switch cria uma tabela na sua memória denominada SAT (Source Address Table) com os endereços MAC das estações, que estão associados à cada porta. Quando um dispositivo transmite um quadro, o endereço de destino é pesquisado na SAT. Se encontrado o quadro será transmitido diretamente para a porta de destino. Se o endereço não for encontrado na SAT, o switch envia um broadcast perguntando em todas as portas sobre o endereço, e o adiciona a essa tabela.</p>
+<p>O switch cria uma tabela na sua memória denominada SAT (Source Address Table) com os endereços MAC das estações, que estão associados a cada porta. Quando um dispositivo transmite um quadro, o endereço de destino é pesquisado na SAT. Se encontrado o quadro será transmitido diretamente para a porta de destino. Se o endereço não for encontrado na SAT, o switch envia um broadcast perguntando em todas as portas sobre o endereço, e o adiciona a essa tabela.</p>
 
 <p>Esses são os métodos de encaminhamento:</p>
 
 <ul>
     <li><b>Store and Forward: </b>O switch armazena em buffer os dados e verifica cada quadro antes de encaminhá-lo, um quadro é recebido totalmente antes de ser encaminhado.</li>
     <li><b>Cut-through: </b>O switch inicia o encaminhamento logo após o endereço de destino quadro ter sido recebido. Não há verificação de erros neste métodos.</li>
-    <li><b>Fragmente Free (Modified Cut-through): </b>Neste método os primeiros 64 bytes do quadro onde a informação de endereçamento é armazenada, são verificados. De acordo com as especificações Ethernet, as colisões devem ser detectadas durante os primeiros 64 bytes do quadro, de modo que quadros que possuam erros devido à colisões não devem ser encaminhados.</li>
+    <li><b>Fragmente Free (Modified Cut-through): </b>Neste método os primeiros 64 bytes do quadro onde a informação de endereçamento é armazenada, são verificados. De acordo com as especificações Ethernet, as colisões devem ser detectadas durante os primeiros 64 bytes do quadro, de modo que quadros que possuam erros devido a colisões não devem ser encaminhados.</li>
     <li><b>Adaptive Switching:</b>Neste método é realizada uma seleção automática entre os outros três modos.</li>
 </ul>
 
-<p>Essa é a classificação quanto à configuração:</p>
+<p>Essa é a classificação quanto a configuração:</p>
 
 <ul>
     <li><b>Não-Gerenciável: </b>Sem opções ou interfaces de configuração. Geralmente usados em pequenos ambientes SOHO.</li>
@@ -105,7 +105,7 @@
 
 <h3>Escopos de Rede</h3>
 
-<p>O escopo de uma rede refere-se ao seu tamanho ou alcance geográfico. O tamanho de uma rede pode variar de apenas alguns poutos metros, ligando periféricos a um computador, à milhares de computadores conectados a longas distâncias. Os principais tipos de redes quanto ao escopo podem ser LAN, MAN, WAN e PAN.</p>
+<p>O escopo de uma rede refere-se ao seu tamanho ou alcance geográfico. O tamanho de uma rede pode variar de apenas alguns poutos metros, ligando periféricos a um computador, a milhares de computadores conectados a longas distâncias. Os principais tipos de redes quanto ao escopo podem ser LAN, MAN, WAN e PAN.</p>
 
 <p>A LAN, Rede de Área Local, ou simplesmente Rede Local, geralmente está localizada em um edifício, escritório, campus ou mesmo em sua residência. Possuí conectivdade em alta velocidade e sua característica principal é ser uma rede privativa, ou seja, alguém (pessoa ou organização) controla essa rede e o acesso a ela, em uma área geográfica limitada.</p>
 
@@ -202,7 +202,7 @@
     <li>O UDP não é confiável, as mensagens enviadas podem não alcançar o destino, o TCP trata disso tentando garantir a entrega da mensagem ao destino.</li>
     <li>O UDP não ordena os datagramas enviados, se chegarem fora de ordem não serão reordenados, o TCP os reordena no destino, caso cheguem deordenados.</li>
     <li>O UDP é um protocolo mais leve, pois não realiza handshake para estabelecer e finalizar conexões nem tampouco mantém registro das conexões ativas, o TCP realiza essas tarefas.</li>
-    <li>Coomo o UDP não é orientado à conexão, ele pode enviar pacotes em broadcast ou multicast tranquilamente, o TCP é projetado para trabalhar em comunicação unicast.</li>
+    <li>Coomo o UDP não é orientado a conexão, ele pode enviar pacotes em broadcast ou multicast tranquilamente, o TCP é projetado para trabalhar em comunicação unicast.</li>
 </ul>
 
 <h3>APIPA - Endereço de Configuração IP Automática</h3>
@@ -213,7 +213,7 @@
 
 <ul>
     <li>Endereço de configuração automática do Windows.</li>
-    <li>Atribui automaticamente IP à uma estação caso haja falha na comunicação com um servidor DHCP.</li>
+    <li>Atribui automaticamente IP a uma estação caso haja falha na comunicação com um servidor DHCP.</li>
     <li>Garante a comunicação entre as estações dentro de uma rede.</li>
 </ul>
 
@@ -233,7 +233,7 @@
     <li>Problemas em uma ou mais portas do switch.</li>
 </ul>
 
-<p>Ou seja, problemas que, em última instância, levem à quebra de comunicação entre as estações e o servidor DHCP da rede.</p>
+<p>Ou seja, problemas que, em última instância, levem a quebra de comunicação entre as estações e o servidor DHCP da rede.</p>
 
 <p>Abra o CMD e digite <code>ipconfig</code> para vermos a configuração atual de IP.</p>
 

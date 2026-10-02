@@ -254,7 +254,7 @@
 
 <h3>Configurando Modem e Conexão com a Internet</h3>
 
-<p>Coloque um PC, um modem DSL, uma nuvem, um roteador 1941 e um servidor, ligados nessa mesma ordem com os cabeamentos especificados. Isso representará a conexão da internet (que terá muito mais roteadores e servidores após a nuvem).</p>
+<p>Coloque um PC, um modem DSL, uma nuvem, um roteador 1941 e um servidor, ligados nessa mesma ordem com os cabeamentos especificados (use cabo Cross pra ligar o servidor ao roteador). Isso representará a conexão da internet (que terá muito mais roteadores e servidores após a nuvem).</p>
 
 <p>PS: A nuvem representa daonde vem a internet, quando a operadora diz não ter portas para novas conexões, é porque falta essas portas. O roteador representa o roteador da operadora.</p>
 
@@ -270,11 +270,11 @@
 
 <h3>Criando Sub-Redes no Packet Tracer</h3>
 
-<p>Coloque dois roteadores 1941, dois switches 2960 e dois computadores. Ligue cada computador em cada switch em portas Fast. Ligue a porta Giga de cada switch em cada roteador, tudo usando o cabo Straigh. Ligue os roteadores usando um cabo Cross-Over (que liga equipamentos iguais). Vá nos roteadores e ligue as portas.</p>
+<p>Coloque dois roteadores 1941, dois switches 2960 e dois computadores. Ligue cada computador em cada switch em portas Fast. Ligue a porta Giga de cada switch em cada roteador, tudo usando o cabo Straight. Ligue os roteadores usando um cabo Cross-Over (que liga equipamentos iguais). Vá nos roteadores e ligue as portas.</p>
 
 <p>No caso teremos três redes diferentes (roteadores só conversam com redes diferentes, cada porta é uma rede), o primeiro PC e switch é uma rede, entre os dois roteadores é uma segunda rede, e os outros PC e switch são uma terceira rede.</p>
 
-<p>Entre os roteadores teremos a rede <code>192.168.0.0</code>, de máscara padrão classe C. Ele não conectará as outras redes. A máscara padrão como sabemos é <code>255.255.255.0</code>. A parte com 255 representa a rede e não pode ser alterada, por isso, criaremos sub-redes. Que serão essas:</p>
+<p>Entre os roteadores teremos a rede <code>192.168.0.0</code>, de máscara padrão classe C. Ele não conectará as outras redes. A máscara padrão como sabemos é <code>255.255.255.0</code>. A parte com 255 representa a rede e não pode ser alterada, por isso, criaremos sub-redes, que serão essas:</p>
 
 <table>
     <tr>
@@ -304,7 +304,7 @@
     </tr>
 </table>
 
-<p>No nosso exemplo, usaremos as três primeiras, sendo uma pro primeiros PC e switch, a segunda pra entre os roteadores e a terceira pros outros PC e switch. A máscara padrão de todos será a <code>255.255.255.192</code>. Coloque os IPs de forma estática assim:</p>
+<p>No nosso exemplo, usaremos as três primeiras, sendo uma pros primeiros PC e switch, a segunda pra entre os roteadores e a terceira pros outros PC e switch. A máscara padrão de todos será a <code>255.255.255.192</code>. Coloque os IPs de forma estática assim:</p>
 
 <ul>
     <li>1º PC: <code>192.168.0.1</code> - Default Gateway (roteador): <code>192.168.0.62</code>.</li>
@@ -317,7 +317,7 @@
 
 <p>As redes conectadas não precisamos mexer (no caso as dos PCs e switches) pois o roteador já as conhece, mas as não conectadas precisamos configurar. No caso, o primeiro roteador não conhece a terceira rede, e o segundo roteador não conhece a primeira rede.</p>
 
-<p>No primeiro roteador, vá em Config e Static coloque esses dados:</p>
+<p>No primeiro roteador, vá em Config e Static e coloque esses dados:</p>
 
 <ul>
     <li><b>Rede:</b> <code>192.168.0.128</code> (no caso, a rede da qual ele não conhece e precisará chegar).</li>
@@ -327,7 +327,7 @@
 
 <p>Clique em adicionar.</p>
 
-<p>No segundo roteador, ele também precisará chegar na primeira rede, já que ele não a conhece. Da mesma forma, vá em Config e Static coloque esses dados:</p>
+<p>No segundo roteador, ele também precisará chegar na primeira rede, já que ele não a conhece. Da mesma forma, vá em Config e Static e coloque esses dados:</p>
 
 <ul>
     <li><b>Rede:</b> <code>192.168.0.0</code> (no caso, a rede da qual ele não conhece e precisará chegar).</li>
