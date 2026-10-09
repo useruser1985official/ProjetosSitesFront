@@ -172,11 +172,11 @@ exit
 
 <p>Liste os containers em execução com <code>docker ps</code> e depois liste todos eles com <code>docker ps -a</code>.</p>
 
-<p>Para remover um container, podemos usar o comando <q>rm</q>, podemos usar o nome ou a ID do container, na sintaxe <code>docker rm nomeouiddocontainer</code>. Ele retornará o nome do container e o removerá. No caso de ID, nem precisamos colocar a ID inteira, apenas os primeiros caracteres, caso se refiram a um container só. Lembrando que só podemos remover container que estão parados.</p>
+<p>Para remover um container, podemos usar o comando <q>rm</q>, podemos usar o nome ou a ID do container, na sintaxe <code>docker rm nomeouiddocontainer</code>. Ele retornará o nome do container e o removerá. No caso de ID, nem precisamos colocar a ID inteira, apenas os primeiros caracteres, caso se refiram a um container só. Lembrando que só podemos remover containers que estão parados.</p>
 
 <p>Para forçar a remoção de um container, use o parâmetro <q>-f</q>, na sintaxe <code>docker rm -f nomeouiddocontainer</code>. Isso só pode ser usado em emergências.</p>
 
-<p>Para remover todos os container que estão parados, digite o comando <code>docker container prune</code>. Ele mostrará os containers excluídos e o espaço recuperado em disco.</p>
+<p>Para remover todos os containers que estão parados, digite o comando <code>docker container prune</code>. Ele mostrará os containers excluídos e o espaço recuperado em disco.</p>
 
 <p>Note que, ao excluir os containers, a imagem estará intacta, para deletar a imagem pela linha de comando, primeiramente liste as imagens com o comando <code>docker images</code>, e pra remover uma imagem específica, digite o comando <code>docker rmi nomeouiddaimagem</code>. Para remover todas as imagens não utilizadas por nenhum container, use o comando <code>docker image prune</code>.</p>
 
@@ -242,7 +242,7 @@ docker ps -a
 </code>
 </pre>
 
-<p>Para criar um novo container com mapeamento de portas, usaremos o parâmetro <q>-p</q>, e teremos que informar os dispositos que vamos mapear, o da esquerda é o host (nosso computador, que é o que manda), e o da direita é o container. Por padrão, o Nginx roda na porta 80. Para criar um novo container no modo detach, use o comando <code>docker run -d -p 8080:80 --name servidor nginx</code>. Pode ser exibido um aviso do firewall. Aí, no seu computador, podemos rodar no navegador o link <code>http://localhost:8080</code>. Ele abrirá a página que está dentro do container. Dê um <code>docker ps</code> para ver o servidor rodando e as portas mapeadas.</p>
+<p>Para criar um novo container com mapeamento de portas, usaremos o parâmetro <q>-p</q>, e teremos que informar os dispositivos que vamos mapear, o da esquerda é o host (nosso computador, que é o que manda), e o da direita é o container. Por padrão, o Nginx roda na porta 80. Para criar um novo container no modo detach, use o comando <code>docker run -d -p 8080:80 --name servidor nginx</code>. Pode ser exibido um aviso do firewall. Aí, no seu computador, podemos rodar no navegador o link <code>http://localhost:8080</code>. Ele abrirá a página que está dentro do container. Dê um <code>docker ps</code> para ver o servidor rodando e as portas mapeadas.</p>
 
 <p>PS: Pode dar erro caso a porta 8080 já esteja em uso. Nesse caso, basta mudar a porta do host, como por exemplo, 8081 ao invés da 8080.</p>
 

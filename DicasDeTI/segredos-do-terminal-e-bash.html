@@ -134,15 +134,13 @@ ls /usr/bin
 </code>
 </pre>
 
-<!--
-<p>Podemos também salvar o conteúdo do dir ou de outro comando na área de transferência usando o comando <code>clip</code>, assim:</p>
+<p>Podemos também salvar o conteúdo do ls ou de outro comando na área de transferência usando o comando <code>xsel</code>, assim:</p>
 
 <pre>
 <code>
-dir | clip
+ls | xsel -b
 </code>
 </pre>
--->
 
 <p>Para voltar um diretório, use o cd com dois pontos na frente, assim:</p>
 
@@ -154,7 +152,7 @@ cd ..
 
 <p>PS: Com um ponto, ele fica no mesmo diretório.</p>
 
-<p>Você pode voltar a raiz do diretório da mesma forma, colocando uma barra após o cd, assim:</p>
+<p>Você pode voltar à raiz do diretório da mesma forma, colocando uma barra após o cd, assim:</p>
 
 <pre>
 <code>
@@ -172,7 +170,7 @@ cd /
 
 <p>Para reiniciar, usamos <code>sudo shutdown -r now</code> ou <code>sudo reboot</code>.</p>
 
-<p>Para programar isso, usamos o número em minutos, por exemplo:</p>
+<p>Para programar isso, usamos o número em minutos ao invés do <q>now</q>, por exemplo:</p>
 
 <pre>
 <code>
@@ -180,7 +178,7 @@ sudo shutdown -r 10
 </code>
 </pre>
 
-<p>Usamos o parâmetro <code>-c</code> para cancelar qualquer um deles. Para exibir uma mensagem colocamos ela entre aspas. Veja um exemplo:</p>
+<p>Usamos o parâmetro <code>-c</code> para cancelar qualquer um deles. Para exibir uma mensagem, colocamos ela entre aspas. Veja um exemplo:</p>
 
 <pre>
 <code>
@@ -188,9 +186,9 @@ sudo shutdown -r 10 "Reiniciaremos em 10 Minutos"
 </code>
 </pre>
 
-<h3>Como Procurar Comandos já digitados</h3>
+<h3>Como Procurar Comandos já Digitados</h3>
 
-<p>Podemos usar o comando <code>history</code> para visualizar um comando já digitado.</p>
+<p>Podemos usar o comando <code>history</code> para visualizar os comandos já digitados.</p>
     
 <h3>Como Encerrar Processos</h3>
 

@@ -310,3 +310,35 @@ ul#album-fotos li#foto02:hover {
     background-position: 0px 0px;
     background-size: 200px 200px;
 }
+
+div#tv {
+    width: 500px;
+    height: 350px;
+    margin: auto;
+    background: url("../imagens/tv.png") no-repeat;
+}
+
+video#filme {
+    display: block;
+    position: relative;
+    left: 25px;
+    top: 25px;
+    width: 450px;
+}
+
+div#radio {
+    width: 400px;
+    height: 385px;
+    margin: auto;
+    background: url("../imagens/radio.png") no-repeat;
+    background-size: 350px auto;
+    background-position: center;
+}
+
+audio#musica {
+    display: block;
+    position: relative;
+    left: 50px;
+    top: 112px;
+    width: 287px;
+}

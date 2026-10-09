@@ -457,7 +457,7 @@ frase.split(" ")
 nome = str(input("Digite o nome do arquivo: "))
 texto = str(input("Digite algo para escrevermos no arquivo: "))
 
-arquivo = open("{}.txt".format(nome.lower()), "w") # Para adicionar conteúdo sem sobrescrever, coloque "a" ao invés de "w"
+arquivo = open("{}.txt".format(nome.lower()), "w", encoding = "utf-8") # Para adicionar conteúdo sem sobrescrever, coloque "a" ao invés de "w"
 
 arquivo.write(texto)
 
@@ -469,7 +469,7 @@ arquivo.close()
 
 <pre>
 <code>
-arquivo = open("arquivo.txt", "r")
+arquivo = open("arquivo.txt", "r", encoding = "utf-8")
 
 print(arquivo.read())
 

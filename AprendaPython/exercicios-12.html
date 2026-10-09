@@ -440,7 +440,7 @@ def validarDado(valid:Validador, valor:str):
 <pre>
 <code>
 def main():
-    validarDado(Usuario(), 'guanabara_123')
+    validarDado(Usuario(), "guanabara_123")
     validarDado(Email(), "gustavo@gmail.com")
     validarDado(Senha(), "ABCa123!@#")
 
@@ -457,7 +457,61 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+class Usuario:
+    def __init__(self, nome, email):
+        self.nome = nome
+        self.email = email
 
+class Aluno:
+    def __init__(self, nome, curso, serie):
+        self.nome = nome
+        self.curso = curso
+        self.serie = serie
+
+class JSON:
+    def exportar(self, dados):
+        from json import dumps
+
+        lista = []
+
+        for item in dados:
+            lista.append(item.__dict__)
+
+        txt = dumps(lista, ensure_ascii = False, indent = 2)
+
+        return txt
+
+class XML:
+    def exportar(self, dados):
+        import xml.etree.ElementTree as ET
+
+        nome = dados[0].__class__.__name__.lower()
+        pai = ET.Element("dados")
+
+        for item in dados:
+            filho = ET.SubElement(pai, nome)
+
+            for chave, valor in item.__dict__.items():
+                neto = ET.SubElement(filho, chave)
+                neto.text = str(valor)
+
+        ET.indent(pai, space = "\t")
+        txt = ET.tostring(pai, encoding = "unicode", xml_declaration = True)
+
+        return txt
+
+def exportarDados(formato, dados):
+    tipo = dados[0].__class__.__name__.lower()
+    exten = formato.__class__.__name__.lower()
+    
+    arquivo = open(f"{tipo}.{exten}", "w", encoding = "utf-8")
+    
+    arquivo.write(formato.exportar(dados))
+    arquivo.close()
+
+    print(f"Arquivo {tipo}.{exten} criado com sucesso!")
+
+    # print(formato.exportar(dados))
 </code>
 </pre>
 
@@ -465,13 +519,24 @@ if __name__ == "__main__":
 
 <pre>
 <code>
+def main():
+    u = [Usuario("José", "jjsilva@hotmail.com"),
+         Usuario("Ana", "aninha@gmail.com")]
 
+    a = [Aluno("Maria", "Administração", "3º ano"),
+         Aluno("Paulo", "Gastronomia", "1º ano")]
+
+    exportarDados(XML(), u)
+    exportarDados(JSON(), a)
+
+if __name__ == "__main__":
+    main()
 </code>
 </pre>
 
 <ul>
     <li><a href="exercicios-11.html">Parte Anterior da Matéria!</a></li>
-    <!-- <li><a href="exercicios-13.html">Continuação da Matéria!</a></li> -->
+    <li><a href="exercicios-13.html">Continuação da Matéria!</a></li>
 </ul>
 
         </div>
