@@ -343,17 +343,17 @@
 
 <p>Coloque um switch 2960 e coloque dois computadores, no primeiro ligue na porta Fast 1 e o segundo na porta Fast 13. Coloque os IPs <code>192.168.0.1</code> e <code>192.168.0.2</code>. Eles se comunicarão normalmente, podemos fazer o teste da cartinha pra isso.</p>
 
-<p>Vá no Switch, em VLAN Database, você verá que todos os dispositivos estão na VLAN default. Podemos criar nossas próprias VLANs, numeradas entre 1 e 4095. No caso faremos a VLAN 1 Nº 10 e a VLAN 2 Nº 11 e adicionar. As portas da VLAN 1 não se comunicação com as da VLAN 2.</p>
+<p>Vá no switch, em VLAN Database, você verá que todos os dispositivos estão na VLAN default. Podemos criar nossas próprias VLANs, numeradas entre 1 e 4095. No caso faremos a VLAN 1 Nº 10 e a VLAN 2 Nº 11 e adicionar (coloque os nomes em minúsculas e sem espaço, como <q>vlan-1</q> e <q>vlan-2</q>). As portas da VLAN 1 não se comunicarão com as da VLAN 2.</p>
 
 <p>Em cada porta, nós selecionamos a VLAN desejada na qual queremos que ela esteja.</p>
 
 <h3>Firewall Básico</h3>
 
-<p>Colocaremos dois computadores no cenário. O computador terá o IP <code>192.168.0.1</code> e a máscara padrão C. O outro terá o IP <code>192.168.0.2</code> e a mesma máscara. Ligue ambos com um cabo Cross. Mas as configurações no firewall faremos no PC 1.</p>
+<p>Colocaremos um servidor e um PC no cenário. O servidor terá o IP <code>192.168.0.1</code> e a máscara padrão C. O PC terá o IP <code>192.168.0.2</code> e a mesma máscara. Ligue ambos com um cabo Cross. Mas as configurações no firewall faremos no servidor.</p>
 
-<p>Veja se o serviço de firewall IPv4 está ligado, com o a porta FastEthernet, action Allow, protocolo ICMP, o IP do computador e a máscara padrão invertida em remote wildcard mask (<code>0.255.255.255</code>). Clique em Add para salvar. Vá de novo em action Allow, protocolo UDP, IP do computador, máscara padrão invertida, remote port como any e local port como 53 (DNS). Vá de novo em action Deny, protocolo TCP, IP do computador, máscara padrão invertida, remote port como any e local port 21 (FTP). Vá de novo em action Allow, protocolo TCP, IP do computador, máscara padrão invertida, remote port any, local port 443 (HTTPS). Podemos fazer isso com vários protocolos.</p>
+<p>Veja se o serviço de firewall IPv4 está ligado, com a porta FastEthernet, action Allow, protocolo ICMP, o IP do servidor e a máscara padrão invertida em remote wildcard mask (<code>0.255.255.255</code>). Clique em Add para salvar. Vá de novo em action Allow, protocolo UDP, IP do servidor, máscara padrão invertida, remote port como any e local port como 53 (DNS). Vá de novo em action Deny, protocolo TCP, IP do servidor, máscara padrão invertida, remote port como any e local port 21 (FTP). Vá de novo em action Allow, protocolo TCP, IP do servidor, máscara padrão invertida, remote port any, local port 443 (HTTPS). Podemos fazer isso com vários protocolos.</p>
 
-<p>No segundo computador, vá no prompt e tente dar um ping no primeiro e veremos que ele responde, no entanto, se conectarmos via FTP, ele não permitirá.</p>
+<p>No PC, vá no prompt e tente dar um ping no servidor e veremos que ele responde, no entanto, se conectarmos via FTP, ele não permitirá.</p>
 
 <ul>
     <li><a href="tudo-sobre-packettracer-2.html">Parte Anterior da Matéria!</a></li>

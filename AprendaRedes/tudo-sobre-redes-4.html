@@ -27,6 +27,7 @@
                     <li><a href="tudo-sobre-redes-12.html">Tudo sobre Redes Parte 12!</a></li>
                     <li><a href="tudo-sobre-redes-13.html">Tudo sobre Redes Parte 13!</a></li>
                     <li><a href="tudo-sobre-redes-14.html">Tudo sobre Redes Parte 14!</a></li>
+                    <li><a href="tudo-sobre-redes-15.html">Tudo sobre Redes Parte 15!</a></li>
                 </menu>
             </header>
             
@@ -303,7 +304,7 @@
 
 <h3>Protocolo TCP - Campos do Cabeçalho</h3>
 
-<p>O protocolo TCP (Transmission Control Protocol) é um protocolo da camada de transporte, que realiza um serviço de entrega de pacotes confiáveis, orientado à conexão.</p>
+<p>O protocolo TCP (Transmission Control Protocol) é um protocolo da camada de transporte, que realiza um serviço de entrega de pacotes confiáveis, orientado a conexão.</p>
 
 <p>As principais funções realizadas pelo TCP são:</p>
 
@@ -320,7 +321,7 @@
 
 <img src="imagens/encapsulamento.jpg" alt="Encapsulamento"/>
 
-<p>Pode ver que o segmento TCP é composto por um cabeçalho TCP (geralmente com 20 bytes, mas pode ter mais), e a área de dados TCP, que é as informações transmitidas (que pode ou não estar vazia). Tudo isso é um segmento TCP, encapsulado num datagrama IP, que também tem seu cabeçalho, da mesma forma.</p>
+<p>Pode ver que o segmento TCP é composto por um cabeçalho TCP (geralmente com 20 bytes, mas pode ter mais), e a área de dados TCP, que são as informações transmitidas (que pode ou não estar vazia). Tudo isso é um segmento TCP, encapsulado num datagrama IP, que também tem seu cabeçalho, da mesma forma.</p>
 
 <p>Veja abaixo a foto da estrutura do cabeçalho TCP:</p>
 
@@ -332,24 +333,24 @@
     <li><b>Número de Porta de Origem: </b>Número que identifica a aplicação (processo) que envia os dados.</li>
     <li><b>Número de Porta de Destino: </b>Número que identifica a aplicação (processo) que deve receber os dados.</li>
     <li><b>Número de Sequência: </b>Número que identifica o byte em um fluxo de dados do transmissor para o receptor.</li>
-    <li><b>Número de Confirmação: </b>Se a flag ACK estiver ativa, o valor desse campo será o próximo número de sequência que o destinatário respera receber.</li>
+    <li><b>Número de Confirmação: </b>Se a flag ACK estiver ativa, o valor desse campo será o próximo número de sequência que o destinatário espera receber.</li>
     <li><b>Comprimento do Cabeçalho (Data Offset): </b>Tamanho do cabeçalho TCP em palavras de 32 bits.</li>
     <li><b>Reservado (3 bits): </b>Para uso futuro. Consiste atualmente na sequência 000.</li>
     <li><b>Flags (ECN - Explicit Congestion Notification): </b>Contendo NS (campo opcional adicionado ao ECN para proteger contra dissimulação acidental ou malicioso de pacotes marcados do transmissor), CWR (Congestion Window Reduced) e ECE (ECN - Echo, cuja função depende do valor da função SYN).</li>
-    <li><b>Flags (Bits de Controle): </b>Contendo URG (quando ativado, indica que o campo ponteiro de urgente é válido e o recurso transferência de dados com prioridade foi invocado), ACK (Bit de Confirmação. Quando ativado, indica que o segmento carrega uma mensagem de confirmação e que o valor do campo Número de Confirmação é válido, e carrega o próximo número de sequência esperado pelo host), PSH (Bit de Push. Quando ativado, indica que o transmissor do segmento usa o recurso TCP Push, o qual requisita que os dados do segmento sejam imediatamente transmitidos à aplicação no dispositivo de destino), RST (Bit de Reset. Quando ativado, indica que o transmissor encontrou um problema e deseja resetar a conexão), SYN (Bit de Sincronismo. Requisição para sincronizar números de sequência e estabelecer uma conexão entre dois hosts. O campo número de seqência contém o número de sequência inicial (ISN) do host que transmite o segmento) e FIN (Bit de Finalização. Quando ativado indica que o transmissor do segmento requisita que a conexão seja encerrada).</li>
+    <li><b>Flags (Bits de Controle): </b>Contendo URG (quando ativado, indica que o campo ponteiro de urgente é válido e o recurso transferência de dados com prioridade foi invocado), ACK (Bit de Confirmação. Quando ativado, indica que o segmento carrega uma mensagem de confirmação e que o valor do campo Número de Confirmação é válido, e carrega o próximo número de sequência esperado pelo host), PSH (Bit de Push. Quando ativado, indica que o transmissor do segmento usa o recurso TCP Push, o qual requisita que os dados do segmento sejam imediatamente transmitidos à aplicação no dispositivo de destino), RST (Bit de Reset. Quando ativado, indica que o transmissor encontrou um problema e deseja resetar a conexão), SYN (Bit de Sincronismo. Requisição para sincronizar números de sequência e estabelecer uma conexão entre dois hosts. O campo número de sequência contém o número de sequência inicial (ISN) do host que transmite o segmento) e FIN (Bit de Finalização. Quando ativado, indica que o transmissor do segmento requisita que a conexão seja encerrada).</li>
     <li><b>Tamanho da Janela: </b>O tamanho da janela de recepção indica o número de bytes que o transmissor deste segmento quer aceitar do host de destino, em cada transmissão.</li>
     <li><b>Checksum: </b>Usado para verificação de erros do cabeçalho e dos dados transmitidos.</li>
     <li><b>Ponteiro de Urgente: </b>Usado em conjunto com o flag URG para transferência de dados com prioridade.</li>
-    <li><b>Opções: </b>Campo opcional, que representa informações não cobertas pelos demais campos do cabeçalho TCP. Uma das opções mais comuns é o MSS (Maximun Segment Size).</li>
+    <li><b>Opções: </b>Campo opcional, que representa informações não cobertas pelos demais campos do cabeçalho TCP. Uma das opções mais comuns é o MSS (Maximum Segment Size).</li>
 </ul>
 
 <p>Em resumo:</p>
 
 <ul>
-    <li>O protocolo TCP fornece um serviço orientado à conexão, confiável, na camada de transporte da pilha TCP/IP.</li>
+    <li>O protocolo TCP fornece um serviço orientado a conexão, confiável, na camada de transporte da pilha TCP/IP.</li>
     <li>Os dados são empacotados em unidades denominadas segmentos.</li>
     <li>As mensagens enviadas recebem uma confirmação de recebimento, além de serem reordenadas no host de destino, que também verifica a ocorrência de erros de transmissão.</li>
-    <li>Caso haja algum erro, os dados são retransmitidos e, caso hajam segmentos duplicados, são descartados.</li>
+    <li>Caso haja algum erro, os dados são retransmitidos e, caso haja segmentos duplicados, são descartados.</li>
     <li>Além disso, o protocolo TCP permite enviar dados de múltiplas aplicações multiplexadas.</li>
     <li>Usa o mecanismo de portas de comunicação para determinar a qual aplicação enviar e entregar os dados transmitidos.</li>
 </ul>

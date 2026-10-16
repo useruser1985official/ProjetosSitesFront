@@ -429,7 +429,7 @@
 
 <h3>Como Interligar VLANs</h3>
 
-<p>Crie no Packet Tracer com os setores de secretaria, sala de professores, alunos, lab1 e lab2. No caso teremos 3 VLANs: A VLAN 10 do Administrativo (Secretaria e Sala de Professores), A VLAN 20 dos Laboratórios (lab1 e lab2) e a VLAN 32 dos Alunos. Ele também terá servidores ao lado num outro setor só pra eles.</p>
+<p>Crie no Packet Tracer com os setores de secretaria, sala de professores, alunos, laboratório 1 e laboratório 2. No caso teremos 3 VLANs: A VLAN 10 do Administrativo (Secretaria e Sala de Professores), A VLAN 20 dos Laboratórios (lab1 e lab2) e a VLAN 30 dos Alunos. Ele também terá servidores ao lado num outro setor só pra eles.</p>
 
 <p>Criando VLANs, uma rede fica mais segura, pois uma VLAN, caso seja infectada, não atinge as outras, além de impedir o acesso de, por exemplo, a setores não-autorizados (como o de Alunos que não poderia acessar o Administrativo).</p>
 
@@ -443,31 +443,31 @@
 
 <p>No lado do servidores, coloque cinco servidores: Os DHCP, cada um pra sua própria VLAN (10, 20 e 30), o quarto será um servidor DNS e o quinto um servidor WEB. Os servidores DNS e WEB serão da VLAN 10. Coloque um switch 2960 para ligar os servidores com o nome Coordenação.</p>
 
-<p>No setores, coloque um switch em cada setor (Secretaria, Sala dos Professores, Lab1 e Lab2 e Servidores), cada um com seu nome, e coloque um switch também interligando todos, com o nome IC. No setor de Alunos coloque um Access Point (AP-PT, em WAN Emulation).</p>
+<p>No setores, coloque um switch em cada setor (Secretaria, Sala dos Professores, Laboratório 1 e Laboratório 2, e Servidores), cada um com seu nome, e coloque um switch também interligando todos, com o nome IC. No setor de Alunos coloque um Access Point (AP-PT-N, em WAN Emulation).</p>
 
-<p>Como sabermos, um roteador wi-fi cria outra rede para se comunicar com os dispositivos wireless. Para não criar outra rede, utilizaremos um Access Point para isso. Ele também pode ter nome de rede configurado, assim como uma senha, indo em Config e Port 1, escolhemos a opção WPA2-PSK (a mais segura) com a encriptação AES.</p>
+<p>Como sabemos, um roteador wi-fi cria outra rede para se comunicar com os dispositivos wireless. Para não criar outra rede, utilizaremos um Access Point para isso. Ele também pode ter nome de rede configurado, assim como uma senha, indo em Config e Port 1, escolhemos a opção WPA2-PSK (a mais segura) com a encriptação AES.</p>
 
 <p>Vamos montar os cabeamentos. Nos servidores, coloque os servidores nas portas 1, 2, 3 (VLANs 10, 20, 30), 4 (DNS) e 5 (WEB), todos com o cabo Through. Ligue uma das portas com o cabo Cross no switch central do outro lado, e deste ligue aos outros switches restantes. Use o Through apenas no Access Point.</p>
 
-<p>Coloque dois ou três computadores em cada setor. No setor dos alunos coloque dois laptops e um celular (não esqueça de trocar a placa de rede dos laptops poor placas wi-fi).</p>
+<p>Coloque dois ou três computadores em cada setor. No setor dos alunos coloque dois laptops e um celular (não esqueça de trocar a placa de rede dos laptops por placas wi-fi).</p>
 
 <p>No switch do servidor, vá em Config e VLAN Databases, crie essas e adicione elas:</p>
 
 <ul>
-    <li><b>VLAN 10:</b> Number 10 - Name ADMIN.</li>
-    <li><b>VLAN 20:</b> Number 20 - Name LAB.</li>
-    <li><b>VLAN 30:</b> Number 30 - Name ALUNOS.</li>
+    <li><b>VLAN 10:</b> Number 10 - Name <q>admin</q>.</li>
+    <li><b>VLAN 20:</b> Number 20 - Name <q>lab</q>.</li>
+    <li><b>VLAN 30:</b> Number 30 - Name <q>alunos</q>.</li>
 </ul>
 
-<p>Nos outros switches, coloquem a mesma configuração.</p>
+<p>Nos outros switches, coloque a mesma configuração.</p>
 
 <h3>Configurando VLANs com Trunk</h3>
 
 <p>Precisaremos com que os switches se comuniquem uns com os outros para que eles consigam separar as VLANs em cada uma delas.</p>
 
-<p>As portas que vamos colocar na VLAN 10, serão as ligadas aos switches e ao access point. Pois se elas não estiverem na mesma VLAN, não terá comunicação. A divisão das outras VLANs acontecerá em cada switch de cada setor.</p>
+<p>As portas que vamos colocar na VLAN 10, serão as ligadas aos switches. Pois se elas não estiverem na mesma VLAN, não terá comunicação. A divisão das outras VLANs acontecerá em cada switch de cada setor.</p>
 
-<p>No modo acesso, só passará o acesso pela VLAN especificada. No modo trunk, todas as VLANs passarão o acesso por essa porta. No caso, as portas truncadas será as ligadas do switch do servidor ao central do outro lado.</p>
+<p>No modo access, só passará o acesso pela VLAN especificada. No modo trunk, todas as VLANs passarão o acesso por essa porta. No caso, as portas truncadas será as ligadas do switch do servidor ao central do outro lado.</p>
 
 <p>Coloque os computadores da secretaria na VLAN 10, e também a porta ligada ao switch central. No servidor DHCP 10, configure o servidor com a rede assim:</p>
 
@@ -492,8 +492,6 @@
 <ul>
     <li><b>Nome:</b> Alunos - Gateway e DNS Server <code>192.168.30.1</code> - Start IP <code>192.168.30.2</code> - Máscara Padrão C.</li>
 </ul>
-
-
 
 <ul>
     <li><a href="tudo-sobre-packettracer-3.html">Parte Anterior da Matéria!</a></li>

@@ -26,6 +26,57 @@
 
 <h2>Poo com SQLite em Python</h2>
 
+<h3>Aprenda SQL do Zero</h3>
+
+<p>Como sabemos, o computador tem a memória principal (RAM) para armazenar dados e programas durante o uso, mas ela só mantém os dados enquanto o computador está ligado, e ele não os armazena de forma definitiva, para guardar os dados e programas de forma definitiva, devemos guardar na memória secundária (como o HD ou o SSD), para que ele permaneça de forma definitiva até quando queremos.</p>
+
+<p>Para guardar dados como, por exemplo, nome e idade de um usuário, podemos guardar num arquivo como um de texto, mas pra organizar e manipular os mesmos, é melhor usarmos os bancos de dados. De certa forma, o banco de dados funciona de forma parecida, guardando os dados como a memória secundária (definitiva), só que eles organizam de forma mais organizada.</p>
+
+<p>Um banco de dados tem várias coisas dentro deles, basicamente o principal são tabelas (como se fosse pastas), e dentro das tabelas tem registros. As tabelas podem ser feitas para coisas diferentes, como clientes, fornecedores e produtos, para os organizar, e eles podem ter ligações entre si.</p>
+
+<p>Esse tipo de banco de dados são chamados de bancos relacionais, alguns dos bancos mais conhecidos são o PostgreSQL, MySQL, MariaDB, Oracle e Microsoft SQL Server, todos baseados numa mesma linguagem, o SQL, só que esses bancos de dados precisaríamos instalar servidores robustos, já que eles são usados para grandes quantidade de dados, como servidores web, por exemplo. Para facilitar o uso com o Python podemos usar o SQLite, que embute o banco SQL em um arquivo.</p>
+
+<p>Para criar um banco de dados SQLite, podemos salvar um arquivo com a extensão .sqlite ou .db3 (como meubanco.db3), e dentro de um programa de manipular SQLite, podemos criar uma tabela assim:</p>
+
+<pre>
+<code>
+create table amigos (
+    id integer primary key,
+    nome text not null,
+    nascimento date not null
+);
+</code>
+</pre>
+
+<p>E inserir dados assim:</p>
+
+<pre>
+<code>
+insert into amigos (nome, nascimento) values
+('João Santos', '1995-04-12'),
+('Beatriz Lima', '2001-11-23'),
+('Rafael Costa', '1988-07-05');
+</code>
+</pre>
+
+<p>E para consultar, podemos fazer de forma simples:</p>
+
+<pre>
+<code>
+select * from amigos;
+</code>
+</pre>
+
+<p>E de uma forma mais detalhada, usando operadores relacionais:</p>
+
+<pre>
+<code>
+select nome, nascimento from amigos where nascimento &gt;= '2000-01-01';
+</code>
+</pre>
+
+<p>Numa ferramenta de GUI, podemos criar de forma gráfica os bancos, além de inserir os registros diretamente, de forma mais fácil, no entanto, deveremos saber os comandos SQL para trabalhar com Python.</p>
+
         </div>
     </body>
 </html>

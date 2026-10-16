@@ -27,6 +27,7 @@
                     <li><a href="tudo-sobre-redes-12.html">Tudo sobre Redes Parte 12!</a></li>
                     <li><a href="tudo-sobre-redes-13.html">Tudo sobre Redes Parte 13!</a></li>
                     <li><a href="tudo-sobre-redes-14.html">Tudo sobre Redes Parte 14!</a></li>
+                    <li><a href="tudo-sobre-redes-15.html">Tudo sobre Redes Parte 15!</a></li>
                 </menu>
             </header>
             
@@ -163,7 +164,7 @@
 
 <p>O UDP encontra uso em streaming de áudio e vídeo, VoIP, gaming, mecanismos de broadcast e conexões VPN (openVPN, por exemplo), entre outras.</p>
 
-<p>Um segmentos UDP é encapsulado em um datagrama IP, conforme podemos ver na figura a seguir :</p>
+<p>Um segmento UDP é encapsulado em um datagrama IP, conforme podemos ver na figura a seguir:</p>
 
 <img src="imagens/encapsulamento-udp.jpg" alt="Encapsulamento UDP"/>
 
@@ -171,21 +172,7 @@
 
 <p>Podemos ver o formato completo de um cabeçalho UDP, cujo tamanho é de 8 bytes:</p>
 
-<table>
-    <tr>
-        <td>Número de Porta de Origem</td>
-        <td>Número de Porta de Destino</td>
-    </tr>
-    <tr>
-        <td>Comprimento</td>
-        <td>Checksum</td>
-    </tr>
-    <tr>
-        <td colspan="2">Dados</td>
-    </tr>
-</table>
-
-<p>No exemplo acima, apenas os dados não fazem parte do cabeçalho UDP. 0 do lado direito, 15 e 16 no meio e 31 no final.</p>
+<img src="imagens/cabecalho-udp.jpg" alt="Cabeçalho UDP"/>
 
 <p>Abaixo, veja os campos do cabeçalho:</p>
 
@@ -202,7 +189,7 @@
     <li>O UDP não é confiável, as mensagens enviadas podem não alcançar o destino, o TCP trata disso tentando garantir a entrega da mensagem ao destino.</li>
     <li>O UDP não ordena os datagramas enviados, se chegarem fora de ordem não serão reordenados, o TCP os reordena no destino, caso cheguem deordenados.</li>
     <li>O UDP é um protocolo mais leve, pois não realiza handshake para estabelecer e finalizar conexões nem tampouco mantém registro das conexões ativas, o TCP realiza essas tarefas.</li>
-    <li>Coomo o UDP não é orientado a conexão, ele pode enviar pacotes em broadcast ou multicast tranquilamente, o TCP é projetado para trabalhar em comunicação unicast.</li>
+    <li>Como o UDP não é orientado a conexão, ele pode enviar pacotes em broadcast ou multicast tranquilamente, o TCP é projetado para trabalhar em comunicação unicast.</li>
 </ul>
 
 <h3>APIPA - Endereço de Configuração IP Automática</h3>

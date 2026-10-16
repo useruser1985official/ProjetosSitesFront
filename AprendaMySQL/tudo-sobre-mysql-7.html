@@ -27,7 +27,7 @@
 
 <h3>Campos Calculados em Tabelas no MySQL</h3>
 
-<p>Campos calculados (ou colunas geradas) são colunas em uma tabela em um banco de dados que apresentam os resultados de uma expressão pré-definida, geralmente uma fórmula aplicada a outras colunas, da mesma forma que uma View, porém sem causar overhead no banco, pois por padrão seus dados não são fisicamente armazenados na tabela. Uma outra vantagem de um campo calculado é que a integridade dos dados é aumentada, pois os cálculos são realizados em nível de tabela, em vez de serem realizados por meio de queries (consultas) criadas pelo desenvolvedor.</p>
+<p>Campos calculados (ou colunas geradas) são colunas em uma tabela em um banco de dados que apresentam os resultados de uma expressão pré-definida, geralmente uma fórmula aplicada a outras colunas, da mesma forma que uma view, porém sem causar overhead no banco, pois por padrão seus dados não são fisicamente armazenados na tabela. Uma outra vantagem de um campo calculado é que a integridade dos dados é aumentada, pois os cálculos são realizados em nível de tabela, em vez de serem realizados por meio de queries (consultas) criadas pelo desenvolvedor.</p>
 
 <p>Como citado, por padrão um campo calculado no MySQL não armazena nenhum valor, os dados são calculados no momento de uma consulta. Porém, é possível armazenar os dados de um campo gerado opcionalmente, o que significa que o cálculo é realizado e os dados são salvos na coluna. É possível até mesmo indexar um campo calculado, e uma das aplicações desses campos é na substituição de triggers, simplificando o design e a operação sobre o banco de dados.</p>
 
@@ -37,7 +37,7 @@
 
 <p>Uma coluna gerada pode fazer referência a outras colunas geradas, desde que elas tenham sido definidas antes na definição da tabela. Com relação às colunas base (não-geradas), é possível fazer referência a qualquer uma (exceto colunas com auto incremento), mesmo que sua definição ocorra posteriormente na tabela. Não é possível usar a opção auto_increment em um campo calculado.</p>
 
-<p>Como primeiro exemplo, vamos criar uma tabela de nome tbl_mult, que contém três campos numéricos: dois com dados inseridos pelo usuário (num1 e num2) e um terceiro gerado pela multiplicação de num1 por num2 (num1 * num2):</p>
+<p>Como primeiro exemplo, vamos criar uma tabela de nome tbl_mult, que contém três campos numéricos: Dois com dados inseridos pelo usuário (num1 e num2) e um terceiro gerado pela multiplicação de num1 por num2 (num1 * num2):</p>
 
 <pre>
 <code>
@@ -69,7 +69,7 @@ insert into tbl_mult (num1, num2) values
 
 <p>Veja que os dados na coluna num3 mostram o resultado do cálculo especificado em cada linha da tabela.</p>
 
-<p>Vejamos outro exemplo. Suponha uma tabela de vendas contendo os campos preco_produto, qtde, desconto e preco_total. Queremos criar essa tabela de modo que o campo Preco_Total seja calculado dinamicamente, multiplicando o preço do produto pela quantidade (adquirida), e aplicando um desconto percentual especificado na coluna Desconto ao preço total. Queremos também persistir o valor calculado na tabela:</p>
+<p>Vejamos outro exemplo. Suponha uma tabela de vendas contendo os campos preco_produto, qtd, desconto e preco_total. Queremos criar essa tabela de modo que o campo preco_total seja calculado dinamicamente, multiplicando o preço do produto pela quantidade (adquirida), e aplicando um desconto percentual especificado na coluna desconto ao preco_total. Queremos também persistir o valor calculado na tabela:</p>
 
 <pre>
 <code>

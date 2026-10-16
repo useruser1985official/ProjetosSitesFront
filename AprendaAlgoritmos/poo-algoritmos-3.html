@@ -431,11 +431,11 @@ gat.miar(); // Próprio de Gato.
 
 <p>Nas classes herdeiras, podemos não só chamar o método construtor, mas qualquer outro método das classes ascendentes, no caso do Java é na sintaxe <code>super.nomeDoMetodo()</code>, desde que sejam públicos ou protegidos.</p>
 
-<p>Podemos ter uma hierarquia de heranças, onde as classes mais altas na hierarquia são mais gerais, e as classes mais baixas são mais específicas. Por exemplo: a classe Animal pode ser herdada por Mamifero, que pode ser herdada por Felino, que por sua vez pode ser herdada por Gato.</p>
+<p>Podemos ter uma hierarquia de heranças, onde as classes mais altas na hierarquia são mais gerais, e as classes mais baixas são mais específicas. Por exemplo: A classe Animal pode ser herdada por Mamifero, que pode ser herdada por Felino, que por sua vez pode ser herdada por Gato.</p>
 
 <p>Algumas linguagens, como o C++, permitem herança múltipla, quando uma classe herda de mais de uma classe ao mesmo tempo (na sintaxe <code>class ClasseHerdeira : public ClasseMae1, ClasseMae2</code>), mas como isso é mais sujeito a erros de implementação, muitas linguagens, como o C#, PHP e Java, não permitem isso, tendo que herdar somente de uma classe por vez (o que pode ter é a hierarquia de classes, mas somente uma herança por vez, no entanto, estas linguagens permitem implementar várias interfaces, como por exemplo em Java, <code>public class ClasseHerdeira extends ClasseMae implements NomeInterface1, NomeInterface2</code>).</p>
 
-<p>Interfaces também podem herdar características de outras interfaces, usando a mesma lógica, no Java seria algo como <code>public interface InterfaceHerdeira extends InterfaceMae</code>. Nesse caso podemos ter mais de uma herança numa mesma interface.</p>
+<p>Interfaces também podem herdar características de outras interfaces, usando a mesma lógica, no Java seria algo como <code>public interface InterfaceHerdeira extends InterfaceMae</code>. Nesse caso podemos ter mais de uma herança numa mesma interface, também separadas por vírgulas.</p>
 
 <ul>
     <li><a href="poo-algoritmos-2.html">Parte Anterior da Matéria!</a></li>
