@@ -32,17 +32,17 @@
 
 <p>No segundo retângulo (internet), ligue o switch dele nos dois PCs e no servidor do retângulo abaixo. Ligue o mesmo switch com uma porta Giga no roteador de baixo e outra na nuvem, tudo com cabo Through, ligue a nuvem no modem do retângulo e ligue o modem ao PC dele.</p>
 
-<p>No último ligue a porta do roteador wi-fi à impressora. Os laptops vão se conectar a conectar via wi-fi. O roteador wi-fi deverá ter a porta Internet ligada ao roteador da direita.</p>
+<p>No último ligue a porta do roteador wi-fi à impressora. Os laptops vão se conectar via wi-fi. O roteador wi-fi deverá ter a porta Internet ligada ao roteador da direita.</p>
 
-<p>No caso dos roteadores, eles serão interligados como um losango, para criar uma rota estática, mas teremos que desligar eles e adicionar mais uma porta em cada um deles. Coloque a placa WIC-2T em cada uma delas. No caso ele criará portas seriais. E ligue essas portas com um cabo serial DTE. Após isso ligue todas as interfaces dos roteadores.</p>
+<p>No caso dos roteadores, eles serão interligados como um losango, para criar uma rota estática, mas teremos que desligar eles e adicionar mais uma porta em cada um deles. Coloque a placa WIC-2T em cada um deles. No caso ele criará portas seriais. E ligue essas portas com um cabo serial DTE. Após isso ligue todas as interfaces dos roteadores.</p>
 
 <p>PS: O ideal é só ligar as portas do roteador que estão sendo usadas, por questão de segurança.</p>
 
-<p>Coloque um marcador com IP (como por exemplo, da faixa de <code>200.0.0.0</code>) e a máscara correspondente (no caso <code>255.255.255.224</code>) na rede do servidor. Os dois PCs e a rede com a nuvem, modem e o outro PC estarão na faixa <code>172.16.0.0</code> e máscara <code>255.255.255.192</code>. A rede à direita com o wi-fi coloque a rede <code>192.168.0.0</code> e máscara <code>255.255.255.192</code>.</p>
+<p>Coloque um marcador com IP (como, por exemplo, da faixa de <code>200.0.0.0</code>) e a máscara correspondente (no caso, <code>255.255.255.224</code>) na rede do servidor. Os dois PCs e a rede com a nuvem, modem e o outro PC estarão na faixa <code>172.16.0.0</code> e máscara <code>255.255.255.192</code>. A rede à direita com o wi-fi coloque a rede <code>192.168.0.0</code> e máscara <code>255.255.255.192</code>.</p>
 
 <p>PS: Note que colocamos a rede 172.16 com uma máscara de um padrão de rede pequena, nesse caso é permitido pois ele não está na classe B e em nenhuma outra.</p>
 
-<p>Como os roteadores conectam redes diferentes, ele terá uma outra rede na qual o roteador de cima está, como por exemplo <code>10.0.0.0</code> com a máscara <code>255.255.255.252</code> ligada ao roteador da esquerda. E a rede <code>11.0.0.0</code> com a mesma máscara ligado ao roteador da direita. O roteador de baixo está ligado as redes do roteador da esquerda com <code>12.0.0.0</code> e a mesma máscara, e o da direita com <code>13.0.0.0</code> e a mesma máscara.</p>
+<p>Como os roteadores conectam redes diferentes, ele terá uma outra rede na qual o roteador de cima está, como por exemplo <code>10.0.0.0</code> com a máscara <code>255.255.255.252</code> ligada ao roteador da esquerda. E a rede <code>11.0.0.0</code> com a mesma máscara ligado ao roteador da direita. O roteador de baixo está ligado às redes do roteador da esquerda com <code>12.0.0.0</code> e a mesma máscara, e ao da direita com <code>13.0.0.0</code> e a mesma máscara.</p>
 
 <h3>Determinando IPs e a Quantidade de Hosts por Rede</h3>
 
@@ -60,7 +60,7 @@
 </code>
 </pre>
 
-<p>Lembrando que as três primeiras partes, referentes à rede, deve ser iguais, como por exemplo 200.0.0 deve ser iguais dentro da mesma rede. O mesmo vale pro 10.0.0, 172.16.0, etc. Isso ocorre devido às máscaras usadas nos nossos exemplos.</p>
+<p>Lembrando que as três primeiras partes, referentes à rede, devem ser iguais, como, por exemplo, 200.0.0 deve ser iguais dentro da mesma rede. O mesmo vale pro 10.0.0, 172.16.0, etc. Isso ocorre devido às máscaras usadas nos nossos exemplos.</p>
 
 <p>Coloque na primeira rede, o IP <code>200.0.0.1</code> no primeiro servidor (representando o Facebook) e o IP <code>200.0.0.2</code> no segundo (representando o Google). A máscara de ambos é <code>255.255.255.224</code>. O gateway padrão de ambos é o do roteador à esquerda da segunda rede, com o IP <code>200.0.0.3</code>.</p>
 

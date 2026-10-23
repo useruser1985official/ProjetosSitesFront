@@ -175,8 +175,8 @@ header#cabecalho {
 header#cabecalho h1 {
     font-family: "FonteLogo", sans-serif;
     font-size: 30pt;
-    color: #aaaaff;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
+    color: white;
+    text-shadow: 1px -1px #5555aa, -1px 1px #5555aa, 1px 1px #5555aa, -1px -1px #5555aa;
     padding: 0px;
     margin-bottom: 0px;
 }

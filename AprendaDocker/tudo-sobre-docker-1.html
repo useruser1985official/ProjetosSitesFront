@@ -244,9 +244,9 @@ docker ps -a
 
 <p>Para criar um novo container com mapeamento de portas, usaremos o parâmetro <q>-p</q>, e teremos que informar os dispositivos que vamos mapear, o da esquerda é o host (nosso computador, que é o que manda), e o da direita é o container. Por padrão, o Nginx roda na porta 80. Para criar um novo container no modo detach, use o comando <code>docker run -d -p 8080:80 --name servidor nginx</code>. Pode ser exibido um aviso do firewall. Aí, no seu computador, podemos rodar no navegador o link <code>http://localhost:8080</code>. Ele abrirá a página que está dentro do container. Dê um <code>docker ps</code> para ver o servidor rodando e as portas mapeadas.</p>
 
-<p>PS: Pode dar erro caso a porta 8080 já esteja em uso. Nesse caso, basta mudar a porta do host, como por exemplo, 8081 ao invés da 8080.</p>
+<p>PS: Pode dar erro caso a porta 8080 já esteja em uso. Nesse caso, basta mudar a porta do host, como, por exemplo, 8081 ao invés da 8080.</p>
 
-<p>Podemos rodar vários container no mesmo host, mas em portas diferentes, as portas dos containers podem ser as mesmas por serem independentes, apenas a porta do host deve ser diferente. Para exemplificar, digite o comando pra criar um segundo container do mesmo tipo, com outra porta no host, <code>docker run -d -p 8081:80 --name servidor2 nginx</code>.</p>
+<p>Podemos rodar vários containers no mesmo host, mas em portas diferentes, as portas dos containers podem ser as mesmas por serem independentes, apenas a porta do host deve ser diferente. Para exemplificar, digite o comando pra criar um segundo container do mesmo tipo, com outra porta no host, <code>docker run -d -p 8081:80 --name servidor2 nginx</code>.</p>
 
 <p>Com isso, podemos ter vários serviços rodando na mesma máquina, cada um em sua porta e seu container.</p>
 
