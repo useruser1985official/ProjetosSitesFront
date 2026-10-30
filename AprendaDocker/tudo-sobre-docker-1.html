@@ -270,7 +270,7 @@ docker ps -a
 
 <h3>Aprenda a <q>Empacotar</q> seu Projeto/Site/App em uma Imagem Docker</h3>
 
-<p>Podemos empacotar nossos projetos em uma imagem, para isso usaremos um arquivo chamado <q>Dockerfile</q>, o Dockerfile é como uma <q>receita</q>, onde nós descrevemos os ingredientes e o Docker <q>cozinha</q> (faz o build) e o resultado é uma imagem pronta.</p>
+<p>Podemos empacotar nossos projetos em uma imagem, para isso usaremos um arquivo chamado <q>Dockerfile</q>, o Dockerfile é como uma <q>receita</q>, onde nós descrevemos os <q>ingredientes</q> e o Docker <q>cozinha</q> (faz o build) e o resultado é uma imagem pronta.</p>
 
 <p>Vamos pegar, por exemplo, um arquivo index.html só pra exemplificar um projeto nosso a ser empacotado.</p>
 
@@ -294,7 +294,7 @@ COPY . /usr/share/nginx/html
 </code>
 </pre>
 
-<p>Só que nesse caso, ele copiará tudo que estará nele, incluindo pastas ocultas, como as de Git, variáveis ambiente, e outros. Para ignorar esses arquivos, usaremos um arquivo chamado <q>.dockerignore</q> (não esqueça do ponto), para listar os arquivos a serem ignorados. Ele funciona de forma parecida com o Git Ignore. Esse é um exemplo de Docker Ignore, onde ele ignorará arquivos e pastas especificados:</p>
+<p>Só que nesse caso, ele copiará tudo que estará nele, incluindo pastas ocultas, como as de Git, variáveis de ambiente, e outros. Para ignorar esses arquivos, usaremos um arquivo chamado <q>.dockerignore</q> (não esqueça do ponto), para listar os arquivos a serem ignorados. Ele funciona de forma parecida com o Git Ignore. Esse é um exemplo de Docker Ignore, onde ele ignorará arquivos e pastas especificados:</p>
 
 <pre>
 <code>
@@ -318,11 +318,11 @@ docker-compose.yml
 
 <p>Os dois containers funcionam de forma independente, podemos parar um e deixar o outro rodando, e um não interferirá no outro.</p>
 
-<p>Com isso, podemos mandar nosso projeto com tudo configurado, no caso do site, a outra pessoa nem precisaria instalar servidor web para visualizar o site, pois tudo estaria incluído na imagem e no container.</p>
+<p>Com isso, podemos mandar nosso projeto com tudo configurado, no caso do site, a outra pessoa nem precisaria instalar um servidor web para visualizar o site, pois tudo estaria incluído na imagem e no container.</p>
 
 <h3>Aprenda a Profissionalizar suas Imagens</h3>
 
-<p>Podemos melhorar nosso Dockerfile. Nós informaremos uma pasta para transferir nossos arquivos, pois por padrão ele manda pra raiz do Linux. Caso a pasta não exista, ela será criada.</p>
+<p>Podemos melhorar nosso Dockerfile. Nós informaremos uma pasta para transferir nossos arquivos, pois por padrão, ele manda pra raiz do Linux. Caso a pasta não exista, ela será criada.</p>
 
 <p>Crie um novo Dockerfile e um arquivo de texto qualquer. Usaremos a diretiva <code>WORKDIR</code> para entrar em uma pasta. E podemos usar a diretiva <code>RUN</code> para rodar comandos do terminal do Linux e instalar o Vim no Ubuntu (não confundir com o run usado no comando do Docker). É necessário instalar algumas coisas pelo Linux do Docker ser bem simples e <q>pelado</q>. Podemos liberar a porta 80 com o comando <code>EXPOSE</code> também. Veja como ele ficaria:</p>
 

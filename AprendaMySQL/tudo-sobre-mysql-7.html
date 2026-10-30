@@ -179,7 +179,7 @@ select nome, tamanho + 0 from camisas;
 </code>
 </pre>
 
-<p>Note que há duas camisas com o mesmo número de índice associado (regata e polo) – isso ocorre porque ambas possuem o mesmo tamanho (grande, índice 3).</p>
+<p>Note que há duas camisas com o mesmo número de índice associado (regata e polo), isso ocorre porque ambas possuem o mesmo tamanho (grande, índice 3).</p>
 
 <p>Um problema típico do tipo enum em MySQL é a aplicação da cláusula order by para tentar ordenar os resultados de uma consulta pela coluna deste tipo. A ordenação padrão mostra os elementos na ordem em que foram inseridos (ordem de seus índices), e não em ordem alfabética. Veja o exemplo:</p>
 
@@ -189,7 +189,7 @@ select * from camisas order by tamanho;
 </code>
 </pre>
 
-<p>Claramente o resultado não foi o que esperávamos. Porém, podemos consertar isso executando o ORDER BY combinado com CAST, da seguinte maneira:</p>
+<p>Claramente o resultado não foi o que esperávamos. Porém, podemos consertar isso executando o <code>order by</code> combinado com <code>cast</code>, da seguinte maneira:</p>
 
 <pre>
 <code>
@@ -199,11 +199,11 @@ select * from camisas order by cast(tamanho as char);
 
 <p>Agora sim, resultado ordenado por tamanho em ordem alfabética.</p>
 
-<p>PS: Não e recomendado usar valores numéricos em uma coluna do tipo enum, pois neste caso não haverá economia de espaço de armazenamento (em relação a valores SMALLINT e TINYINT), além do risco de haver confusão entre o valor armazenado e o número empregado para representá-lo internamente.</p>
+<p>PS: Não é recomendado usar valores numéricos em uma coluna do tipo enum, pois neste caso não haverá economia de espaço de armazenamento (em relação a valores <code>smallint</code> e <code>tinyint</code>), além do risco de haver confusão entre o valor armazenado e o número empregado para representá-lo internamente.</p>
 
 <h3>Indexar Tabelas em MySQL</h3>
 
-<p>Os índices são empregados em consultas para ajudar a encontrar registros com um valor específicos em uma coluna de forma rápida, ou seja, aumentar o desempenho na execução de consultas. Com índices, o MySQL vai direto a uma linha em vez de buscar toda a tabela até encontrar os registros que importam.</p>
+<p>Os índices são empregados em consultas para ajudar a encontrar registros com um valor específico em uma coluna de forma rápida, ou seja, aumentar o desempenho na execução de consultas. Com índices, o MySQL vai direto a uma linha em vez de buscar toda a tabela até encontrar os registros que importam.</p>
 
 <p>Por padrão, o MySQL cria índice automaticamente para campos de chave primária, chave estrangeira e constraint unique. Além disso, podemos criar índices para outras colunas usadas com frequência em buscas ou junções.</p>
 
@@ -237,7 +237,7 @@ create index idx_curso on cursos(nome);
 
 <p>PS: Use o índice apenas em colunas muito utilizadas, evite criar índices desnecessários.</p>
 
-<p>Para adicionar um índice em uma tabela já existente podemos fazer assim:</p>
+<p>Para adicionar um índice em uma tabela já existente, podemos fazer assim:</p>
 
 <pre>
 <code>
@@ -254,9 +254,9 @@ drop index idx_desc on cursos;
 </code>
 </pre>
 
-<h3>Operador UNION - Unir Dois ou Mais Resultados de Consultas</h3>
+<h3>Operador Union - Unir Dois ou Mais Resultados de Consultas</h3>
 
-<p>O operador UNION combina dados provenientes de duas ou mais consultas. Uma UNION combina as linhas de dois ou mais comandos em um conjunto de resultados. Cada declaração SELECT deve ter o mesmo número de colunas, tipos de dados e ordem das colunas.</p>
+<p>O operador <code>union</code> combina dados provenientes de duas ou mais consultas. Uma union combina as linhas de dois ou mais comandos em um conjunto de resultados. Cada declaração select deve ter o mesmo número de colunas, tipos de dados e ordem das colunas.</p>
 
 <p>Veja um exemplo abaixo:</p>
 

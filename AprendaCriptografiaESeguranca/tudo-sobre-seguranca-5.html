@@ -165,7 +165,7 @@
 <p>Veja como um firewall funciona:</p>
 
 <ul>
-    <li>Todo o tráfego que entra e sai da rede deve passar pelo firewall. O acesso a LAN deve ser bloqueado fisicamente usando-se o firewall entre as redes.</li>
+    <li>Todo o tráfego que entra e sai da rede deve passar pelo firewall. O acesso à LAN deve ser bloqueado fisicamente usando-se o firewall entre as redes.</li>
     <li>Apenas o tráfego autorizado (definido pelas regras de segurança) poderá atravessar o firewall.</li>
     <li>O firewall deve ser imune à penetração. Ou seja, deve-se usar um software confiável com um SO seguro.</li>
 </ul>
@@ -191,16 +191,16 @@
     <li>UTM (gerenciamento unificado de ameaças).</li>
 </ul>
 
-<p>Num filtro de pacotes, as regras são aplicadas a cada pacote IP que chega e então o pacote é encaminhado ou descartado. Esse firewall filtra os pacotes em ambas as direções (incoming e outgoing).As regras de filtragem são baseadas no conteúdo do pacote, como IPs de origem e destino, Nº de portas de comunicação, tipo de procotolo e interface de rede.</p>
+<p>Num filtro de pacotes, as regras são aplicadas a cada pacote IP que chega e então o pacote é encaminhado ou descartado. Esse firewall filtra os pacotes em ambas as direções (incoming e outgoing). As regras de filtragem são baseadas no conteúdo do pacote, como IPs de origem e destino, Nº de portas de comunicação, tipo de procotolo e interface de rede.</p>
 
-<p>As regras são verificadas em sequência quando um pacote é analisado. Se houver correspondência entre uma regra e um pacote, a regra é aplicada e as subsequentes são ignoradas. Se nenhuma regra for encontrada para tatar o pacote, então uma regra padrão pode ser aplicada. As regras padrão podem ser descartas (drop/block/deny) e permitir (allow).</p>
+<p>As regras são verificadas em sequência quando um pacote é analisado. Se houver correspondência entre uma regra e um pacote, a regra é aplicada e as subsequentes são ignoradas. Se nenhuma regra for encontrada para tratar o pacote, então uma regra padrão pode ser aplicada. As regras padrão podem ser descartar (drop/block/deny) e permitir (allow).</p>
 
 <p>Os filtros de pacotes apresentam alguns problemas:</p>
 
 <ul>
-    <li>Não examinam dados das camadas superiores, assim não são efetivos contra ataques que explorer vulnerabilidades das aplicações.</li>
+    <li>Não examinam dados das camadas superiores, assim não são efetivos contra ataques que explorem vulnerabilidades das aplicações.</li>
     <li>Log é limitado devido à pouca quantidade de informações em um pacote.</li>
-    <li>Geralmente não suportam esquemas de autenticação de usuários</li>
+    <li>Geralmente não suportam esquemas de autenticação de usuários.</li>
 </ul>
 
 <p>Também podemos usar um outro tipo de firewall, o de filtro de estado de sessão, que funciona dessa forma:</p>
@@ -215,8 +215,8 @@
 <p>Temos também o firewall pessoal, funcionando dessa forma:</p>
 
 <ul>
-    <li>Um firewall pessoal é instalado no sistema operaciona da máquina do usuário.</li>
-    <li>Geralmente é implementado pelo S.O.</li>
+    <li>Um firewall pessoal é instalado no sistema operacional da máquina do usuário.</li>
+    <li>Geralmente é implementado pelo SO.</li>
     <li>Protege a máquina contra ameaças na rede externa e de outras máquinas na rede interna.</li>
     <li>Pode ser implementado como software de terceiros, incluindo pacotes de antivírus do tipo "Internet Security".</li>
 </ul>
@@ -225,7 +225,7 @@
 
 <ul>
     <li>Firewall do Windows com Segurança Avançada.</li>
-    <li>Linux iptables.</li>
+    <li>Linux IPTables.</li>
     <li>Norton Internet Security.</li>
     <li>Comodo Firewall.</li>
     <li>Karpersky Internet Security.</li>
@@ -245,7 +245,7 @@
 
 <p>No firewall do Windows, podemos adicionar novas regras de entrada e saída, clicando com o botão direito na regra especificada, escolhendo o tipo de regra (como programa, porta, predefinida ou personalizada), a ação (permitir, permitir apenas se for segura ou bloquear a conexão), o escopo e o nome. Para excluir uma regra existente, basta clicar com o botão direito e excluir ela.</p>
 
-<p>Podemos também usar Firewall no Linux, no Ubuntu, por exemplo, podemos habilitar ele digitando <code>sudo ufw enable</code>. Para permitir tráfegos como por exemplo, os TCP e UDP na porta 22 (SSH), digitamos <code>sudo ufw allow 22</code> (ou pra apenas os TCP, <code>sudo ufw allow 22/tcp</code>), e para verificar a porta requerida do SSH, <code>sudo ufw allow ssh</code>. Para excluir um deles use algo tipo <code>sudo ufw delete allow 22</code>, pra verificar todas as especificações, <code>sudo ufw status</code>, e pra resetar tudo (e desativar) <code>sudo ufw reset</code>. Podemos também baixar uma interface gráfica pra ele, digitando <code>sudo apt-get install gufw</code>.</p>
+<p>Podemos também usar firewall no Linux, no Ubuntu, por exemplo, podemos habilitar ele digitando <code>sudo ufw enable</code>. Para permitir tráfegos como por exemplo, os TCP e UDP na porta 22 (SSH), digitamos <code>sudo ufw allow 22</code> (ou pra apenas os TCP, <code>sudo ufw allow 22/tcp</code>), para bloquear o tráfego use <code>deny</code> no lugar do allow (como <code>sudo ufw deny 22</code>), e para verificar a porta requerida do SSH, <code>sudo ufw allow ssh</code>. Para excluir um deles use algo tipo <code>sudo ufw delete allow 22</code>, pra verificar todas as especificações, <code>sudo ufw status</code>, e pra resetar tudo (e desativar) <code>sudo ufw reset</code>. Podemos também baixar uma interface gráfica pra ele, digitando <code>sudo apt install gufw</code>.</p>
 
 <h3>O que é Proxy e VPN</h3>
 

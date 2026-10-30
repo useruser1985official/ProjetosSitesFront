@@ -189,6 +189,30 @@ print(data)
 </code>
 </pre>
 
+<p>Ou assim, de forma mais fácil:</p>
+
+<pre>
+<code>
+from datetime import date
+
+data = date.today()
+
+print(f"Data de hoje: {data:%d/%m/%Y}")
+</code>
+</pre>
+
+<p>Comparando mês e ano com tuplas:</p>
+
+<pre>
+<code>
+from datetime import date
+
+hoje = date.today()
+
+teste = (hoje.month, hoje.day) <= (12, 1) # Comparação de tuplas, na ordem mês e dia.
+</code>
+</pre>
+
 <p>E também para gerar hashs de senhas:</p>
 
 <pre>

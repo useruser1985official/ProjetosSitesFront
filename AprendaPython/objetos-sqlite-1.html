@@ -212,11 +212,13 @@ print("ACABOU!") # Tá fora do with
 </code>
 </pre>
 
-<p>Só que isso pode dar erros caso algum cadastro esteja cadastrado errado ou o banco não exista. Vamos colocar esse cadastro no SQLite com o ano no formato errado propositalmente:</p>
+<p>Só que isso pode dar erros caso algum cadastro esteja cadastrado errado ou o banco não exista. Vamos colocar esses cadastros no SQLite com o ano no formato errado propositalmente:</p>
 
 <pre>
 <code>
-insert into amigos (nome, nascimento) values ('Joãozinho', '2000'); -- Erro proposital de ano
+insert into amigos (nome, nascimento) values
+('Joãozinho', '2000'), -- Erros propositais de ano
+('Sérgio Marconi', '');
 </code>
 </pre>
 

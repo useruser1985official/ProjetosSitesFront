@@ -262,8 +262,6 @@ chkdsk /f /r E:
 
 <p>Para reparar a imagem do Windows, usamos <code>dism /online /cleanup-image /scanhealth</code>, e após a verificação, usamos <code>dism /online /cleanup-image /restorehealth</code> e <code>dism /online /cleanup-image /startcomponentcleanup</code>.</p>
 
-<p>Em sistemas 32 bits, podemos forçar o uso de PAE, que permite acessar mais memória, digitando <code>bcdedit /set nx alwaysoff</code>, depois <code>bcdedit /set pae forceenable</code> e reiniciando o PC.</p>
-
 <h3>Escrevendo na Tela</h3>
 
 <p>Antes de mais nada, pode ocorrer de palavras acentuadas aparecerem com a codificação errada. Para corrigir isso basta usar o comando <code>chcp</code> para isso. Nos padrões brasileiros, seriam 850, 1252 ou 65001. Veja o exemplo para mudar o código:</p>

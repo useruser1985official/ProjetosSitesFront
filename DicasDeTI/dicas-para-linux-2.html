@@ -173,11 +173,13 @@ sudo apt install nvidia-390
 
 <p>Podemos usar firewall no Linux, no Ubuntu, por exemplo, para habilitar, use o comando <code>sudo ufw enable</code>.
 
-<p>Para permitir tráfegos como por exemplo, os TCP e UDP na porta 22 (SSH), digitamos <code>sudo ufw allow 22</code>, pra apenas os TCP, <code>sudo ufw allow 22/tcp</code>.
+<p>Para permitir tráfegos como, por exemplo, os TCP e UDP na porta 22 (SSH), digitamos <code>sudo ufw allow 22</code>, pra apenas os TCP, <code>sudo ufw allow 22/tcp</code>.</p>
+
+<p>Para bloquear o tráfego, use <code>deny</code> no lugar do allow (como <code>sudo ufw deny 22</code>).</p>
 
 <p>Para excluir um acesso à porta deles use algo como <code>sudo ufw delete allow 22</code>. Para resetar tudo (e desativar o firewall), <code>sudo ufw reset</code>.</p>
 
-<p>Podemos também baixar uma interface gráfica para o firewall, digitando <code>sudo apt-get install gufw</code>.</p>
+<p>Podemos também baixar uma interface gráfica para o firewall, digitando <code>sudo apt install gufw</code>.</p>
 
 <h3>Adicionando Repositórios</h3>
 

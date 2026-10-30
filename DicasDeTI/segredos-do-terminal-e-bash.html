@@ -116,7 +116,7 @@ cp -r diretorio /home/administrador/
 
 <p>Para ver os diretórios dentro das pastas, use o comando <code>ls</code> (com o parâmetro <code>-l</code> podemos ver as permissões, que podem ser alteradas pelo comando <code>chmod</code>).</p>
 
-<p>Podemos também usar parâmetros no ls, o parâmetro <code>-d</code> lista só diretórios, <!--o <code>/a:-d</code> para não listar diretórios (a negação também pode ser usada com outros parâmetros), <code>/a:a</code> apenas arquivos,--> e o <code>-a</code> para arquivos ocultos<!--, <code>/a:r</code> para arquivos somente leitura e <code>/a:s</code> para arquivos de sistema (todos esses também podem usar a negação)-->. Um uso dele seria <code>ls -a</code>.
+<p>Podemos também usar parâmetros no ls, o parâmetro <code>-d</code> lista só diretórios, e o <code>-a</code> para arquivos ocultos. Um uso dele seria <code>ls -a</code>.
 
 <p>Também podemos listar apenas um tipo de extensão de arquivo, por exemplo:</p>
 
@@ -215,11 +215,9 @@ e2fsck /dev/hdxx -y # (colocar a partição com problema)
 </code>
 </pre>
 
-<p>Ou use apenas <code>fsck.ext3 /dev/hda1</code>.</p>
+<p>Ou use apenas <code>fsck.ext3 /dev/hda1</code> (pode ser, no lugar do ext3, ext4 ou outro formato de disco).</p>
 
 <p>PS: Pode ser necessário desmontar a partição usando o comando <code>umount /dev/hdxx</code> e depois montar de novo com <code>mount /dev/hdxx</code> .</p>
-
-<p>Em sistemas 32 bits, podemos forçar o uso de PAE, que permite acessar mais memória, digitando <code>cat /proc/cpuinfo | grep -i pae</code>, <code>sudo apt-get install linux-generic-pae</code> e <code>sudo apt-get install linux-headers-generic-pae</code>.</p>
 
 <h3>Escrevendo na Tela</h3>
 
@@ -243,11 +241,11 @@ echo "Essa é uma frase com acentuação!"&gt;&gt;~/Desktop/teste.txt
 
 <p>Para pular uma linha num conteúdo escrito, podemos usar <code>echo&gt;&gt;~/Desktop/teste.txt</code>. O echo sozinho no terminal pula uma linha.</p>
 
-<p>O echo deve ser usado com aspas.</p>
+<p>O echo deve ser usado com aspas. Usando o parâmetro <code>-n</code> ele não pula de linha.</p>
 
 <p>PS: Usando dois &gt;&gt; ele adicionará uma nova linha no arquivo, caso exista, se usar um só &gt; ele sobrescreverá o arquivo existente.</p>
 
-<p>Podemos usar sequências de escape no echo, mas para isso devemos usar o parâmetro <code>-e</code> junto ao comando, como por exemplo, <code>echo -e "\n\n\nExemplo de Texto!\n\n\n"</code>.</p>
+<p>Podemos usar sequências de escape no echo, mas para isso devemos usar o parâmetro <code>-e</code> junto ao comando, como por exemplo, <code>echo -e "\n\n\nExemplo de Texto.\n\n\n"</code> (não coloque o <q>!</q> junto com o \n).</p>
 
 <h3>Usando com Redes e Internet</h3>
 
@@ -291,29 +289,15 @@ ifconfig -a # Mostra informações detalhadas sobre todas as interfaces
 
 <p>Para descobrir o MTU da interface, use <code>sudo ip link show</code>.</p>
 
-<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>-s</code> seguido do número (por exemplo, <code>ping -s 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro -c seguido do número, por exemplo <code>-c 6</code><!-- Para desativar a fragmentação de pacotes, usamos o <code>/f</code> junto, por exemplo, <code>ping /l 1500 /f www.google.com.br</code>.--></p>
+<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>-s</code> seguido do número (por exemplo, <code>ping -s 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro -c seguido do número, por exemplo <code>-c 6</code></p>
 
 <p>Podemos também usar parâmetros no traceroute, como para aumentar a quantidade máxima de saltos com o -m, por exemplo <code>traceroute -m 60 www.google.com.br</code>.</p>
 
 <p>PS: Tanto no ping quanto no traceroute, pode ser necessário colocar <code>-4</code> para forçar IPv4 ou <code>-6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
 
-<!--
-
-<p>Para limpar o cache ARP, basta usar <code>netsh interface ip delete arpcache</code>, para resetar usamos <code>netsh int ip reset all</code>.</p>
-
--->
-
 <p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat -a -n -e</code> para verificar todas as portas abertas e os IPs aos quais elas estão conectadas. Ele foi substituído por <code>ss -all</code>.</p>
 
 <p>Para vermos o cache ARP, usamos <code>arp -a</code> (mas foi substituído por <code>ip neigh show</code>). Para remover um IP dele, usamos <code>ip neigh del 1.1.1.1 dev enp2s0</code> (substituir o 1.1.1.1 pelo IP desejado).</p>
-
-<!--
-    
-<p>Para resetar o catálogo do provedor winsock ao estado inicial, digite <code>nbtstat /R</code>, <code>nbtstat /RR</code> e <code>netsh winsock reset catalog</code>.</p>
-
-<p>Para resetar o proxy, digite <code>netsh advfirewall reset</code> e <code>netsh winhttp reset proxy</code>.</p>
-
--->
 
 <p>Podemos usar <code>ip route</code> para ver a rota da nossa rede. E também podemos adicionar e remover rotas especificando o IP com <code>ip route add 192.168.0.0/24 via 172.16.0.1 dev enp2s0</code> (na ordem rede a ser acessada, máscara da mesma com notação CIDR e gateway por qual vai acessar, adicione ao arquivo <code>/etc/network/interfaces</code> para adicionar de forma permanente) e <code>ip route del 192.168.0.0/24</code>, respectivamente.</p>
 
@@ -324,26 +308,6 @@ ifconfig -a # Mostra informações detalhadas sobre todas as interfaces
 nslookup -q=ns www.google.com.br
 </code>
 </pre>
-
-<!--
-
-<h3>Excluir Tarefas Agendadas</h3>
-
-<p>Podemos fazer o mesmo com tarefas agendadas com o <code>schtasks /delete /f</code>, dessa forma:</p>
-
-<pre>
-<code>
-schtasks /delete /f /tn "Driver Booster Scheduler"
-</code>
-</pre>
-
-<p>PS: O <code>/tn</code> é o que especificará o nome da tarefa a ser excluída.</p>
-
-<p>Essas opções acima costumam ser utilizadas com outros parâmetros, como adicionar, por exemplo.</p>
-
-<p>Para exibir as tarefas agendadas, use <code>schtasks /query</code>.</p>
-
--->
 
 <h3>Administrar Serviços</h3>
 
@@ -386,15 +350,13 @@ sudo usermod -aG sudo nomedousuario
 
 <p>PS: Em algumas distros, o segundo sudo pode ter que ser substituído por <q>root</q>.</p>
 
-<!--
 <p>Para remover o usuário dos administradores:</p>
 
 <pre>
 <code>
-net localgroup administradores nomedousuario /delete
+sudo gpasswd -d nomedousuario sudo
 </code>
 </pre>
--->
 
 <p>Para excluir um usuário:</p>
 
@@ -414,16 +376,6 @@ cat /etc/passwd
 </code>
 </pre>
 
-<!--
-<p>Para listar os administradores:</p>
-
-<pre>
-<code>
-net localgroup administradores
-</code>
-</pre>
--->
-
 <h3>Comandos no Terminal</h3>
 
 <p>Agora que vimos alguns comandos do Linux, veja alguns dos comandos mais usados:</p>
@@ -438,7 +390,7 @@ net localgroup administradores
     <li><code>free</code> - Mostra a memória utilizada e livre do sistema (use os parâmetro <code>-k</code> para ver em KB e <code>-m</code> para ver em MB.</li>
     <li><code>tree</code> - Mostra a estrutura de pastas graficamente.</li>
     <li><code>cat /etc/issue</code> - Mostra a versão do Linux.</li>
-    <li><code>echo</code> - Para escrever na tela, aceita sequências de escape. O echo sem nada pula uma linha.</li>
+    <li><code>echo</code> - Para escrever na tela, aceita sequências de escape com o parâmetro <code>-e</code>. O echo sem nada pula uma linha.</li>
     <li><code>variavel="dados"</code> - Cria variáveis. As variáveis são utilizadas com um símbolo de cifrão no começo, na forma <code>$variavel</code>.</li>
     <li><code>#</code> - Para comentários.</li>
     <li><code>sleep 60</code> - Isso pausará o terminal por determinados segundos.</li>
@@ -618,92 +570,6 @@ read -p "Digite sua idade: " idade
         <td>OSTYPE</td>
         <td>Tipo de Sistema Usado</td>
     </tr>
-    <!--
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-	<tr>
-        <td></td>
-        <td></td>
-    </tr>
-    -->
 </table>
 
 <h3>Operações Aritméticas</h3>
@@ -885,7 +751,7 @@ read
 </code>
 </pre>
 
-<p>O <code>in</code> passará os números de incremento, com eles entre o cifrão e os parênteses, representando na ordem, o início, incremento e fim do mesmo<!-- (no caso de usar decremento, apenas coloque o início menor que o fim, sem colocar sinal de - no incremento).--> O <code>do</code> especifica os comandos a serem executados. Para usar repetições com pastas e arquivos, use um if dentro dele, por exemplo:</p>
+<p>O <code>in</code> passará os números de incremento, com eles entre o cifrão e os parênteses, representando na ordem, o início, incremento e fim do mesmo. O <code>do</code> especifica os comandos a serem executados. Para usar repetições com pastas e arquivos, use um if dentro dele, por exemplo:</p>
 
 <pre>
 <code>
