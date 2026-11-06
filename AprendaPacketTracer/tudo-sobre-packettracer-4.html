@@ -70,9 +70,9 @@
 
 <p>Na rede 172.16.0.0, vamos configurar o servidor como um servidor DHCP para distribuir IPs na sua rede local. Clique no servidor, e em Services, vá no DHCP, dê on na Interface e dê o nome <q>AulaPratica</q>, com o Gateway com o IP <code>172.16.0.1</code> (roteador de baixo), com o Start IP <code>172.16.0.2</code> e a máscara <code>255.255.255.192</code>. E na configuração de IP do servidor, coloque o IP <code>172.16.0.2</code>, máscara <code>255.255.255.192</code>, com o gateway padrão <code>172.16.0.1</code>. Depois disso vá nos computadores da rede e habilite o DHCP nas configurações de IP.</p>
 
-<p>Troque as placas de rede física dos dois laptops para placas wireless. Depois vá no roteador wi-fi, em Config e em Internet coloque a configuração do IP como estática com o IP <code>192.168.0.2</code> e máscara <code>255.255.255.192</code> com o gateway padrão <code>192.168.0.1</code>. Ele vai dar erro porque a porta LAN já está usando este IP, na rede criada pelo roteador à direita (o da rota estática). Vá em LAN e coloque o IP <code>192.168.1.1</code> com a mesma máscara, pois este será o IP do roteador da rota estática. Volte na Internet e coloque o IP 0.2 que ele permitirá agora. Lembre-se que o roteador sempre vai falar com duas redes diferentes, e por isso precisará de dois IPs diferentes, que não devem conflitar.</p>
+<p>Troque as placas de rede física dos dois laptops para placas wireless. Depois vá no roteador wi-fi, em Config e em Internet coloque a configuração do IP como estática com o IP <code>192.168.0.2</code> e máscara <code>255.255.255.192</code> com o gateway padrão <code>192.168.0.1</code>. Ele vai dar erro porque a porta LAN já está usando este IP, na rede criada pelo roteador à direita (o da rota estática). Vá em LAN e coloque o IP <code>192.168.1.1</code> com a mesma máscara, pois este será o IP do roteador da internet. Volte na Internet e coloque o IP 0.2 que ele permitirá agora. Lembre-se que o roteador sempre vai falar com duas redes diferentes, e por isso precisará de dois IPs diferentes, que não devem conflitar.</p>
 
-<p>No caso acima, o IPs da rede 192.168.0.0 é o que seria o <q>fornecido</q> pela operadora, e os da rede 192.168.1.0 é o que será enviado para os hosts da rede local.</p>
+<p>No caso acima, o IP da rede 192.168.0.0 é o que seria o <q>fornecido</q> pela operadora, e os da rede 192.168.1.0 é o que será enviado para os hosts da rede local.</p>
 
 <p>Em GUI e em Wireless, em Basic, configure a rede local com o modo Wireless-N Only, coloque o nome da rede e escolha um canal, como o 6, e o broadcast ligado para todos verem a rede. Em Wireless Security coloque o modo WPA2 Personal, com encriptação AES e a senha da rede. Daí basta ir nos laptops e conecte eles à nossa rede.</p>
 
@@ -80,7 +80,7 @@
 
 <h3>Configurando a Nuvem de Acesso</h3>
 
-<p>O modem não tem muito o que configurar, então vamos na nuvem, em DSL, na porta a qual o modem está conectada a nuvem e a que está comunicando com o switch que irá se conectar ao roteador.</p>
+<p>O modem não tem muito o que configurar, então vamos na nuvem, em DSL, na porta a qual o modem está conectada à nuvem e a que está comunicando com o switch que irá se conectar ao roteador.</p>
 
 <p>Para isso vá em Config e em DSL, selecione as portas especificadas e adicione. Veja que o computador consegue pegar o IP do servidor DHCP da rede dele.</p>
 

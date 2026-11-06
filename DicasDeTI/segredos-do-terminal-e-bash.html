@@ -192,7 +192,7 @@ sudo shutdown -r 10 "Reiniciaremos em 10 Minutos"
     
 <h3>Como Encerrar Processos</h3>
 
-<p>Abra o terminal e digite <code>top</code> (pode ser também <code>htop</code>, <code>ps</code> ou <code>pstree</code>, mas a exibição é diferente) para exibir os números dos códigos ativos, depois use o comando <code>kill</code> seguido do código PID do processo, por exemplo:</p>
+<p>Abra o terminal e digite <code>top</code> (pode ser também <code>htop</code>, <code>ps</code>, <code>ps aux</code> ou <code>pstree</code>, mas a exibição é diferente) para exibir os números dos códigos ativos, depois use o comando <code>kill</code> seguido do código PID do processo, por exemplo:</p>
 
 <pre>
 <code>
@@ -406,7 +406,7 @@ cat /etc/passwd
     <li><code>history</code> - Mostra o histórico de comandos já digitados.</li>
     <li><code>shutdown</code> - Para desligar o computador (com parâmetro <code>-h</code>) ou reiniciar (parâmetro <code>-r</code>), pode ser usado <code>now</code> para desligar imediatamente, ou definido o tempo para a operação com o número, como <code>10</code> (em minutos). Para anular qualquer um deles use o parâmetro <code>-c</code>.</li>
     <li><code>e2fsck /dev/hdxx -y</code> - Para corrigir erros de disco.</li>
-    <li><code>top</code> - Mostra os processos ativos no sistema (como alternativa temos o <code>htop</code>).</li>
+    <li><code>top</code> - Mostra os processos ativos no sistema (como alternativa temos o <code>htop</code> e o <code>ps aux</code>).</li>
     <li><code>kill -9 3806</code> - Mata um processo baseado no seu PID (se quiser usar o nome literal, use <code>killall processo</code>.</li>
     <li><code>ip</code> - Para configurações de redes, basicamente com <code>link set down eth0</code> libera o endereço IP e <code>link set up eth0</code> o renova, e <code>addr show</code> mostra detalhes completos das interfaces de rede.</li>
     <li><code>ping nomeouipdosite.com</code> - Verifica se há conectividade num host.</li>
@@ -415,7 +415,7 @@ cat /etc/passwd
     <li><code>alias nome="comandos"</code> - Define um alias temporário para um comando, para excluir ele digite <code>unalias nome</code>.</li>
     <li><code>chmod 644 Arquivo</code> - Modifica permissões para arquivos usando números octais (4 leitura, 2 gravação e 1 execução, e as somas entre eles), na ordem proprietário, grupo e outros (pode ser usado <code>chmod +x arquivo</code> para torná-lo executável, e <code>chmod -x arquivo</code> para retirar isso. Para diretórios e seus arquivos recursivamente, use <code>chmod -R 755 diretorio</code></li>
     <li><code>pwd</code> - Mostra o diretório atual.</li>
-    <li><code>who</code> - Mostra usuários logados no sistema.</li>
+    <li><code>who</code> (<code>whoami</code>) - Mostra usuários logados no sistema.</li>
     <li><code>df</code> - Mostra a quantidade de espaço livre no disco rígido (pra ver o usado use <code>du</code>.</li>
     <li><code>stat arquivo</code> - Mostra o estado de um arquivo, útil para saber por exemplo a hora e data do último acesso ao mesmo.</li>
     <li><code>file arquivo</code> - Exibe as informações de um arquivo especificado.</li>

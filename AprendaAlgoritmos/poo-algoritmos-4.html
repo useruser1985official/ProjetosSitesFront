@@ -160,7 +160,7 @@ public abstract class Alimento {
 
 <img src="imagens/diagrama-abstrato.png" alt="Diagrama Abstrato"/>
 
-<p>Se uma classe tiver pelo menos um método abstrato, ela obrigatoriamente deve ser declarada como abstrata. Por isso usamos a palavra-chave abstract tanto na classe quanto no método. Um método abstrato também pode ter parâmetros e ter tipo de retorno além do void (como int, bool ou mesmo outro objeto, incluindo o String).</p>
+<p>Se uma classe tiver pelo menos um método abstrato, ela obrigatoriamente deve ser declarada como abstrata. Por isso usamos a palavra-chave abstract tanto na classe quanto no método. Um método abstrato também pode ter parâmetros e ter tipo de retorno além do void (como int, boolean ou mesmo outro objeto, incluindo o String).</p>
 
 <p>No entanto, uma classe pode ser abstrata mesmo sem ter métodos abstratos, isso acontece quando queremos impedir que ela seja instanciada diretamente ou quando ela serve apenas como modelo para outras classes. Uma classe abstrata pode ter atributos normalmente e métodos que os manipulem que não sejam abstratos (incluindo getters e setters ou mesmo construtores).</p>
 
@@ -171,7 +171,7 @@ public abstract class Alimento {
 class Alimento {
     public:
         virtual void consumir() = 0;
-        virtual ~Alimento() = 0; // Toda classe abstrata deve ter um método destrutor virtual puro, mesmo que os outros métodos não os sejam
+        virtual ~Alimento() = 0; // Toda classe abstrata deve ter um método destrutor virtual puro, mesmo que os outros métodos não os sejam.
 };
 
 Alimento::~Alimento() { // Bloco vazio mesmo, padrão no C++.
@@ -219,14 +219,14 @@ class Verdura extends Alimento {
 Alimento a1 = new Fruta();
 Alimento a2 = new Verdura();
 
-a1.consumir();  // chama o método da classe Fruta
-a2.consumir();  // chama o método da classe Verdura
+a1.consumir();  // Chama o método da classe Fruta.
+a2.consumir();  // Chama o método da classe Verdura.
 </code>
 </pre>
 
 <p>PS: Lembrando que, assim como acontecia com as interfaces e classes normais, poderemos usar apenas métodos definidos na classe mãe, no caso, a Alimento, no entanto, por esta ser abstrata, não poderá ser instanciada (com <code>new Alimento()</code>).</p>
 
-<p>Lembrando também que mesmo que uma classe tenha apenas métodos abstratos, ela ainda é uma classe, enquanto a interface é um contrato puro. Como visto, uma classe, mesmo abstrata, pode ter tudo que uma normal tem, já as interfaces são puramente contratos de métodos. Mesmo classes abstratas só podem ser herdadas uma vez por classes filhas, exceto no C++ que permite herança múltipla, e nessa linguagem usamos classes exclusivamente com métodos virtuais puros (equivalente as abstratas) para simular interfaces por esta não as ter por padrão. Já nas linguagens que tem interfaces, uma classe pode implementar mais de uma interface ao mesmo tempo.</p>
+<p>Lembrando também que mesmo que uma classe tenha apenas métodos abstratos, ela ainda é uma classe, enquanto a interface é um contrato puro. Como visto, uma classe, mesmo abstrata, pode ter tudo que uma normal tem, já as interfaces são puramente contratos de métodos. Mesmo classes abstratas só podem ser herdadas uma de cada vez por classes filhas, exceto no C++ e Python que permitem herança múltipla, e no C++ usamos classes exclusivamente com métodos virtuais puros (equivalente às abstratas) para simular interfaces por esta não as ter por padrão. Já nas linguagens que tem interfaces, uma classe pode implementar mais de uma interface ao mesmo tempo.</p>
 
 <h3>Polimorfismo de Sobrecarga</h3>
 

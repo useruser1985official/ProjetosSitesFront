@@ -26,7 +26,175 @@
 
 <h2>Objetos SQLite em Python - Parte 2</h2>
 
+<h3>O Que é CRUD? Aprenda a Criar um Sistema com Python</h3>
 
+<p>A sigla CRUD é um acrônimo para create, read, update e delete, que é criar, ler, atualizar e apagar, ou seja, as funcionalidades básicas que tem numa tabela em um banco de dados.</p>
+
+<p>Vamos criar por código um banco SQLite, sem precisar de ferramentas para o manipular diretamente. O banco cadastro.db3 terá uma tabela de nome pessoas, com as colunas cod, nome e altura.</p>
+
+<p>O sistema em Python que faremos terá essas opções:</p>
+
+<ol>
+    <li>Cadastrar pessoa.</li>
+    <li>Listar pessoas.</li>
+    <li>Atualizar pessoa.</li>
+    <li>Excluir pessoa.</li>
+    <li>Busca por nome.</li>
+    <li value="0">Sair.</li>
+</ol>
+
+<p>Pra iniciar, deixe o arquivo principal Python assim:</p>
+
+<pre>
+<code>
+def exibirMenu():
+    print("=" * 30)
+    print(f"{'SISTEMA DE CADASTRO':^30}")
+    print("=" * 30)
+    print("1 - Cadastrar pessoa.")
+    print("2 - Listar pessoas.")
+    print("3 - Atualizar pessoa.")
+    print("4 - Excluir pessoa.")
+    print("5 - Busca por nome.")
+    print("=" * 30)
+
+def main():
+    while True:
+        exibirMenu()
+
+        opcao = str(input("Escolha uma opção: ")).strip()[0]
+
+        match opcao:
+            case "1":
+                pass
+            case "2":
+                pass
+            case "3":
+                pass
+            case "4":
+                pass
+            case "5":
+                pass
+            case "0":
+                print("\nEncerrando o sistema...")
+                break
+            case _:
+                print("\n[ERRO] Opção inválida! Escolha um valor entre 0 e 5!")
+
+        input("Pressione ENTER para continuar...")
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>E num arquivo de CRUD, colocamos isso:</p>
+
+<pre>
+<code>
+import sqlite3
+
+NOME_BANCO = "cadastro.db3"
+
+def criarBanco() -> bool:
+    try:
+        with sqlite3.connect(NOME_BANCO) as db: # Se não encontrar o banco, ele criará o arquivo
+            cur = db.cursor()
+
+            cur.execute("""create table if not exists pessoas (
+                cod integer primary key autoincrement,
+                nome varchar(100) not null,
+                altura real not null
+            )""")
+
+            """
+             Não é necessário colocar o método commit
+             do objeto db pra salvar e rollback para cancelar,
+             quando usamos o with
+            """
+
+            return True
+    except sqlite3.Error as erro:
+        print(f"Falha na criação do banco: {erro}")
+
+        return False
+
+def cadastrarPessoa() -> bool:
+    pass
+
+def listarPessoas() -> bool:
+    pass
+
+def atualizarPessoa() -> bool:
+    pass
+
+def excluirPessoa() -> bool:
+    pass
+
+def buscarPessoaPorNome() -> bool:
+    pass
+</code>
+</pre>
+
+<p>Coloque a importação no arquivo main, e deixe o método main assim:</p>
+
+<pre>
+<code>
+from exercicios.ex001.crud import *
+
+def exibirMenu():
+    print("=" * 30)
+    print(f"{'SISTEMA DE CADASTRO':^30}")
+    print("=" * 30)
+    print("1 - Cadastrar pessoa.")
+    print("2 - Listar pessoas.")
+    print("3 - Atualizar pessoa.")
+    print("4 - Excluir pessoa.")
+    print("5 - Busca por nome.")
+    print("=" * 30)
+
+def main():
+    if not criarBanco(): # Ao colocar no Pycharm ele importará automaticamente
+        print("Algum problema aconteceu ao criar o banco!")
+        raise SystemExit # Sai do sistema
+
+    while True:
+        exibirMenu()
+
+        opcao = str(input("Escolha uma opção: ")).strip()[0]
+
+        match opcao:
+            case "1":
+                if not cadastrarPessoa():
+                    print("[ERRO] Não foi possível cadastrar a pessoa!")
+            case "2":
+                if not listarPessoas():
+                    print("[ERRO] Não foi possível mostrar a listagem!")
+            case "3":
+                if not atualizarPessoa():
+                    print("[ERRO] Não foi possível atualizar o cadastro!")
+            case "4":
+                if not excluirPessoa():
+                    print("[ERRO] Não foi possível excluir a pessoa!")
+            case "5":
+                if not buscarPessoaPorNome():
+                    print("[ERRO] Não foi possível buscar os dados!")
+            case "0":
+                print("\nEncerrando o sistema...")
+                break
+            case _:
+                print("\n[ERRO] Opção inválida! Escolha um valor entre 0 e 5!")
+
+        input("Pressione ENTER para continuar...")
+
+if __name__ == "__main__":
+    main()
+</code>
+</pre>
+
+<p>O arquivo de banco de dados será criado na primeira vez ao sair do laço (digitando 0), já com a tabela definida no código Python. Durante a execução do programa os dados do SQLite ficam temporariamente na memória.</p>
+
+<p>O main praticamente não precisaremos alterar mais. Vamos só alterar o arquivo de crud, onde definiremos as funções, que estão com o corpo vazio por enquanto (pass).</p>
 
 <ul>
     <li><a href="objetos-sqlite-1.html">Parte Anterior da Matéria!</a></li>
