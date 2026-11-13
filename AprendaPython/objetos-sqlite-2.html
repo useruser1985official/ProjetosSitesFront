@@ -76,10 +76,10 @@ def main():
             case "5":
                 pass
             case "0":
-                print("\nEncerrando o sistema...")
+                print("Encerrando o sistema...")
                 break
             case _:
-                print("\n[ERRO] Opção inválida! Escolha um valor entre 0 e 5!")
+                print("[ERRO] Opção inválida! Escolha um valor entre 0 e 5!")
 
         input("Pressione ENTER para continuar...")
 
@@ -115,7 +115,7 @@ def criarBanco() -> bool:
 
             return True
     except sqlite3.Error as erro:
-        print(f"Falha na criação do banco: {erro}")
+        print(f"Falha na criação do banco: {erro}!")
 
         return False
 
@@ -196,9 +196,107 @@ if __name__ == "__main__":
 
 <p>O main praticamente não precisaremos alterar mais. Vamos só alterar o arquivo de crud, onde definiremos as funções, que estão com o corpo vazio por enquanto (pass).</p>
 
+<h3>Aprenda o C de Create: Criando um Cadastro de Pessoas</h3>
+
+<p>Vamos inserir os conteúdos de duas formas, em massa e individual. A inserção em massa não costuma ser utilizado muito, mas é útil conhecer.</p>
+
+<p>Nós já criamos o banco SQLite cadastro e a tabela pessoas, para inserir os dados usamos o comando <code>insert into</code>, por exemplo:</p>
+
+<pre>
+<code>
+insert into pessoas (cod, nome, altura) values
+('1', 'Gustavo', '1.84'),
+('2', 'Gabriela', '1.63'),
+('3', 'Marcos', '2.02');
+</code>
+</pre>
+
+<p>Para fazer o cadastro em massa, podemos colocar esse método no nosso crud:</p>
+
+<pre>
+<code>
+def cadastroEmMassa():
+    cadPessoas = (('1', 'Gustavo Souza', '1.84'),
+                  ('2', 'Gabriela Silva', '1.63'),
+                  ('3', 'Marcos Gonçalves', '2.02'),
+                  ('4', 'Mariana Costa', '1.72'))
+
+    try:
+        with sqlite3.connect(NOME_BANCO) as db:
+            cur = db.cursor()
+
+            # executemany executa várias vezes
+            cur.executemany("insert into pessoas (cod, nome, altura) values (?, ?, ?)", cadPessoas)
+    except sqlite3.Error as erro:
+        print("[ERRO] Falha ao fazer cadastro em massa")
+</code>
+</pre>
+
+<p>E aí, no código principal, colocamos o método cadastroEmMassa antes do restante do código, dentro do main.</p>
+
+<pre>
+<code>
+def main():
+    if not criarBanco(): # Ao colocar no Pycharm ele importará automaticamente
+        print("Algum problema aconteceu ao criar o banco!")
+        raise SystemExit # Sai do sistema
+
+    cadastroEmMassa() # Execute somente uma vez, depois retire.
+    # O que fica abaixo disso não altera.
+</code>
+</pre>
+
+<p>Para fazer o método cadastrarPessoa, deixe ele assim, com todas as validações:</p>
+
+<pre>
+<code>
+def cadastrarPessoa() -> bool:
+    print("\n ==== NOVO CADASTRO DE PESSOAS ===")
+
+    # Leitura e validação dos dados:
+    valNome = str(input("Nome: ")).strip()
+
+    if not valNome:
+        print("[ERRO] O nome é um campo obrigatório!")
+        
+        return False
+
+    valAltura = str(input("Altura (metros): ")).strip().replace(",", ".")
+
+    if not valAltura:
+        print("[ERRO] A altura é um campo obrigatório!")
+
+    try:
+        altura = float(valAltura)
+
+        if altura <= 0.20 or altura > 3.00:
+            print("[ERRO] Valor incoerente para altura!")
+
+            return False
+    except ValueError:
+        print("[ERRO] A altura precisa ser um número!")
+
+        return False
+
+    try:
+        with sqlite3.connect(NOME_BANCO) as db:
+            cur = db.cursor()
+
+            cur.execute("insert into pessoas (nome, altura) values (?, ?)", (valNome, altura))
+
+            print(f"Cadastro de {valNome} realizado com sucesso!")
+            
+            return True
+    except sqlite3.Error as erro:
+        print(f"[ERRO] Falha no cadastro do banco: {erro}!")
+
+        return False
+</code>
+</pre>
+
 <ul>
     <li><a href="objetos-sqlite-1.html">Parte Anterior da Matéria!</a></li>
-    <!--<li><a href="objetos-sqlite-3.html">Continuação da Matéria!</a></li>-->
+    <li><a href="objetos-sqlite-3.html">Continuação da Matéria!</a></li>
 </ul>
 
         </div>

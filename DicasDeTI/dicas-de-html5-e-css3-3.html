@@ -485,7 +485,7 @@ h1 {
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;/&gt;
     &lt;!-- Redireciona ap&oacute;s 3 segundos: --&gt;
-    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;url=https://www.google.com.br/&quot;&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;3;url=https://www.google.com.br/&quot;/&gt;
     &lt;title&gt;T&iacute;tulo da P&aacute;gina em HTML&lt;/title&gt; 
 &lt;/head&gt;
 </code>
@@ -539,9 +539,9 @@ M&aacute;xima:&lt;br/&gt;
 
 <pre>
 <code>
-&lt;p&gt;Isso &eacute; uma frase com fonte normal &lt;small&gt;e isso &eacute; com uma fonte pequena.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Isso &eacute; uma frase com fonte normal &lt;small&gt;e isso &eacute; com uma fonte pequena&lt;/small&gt;.&lt;/p&gt;
 
-&lt;p&gt;Ela pode ser combinada com outras tags para gerar resultados como 10&lt;sup&gt;&lt;small&gt;3&lt;/small&gt;&lt;/sup&gt; e H&lt;sub&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sub&gt;0.&lt;/p&gt;
+&lt;p&gt;Ela pode ser combinada com outras tags para gerar resultados como 10&lt;sup&gt;&lt;small&gt;3&lt;/small&gt;&lt;/sup&gt; e H&lt;sub&gt;&lt;small&gt;2&lt;/small&gt;&lt;/sub&gt;O.&lt;/p&gt;
 </code>
 </pre>
 
@@ -663,6 +663,7 @@ body {
 
 <pre>
 <code>
+/* Na configuração global, onde está o asterisco, coloque overflow-x: hidden; para não rolar horizontalmente */
 @media print {
     /* As outras configurações ficam aqui */
 
@@ -685,7 +686,7 @@ body {
 
 <pre>
 <code>
-@media print { /* Impressão /*
+@media print { /* Impressão */
 
 }
 
@@ -696,14 +697,30 @@ body {
 @media screen and (min-width: 768px) and (max-width: 992px) { /* Tablet */
 
 }
+
+@media screen and (min-width: 992px) and (max-width: 1335px) { /* PC */
+
+}
+
+@media screen and (min-width: 1335px) { /* TV */
+
+}
 </code>
 </pre>
+
+<p>PS: Remova o <q>screen</q> do link de estilo.css no HTML.</p>
 
 <p>Outro exemplo:</p>
 
 <pre>
 <code>
-@media print {
+img#print, img#phone, img#tablet, img#pc, img#tv {
+    display: none;
+    margin: 0;
+    width: 100px;
+}
+
+@media print { /* Impressão */
     body {
         background-image: none;
     }
@@ -713,16 +730,126 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) { /* Podemos configurar um CSS padrão para mobile e colocar para outros tipos de tela aqui. */
     body {
         background-image: url("../imagens/back-phone.jpg");
     }
+
+    img {
+        margin: 10px;
+        width: 35%;
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+    section#corpo {
+        max-width: 100%;
+        float: none;
+        padding: 0px;
+        border: none;
+    }
+
+    nav#menu {
+        text-align: center;
+    }
+
+    nav#menu ul {
+        position: relative;
+        top: 0px;
+        left: -20px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    nav#menu ul li {
+        width: 88%;
+        margin: 2px auto;
+        text-align: center;
+    }
+
+    figure.foto-leg {
+        max-width: 200px;
+        max-height: 138px;
+    }
+
+    figure.foto-leg img {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+    }
     
+    aside#lateral {
+        float: none;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    ul#album-fotos li {
+        width: 100px;
+        height: 100px;
+    }
+
+    .borda {
+        width: 50%;
+    }
+
+    div.youtube {
+        margin: 0px -20px 30px -20px;
+        padding: 20px;
+        padding-bottom: 30%;
+        position: relative;
+    }
+
+    img.piramide {
+        display: none;
+    }
+
+    iframe#mapa {
+        display: none;
+    }
+
+    div#tv {
+        background-size: 250px auto;
+        background-position: left;
+    }
+
+    video#filme {
+        left: 13px;
+        top: 100px;
+        width: 223px;
+    }
+
+    div#radio {
+        background-size: 250px auto;
+        background-position: left;
+    }
+
+    audio#musica {
+        left: 15px;
+        top: 135px;
+        width: 210px;
+    }
+
     img#phone {
         display: block;
     }
-
 }
+
+/* Faça dos outros também, seguindo a mesma lógica */
+</code>
+</pre>
+
+<p>Com esse HTML:</p>
+
+<pre>
+<code>
+&lt;img src="imagens/icon-print.png" id="print" alt="Print"/&gt;
+&lt;img src="imagens/icon-phone.png" id="phone" alt="Phone"/&gt;
+&lt;img src="imagens/icon-tablet.png" id="tablet" alt="Tablet"/&gt;
+&lt;img src="imagens/icon-pc.png" id="pc" alt="PC"/&gt;
+&lt;img src="imagens/icon-tv.png" id="tv" alt="TV"/&gt;
 </code>
 </pre>
 
@@ -732,7 +859,6 @@ body {
 <code>
 &lt;nav id=&quot;menu&quot;&gt;
     &lt;h1&gt;Menu&lt;/h1&gt;
-
     &lt;ul&gt;
         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Op&ccedil;&atilde;o 1&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Op&ccedil;&atilde;o 2&lt;/a&gt;&lt;/li&gt;
@@ -766,48 +892,6 @@ body {
 
 <pre>
 <code>
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-main {
-    width: 90%;
-    margin: auto;
-    max-width: 1000px;
-}
-
-header {
-    background-color: gray;
-}
-
-header > h1 {
-    padding: 10px;
-    text-align: center;
-}
-
-nav#menu {
-    display: block;
-}
-
-nav#menu > ul {
-    list-style-type: none;
-}
-
-nav#menu > ul > li > a {
-    display: block;
-    padding: 10px;
-    margin: 0px;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    background-color: rgb(87, 87, 87);
-}
-
-nav#menu > ul > li:hover > a {
-    background-color: gray;
-}
-
 span#burger {
     background-color: rgb(48, 48, 48);
     display: block;

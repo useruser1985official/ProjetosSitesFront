@@ -303,7 +303,7 @@ cur.execute(f"select * from amigos where nome like '%{busca}%'")
 </code>
 </pre>
 
-<p>Para resolver essa vulnerabilidade, usaremos consultas preparadas, na qual colocamos a interrogação na query SQL e passamos os parâmetro via uma tupla. Dessa forma:</p>
+<p>Para resolver essa vulnerabilidade, usaremos consultas preparadas, na qual colocamos a interrogação na query SQL e passamos os parâmetros via uma tupla. Dessa forma:</p>
 
 <pre>
 <code>
@@ -313,7 +313,7 @@ cur.execute("select * from amigos where nome like ?", (f"%{busca}%",)) # Não es
 
 <p>Só de colocar a consulta assim, já evita a injeção de SQL.</p>
 
-<p>PS: Ao não passar nada, ele retornará todos os dados normalmente, mas não dará mais erro ao passar caracteres que podem ser interpretados como comandos, como o <q>'</q>.</p>
+<p>PS: Ao não passar nada, ele retornará todos os dados normalmente, mas não dará mais erro ao passar caracteres que podem ser interpretados como comandos, como o <code>'</code> (aspas simples).</p>
 
 <p>Podemos também contar a quantidade de registro, assim:</p>
 

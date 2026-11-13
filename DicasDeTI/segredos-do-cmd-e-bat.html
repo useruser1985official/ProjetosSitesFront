@@ -327,11 +327,11 @@ ipconfig /renew
 
 <p>Para descobrir o MTU da interface, digitamos <code>netsh interface ipv4 show subinterfaces</code> (pode ser <code>ipv6</code> também).</p>
 
-<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>/l</code> seguido do número (por exemplo, <code>ping /l 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro /n seguido do número, por exemplo <code>/n 6</code>. Para desativar a fragmentação de pacotes, usamos o <code>/f</code> junto, por exemplo, <code>ping /l 1500 /f www.google.com.br</code>. O parâmetro <code>/t</code> envia requisições infinitas (use Ctrl Break para uma interrupção temporária e mostrar os pacotes enviados e recebidos, para interromper totalmente use Ctrl C).</p>
+<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>/l</code> seguido do número (por exemplo, <code>ping /l 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro <code>/n</code> seguido do número, por exemplo <code>/n 6</code>. Para desativar a fragmentação de pacotes, usamos o <code>/f</code> junto, por exemplo, <code>ping /l 1500 /f www.google.com.br</code>. O parâmetro <code>/t</code> envia requisições infinitas (use Ctrl Break para uma interrupção temporária e mostrar os pacotes enviados e recebidos, para interromper totalmente use Ctrl C).</p>
 
-<p>Podemos também usar parâmetros no tracert, como para aumentar a quantidade máxima de saltos com o /h, por exemplo <code>tracert /h 60 www.google.com.br</code>.</p>
+<p>Podemos também usar parâmetros no tracert, como para aumentar a quantidade máxima de saltos com o <code>/h</code>, por exemplo <code>tracert /h 60 www.google.com.br</code>.</p>
 
-<p>PS: Tanto no ping quanto no tracert, pode ser necessário colocar <code>/4</code> para forçar IPv4 ou <code>/6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
+<p>PS: Tanto no ping quanto no tracert, pode ser necessário colocar <code>/4</code> para forçar IPv4 ou <code>/6</code> para forçar IPv6. Cada salto do tracert é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
 
 <p>Para liberar o cache ARP, basta usar <code>netsh interface ip delete arpcache</code>, para excluir o cache de destino use <code>netsh interface ip delete destinationcache</code>, para resetar o TCP/IP usamos <code>netsh int ip reset all</code>.</p>
 
@@ -345,7 +345,7 @@ ipconfig /renew
 
 <p>Para resetar o proxy, digite <code>netsh advfirewall reset</code> e <code>netsh winhttp reset proxy</code>.</p>
 
-<p>Podemos usar <code>route print</code> para ver a rota da nossa rede. E também podemos adicionar e remover rotas especificando o IP com <code>route add 192.168.0.0 mask 255.255.255.0 172.16.0.1</code> (na ordem rede a ser acessada, máscara da mesma e gateway por qual vai acessar, use a opção <code>/p</code> para adicionar de forma permanente) e <code>route delete 192.168.0.0</code>, respectivamente.</p>
+<p>Podemos usar <code>route print</code> para ver a rota da nossa rede. E também podemos adicionar e remover rotas estáticas especificando o IP com <code>route add 192.168.0.0 mask 255.255.255.0 172.16.0.1</code> (na ordem rede a ser acessada, máscara da mesma e gateway por qual vai acessar, use a opção <code>/p</code> para adicionar de forma permanente) e <code>route delete 192.168.0.0</code>, respectivamente.</p>
 
 <p>Podemos também utilizar o comando <code>nslookup</code> assim, para vermos dados sobre o servidor do site:</p>
 

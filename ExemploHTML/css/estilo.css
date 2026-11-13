@@ -16,6 +16,7 @@
 
 * {
     font-family: var(--fonte-padrao);
+    overflow-x: hidden;
 }
 
 body {
@@ -42,12 +43,12 @@ main {
 img {
     display: block;
     margin: auto;
-    width: 100%;
+    width: 95%;
 }
 
 picture img {
     width: auto;
-    max-width: 100%;
+    max-width: 95%;
     border-radius: 100%;
     border: 8px solid white;
     box-shadow: 1px 1px 4px black;
@@ -168,8 +169,7 @@ header#cabecalho img#icone {
 
 header#cabecalho {
     border-bottom: 1px #aaaaff solid;
-    height: 300px;
-    background: url("../imagens/icon-pc.png") no-repeat 0px 100px;
+    min-height: 300px;
 }
 
 header#cabecalho h1 {
@@ -223,10 +223,10 @@ div.youtube {
 
 div.youtube iframe {
     position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 99%;
     border: none;
 }
 
@@ -341,4 +341,264 @@ audio#musica {
     left: 50px;
     top: 112px;
     width: 287px;
+}
+
+.botao {
+    border-radius: 15px;
+    background-color: #5511ff;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 14pt;
+    padding: 15px;
+    width: 200px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all .5s;
+}
+
+.botao span {
+    display: inline-block;
+    position: relative;
+    transition: all .5s;
+}
+
+.botao span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0px;
+    right: -10px;
+    transition: all .5s;
+}
+
+.botao:hover span {
+    padding-right: 25px;
+}
+
+.botao:hover span:after {
+    opacity: 1;
+    right: 2px;
+}
+
+img#print, img#phone, img#tablet, img#pc, img#tv {
+    display: none;
+    margin: 0;
+    width: 100px;
+}
+
+span#burger {
+    background-color: rgb(48, 48, 48);
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+span#burger:hover {
+    background-color: white;
+    color: black;
+}
+
+@media print { /* Impressão */
+    body {
+        background-image: none;
+    }
+
+    img#print {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 768px) { /* Celular */
+    body {
+        background-image: url("../imagens/back-phone.jpg");
+    }
+
+    img {
+        margin: 10px;
+        width: 50%;
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+    section#corpo {
+        max-width: 100%;
+        float: none;
+        padding: 0px;
+        border: none;
+    }
+
+    nav#menu ul {
+        position: relative;
+        top: 0px;
+        left: -20px;
+        margin-top: 5px;
+        width: 95%;
+    }
+
+    nav#menu ul li {
+        width: 88%;
+        margin: 2px auto;
+        text-align: center;
+    }
+
+    figure.foto-leg {
+        max-width: 200px;
+        max-height: 138px;
+    }
+
+    figure.foto-leg img {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    aside#lateral {
+        float: none;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    ul#album-fotos li {
+        width: 100px;
+        height: 100px;
+    }
+
+    .borda {
+        width: 50%;
+    }
+
+    div.youtube {
+        margin: 0px -20px 30px -20px;
+        padding: 20px;
+        padding-bottom: 30%;
+        position: relative;
+    }
+
+    img.piramide {
+        display: none;
+    }
+
+    iframe#mapa {
+        display: none;
+    }
+
+    div#tv {
+        background-size: 250px auto;
+        background-position: left;
+    }
+
+    video#filme {
+        left: 13px;
+        top: 100px;
+        width: 223px;
+    }
+
+    div#radio {
+        background-size: 250px auto;
+        background-position: left;
+    }
+
+    audio#musica {
+        left: 15px;
+        top: 135px;
+        width: 210px;
+    }
+
+    img#phone {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) { /* Tablet */
+    body {
+        background-image: url("../imagens/back-tablet.jpg");
+    }
+
+    img {
+        margin: 10px;
+        width: 85%;
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+    section#corpo {
+        max-width: 100%;
+        float: none;
+        padding: 0px;
+        border: none;
+    }
+
+    figure.foto-leg img {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    aside#lateral {
+        float: none;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    img#tablet {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1335px) { /* PC */
+    body {
+        background-image: url("../imagens/back-pc.jpg");
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+    section#corpo {
+        max-width: 100%;
+        float: none;
+        padding: 0px;
+        border: none;
+    }
+
+    aside#lateral {
+        float: none;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    img#pc {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1335px) { /* TV */
+    body {
+        background-image: url("../imagens/back-tv.jpg");
+    }
+
+    img#tv {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    span#burger {
+        display: none;
+    }
+
+    nav#menu > ul {
+        display: block;
+    }
+
+    nav#menu > ul > li {
+        display: inline-block;
+    }
 }

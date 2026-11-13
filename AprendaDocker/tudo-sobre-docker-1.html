@@ -408,11 +408,11 @@ CMD ["google.com"]
 </code>
 </pre>
 
-<p>No caso acima, o ping e seus parâmetros serão executados obrigatoriamente, já o Google é <q>pingado</q> por padrão, mas podemos passar outro servidor como parâmetro.</p>
+<p>No caso acima, o Ping e seus parâmetros serão executados obrigatoriamente, já o Google é <q>pingado</q> por padrão, mas podemos passar outro servidor como parâmetro.</p>
 
 <p>Digite o comando <code>docker build -t meuping .</code> (não esqueça do ponto) pra criar a imagem.</p>
 
-<p>Depois de criada a imagem, crie um container com o comando <code>docker run meuping</code> e ele criará o container e fará o Ping no Google. Ao rodar <code>docker run meuping youtube.com</code> ele executará o Ping no Youtube ao invés do Google.</p>
+<p>Depois de criada a imagem, crie um container com o comando <code>docker run meuping</code> e ele criará o container e fará o Ping no Google. Ao rodar <code>docker run meuping youtube.com</code>, ele executará o Ping no Youtube ao invés do Google.</p>
 
 <p>Lembrando que, para um controle melhor dos comandos do CMD e ENTRYPOINT, use sempre entre aspas e dentro de colchetes, separados por vírgulas.</p>
 

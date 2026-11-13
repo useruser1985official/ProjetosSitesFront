@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+* {
+    margin: 10px;
+    padding: 10px;
+}
+
+html {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+ul, footer, iframe, a, ol, .borda, figure.foto-leg, img {
+    display: none;
+}
+
+img#print {
+    display: block;
+}

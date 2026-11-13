@@ -5,14 +5,16 @@
         <title>T&iacute;tulo da P&aacute;gina em HTML</title>
         <link rel="icon" href="imagens/favicon.ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="css/estilo.css"/>
+        <link rel="stylesheet" href="css/estilo.css" media="screen"/>
+        <link rel="stylesheet" href="css/impressora.css" media="print"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+                <script src="javascript/funcoes.js"></script>
     </head>
-    <body>
+    <body onresize="mudouTam()">
         <main>
             <section id="corpo-full">
                 <header id="cabecalho">
-                    <h1>Contato</h1>
-
+                    <span id="burger" class="material-icons" onclick="clickMenu()">menu</span>
                     <nav id="menu">
                         <h1>Menu Principal</h1>
                         <ul>
@@ -20,6 +22,14 @@
                             <li><a href="contato.html">Contato</a></li>
                         </ul>
                     </nav>
+                    <h1>Contato</h1>
+                    <h2>Entre em Contato Conosco</h2>
+
+                    <img src="imagens/icon-print.png" id="print" alt="Print"/>
+                    <img src="imagens/icon-phone.png" id="phone" alt="Celular"/>
+                    <img src="imagens/icon-tablet.png" id="tablet" alt="Tablet"/>
+                    <img src="imagens/icon-pc.png" id="pc" alt="PC"/>
+                    <img src="imagens/icon-tv.png" id="tv" alt="TV"/>
                 </header>
             </section>
         </main>

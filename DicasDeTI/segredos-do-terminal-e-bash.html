@@ -253,8 +253,10 @@ echo "Essa é uma frase com acentuação!"&gt;&gt;~/Desktop/teste.txt
 
 <pre>
 <code>
-sudo service network-manager stop 
-sudo service network-manager start
+# Em alguns sistemas pode ser escrito como network-manager
+
+sudo service NetworkManager stop 
+sudo service NetworkManager start
 </code>
 </pre>
 
@@ -289,17 +291,17 @@ ifconfig -a # Mostra informações detalhadas sobre todas as interfaces
 
 <p>Para descobrir o MTU da interface, use <code>sudo ip link show</code>.</p>
 
-<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>-s</code> seguido do número (por exemplo, <code>ping -s 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro -c seguido do número, por exemplo <code>-c 6</code></p>
+<p>Para selecionar o tamanho em bytes dos pacotes enviados pelo ping, usamos o <code>-s</code> seguido do número (por exemplo, <code>ping -s 1500 www.google.com.br</code>). Para selecionar a quantidade de requisições use o parâmetro <code>-c</code> seguido do número, por exemplo <code>-c 6</code></p>
 
-<p>Podemos também usar parâmetros no traceroute, como para aumentar a quantidade máxima de saltos com o -m, por exemplo <code>traceroute -m 60 www.google.com.br</code>.</p>
+<p>Podemos também usar parâmetros no traceroute, como para aumentar a quantidade máxima de saltos com o <code>-m</code>, por exemplo <code>traceroute -m 60 www.google.com.br</code>.</p>
 
-<p>PS: Tanto no ping quanto no traceroute, pode ser necessário colocar <code>-4</code> para forçar IPv4 ou <code>-6</code> para forçar IPv6. Cada salto é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
+<p>PS: Tanto no ping quanto no traceroute, pode ser necessário colocar <code>-4</code> para forçar IPv4 ou <code>-6</code> para forçar IPv6. Cada salto do traceroute é um roteador (que é diferente dos roteadores domésticos), que pode não responder por bloqueio de firewall ou ICMP dos mesmos (ICMP é o protocolo usado por esses comandos), e mostrar só asteriscos, mas que não significam problema exatamente.</p>
 
 <p>Ainda nos problemas de rede, podemos digitar o comando <code>netstat -a -n -e</code> para verificar todas as portas abertas e os IPs aos quais elas estão conectadas. Ele foi substituído por <code>ss -all</code>.</p>
 
 <p>Para vermos o cache ARP, usamos <code>arp -a</code> (mas foi substituído por <code>ip neigh show</code>). Para remover um IP dele, usamos <code>ip neigh del 1.1.1.1 dev enp2s0</code> (substituir o 1.1.1.1 pelo IP desejado).</p>
 
-<p>Podemos usar <code>ip route</code> para ver a rota da nossa rede. E também podemos adicionar e remover rotas especificando o IP com <code>ip route add 192.168.0.0/24 via 172.16.0.1 dev enp2s0</code> (na ordem rede a ser acessada, máscara da mesma com notação CIDR e gateway por qual vai acessar, adicione ao arquivo <code>/etc/network/interfaces</code> para adicionar de forma permanente) e <code>ip route del 192.168.0.0/24</code>, respectivamente.</p>
+<p>Podemos usar <code>ip route</code> para ver a rota da nossa rede. E também podemos adicionar e remover rotas estáticas especificando o IP com <code>ip route add 192.168.0.0/24 via 172.16.0.1 dev enp2s0</code> (na ordem rede a ser acessada, máscara da mesma com notação CIDR e gateway por qual vai acessar, adicione ao arquivo <code>/etc/network/interfaces</code> para adicionar de forma permanente) e <code>ip route del 192.168.0.0/24</code>, respectivamente.</p>
 
 <p>Podemos também utilizar o comando <code>nslookup</code> assim, para vermos dados sobre o servidor do site:</p>
 
