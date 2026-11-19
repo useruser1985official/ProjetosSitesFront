@@ -26,6 +26,98 @@
 
 <h2>Objetos SQLite em Python - Parte 3</h2>
 
+<h3>Aprenda o R de Read: Como Listar e Buscar Pessoas</h3>
+
+<p>Vamos visualizar os conteúdos de duas forma, todos os cadastros e procurar por nome.</p>
+
+<p>Continuando o projeto, faça isso para vermos todos os cadastros, usando o comando SQL <code>select</code> no listarPessoas:</p>
+
+<pre>
+<code>
+def listarPessoas() -&gt; bool:
+    print("=== LISTAGEM COMPLETA DE PESSOAS CADASTRADAS ===")
+    try:
+        with sqlite3.connect(NOME_BANCO) as db:
+            cur = db.cursor()
+
+            cur.execute("select cod, nome, altura from pessoas order by nome")
+
+            primeiro = cur.fetchone()
+
+            if not primeiro:
+                print("[AVISO] Nenhuma pessoa foi cadastrada até agora.")
+
+                return True
+
+            print("=" * 45)
+            print(f"{'CÓDIGO':&lt;7} {'NOME':&lt;28} {'ALTURA':&gt;8}")
+            print(f"-" * 45)
+
+            vCod, vNome, vAltura = primeiro # Retorna uma coleção
+            print(f"{vCod:&lt;7} {vNome:&lt;28} {vAltura:&gt;6}m")
+
+            for c, n, a in cur:
+                print(f"{c:&lt;7} {n:&lt;28} {a:&gt;6}m")
+
+            print("=" * 45)
+
+            return True
+    except sqlite3.Error as erro:
+        print(f"[ERRO] Falha ao acessar o banco: {erro}!")
+
+        return False
+</code>
+</pre>
+
+<p>E para vermos apenas os cadastros com uma palavra-chave ou parte dela no nome, alteramos a função buscarPessoaPorNome assim:</p>
+
+<pre>
+<code>
+def buscarPessoaPorNome() -&gt; bool:
+    print("=== BUSCA DE PESSOA POR NOME ===")
+
+    termo = str(input("Digite o nome (ou parte dele) para buscar: ")).strip()
+
+    if not termo:
+        print("[AVISO] Nenhum termo foi informado!")
+
+        return False
+
+    try:
+        with sqlite3.connect(NOME_BANCO) as db:
+            cur = db.cursor()
+
+            cur.execute("select cod, nome, altura from pessoas where nome like ? order by nome", (f"%{termo}%",))
+
+            primeiro = cur.fetchone()
+
+            if not primeiro:
+                print("[AVISO] Nenhuma pessoa foi cadastrada até agora.")
+
+                return True
+
+            print("=" * 45)
+            print(f"{'CÓDIGO':&lt;7} {'NOME':&lt;28} {'ALTURA':&gt;8}")
+            print(f"-" * 45)
+
+            vCod, vNome, vAltura = primeiro # Retorna uma coleção
+            print(f"{vCod:&lt;7} {vNome:&lt;28} {vAltura:&gt;6}m")
+
+            for c, n, a in cur:
+                print(f"{c:&lt;7} {n:&lt;28} {a:&gt;6}m")
+
+            print("=" * 45)
+
+            return True
+    except sqlite3.Error as erro:
+        print(f"[ERRO] Falha ao buscar no banco: {erro}!")
+
+        return False
+</code>
+</pre>
+
+<p>PS: Podemos usar a biblioteca rich para mostrar os cadastros numa tabela. Lembre-se também de que a porcentagem no SQL é um curinga que significa de zero a infinitos caracteres antes e após o termo que fica entre eles. E o SQLite difere letras acentuadas, mas não difere maiúsculas e minúsculas.</p>
+
 <ul>
     <li><a href="objetos-sqlite-2.html">Parte Anterior da Matéria!</a></li>
     <!--<li><a href="objetos-sqlite-4.html">Continuação da Matéria!</a></li>-->

@@ -204,11 +204,11 @@
     <li>Garante a comunicação entre as estações dentro de uma rede.</li>
 </ul>
 
-<p>Há uma faixa de endereços reservados pelos IETF que são atribuídas pelo APIPA, de <code>169.254.0.1</code> até <code>169.254.255.254</code>.</p>
+<p>Há uma faixa de endereços reservados pelo IETF que são atribuídos pelo APIPA, de <code>169.254.0.1</code> até <code>169.254.255.254</code>.</p>
 
 <p>O primeiro e o último bloco dessa faixa são reservados, de modo que as estações, na verdade, irão receber endereços localizados entre <code>169.254.1.0</code> até <code>169.254.254.255</code>.</p>
 
-<p>A máscara de sub-rede é 255.255.0.0 (classe B).</p>
+<p>A máscara de sub-rede é <code>255.255.0.0</code> (classe B).</p>
 
 <p>Além de ser um indicativo de que não há conectividade com o servidor DHCP em uma rede, o APIPA pode ajudar a detectar variados problemas, como:</p>
 
@@ -220,7 +220,7 @@
     <li>Problemas em uma ou mais portas do switch.</li>
 </ul>
 
-<p>Ou seja, problemas que, em última instância, levem a quebra de comunicação entre as estações e o servidor DHCP da rede.</p>
+<p>Ou seja, problemas que, em última instância, levem à quebra de comunicação entre as estações e o servidor DHCP da rede.</p>
 
 <p>Abra o CMD e digite <code>ipconfig</code> para vermos a configuração atual de IP.</p>
 
@@ -228,7 +228,7 @@
 
 <p>Para abrir as conexões de rede, digite <code>ncpa.cpl</code>. Lá dentro, clique com o botão direito em Conexão Local, e em IPv4, lá terá a opção Configuração Alternativa, que é referente ao APIPA, onde podemos configurar também manualmente.</p>
 
-<h3>Ipconfig - Utilitário para Diagnóstico de Rede no Windows</h3>
+<h3>IPConfig - Utilitário para Diagnóstico de Rede no Windows</h3>
 
 <p>O ipconfig, usado no CMD, tem a finalidade de trazer, basicamente, as configurações atuais de rede que sua máquina está usando. Mas ele também pode ser usado para outras tarefas, como mostrar o conteúdo do cache do resolvedor DNS, ou ainda fazer a renovação de uma concessão de endereço obtido via DHCP, ou ainda liberar esse endereço, entre outras coisas.</p>
 
@@ -281,11 +281,11 @@
     </tr>
     <tr>
         <td><code>/setclassid</code></td>
-        <td>Permite modificar as identificações de classe DHCP</td>
+        <td>Permite modificar as identificações de classe DHCP para o adaptador especificado</td>
     </tr>
 </table>
 
-<p>PS: Digitar apenas <code>ipconfig</code> mostrará as informações de configuração de rede resumida.</p>
+<p>PS: Digitar apenas <code>ipconfig</code> mostrará as informações de configuração de rede resumidas.</p>
 
 <h3>Fragmentação de Pacotes IP</h3>
 
@@ -308,7 +308,7 @@
     <li>O checksum do cabeçalho deve ser recalculado.</li>
 </ul>
 
-<p>Assim, se tivermos um MTU de 1500 bytes e pacotes padrão com cabeçalho de 20 bytes, os offsets (deslocamentos) dos fragmentos serão múltiplos de (1500 - 20) / 8 = 185, como por exemplo, 0, 185, 370, etc.</p>
+<p>Assim, se tivermos um MTU de 1500 bytes e pacotes padrão com cabeçalho de 20 bytes, os offsets (deslocamentos) dos fragmentos serão múltiplos de (1500 - 20) / 8 = 185, como, por exemplo, 0, 185, 370, etc.</p>
 
 <p>Veja abaixo o formato do cabeçalho IPv4:</p>
 
@@ -369,9 +369,9 @@ tamanho_total = 370 * 8 + 1040 = 2960 + 1040 = 4000;
 </code>
 </pre>
 
-<p>Quando os pacotes chegam a seu destino, eles devem ser remontados para que possam ser processados.</p>
+<p>Quando os pacotes chegam ao seu destino, eles devem ser remontados para que possam ser processados.</p>
 
-<p>O receptor sabe que um pacote é um fragmento caso o flag MF esteja ativo, e caso o campo offset do fragmento possuam um valor diferente de zero.</p>
+<p>O receptor sabe que um pacote é um fragmento caso o flag MF esteja ativo, e caso o campo offset do fragmento possua um valor diferente de zero.</p>
 
 <p>Fragmentos que possuam a mesma identificação pertencem ao mesmo pacote, e o campo offset do fragmento permite ordenar esses fragmentos.</p>
 

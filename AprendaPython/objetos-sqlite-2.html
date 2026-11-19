@@ -96,7 +96,7 @@ import sqlite3
 
 NOME_BANCO = "cadastro.db3"
 
-def criarBanco() -> bool:
+def criarBanco() -&gt; bool:
     try:
         with sqlite3.connect(NOME_BANCO) as db: # Se não encontrar o banco, ele criará o arquivo
             cur = db.cursor()
@@ -119,19 +119,19 @@ def criarBanco() -> bool:
 
         return False
 
-def cadastrarPessoa() -> bool:
+def cadastrarPessoa() -&gt; bool:
     pass
 
-def listarPessoas() -> bool:
+def listarPessoas() -&gt; bool:
     pass
 
-def atualizarPessoa() -> bool:
+def atualizarPessoa() -&gt; bool:
     pass
 
-def excluirPessoa() -> bool:
+def excluirPessoa() -&gt; bool:
     pass
 
-def buscarPessoaPorNome() -> bool:
+def buscarPessoaPorNome() -&gt; bool:
     pass
 </code>
 </pre>
@@ -250,7 +250,7 @@ def main():
 
 <pre>
 <code>
-def cadastrarPessoa() -> bool:
+def cadastrarPessoa() -&gt; bool:
     print("\n ==== NOVO CADASTRO DE PESSOAS ===")
 
     # Leitura e validação dos dados:
@@ -269,7 +269,7 @@ def cadastrarPessoa() -> bool:
     try:
         altura = float(valAltura)
 
-        if altura <= 0.20 or altura > 3.00:
+        if altura &lt;= 0.20 or altura &gt; 3.00:
             print("[ERRO] Valor incoerente para altura!")
 
             return False

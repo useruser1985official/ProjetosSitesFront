@@ -45,10 +45,10 @@ engine = innodb
     <li>Atomicidade: Ou faz tudo, ou nada é considerado, não faz nada incompleto.</li>
     <li>Consistência: Um banco continuará estável tanto na hora quanto após a transação, ou volta pro estado anterior.</li>
     <li>Isolamento: Quando duas ou mais transações acontecem ao mesmo tempo, elas são executadas de forma separada, sem conflito entre si.</li>
-    <li>Durabilidade: Uma transação tem que durar o tempo necessário até alterarmos ele.</li>
+    <li>Durabilidade: Uma transação tem que durar o tempo necessário até alterarmos ela.</li>
 </ul>
 
-<p>No exemplo, temos dois bancos de dados distintos, que têm relacionamento entre si, no primeiro, dados de usuários no banco "gafanhotos", e no outro banco temos "cursos". Mas no caso especificado, um usuário do banco gafanhotos poderá escolher um curso do banco cursos.</p>
+<p>No exemplo, temos duas tabelas distintas, que têm relacionamento entre si, na primeira, dados de usuários na tabela "gafanhotos", e na outra tabela temos "cursos". Mas no caso especificado, um usuário da tabela gafanhotos poderá escolher um curso da tabela cursos.</p>
 
 <img src="imagens/gafanhotos.jpg" alt="Gafanhotos"/>
 
@@ -56,7 +56,7 @@ engine = innodb
 
 <p>O que a gente tem que fazer é pegar a chave (como a primária) do lado um (do qual ela vem) e levar para o lado "N", adicionando-a no outro lado, ela não precisa ter o mesmo nome da chave primária de onde ela veio, mas tem que ter o mesmo tipo e mesmo tamanho.</p>
 
-<p>No exemplo, a chave idcurso do Cursos terá o nome de curso preferido na chave estrangeira Gafanhotos:</p>
+<p>No exemplo, a chave idcurso do Cursos terá o nome de cursopreferido na chave estrangeira Gafanhotos:</p>
 
 <pre>
 <code>

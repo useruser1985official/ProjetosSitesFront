@@ -133,7 +133,7 @@
     <li><code>10.0.0.0</code> - <code>255.255.255.252</code></li>
 </ul>
 
-<p>Portanto, essas são as redes não conectadas diretamente à ele:</p>
+<p>Portanto, essas são as redes não conectadas diretamente a ele:</p>
 
 <ul>
     <li><code>11.0.0.0</code> - <code>255.255.255.252</code></li>
@@ -172,7 +172,7 @@
 
 <h4>Roteador da Esquerda</h4>
 
-<p>Continuando a configuração, ainda no roteador da esquerda, colqoue essa configuração para ele se comunicar com o roteador de baixo:</p>
+<p>Continuando a configuração, ainda no roteador da esquerda, coloque essa configuração para ele se comunicar com o roteador de baixo:</p>
 
 <ul>
     <li><b>Rede:</b> <code>13.0.0.0</code></li>
@@ -180,9 +180,9 @@
     <li><b>Next Hop:</b> <code>12.0.0.2</code></li>
 </ul>
 
-<p>No caso essas foram as configurações para chegar ao roteador da direita, por dois caminhos.</p>
+<p>No caso, essas foram as configurações para chegar ao roteador da direita, por dois caminhos.</p>
 
-<p>Ainda no roteador da esquerda, coloque essa rota pra chegar na rede embaixo (a da <q>nuvem</q>):</p>
+<p>Ainda no roteador da esquerda, coloque essa rota pra chegar na rede de baixo (a da <q>nuvem</q>):</p>
 
 <ul>
     <li><b>Rede:</b> <code>172.16.0.0</code></li>
@@ -276,7 +276,7 @@
     <li><b>Next Hop:</b> <code>11.0.0.1</code></li>
 </ul>
 
-<p>Para se conectar indo por baixo:</p>
+<p>Para se conectar ao roteador da esquerda indo por baixo:</p>
 
 <ul>
     <li><b>Rede:</b> <code>12.0.0.0</code></li>
@@ -345,8 +345,8 @@
 <ul>
     <li>Do lado esquerdo, um computador com o IP <code>192.168.1.2</code> e gateway padrão <code>192.168.1.1</code>, máscara classe C.</li>
     <li>Quatro roteadores, um em cima, um embaixo, um do lado esquerdo e outro do lado direito (configuraremos eles depois).</li>
-    <li>Abaixo, um computador com o IP <code>192.168.2.2</code> e gateway padrão <code>192.168.2.2</code>, máscara classe C.</li>
-    <li>Do lado direito, um computador com o IP <code>192.168.3.2</code> e gateway padrão <code>192.168.3.1</code>, máscara Classe C.</li>
+    <li>Abaixo, um computador com o IP <code>192.168.2.2</code> e gateway padrão <code>192.168.2.1</code>, máscara classe C.</li>
+    <li>Do lado direito, um computador com o IP <code>192.168.3.2</code> e gateway padrão <code>192.168.3.1</code>, máscara classe C.</li>
 </ul>
 
 <p>Coloque nos roteadores uma placa WIC-2T em cada e ligue eles com o cabo Serial DTE. Os PCs nós ligamos com o cabo Cross nos roteadores.</p>
@@ -429,7 +429,7 @@
 
 <h3>Como Interligar VLANs</h3>
 
-<p>Crie no Packet Tracer com os setores de secretaria, sala de professores, alunos, laboratório 1 e laboratório 2. No caso teremos 3 VLANs: A VLAN 10 do Administrativo (Secretaria e Sala de Professores), A VLAN 20 dos Laboratórios (lab1 e lab2) e a VLAN 30 dos Alunos. Ele também terá servidores ao lado num outro setor só pra eles.</p>
+<p>Crie no Packet Tracer um projeto novo com os setores de secretaria, sala de professores, alunos, laboratório 1 e laboratório 2. No caso teremos 3 VLANs: A VLAN 10 do Administrativo (Secretaria e Sala de Professores), a VLAN 20 dos Laboratórios (lab1 e lab2) e a VLAN 30 dos Alunos. Ele também terá servidores ao lado num outro setor só pra eles.</p>
 
 <p>Criando VLANs, uma rede fica mais segura, pois uma VLAN, caso seja infectada, não atinge as outras, além de impedir o acesso de, por exemplo, a setores não-autorizados (como o de Alunos que não poderia acessar o Administrativo).</p>
 
@@ -441,9 +441,9 @@
     <li><b>VLAN 30:</b> <code>192.168.30.0</code></li>
 </ul>
 
-<p>No lado do servidores, coloque cinco servidores: Os DHCP, cada um pra sua própria VLAN (10, 20 e 30), o quarto será um servidor DNS e o quinto um servidor WEB. Os servidores DNS e WEB serão da VLAN 10. Coloque um switch 2960 para ligar os servidores com o nome Coordenação.</p>
+<p>No lado dos servidores, coloque cinco servidores: Os DHCP, cada um pra sua própria VLAN (10, 20 e 30), o quarto será um servidor DNS e o quinto um servidor WEB. Os servidores DNS e WEB serão da VLAN 10. Coloque um switch 2960 para ligar os servidores com o nome Coordenação.</p>
 
-<p>No setores, coloque um switch em cada setor (Secretaria, Sala dos Professores, Laboratório 1 e Laboratório 2, e Servidores), cada um com seu nome, e coloque um switch também interligando todos, com o nome IC. No setor de Alunos coloque um Access Point (AP-PT-N, em WAN Emulation).</p>
+<p>No setores, coloque um switch em cada setor (Secretaria, Sala dos Professores, Laboratório 1 e Laboratório 2, e Alunos), cada um com seu nome, e coloque um switch também interligando todos, com o nome IC. No setor de Alunos coloque um Access Point (AP-PT-N, em WAN Emulation).</p>
 
 <p>Como sabemos, um roteador wi-fi cria outra rede para se comunicar com os dispositivos wireless. Para não criar outra rede, utilizaremos um Access Point para isso. Ele também pode ter nome de rede configurado, assim como uma senha, indo em Config e Port 1, escolhemos a opção WPA2-PSK (a mais segura) com a encriptação AES.</p>
 
@@ -467,7 +467,7 @@
 
 <p>As portas que vamos colocar na VLAN 10, serão as ligadas aos switches. Pois se elas não estiverem na mesma VLAN, não terá comunicação. A divisão das outras VLANs acontecerá em cada switch de cada setor.</p>
 
-<p>No modo access, só passará o acesso pela VLAN especificada. No modo trunk, todas as VLANs passarão o acesso por essa porta. No caso, as portas truncadas será as ligadas do switch do servidor ao central do outro lado.</p>
+<p>No modo access, só passará o acesso pela VLAN especificada. No modo trunk, todas as VLANs passarão o acesso por essa porta. No caso, as portas truncadas serão as ligadas do switch do servidor ao central do outro lado.</p>
 
 <p>Coloque os computadores da secretaria na VLAN 10, e também a porta ligada ao switch central. No servidor DHCP 10, configure o servidor com a rede assim:</p>
 
@@ -475,7 +475,7 @@
     <li><b>Nome:</b> Administrativo - Gateway e DNS Server <code>192.168.10.1</code> - Start IP <code>192.168.10.2</code> - Máscara Padrão C.</li>
 </ul>
 
-<p>PS: Não esqueça de colocar a mesma configuração do IP no servidor.</p>
+<p>PS: Não esqueça de colocar a mesma configuração do IP nos servidores. E coloque cada servidor DHCP na sua VLAN equivalente.</p>
 
 <p>Habilite o trunk em todas as portas onde os switches se comunicam um com o outro. A porta do Access Point não terá trunk por não ser switch, ela estará na VLAN 30 com access mesmo.</p>
 
@@ -492,6 +492,8 @@
 <ul>
     <li><b>Nome:</b> Alunos - Gateway e DNS Server <code>192.168.30.1</code> - Start IP <code>192.168.30.2</code> - Máscara Padrão C.</li>
 </ul>
+
+<p>Podemos fazer o teste da cartinha ou o ping em cada uma das VLANs.</p>
 
 <ul>
     <li><a href="tudo-sobre-packettracer-3.html">Parte Anterior da Matéria!</a></li>
